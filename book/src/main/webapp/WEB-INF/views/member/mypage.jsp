@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+id : ${ses.mem_id}
+num : ${ses.mem_num}
 <ul>
 	<li><a href="/mem/modify">회원정보수정</a></li>
 	<li><a href="/mem/check">주문/배송조회</a></li>

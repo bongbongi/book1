@@ -15,6 +15,16 @@ public interface MemberDAO {
 
 	int usermodify(MemberVO mvo);
 
+	String getIdSearch(MemberVO mvo);
+
+	String getPwSearch(MemberVO mvo);
+
+	int updateAdderess(String addressAll);
+
+	int newPwUpdate(MemberVO mvo);
+
+	String getCellNum(String mem_cell_num);
+
 
 
 

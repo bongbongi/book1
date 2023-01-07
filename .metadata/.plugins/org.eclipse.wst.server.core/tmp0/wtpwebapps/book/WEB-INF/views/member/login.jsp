@@ -76,8 +76,8 @@ hr{
 				<a><button type="submit" class="btn btn-outline-secondary">확인</button></a><br><br>
 			</form>
 			<div>
-				<a>비밀번호찾기</a>
-				<a>아이디찾기</a> 
+				<a href="/mem/MemPwSearch">비밀번호찾기</a>
+				<a href="/mem/MemIdSearch">아이디찾기</a> 
 				<a href="/mem/joinPage">회원가입</a>
 			</div>
 		
@@ -90,10 +90,11 @@ hr{
 				<span>SNS로 3초만에 로그인</span>
 			</div>
 		</span>
+		<!-- api 로그인 관련 -->
 		<div class="api">
 		  <%
 		    String clientId = "4NMOgJ2RQBlsecZK4ye2";//애플리케이션 클라이언트 아이디값";
-		    String redirectURI = URLEncoder.encode("http://localhost:8089/", "UTF-8");
+		    String redirectURI = URLEncoder.encode("http://localhost:8089/mem/callback", "UTF-8");
 		    SecureRandom random = new SecureRandom();
 		    String state = new BigInteger(130, random).toString();
 		    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code"

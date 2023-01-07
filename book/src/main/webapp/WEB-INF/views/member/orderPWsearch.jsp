@@ -49,10 +49,11 @@ body{
 			<a href="/"><img src="../resources/logo.jpg" alt="로고"></a><br>
 		</div>
 		<div class="login">
-			<form action="/non-mem/login" method="post">
+			<form action="/nonMem/orderPwsearch" method="post">
 				<input type="text" placeholder="주문번호" name="mem_num"><Br>
 				<input type="text" placeholder="이름" name="mem_name"><Br>
 				<input type="password" placeholder="휴대폰 번호" name="mem_cell_num"><br><br>
+				<a href="/mem/joinPage">회원가입 하시겠습니까?</a><br>
 				<a><button type="submit" class="btn btn-outline-secondary">확인</button></a><br><br>
 			</form>				
 		</div>

@@ -1,0 +1,23 @@
+package com.ezen.book.service;
+
+import com.ezen.book.domain.MemberVO;
+
+public interface MemberService {
+
+	boolean join(MemberVO mvo);
+
+	MemberVO login(String id, String pw);
+
+	int usermodify(MemberVO mvo);
+
+	String getId(MemberVO mvo);
+
+	String getPw(MemberVO mvo);
+
+	int update(String addressAll);
+
+	int newPwUpdate(String mem_id, String newPw, int c);
+
+	int newPwUpdate(MemberVO mvo);
+
+}

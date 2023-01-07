@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="/mem/modify" method="post">		
-		번호:<input type="text" name="mem_num" value="${ses.mem_num}" ><br>
+		번호:<input type="text" name="mem_num" value="${ses.mem_num}"><br>
 		아이디:<input type="text" name="mem_id" value="${ses.mem_id}" ><br>
 		비밀번호:<input type="password" name="mem_pw" value="${ses.mem_pw}" ><br>
 		주소:<input type="text" name="mem_ad" value="${ses.mem_ad}" ><br>
@@ -16,7 +16,7 @@
 		선호카테고리번호:<input type="text" name="mno_cno" value="${ses.mno_cno}" ><br>
 		<button type="submit">수정하기 !</button>
 	</form>
-	
+	${ses.mem_num}
 	
 </body>
 </html>

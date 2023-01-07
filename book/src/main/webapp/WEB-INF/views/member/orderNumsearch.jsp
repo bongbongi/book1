@@ -49,12 +49,25 @@ body{
 			<a href="/"><img src="../resources/logo.jpg" alt="로고"></a><br>
 		</div>
 		<div class="login">
-			<form action="/non-mem/login" method="post">
+			<form action="/nonMem/orderNumsearch" method="post">
 				<input type="text" placeholder="이름" name="mem_name"><Br>
-				<input type="password" placeholder="휴대폰 번호" name="mem_cell_num"><br><br>
-				<a><button type="submit" class="btn btn-outline-secondary">확인</button></a><br><br>
+				<input type="text" placeholder="휴대폰 번호" name="mem_cell_num"><br><br>
+				<a href="/mem/joinPage">회원가입 하시겠습니까?</a><br>
+				<a><button type="submit" class="btn btn-outline-secondary" onclick="result()">확인</button></a><br><br>
 			</form>				
 		</div>
 	</div>
+	<!-- 스크립트 -->
+	<script type="text/javascript">
+		const msg = '<c:out value="${msg}"/>';
+		function result(){
+			if (msg === '0' || msg==null) {
+				alert("찾을 수 없습니다. 다시 입력해주세요!");
+			} else {
+				alert(`아이디는 ${msg} 입니다.`);
+			}
+		}
+		
+	</script>
 </body>
 </html>

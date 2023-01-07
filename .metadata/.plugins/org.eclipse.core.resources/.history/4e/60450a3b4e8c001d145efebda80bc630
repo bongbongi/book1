@@ -1,0 +1,96 @@
+package com.ezen.book.domain;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+public class MemberVO {
+
+	private int mem_num;
+	private String mem_id;
+	private String mem_pw;
+	private String mem_name;
+	private String mem_ad;
+	private int mem_age;
+	private String mem_gender;
+	private int mem_cash;
+	private String mem_cell_num;
+	private String mno_cno;
+	private String mem_date;
+	private String mem_rating;
+	private String mem_auth;
+	private String mem_sum;
+	private String mem_postzip;
+	
+	public int getMem_num() {
+		return mem_num;
+	}
+	public String getMem_id() {
+		return mem_id;
+	}
+	public String getMem_pw() {
+		return mem_pw;
+	}
+	public String getMem_name() {
+		return mem_name;
+	}
+	public String getMem_ad() {
+		return mem_ad;
+	}
+	public int getMem_age() {
+		if(mem_age>0) {
+			
+			return mem_age;
+		}else {
+			return 0;
+		}
+	}
+	public String getMem_gender() {
+		if(mem_gender.equals("1")) {
+			return "남자";
+		}else if(mem_gender.equals("2")) {
+			return "여자";
+		}
+		return null;
+	}
+	public int getMem_cash() {
+		return mem_cash;
+	}
+	public String getMem_cell_num() {
+		return mem_cell_num;
+	}
+	public String getMno_cno() {
+		if(mno_cno.equals("1")) {
+			return "소설";
+		}else if(mno_cno.equals("2")) {
+			return "에세이";
+		}else if(mno_cno.equals("3")) {
+			return "건강/취미";
+		}else if(mno_cno.equals("4")) {
+			return "컴퓨터/모바일";
+		}
+		return null;
+	}
+	public String getMem_date() {
+		return mem_date;
+	}
+	public String getMem_rating() {
+		return mem_rating;
+	}
+	public String getMem_auth() {
+		return mem_auth;
+	}
+	public String getMem_sum() {
+		return mem_sum;
+	}
+	public String getMem_postzip() {
+		return mem_postzip;
+	}
+	
+	
+}
+

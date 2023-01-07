@@ -1,0 +1,9 @@
+package com.ezen.book.service;
+
+import com.ezen.book.domain.UnmemberVO;
+
+public interface NonMemberService {
+
+	UnmemberVO login(UnmemberVO umvo);
+
+}

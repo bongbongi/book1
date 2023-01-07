@@ -1,0 +1,30 @@
+package com.ezen.book.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ezen.book.domain.BookVO;
+import com.ezen.book.service.BookService;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequestMapping("/book/*")
+@Controller
+public class BookController {
+
+	private BookService bsvc;
+	
+	@GetMapping("/book/list")
+	public String getBookList(Model model) {
+		List<BookVO> bvo = bsvc.getBookList();
+		log.info("북리스트 : " + bvo);
+		model.addAttribute("book_list", bvo);
+		return "home";
+	}
+	
+}

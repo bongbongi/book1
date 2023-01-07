@@ -64,7 +64,7 @@ hr{
 			<a href="/"><img src="../resources/logo.jpg" alt="로고"></a><br>
 		</div>
 		<div class="login">
-			<form action="/non-mem/login" method="post">
+			<form action="/nonMem/login" method="post">
 				<input type="text" placeholder="주문 번호" name="mem_num"><Br>
 				<input type="password" placeholder="주문 비밀번호" name="mem_pw"><br><br>
 				<a><button type="submit" class="btn btn-outline-secondary">확인</button></a><br><br>

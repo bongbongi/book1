@@ -5,12 +5,11 @@
 	<select id="getId" resultType="com.ezen.book.domain.MemberVO">
 		select * from member where mem_id=#{mem_id}
 	</select>
-
 	<insert id="insertMember">
 		insert into member(mem_id,mem_pw,mem_name,mem_ad,mem_age,mem_gender,
-		mem_cell_num)
+		mem_cell_num,mno_cno,mem_postzip)
 		values 
-		(#{mem_id},#{mem_pw},#{mem_name},#{mem_ad},#{mem_age},#{mem_gender},#{mem_cell_num})
+		(#{mem_id},#{mem_pw},#{mem_name},#{mem_ad},#{mem_age},#{mem_gender},#{mem_cell_num},#{mno_cno},#{mem_postzip})
 	</insert>
 	<select id="login" resultType="int">
 		select * from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
@@ -19,4 +18,19 @@
 		update member set mem_id=#{mem_id},mem_pw=#{mem_pw}
 		where mem_num=#{mem_num}
 	</update>
+	<select id="getIdSearch" resultType="String">
+		select mem_id from member where mem_name=#{mem_name} and mem_cell_num=#{mem_cell_num}
+	</select>
+		<select id="getPwSearch" resultType="String">
+		select mem_pw from member where mem_id=#{mem_id} and mem_name=#{mem_name} and mem_cell_num=#{mem_cell_num}
+	</select>
+	<update id="updateAdderess">
+		update member set mem_ad=#{mem_ad} where mem_num=(select mem_num from (select max(mem_num) as mem_num from member)as a_t)
+	</update>
+	<update id="newPwUpdate">
+		update member set mem_pw=#{mem_pw} where mem_id=#{mem_id}
+	</update>
+	<select id="getCellNum" resultType="String">
+		select mem_cell_num from member where mem_cell_num=#{mem_cell_num}
+	</select>
 </mapper>

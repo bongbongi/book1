@@ -1,0 +1,20 @@
+package com.ezen.book.service;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.ezen.book.domain.BookVO;
+import com.ezen.book.repository.BookDAO;
+
+@Service
+public class BookServieceImpl implements BookService {
+
+	@Inject
+	private BookDAO bdao;
+
+	@Override
+	public BookVO getBookList() {
+		return bdao.getBookList();
+	}
+}
