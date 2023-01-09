@@ -107,7 +107,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int usermodify(MemberVO mvo) {
 		log.info(">>> member modify check msvI");
+		String pw=mvo.getMem_pw();
+		String encodePw = passwordEncoder.encode(pw); //암호화된 패스워드
+		//회원비밀번호를 암호화된 비밀번호로 수정
+		mvo.setMem_pw(encodePw);
 		return mdao.usermodify(mvo);
+		
 	}
 
 	@Override

@@ -57,7 +57,7 @@ body {
 }
 
 .todayBook {
-	
+	margin: 20px 0;
 }
 
 .todayBookIntroduce {
@@ -68,17 +68,20 @@ body {
 .Best_item {
 	width: 230px;
 	height: 310px;
-	background-color: antiquewhite;
+	/* background-color: antiquewhite; */
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 10px;
 	margin-bottom: 50px;
+	
+	border:1px solid darkgray;
+	border-radius: 20px;
 }
 
 .img_box {
 	width: 220px;
 	height: 200px;
-	background-color: lightgray;
+	/* background-color: lightgray; */
 	margin: 5px;
 }
 .book_img{
@@ -111,40 +114,41 @@ body {
 .d-block {
 	height: 500px;
 }
-.rank{
-	height: 30px;
- 	text-align: left;
- 	
- 	display: flex;
- 	align-items: stretch;
- 
+.rank>i{
+	margin:5px;
+	padding:0;
 	
+	text-align: center;
+ /* 	text-align: left; */
 }
 .fa-1{
  font-size:15px;
  	margin-left:8px;
 }
-.ad{
+.foot-ad{
 	background-color: purple;
 	height: 200px;
-	margin: 25px;
+	margin: 20px 0px;
+}
+.foot-ad>a>img{
+	height: 200px;
 }
 .ad-one{
-	height: 200px;
+	margin: 20px 0;
+	height: 150px;
 	display: flex;
 	justify-content: space-around;
 }
-.ad_mini_1{
-	width: 500px;
+
+.ad_mini{
+	width: 300px;
 	height:150px;
-	background-color: red;
-	border : 1px solid black;
 }
-.ad_mini_2{
-	width: 500px;
+.ad_mini>a>img{
+	border-radius: 10px;
+	width: 300px;
 	height:150px;
-	background-color: pink;
-	border : 1px solid black;
+	
 }
 </style>
 </head>
@@ -197,33 +201,18 @@ body {
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img
-							src="https://cdn.pixabay.com/photo/2020/04/28/18/33/key-5105878_1280.jpg"
+							src="../resources/img/main-slide-ad1.jpg"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>First slide label</h5>
-							<p>Some representative placeholder content for the first
-								slide.</p>
-						</div>
 					</div>
 					<div class="carousel-item">
 						<img
-							src="https://cdn.pixabay.com/photo/2016/09/08/22/43/books-1655783_1280.jpg"
-							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Second slide label</h5>
-							<p>Some representative placeholder content for the second
-								slide.</p>
-						</div>
+							src="../resources/img/main-slide-ad2.jpg"
+							class="d-block w-100" alt="...">				
 					</div>
 					<div class="carousel-item">
 						<img
-							src="https://cdn.pixabay.com/photo/2015/11/19/21/11/atlas-1052011_1280.jpg"
+							src="../resources/img/main-slide-ad3.jpg"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
-							<h5>Third slide label</h5>
-							<p>Some representative placeholder content for the third
-								slide.</p>
-						</div>
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
@@ -245,12 +234,33 @@ body {
 					<img
 						src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167740847.jpg">
 				</div>
-				<div>제목 지은이,출판사 가격 책 간단 줄거리</div>
+				<div>
+					<h4>다시, 어떻게 읽을 것인가</h4><br>
+					<span>나오미 어쩌구, 전병근 옮김</span><br>
+					<span>이크로스</span><br>
+					<span>
+						종이에서 스크린, 오디오까지 디지털 전환 시대의 새로운 읽기 전략
+					</span><br>
+					
+				</div>
 			</div>
 		</div>
 		<div class="ad-one">
-			<div class="ad_mini_1"><a href="#">미니광고1 누르면 상세페이지로</a></div>
-			<div class="ad_mini_2"><a href="#">미니광고2 누르면 상세페이지로</a></div>
+			<div class="ad_mini">
+				<a href="#">
+					<img src="../resources/img/mini-ad1.jpg">
+				</a>
+			</div>
+			<div class="ad_mini">
+				<a href="#">
+					<img src="../resources/img/mini-ad1.jpg">
+				</a>
+			</div>
+			<div class="ad_mini">
+				<a href="#">
+					<img src="../resources/img/mini-ad1.jpg">
+				</a>
+			</div>
 		</div>
 		<h1>베스트 셀러</h1>
 		<div class="BestSeller">
@@ -279,9 +289,9 @@ body {
 
 		</div>
 		<!-- 광고 -->
-		<div class="ad">
+		<div class="foot-ad">
 			<a href="#">
-				광고이미지 자리
+				<img src="../resources/img/newYearAD.jpg">
 			</a>
 		</div>
 	</div>

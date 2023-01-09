@@ -1,0 +1,9 @@
+package com.ezen.book.service;
+
+
+@Slf4j
+@Service
+public class OrderServicImpl implements OrderService {
+
+	@Inject
+	private OrderDAO odao;

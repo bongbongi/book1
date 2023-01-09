@@ -690,3 +690,14 @@
 1월 09, 2023 19:33:25.846 [13284:18832:0109/193325.845:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 1월 09, 2023 19:55:01.172 [13284:13076:0109/195501.172:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
 1월 09, 2023 22:09:25.440 [13284:13076:0109/220925.439:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 24:33:29.661 [13284:17344:0110/003329.660:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 10, 2023 24:51:57.474 [7936:19660:0110/005157.474:ERROR:device_event_log_impl.cc(215)] [00:51:57.474] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 10, 2023 24:51:57.475 [7936:19660:0110/005157.475:ERROR:device_event_log_impl.cc(215)] [00:51:57.475] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 10, 2023 24:52:55.407 [7936:22056:0110/005255.406:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 10, 2023 01:19:58.473 [7936:19660:0110/011958.473:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 10, 2023 01:21:01.820 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 10, 2023 01:23:20.575 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 10, 2023 01:25:00.420 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 10, 2023 01:27:44.386 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 10, 2023 01:34:20.992 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 10, 2023 02:04:01.52 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.main{
+	width:1260px;
+	margin: 0 auto;
+	
+	background-color: pink;
+}
+.intro>a>button{
+  	background-color: white;
+	margin: 20px;
+	font-size: 20px;
+	border: none;
+	border-bottom: 1px solid gray;
+}
+.intro>a>button{
+	background-color: rgba(210, 209, 209, 0.831);
+}

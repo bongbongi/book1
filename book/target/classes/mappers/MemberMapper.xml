@@ -15,7 +15,7 @@
 		select * from member where mem_id=#{mem_id} and mem_pw=#{mem_pw}
 	</select>
 	<update id="usermodify">
-		update member set mem_id=#{mem_id},mem_pw=#{mem_pw}
+		update member set mem_id=#{mem_id}, mem_pw=#{mem_pw}, mem_ad=#{mem_ad}, mem_cell_num=#{mem_cell_num}, mno_cno=#{mno_cno}
 		where mem_num=#{mem_num}
 	</update>
 	<select id="getIdSearch" resultType="String">

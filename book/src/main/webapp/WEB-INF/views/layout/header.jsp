@@ -79,7 +79,7 @@ i{
         <ul><a href="/mem/logOut">로그아웃</a></ul>
         <ul><a href="/mem/mypage">마이페이지</a></ul>
         </c:if>
-        <ul><a href="#">장바구니　　</a></ul>
+        <ul><a href="#">장바구니</a></ul>
     </div>
     <div class="bar">
 	    <div class="logo">

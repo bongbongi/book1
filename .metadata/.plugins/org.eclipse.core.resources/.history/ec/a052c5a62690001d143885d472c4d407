@@ -1,0 +1,12 @@
+@charset "UTF-8";
+.main{
+	width:1260px;
+	margin: 0 auto;
+}
+.intro{
+  	background-color: white;
+	margin: 20px;
+	font-size: 20px;
+	border: none;
+	border-bottom: 1px solid gray;
+}

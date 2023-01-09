@@ -1,5 +1,7 @@
 package com.ezen.book.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +18,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.OrderVO;
+import com.ezen.book.domain.PagingVO;
+import com.ezen.book.handler.PagingHandler;
 import com.ezen.book.service.MemberService;
+import com.ezen.book.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +33,8 @@ public class MemberController {
 
 	@Inject
 	private MemberService msv;
+	@Inject
+	private OrderService osv;
 
 	@GetMapping({ "loginPage", "login-member" })
 	public String loginPage() {
@@ -100,7 +108,7 @@ public class MemberController {
 			return "redirect:/";
 		} else {
 			reAttr.addFlashAttribute("msg", "0");
-			return "redirect:/layout/header";
+			return "redirect:/mem/loginPage";
 		}
 
 	}
@@ -113,33 +121,26 @@ public class MemberController {
 		return "redirect:/";
 
 	}
-
-	@GetMapping("/naverApi")
-	public String naverApiPage() {
-		return "/member/naverlogin";
-	}
-
-	@GetMapping("/callback")
-	public String naverApiCallback() {
-		return "/member/memberCallBack";
-	}
-
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model) {
+		model.addAttribute("content", "main");
 		return "/member/memberMypage";
 	}
 
 	@GetMapping("/modify")
-	public String modify(MemberVO mvo, Model mo, HttpServletRequest req, RedirectAttributes reAttr) {
-
-		return "/member/memberModify";
+	public String modify(Model model) {
+		model.addAttribute("content", "main");
+		return "/member/memberMypage";
 	}
 
 	@PostMapping("/modify")
-	public String modifyPost(MemberVO mvo) {
+	public String modifyPost(MemberVO mvo,Model model,HttpServletRequest req) {
 		log.info("modify>>>" + mvo.toString());
 		int isUp = msv.usermodify(mvo);
 		log.info(">>>modify:" + (isUp > 0 ? "ok" : "fail"));
+		req.getSession().removeAttribute("ses");
+		req.getSession().invalidate();
+		
 		return "redirect:/";
 	}
 
@@ -203,6 +204,18 @@ public class MemberController {
 			int isOk = msv.newPwUpdate(mvo);
 		}
 		return "redirect:/";
+	}
+	@GetMapping("/orderCheck")
+	public String orderList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
+		log.info(">>>pageNo :"+pvo.getPageNo());
+		log.info(">>>num :"+mem_num);
+		String status="주문";
+		List<OrderVO> list=osv.getList(pvo,status,mem_num);
+		model.addAttribute("list", list);
+		int totalCount=osv.getTotalCount(pvo);
+		PagingHandler ph = new PagingHandler(pvo,totalCount);
+		model.addAttribute("pgh",ph);
+		return "/member/memberOrderCheck";
 	}
 
 }
