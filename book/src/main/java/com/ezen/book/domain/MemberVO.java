@@ -85,7 +85,5 @@ public class MemberVO {
 	public String getMem_postzip() {
 		return mem_postzip;
 	}
-	
-	
 }
 

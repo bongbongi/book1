@@ -1,0 +1,15 @@
+package com.ezen.book.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.ezen.book.domain.NonmemberVO;
+
+@Repository
+public interface NonMemberDAO {
+
+
+	NonmemberVO getNum(NonmemberVO umvo);
+
+	int searchNum(NonmemberVO umvo);
+
+}

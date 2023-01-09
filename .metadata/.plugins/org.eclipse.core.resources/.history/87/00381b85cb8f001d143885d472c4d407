@@ -1,0 +1,15 @@
+package com.ezen.book.service;
+
+import com.ezen.book.domain.NonmemberVO;
+
+public interface NonMemberService {
+
+	NonmemberVO login(NonmemberVO umvo);
+
+	int searchNum(NonmemberVO umvo);
+
+//	int searchPw(UnmemberVO umvo);
+
+
+
+}

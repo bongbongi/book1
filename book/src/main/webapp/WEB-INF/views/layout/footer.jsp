@@ -107,15 +107,15 @@ a:hover, a:active {
 	<div class="footer">
 		<div class="footer-top">
 			<ul>
-				<li><a href="">회사소개 | </a></li>
-				<li><a href="">이용약관 | </a></li>
-				<li><a href="">개인정보처리방침</a></li>
+				<li><a href="/introduce">회사소개 　|　 </a></li>
+				<li><a href="/tos">이용약관 　| 　</a></li>
+				<li><a href="/pp">개인정보처리방침</a></li>
 			</ul>
 		</div>
 		<hr>
 		<div class="address">
 			<div class="footer-logo">
-				<img src="./resources/img/logo.jpg" alt="로고">
+				<img src="../resources/img/logo2.png" alt="로고">
 			</div>
 			<div class="address-box">
 				<ul>
@@ -142,7 +142,7 @@ a:hover, a:active {
 				<strong>온라인 서비스</strong>
 				<ul>
 					<li><a href="">마이페이지</a></li>
-					<li><a href="">공지사항</a></li>
+					<li><a href="/ntc/notice">공지사항</a></li>
 					<li><a href="">1대1문의</a></li>
 					<li><a href="">FAQ</a></li>
 				</ul>

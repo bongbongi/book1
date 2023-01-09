@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.book.domain.BookVO;
 import com.ezen.book.service.BookService;
@@ -27,36 +28,54 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class HomeController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Inject
 	private BookService bsvc;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+
 		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		log.info("test");
+
+		model.addAttribute("serverTime", formattedDate);
+
 		ArrayList<BookVO> bvo = bsvc.getBookList(); //
-		log.info("북리스트 : " + bvo);
 		model.addAttribute("book_list", bvo);
 		return "home";
 	}
-	
-	
+	@GetMapping("/introduce")
+	public String getIntroduce(Model model) {
+		String okay="main";
+		model.addAttribute("content", okay);
+		return "/board/boardIntroduce";
+	}
+	@GetMapping("/content")
+	public String detailList(Model model, @RequestParam("content")String content) {
+		String okay=content;
+		model.addAttribute("content", okay);
+		return "/board/boardIntroduce";	
+	}
+	@GetMapping("/tos")
+	public String getTos(Model model) {
+		String okay="tos";
+		model.addAttribute("content", okay);
+		return "/board/boardTos";
+	}
+	@GetMapping("/pp")
+	public String getPp(Model model) {
+		String okay="pp";
+		model.addAttribute("content", okay);
+		return "/board/boardTos";
+	}
 
-	
-	
 }

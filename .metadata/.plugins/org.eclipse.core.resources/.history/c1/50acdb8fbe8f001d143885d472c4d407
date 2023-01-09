@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+hr{
+	margin: 8px;
+}
+</style>
+</head>
+<body>
+	<h2>${nvo.ntc_title}</h2>
+	${nvo.ntc_writer}
+	${nvo.ntc_regdate}
+	<hr>
+	${nvo.ntc_content}
+	<a href="/ntc/notice"><button type="button">공지사항 목록</button></a>
+</body>
+</html>

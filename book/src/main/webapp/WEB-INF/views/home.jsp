@@ -19,6 +19,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
 <head>
 <title>Home</title>
 <style>
@@ -27,19 +29,18 @@
 }
 
 .home_main {
-	
+	margin:0 auto;
+	width: 1260px;
 }
 
 body {
-	margin: 0 auto;
-	width: 1260px;
-	margin: 0 auto;
+	
+
 }
 
 .slide {
 	background-color: peru;
 	margin: 0 auto;
-	margin-top: 210px;
 	width: 1260px;
 	height: 500px;
 }
@@ -66,7 +67,7 @@ body {
 
 .Best_item {
 	width: 230px;
-	height: 300px;
+	height: 310px;
 	background-color: antiquewhite;
 	display: inline-block;
 	vertical-align: top;
@@ -80,10 +81,21 @@ body {
 	background-color: lightgray;
 	margin: 5px;
 }
+.book_img{
+	width: 180px;
+	height: 200px;
+}
+.main_book_header{
+	font-size:16px;
+}
+.main_book_writer{
+	font-size:10px;
+}
 
 .BestSellerList {
 	list-style: none;
 
+	padding:0px;
 	/* display: -moz-inline-box; */
 }
 
@@ -98,6 +110,41 @@ body {
 
 .d-block {
 	height: 500px;
+}
+.rank{
+	height: 30px;
+ 	text-align: left;
+ 	
+ 	display: flex;
+ 	align-items: stretch;
+ 
+	
+}
+.fa-1{
+ font-size:15px;
+ 	margin-left:8px;
+}
+.ad{
+	background-color: purple;
+	height: 200px;
+	margin: 25px;
+}
+.ad-one{
+	height: 200px;
+	display: flex;
+	justify-content: space-around;
+}
+.ad_mini_1{
+	width: 500px;
+	height:150px;
+	background-color: red;
+	border : 1px solid black;
+}
+.ad_mini_2{
+	width: 500px;
+	height:150px;
+	background-color: pink;
+	border : 1px solid black;
 }
 </style>
 </head>
@@ -201,107 +248,41 @@ body {
 				<div>제목 지은이,출판사 가격 책 간단 줄거리</div>
 			</div>
 		</div>
+		<div class="ad-one">
+			<div class="ad_mini_1"><a href="#">미니광고1 누르면 상세페이지로</a></div>
+			<div class="ad_mini_2"><a href="#">미니광고2 누르면 상세페이지로</a></div>
+		</div>
 		<h1>베스트 셀러</h1>
 		<div class="BestSeller">
 			<ul class="BestSellerList">
-			<c:forEach items="${book_list}" var="list">
+			<c:forEach items="${book_list}" var="list" begin="1" end="10">
 				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
+					<div class="rank">
+						<i class="fa-solid fa-1"></i>	
+					</div>
 					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
+						<a href="#">
+							<img class="book_img" src="${list.book_image}">
+						</a>
 					</div>
 					<div class="info_box">
-						<span>${list.book_title}</span>
+						<span class="main_book_header">${list.book_title}</span>
 						<Br> 
-						<span>${list.book_writer} : ${list.book_publisher}</span>
+						<span class="main_book_writer">${list.book_writer} : ${list.book_publisher}</span>
 					</div>
 				</li>
 			</c:forEach>	
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span><Br> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
-				<li class="Best_item">
-					<div class="rank">랭크아이콘</div>
-					<div class="img_box">
-						<a href="#">사진 누르면 상세페이지 이동</a>
-					</div>
-					<div class="info_box">
-						<span>책제목</span> <span>저자, 출판사</span>
-					</div>
-				</li>
+			
 				
 			</ul>
 
 
+		</div>
+		<!-- 광고 -->
+		<div class="ad">
+			<a href="#">
+				광고이미지 자리
+			</a>
 		</div>
 	</div>
 	<jsp:include page="./layout/footer.jsp"></jsp:include>

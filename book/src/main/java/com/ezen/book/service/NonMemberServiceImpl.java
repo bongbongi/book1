@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ezen.book.domain.MemberVO;
-import com.ezen.book.domain.UnmemberVO;
+import com.ezen.book.domain.NonMemberVO;
 import com.ezen.book.repository.NonMemberDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,8 +23,8 @@ public class NonMemberServiceImpl implements NonMemberService {
 	BCryptPasswordEncoder passwordEncoder;
 
 	@Override
-	public UnmemberVO login(UnmemberVO umvo) {
-		UnmemberVO unmember = nmDAO.getNum(umvo);
+	public NonMemberVO login(NonMemberVO umvo) {
+		NonMemberVO unmember = nmDAO.getNum(umvo);
 		if (unmember == null) {
 			return null;
 		} else {
@@ -39,7 +39,7 @@ public class NonMemberServiceImpl implements NonMemberService {
 		 */
 
 	@Override
-	public int searchNum(UnmemberVO umvo) {
+	public int searchNum(NonMemberVO umvo) {
 
 		int mem_num = nmDAO.searchNum(umvo);
 		if (mem_num > 0) {

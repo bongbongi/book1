@@ -1,0 +1,49 @@
+@charset "UTF-8";
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+	
+body {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	padding-top: 150px;
+}
+a{
+	text-decoration: none;
+	color:gray;
+}
+
+.logo>a>img {
+	width: 150px;
+	height: 150px;
+}
+
+.login-container {
+	border: 1px solid gray;
+	width: 500px;
+	height: 100%;
+	margin: 30px auto;
+}
+
+.memOrNon>a>button {
+	text-decoration: none;
+	background-color: white;
+	font-size: 25px;
+	width: 100px;
+	height:42px;
+	color: gray;
+	border:none;
+	border-bottom: 1px solid gray;
+}
+.memOrNon>a>button:hover {
+	border-bottom: 3px solid gray;
+}
+.login-menu-line>a{
+	magin: 10px;
+}
+.login>form>input{
+	margin:5px;
+}

@@ -668,3 +668,25 @@
 1월 07, 2023 14:59:45.940 [12736:22976:0107/145945.940:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
 1월 07, 2023 15:42:19.995 [12736:20976:0107/154219.995:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
 1월 07, 2023 15:59:14.442 [12736:20976:0107/155914.442:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -7
+
+1월 09, 2023 09:32:28.278 NEW SESSION
+1월 09, 2023 09:32:28.278 [13284:9644:0109/093228.276:ERROR:device_event_log_impl.cc(215)] [09:32:28.276] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 09, 2023 09:32:28.278 [13284:9644:0109/093228.278:ERROR:device_event_log_impl.cc(215)] [09:32:28.278] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 09, 2023 09:33:25.843 [13284:8920:0109/093325.842:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 09, 2023 09:46:20.435 [13284:9644:0109/094620.434:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 09, 2023 12:55:50.910 [13284:9644:0109/125550.909:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 09, 2023 13:19:49.324 [13284:13076:0109/131949.323:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 09, 2023 14:11:47.934 [13284:13076:0109/141147.934:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 09, 2023 14:24:33.523 [13284:9644:0109/142433.522:ERROR:device_event_log_impl.cc(215)] [14:24:33.522] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 09, 2023 14:25:17.937 [13284:9644:0109/142517.937:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+1월 09, 2023 14:25:23.188 [13284:9644:0109/142523.188:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+1월 09, 2023 14:33:25.843 [13284:15664:0109/143325.842:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 09, 2023 14:34:11.88 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 09, 2023 14:34:31.756 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 09, 2023 18:19:18.709 [13284:13076:0109/181918.709:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 09, 2023 18:19:54.519 [13284:13076:0109/181954.518:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 09, 2023 19:32:09.709 [13284:13076:0109/193209.709:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -105
+1월 09, 2023 19:32:25.497 [13284:9644:0109/193225.497:ERROR:interface_endpoint_client.cc(694)] Message 5 rejected by interface blink.mojom.WidgetHost
+1월 09, 2023 19:33:25.846 [13284:18832:0109/193325.845:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 09, 2023 19:55:01.172 [13284:13076:0109/195501.172:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 09, 2023 22:09:25.440 [13284:13076:0109/220925.439:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2

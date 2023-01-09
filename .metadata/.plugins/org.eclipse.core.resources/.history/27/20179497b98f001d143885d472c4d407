@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>NO</th>
+            <th>공지제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+        
+        <tr>
+            <td>1</td>
+            <td>공지제목</td>
+            <td>관리자</td>
+            <td>2023-01-09</td>
+        </tr>
+        
+    </table>
+	<button type="button">공지사항 목록</button>
+</body>
+</html>
