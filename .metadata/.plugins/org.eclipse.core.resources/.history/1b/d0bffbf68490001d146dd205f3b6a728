@@ -1,0 +1,10 @@
+package com.ezen.book.service;
+
+import java.util.List;
+
+import com.ezen.book.domain.NoticeVO;
+
+public interface BoardService {
+
+	
+}

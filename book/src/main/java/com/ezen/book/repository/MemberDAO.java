@@ -25,6 +25,11 @@ public interface MemberDAO {
 
 	String getCellNum(String mem_cell_num);
 
+	int memberDelete(int mem_num);
+
+	MemberVO getMember(String brd_writer);
+
+	
 
 
 

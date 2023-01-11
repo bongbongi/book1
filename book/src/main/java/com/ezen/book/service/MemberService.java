@@ -24,4 +24,6 @@ public interface MemberService {
 
 	String cellNumCheck(String mem_cell_num);
 
+	int deleteMember(int mem_num);
+
 }

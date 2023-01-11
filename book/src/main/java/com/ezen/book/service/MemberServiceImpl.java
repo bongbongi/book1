@@ -152,5 +152,10 @@ public class MemberServiceImpl implements MemberService {
 
 		return mdao.newPwUpdate(mvo);
 	}
+	@Override
+	public int deleteMember(int mem_num) {
+		log.info(">>> member de;ete check msvI");
+		return mdao.memberDelete(mem_num);
+	}
 
 }

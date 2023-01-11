@@ -701,3 +701,27 @@
 1월 10, 2023 01:27:44.386 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
 1월 10, 2023 01:34:20.992 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
 1월 10, 2023 02:04:01.52 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+
+1월 10, 2023 09:39:22.30 NEW SESSION
+1월 10, 2023 09:39:22.30 [8984:9008:0110/093922.029:ERROR:device_event_log_impl.cc(215)] [09:39:22.029] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 10, 2023 09:39:22.31 [8984:9008:0110/093922.030:ERROR:device_event_log_impl.cc(215)] [09:39:22.031] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 10, 2023 09:40:19.830 [8984:8216:0110/094019.829:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 10, 2023 10:51:05.887 [8984:9008:0110/105105.886:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 10, 2023 11:29:07.949 [8984:5372:0110/112907.947:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 11:33:50.328 [8984:9008:0110/113350.328:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 10, 2023 11:49:40.72 [8984:5372:0110/114940.071:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 11:55:29.694 [8984:5372:0110/115529.694:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -7
+1월 10, 2023 13:40:59.873 [8984:5372:0110/134059.872:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 14:40:19.838 [8984:14180:0110/144019.838:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 10, 2023 15:54:00.649 [8984:5372:0110/155400.647:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 16:00:48.418 [8984:9008:0110/160048.417:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 10, 2023 16:37:13.568 [8984:5372:0110/163713.566:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 16:52:23.227 [8984:5372:0110/165223.226:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 16:57:23.93 [8984:5372:0110/165723.092:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 10, 2023 18:17:44.389 [8984:5372:0110/181744.381:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 09:04:10.348 [8984:5372:0111/090410.348:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -7
+1월 11, 2023 09:04:10.376 [8984:8280:0111/090410.376:ERROR:get_updates_processor.cc(260)] PostClientToServerMessage() failed during GetUpdates with error 2
+1월 11, 2023 09:04:10.687 [8984:608:0111/090410.687:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 11, 2023 09:44:34.725 [8984:5372:0111/094434.725:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -106
+1월 11, 2023 09:44:35.198 [8984:12624:0111/094435.198:ERROR:get_updates_processor.cc(260)] PostClientToServerMessage() failed during GetUpdates with error 2
+1월 11, 2023 09:55:55.376 [8984:5372:0111/095555.376:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2

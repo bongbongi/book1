@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 @Setter
 public class MemberVO {
 
@@ -25,65 +26,6 @@ public class MemberVO {
 	private String mem_auth;
 	private String mem_sum;
 	private String mem_postzip;
-	
-	public int getMem_num() {
-		return mem_num;
-	}
-	public String getMem_id() {
-		return mem_id;
-	}
-	public String getMem_pw() {
-		return mem_pw;
-	}
-	public String getMem_name() {
-		return mem_name;
-	}
-	public String getMem_ad() {
-		return mem_ad;
-	}
-	public int getMem_age() {
-		return mem_age;
-	}
-	public String getMem_gender() {
-		if(mem_gender.equals("1")) {
-			return "남자";
-		}else if(mem_gender.equals("2")) {
-			return "여자";
-		}
-		return null;
-	}
-	public int getMem_cash() {
-		return mem_cash;
-	}
-	public String getMem_cell_num() {
-		return mem_cell_num;
-	}
-	public String getMno_cno() {
-		if(mno_cno.equals("1")) {
-			return "소설";
-		}else if(mno_cno.equals("2")) {
-			return "에세이";
-		}else if(mno_cno.equals("3")) {
-			return "건강/취미";
-		}else if(mno_cno.equals("4")) {
-			return "컴퓨터/모바일";
-		}
-		return null;
-	}
-	public String getMem_date() {
-		return mem_date;
-	}
-	public String getMem_rating() {
-		return mem_rating;
-	}
-	public String getMem_auth() {
-		return mem_auth;
-	}
-	public String getMem_sum() {
-		return mem_sum;
-	}
-	public String getMem_postzip() {
-		return mem_postzip;
-	}
+
 }
 

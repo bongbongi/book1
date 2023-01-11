@@ -26,8 +26,12 @@ table {
 	margin: 30px;
 	border-right: 1px solid gray;
 	width: 200px;
-	height: 650px;
+	height: 730px;
 	text-align: center;
+}
+.deleteTable{
+	
+	margin:0 auto;
 }
 .Withdrawal{
 	color:gray;
@@ -35,5 +39,17 @@ table {
 }
 .mypage-right{
 	width:940px;
-	margin:30px;
+	margin:0 auto;
+}
+.info{
+	font-size:30px;
+	font-weight:900;
+}
+.long{
+	font-size:18px;
+	font-weight:900;
+}
+
+.short{
+	color: gray;
 }

@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.main {
+	margin: 0 auto;
+	width: 1260px;
+	
+	display: flex;
+}
+.id {
+	font-size: 30px;
+}
+.box {
+	background-color: white;
+}
+.select
+a {
+	text-decoration-line: none;
+	color: black;
+}
+
+a:visited, a:hover, a:focus, a:active {
+	text-decoration: none;
+}
+
+table {
+	margin: 30px;
+	border-right: 1px solid gray;
+	width: 200px;
+	height: 730px;
+	text-align: center;`
+}
+.deleteTable{
+	
+	margin:0 auto;
+}
+.Withdrawal{
+	color:gray;
+	font-size: 13px;
+}
+.mypage-right{
+	width:940px;
+	margin:30px;
+}
+.info{
+	font-size:30px;
+	font-weight:900;
+}
+.long{
+	font-size:18px;
+	font-weight:900;
+}
+
+.short{
+	color: gray;
+}

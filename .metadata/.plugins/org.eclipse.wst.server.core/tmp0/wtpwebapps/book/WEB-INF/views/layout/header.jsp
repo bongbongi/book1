@@ -85,12 +85,20 @@ i{
 	    <div class="logo">
 			<a href="/"><img src="../resources/img/logo.jpg" alt="로고"></a>
 	    </div>
-			<div class="searchBar">			
-				<form class="d-flex" role="search">
-			        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-			        <button class="btn btn-outline-success" type="submit">Search</button>
-		        </form>
-			</div>
+			  <div class="searchBar">         
+            <form action="/book/search" class="d-flex" role="search" method="get" >
+                 <input class="form-control me-2" name="keyword" type="text" placeholder="Search">
+                 <button class="btn btn-outline-success" type="submit" >Search</button>
+              </form>
+              
+              
+              
+              
+           
+         </div>
+			
+			
+			
 	    <div class="icons">	
 			<a href=""><i class="fa-solid fa-cart-shopping"></i></a>
             <a href=""><i class="fa-solid fa-user"></i></a>

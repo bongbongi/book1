@@ -40,16 +40,18 @@
 		</div>
 	</div>
 	<!-- 스크립트 -->
+
 	<script type="text/javascript">
 		const msg = '<c:out value="${msg}"/>';
 		function result(){
-			if (msg === '0' || msg==null) {
-				alert("찾을 수 없습니다. 다시 입력해주세요!");
-			} else {
+			if (${msg}!=null) {
 				alert(`아이디는 ${msg} 입니다.`);
+			} else {
+				alert("찾을 수 없습니다. 다시 입력해주세요!");
 			}
 		}
 		
 	</script>
+
 </body>
 </html>

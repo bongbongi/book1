@@ -3,6 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
 <head>
 <meta charset="UTF-8">
 <link href="../resources/css/introduce.css" type="text/css" rel="stylesheet">
@@ -28,7 +34,7 @@
 					 	 그것이 곧 업계의 표준이 되었습니다. <br>오늘도 'WW'는 혁신을 거듭하며 우리나라 
 					 	 전자상거래의 역사를 새롭게 써나가고 있습니다.<br>
 					 	 <div class="tableBox">
-							<table border="1">
+							<table class="table table-striped">
 								<tr>
 									<th>회사명</th>
 									<td>(주)WW</td>
