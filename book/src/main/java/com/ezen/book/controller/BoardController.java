@@ -67,31 +67,10 @@ public class BoardController {
 		return "/member/memberMypage";
 	}
 	
-	@GetMapping({"/boardDetail","/boardModify"})
-	public void detailList(Model model, @RequestParam("brd_num")int brd_num) {
-		BoardVO board=bsv.getDetail(brd_num);
-		bdao.countup(brd_num);
-		model.addAttribute("board", board);
-	}
+
 	
-	@PostMapping("/modify")
-	public String modify(RedirectAttributes reAttr, BoardVO bvo){
-		log.info("modify>>>"+bvo.toString());
-		MemberVO member=mdao.getMember(bvo.getBrd_writer());
-		int isUp=bsv.modify(bvo,member);
-		log.info(">>>modify:"+(isUp>0?"ok":"fail"));
-		reAttr.addFlashAttribute(isUp>0?"1":"0");
-		bdao.countdown(bvo.getBrd_num());
-		return "redirect:/board/list";
-	}
-	
-	
-	@GetMapping("/remove")
-	public String remove(@RequestParam("brd_num") int brd_num) {
-		bdao.removerBoard(brd_num);
-		cdao.removeComment(brd_num);
-		return "redirect:/board/list";
-	}
+
+
 	
 	   @GetMapping("/register")
 	   public String boardRegisterGet(Model model) {
@@ -104,5 +83,37 @@ public class BoardController {
 		bdao.register(bvo);
 		return "redirect:/board/list";
 	}
+	@GetMapping("/boardDetail")
+	   public String boardDetail(Model model, @RequestParam("brd_num")int brd_num) {
+	      BoardVO board=bsv.getDetail(brd_num);
+	      bdao.countup(brd_num);
+	      model.addAttribute("board", board);
+	      model.addAttribute("content", "boardDetail");
+	      return "/member/memberMypage";
+	   }
 
+	@GetMapping("/boardModify")
+	   public String boardModify(Model model, @RequestParam("brd_num")int brd_num) {
+	      BoardVO board=bsv.getDetail(brd_num);
+	      bdao.countup(brd_num);
+	      model.addAttribute("board", board);
+	      model.addAttribute("content", "boardModify");
+	      return "/member/memberMypage";
+	   }
+	@PostMapping("/modify")
+	   public String modify(RedirectAttributes reAttr, BoardVO bvo){
+	      log.info("modify>>>"+bvo.toString());
+	      MemberVO member=mdao.getMember(bvo.getBrd_writer());
+	      int isUp=bsv.modify(bvo,member);
+	      log.info(">>>modify:"+(isUp>0?"ok":"fail"));
+	      reAttr.addFlashAttribute(isUp>0?"1":"0");
+	      bdao.countdown(bvo.getBrd_num());
+	      return "redirect:/board/list";
+	   }
+	@GetMapping("/remove")
+	   public String remove(@RequestParam("brd_num") int brd_num) {
+	      bdao.removerBoard(brd_num);
+	      cdao.removeComment(brd_num);
+	      return "redirect:/board/list";
+	   }
 }

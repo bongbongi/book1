@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 		<!DOCTYPE html>
 		<html>
 
@@ -8,9 +9,10 @@
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 				crossorigin="anonymous">
+			<script type="text/javascript" src="/resources/js/memberJoin.js"></script>
+			<script type="text/javascript" src="/resources/js/boardComment.js"></script>
 			<title>Insert title here</title>
 			<link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
-			<script type="text/javascript" src="/resources/js/memberJoin.js"></script>
 
 			<style type="text/css">
 				.MypageModify {
@@ -447,6 +449,82 @@
 <button type="submit" class="btn btn-secondary">작성하기</button>
 </div>
 						</c:when>
+						<c:when test="${content eq 'boardDetail' }">
+							<div class="main">
+<table class="table table-striped">
+   <tr>
+      <th>번호</th>
+      <td>${board.brd_num}</td>
+   </tr>
+   <tr>
+      <th>제목</th>
+      <td>${board.brd_title}</td>
+   </tr>
+   <tr>
+      <th>작성자</th>
+      <td>${board.brd_writer}</td>
+   </tr>
+   <tr>
+      <th>작성일</th>
+      <td>${board.brd_regdate}</td>
+   </tr>
+   <tr>
+      <th>내용</th>
+      <td>${board.brd_content}</td>
+   </tr>
+   <tr>
+      <th>조회수</th>
+      <td>${board.brd_views}</td>
+   </tr>
+</table>
+
+<a href="/board/boardModify?brd_num=${board.brd_num}">수정</a><br>
+<a href="/board/remove?brd_num=${board.brd_num}">삭제</a><br>
+<a href="/board/list">1대1문의 리스트</a><br>
+
+<div class="container">
+      <div class="input-group my-3">
+         <span class="input-group-text" id="cmtWriter">${ses.mem_id}</span>
+         <input type="text" class="form-control" id="cmtText" placeholder="Test Add Comment ">
+         <button class="btn btn-success" id="cmtPostBtn" type="button">Post</button>
+      </div>
+      <ul class="list-group list-group-flush" id="cmtListArea">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Writer</div>
+            Content for Comment
+          </div>
+          <span class="badge bg-dark rounded-pill">modAt</span>
+        </li>
+      </ul>
+   </div>
+   
+   <script type="text/javascript">
+   const bnoVal = '<c:out value="${board.brd_num}" />';
+   const id='<c:out value="${ses.mem_id}"/>'
+   console.log(id);
+   console.log(bnoVal);
+   </script>
+   <script type="text/javascript" src="/resources/js/boardComment.js"></script>
+   <script type="text/javascript">
+   getCommentList(bnoVal, id);
+   </script>
+</div>
+						
+						</c:when>
+						<c:when test="${content eq 'boardModify' }">
+							<div class="main">
+<form action="/board/modify" method="post">
+번호:<input type="text" name="brd_num" value="${board.brd_num}" readonly><br>
+제목:<input type="text" name="brd_title" value="${board.brd_title}" required><br>
+작성자:<input type="text" name="brd_writer" value="${board.brd_writer}" readonly><br>
+작성일:<input type="text" name="brd_regdate" value="${board.brd_regdate}" readonly ><br>
+내용:<textarea rows="3" cols="30" name="brd_content" required>${board.brd_content}</textarea><br>
+<button type="submit" class="btn btn-secondary">수정</button>
+</form>
+</div>
+						</c:when>
+						
 					</c:choose>
 				</c:forEach>
 			</div>
