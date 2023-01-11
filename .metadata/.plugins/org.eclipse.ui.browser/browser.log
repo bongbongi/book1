@@ -728,3 +728,16 @@
 1월 11, 2023 10:24:09.93 [9876:17772:0111/102409.093:ERROR:device_event_log_impl.cc(215)] [10:24:09.092] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 1월 11, 2023 10:24:09.94 [9876:17772:0111/102409.094:ERROR:device_event_log_impl.cc(215)] [10:24:09.094] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 1월 11, 2023 10:25:06.703 [9876:4964:0111/102506.703:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 11, 2023 11:01:34.425 [9876:7004:0111/110134.424:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 11:14:45.952 [9876:7004:0111/111445.951:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 11:51:21.340 [9876:7004:0111/115121.339:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 11:56:23.797 [9876:17772:0111/115623.797:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 11, 2023 12:15:01.610 [9876:7004:0111/121501.609:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 12:46:13.501 [9876:7004:0111/124613.500:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 13:09:38.178 [9876:7004:0111/130938.178:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 13:20:05.757 [9876:7004:0111/132005.756:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 14:11:30.640 [9876:7004:0111/141130.639:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 14:25:03.810 [9876:7004:0111/142503.809:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 15:25:06.714 [9876:19436:0111/152506.713:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 11, 2023 16:55:11.34 [9876:7004:0111/165511.033:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 16:55:42.542 [9876:7004:0111/165542.541:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -105

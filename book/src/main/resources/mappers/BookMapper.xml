@@ -19,7 +19,10 @@
    select count(book_num) from book where book_title like CONCAT('%', #{keyword}, '%')
    </select>
    
-
+<select id="getBookList2" resultType="com.ezen.book.domain.BookVO">
+      select * from book where book_ca_num=#{content};
+   </select>
+   
    
 </mapper>
 

@@ -48,8 +48,25 @@ public class BookServiceImpl implements BookService {
 
 @Override
 public ArrayList<BookVO> getBookList() {
-	// TODO Auto-generated method stub
-	return bodao.getBookList();
+   // TODO Auto-generated method stub
+   return bodao.getBookList();
 }
+
+
+
+
+
+
+
+
+@Override
+public ArrayList<BookVO> getSelectBookList(int content) {
+   // TODO Auto-generated method stub
+   return bodao.getBookList2(content);
+}
+
+
+
+
 
 }

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.boardDetail{
+	
+	text-align: left;
+}
+span{
+	
+	font-size: 10px;
+	color:gray;
+}

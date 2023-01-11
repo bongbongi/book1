@@ -175,126 +175,225 @@ body {
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"> 카테고리 </a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">소설</a></li>
-								<li><a class="dropdown-item" href="#">에세이</a></li>
+								<li><a class="dropdown-item" href="/novel">소설</a></li>
+								<li><a class="dropdown-item" href="/essay">에세이</a></li>
+								
 								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">문제집</a></li>
+								<li><a class="dropdown-item" href="/problem">문제집</a></li>
 							</ul></li>
-						<li class="nav-item"><a class="nav-link" href="#">베스트</a></li>
+						<li class="nav-item"><a class="nav-link" href="/">베스트</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">이벤트</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<div class="slide">
-			<div id="carouselExampleCaptions" class="carousel slide"
-				data-bs-ride="false">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleCaptions"
-						data-bs-slide-to="0" class="active" aria-current="true"
-						aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions"
-						data-bs-slide-to="1" aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleCaptions"
-						data-bs-slide-to="2" aria-label="Slide 3"></button>
-				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img
-							src="../resources/img/main-slide-ad1.jpg"
-							class="d-block w-100" alt="...">
-					</div>
-					<div class="carousel-item">
-						<img
-							src="../resources/img/main-slide-ad2.jpg"
-							class="d-block w-100" alt="...">				
-					</div>
-					<div class="carousel-item">
-						<img
-							src="../resources/img/main-slide-ad3.jpg"
-							class="d-block w-100" alt="...">
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-			</div>
-		</div>
-		<div class="todayBook">
-			<h1>오늘의 책</h1>
-			<div class="todayBookIntroduce">
-				<div class="todayBookImg">
-					<img
-						src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167740847.jpg">
-				</div>
-				<div>
-					<h4>다시, 어떻게 읽을 것인가</h4><br>
-					<span>나오미 어쩌구, 전병근 옮김</span><br>
-					<span>이크로스</span><br>
-					<span>
-						종이에서 스크린, 오디오까지 디지털 전환 시대의 새로운 읽기 전략
-					</span><br>
-					
-				</div>
-			</div>
-		</div>
-		<div class="ad-one">
-			<div class="ad_mini">
-				<a href="#">
-					<img src="../resources/img/mini-ad1.jpg">
-				</a>
-			</div>
-			<div class="ad_mini">
-				<a href="#">
-					<img src="../resources/img/mini-ad1.jpg">
-				</a>
-			</div>
-			<div class="ad_mini">
-				<a href="#">
-					<img src="../resources/img/mini-ad1.jpg">
-				</a>
-			</div>
-		</div>
-		<h1>베스트 셀러</h1>
-		<div class="BestSeller">
-			<ul class="BestSellerList">
-			<c:forEach items="${book_list}" var="list" begin="1" end="10">
-				<li class="Best_item">
-					<div class="rank">
-						<i class="fa-solid fa-1"></i>	
-					</div>
-					<div class="img_box">
-						<a href="#">
-							<img class="book_img" src="${list.book_image}">
-						</a>
-					</div>
-					<div class="info_box">
-						<span class="main_book_header">${list.book_title}</span>
-						<Br> 
-						<span class="main_book_writer">${list.book_writer} : ${list.book_publisher}</span>
-					</div>
-				</li>
-			</c:forEach>	
-			
-				
-			</ul>
+         <div id="carouselExampleCaptions" class="carousel slide"
+            data-bs-ride="false">
+            <div class="carousel-indicators">
+               <button type="button" data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="0" class="active" aria-current="true"
+                  aria-label="Slide 1"></button>
+               <button type="button" data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="1" aria-label="Slide 2"></button>
+               <button type="button" data-bs-target="#carouselExampleCaptions"
+                  data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <img
+                     src="../resources/img/main-slide-ad1.jpg"
+                     class="d-block w-100" alt="...">
+               </div>
+               <div class="carousel-item">
+                  <img
+                     src="../resources/img/main-slide-ad2.jpg"
+                     class="d-block w-100" alt="...">            
+               </div>
+               <div class="carousel-item">
+                  <img
+                     src="../resources/img/main-slide-ad3.jpg"
+                     class="d-block w-100" alt="...">
+               </div>
+            </div>
+            <button class="carousel-control-prev" type="button"
+               data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button"
+               data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Next</span>
+            </button>
+         </div>
+      </div>
+      
+      <div class="ad-one">
+         <div class="ad_mini">
+            <a href="#">
+               <img src="../resources/img/mini-ad1.jpg">
+            </a>
+         </div>
+         <div class="ad_mini">
+            <a href="#">
+               <img src="../resources/img/mini-ad1.jpg">
+            </a>
+         </div>
+         <div class="ad_mini">
+            <a href="#">
+               <img src="../resources/img/mini-ad1.jpg">
+            </a>
+         </div>
+      </div>
+      <c:choose>
+      <c:when test="${content eq 'main'}">
+      <div class="hidden">
+      <h1>베스트 셀러</h1>
+      <div class="BestSeller">
+         <ul class="BestSellerList">
+         <c:forEach items="${book_list}" var="list" begin="1" end="10">
+            <li class="Best_item">
+               <div class="rank">
+                  <i class="fa-solid fa-1"></i>   
+               </div>
+               <div class="img_box">
+                  <a href="#">
+                     <img class="book_img" src="${list.book_image}">
+                  </a>
+               </div>
+               <div class="info_box">
+                  <span class="main_book_header">${list.book_title}</span>
+                  <Br> 
+                  <span class="main_book_writer">${list.book_writer} : ${list.book_publisher}</span>
+               </div>
+            </li>
+         </c:forEach>   
+         </ul>
+      </div>
+      </div>
+      </c:when>
+      
+      <c:when test="${content eq 'novel'}">
+      
+      <div class="hidden">
+      <h1>소설 top10</h1>
+      <div class="BestSeller">
+         <ul class="BestSellerList">
+         <c:forEach items="${book_list}" var="list" begin="1" end="10">
+            <li class="Best_item">
+               <div class="rank">
+                  <i class="fa-solid fa-1"></i>   
+               </div>
+               <div class="img_box">
+                  <a href="#">
+                     <img class="book_img" src="${list.book_image}">
+                  </a>
+               </div>
+               <div class="info_box">
+                  <span class="main_book_header">${list.book_title}</span>
+                  <Br> 
+                  <span class="main_book_writer">${list.book_writer} : ${list.book_publisher}</span>
+               </div>
+            </li>
+         </c:forEach>   
+            
+         </ul>
 
 
-		</div>
-		<!-- 광고 -->
-		<div class="foot-ad">
-			<a href="#">
-				<img src="../resources/img/newYearAD.jpg">
-			</a>
-		</div>
-	</div>
-	<jsp:include page="./layout/footer.jsp"></jsp:include>
+      </div>
+      </div>
+      
+      </c:when>
+      <c:when test="${content eq 'essay'}">
+      
+      <div class="hidden">
+      <h1>essay top10</h1>
+      <div class="BestSeller">
+         <ul class="BestSellerList">
+         <c:forEach items="${book_list}" var="list" begin="1" end="10">
+            <li class="Best_item">
+               <div class="rank">
+                  <i class="fa-solid fa-1"></i>   
+               </div>
+               <div class="img_box">
+                  <a href="#">
+                     <img class="book_img" src="${list.book_image}">
+                  </a>
+               </div>
+               <div class="info_box">
+                  <span class="main_book_header">${list.book_title}</span>
+                  <Br> 
+                  <span class="main_book_writer">${list.book_writer} : ${list.book_publisher}</span>
+               </div>
+            </li>
+         </c:forEach>   
+            
+         </ul>
+
+
+      </div>
+      </div>
+      
+      </c:when>
+      <c:when test="${content eq 'problem'}">
+      
+      <div class="hidden">
+      <h1>문제집 top10</h1>
+      <div class="BestSeller">
+         <ul class="BestSellerList">
+         <c:forEach items="${book_list}" var="list" begin="1" end="10">
+            <li class="Best_item">
+               <div class="rank">
+                  <i class="fa-solid fa-1"></i>   
+               </div>
+               <div class="img_box">
+                  <a href="#">
+                     <img class="book_img" src="${list.book_image}">
+                  </a>
+               </div>
+               <div class="info_box">
+                  <span class="main_book_header">${list.book_title}</span>
+                  <Br> 
+                  <span class="main_book_writer">${list.book_writer} : ${list.book_publisher}</span>
+               </div>
+            </li>
+         </c:forEach>   
+      </div>
+            
+         </ul>
+
+
+      </div>
+      
+      </c:when>
+      
+      </c:choose>
+      <div class="todayBook">
+         <h1>오늘의 책</h1>
+         <div class="todayBookIntroduce">
+            <div class="todayBookImg">
+               <img
+                  src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167740847.jpg">
+            </div>
+            <div>
+               <h4>다시, 어떻게 읽을 것인가</h4><br>
+               <span>나오미 어쩌구, 전병근 옮김</span><br>
+               <span>이크로스</span><br>
+               <span>
+                  종이에서 스크린, 오디오까지 디지털 전환 시대의 새로운 읽기 전략
+               </span><br>
+               
+            </div>
+         </div>
+      </div>
+      <!-- 광고 -->
+      <div class="foot-ad">
+         <a href="#">
+            <img src="../resources/img/newYearAD.jpg">
+         </a>
+      </div>
+   </div>
+   <jsp:include page="./layout/footer.jsp"></jsp:include>
 </body>
 </html>

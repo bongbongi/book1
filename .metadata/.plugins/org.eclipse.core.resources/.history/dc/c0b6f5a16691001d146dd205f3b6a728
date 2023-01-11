@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.MypageModify>input {
+	margin: 5px;
+}
+
+/* .MypageModify {
+	height: 728px;
+	padding: 30px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 29px;
+} */

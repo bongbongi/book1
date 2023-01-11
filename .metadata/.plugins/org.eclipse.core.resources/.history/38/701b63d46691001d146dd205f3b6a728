@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.MypageModify>input {
+	margin: 5px;
+}
+
+/* .MypageModify {
+	height: 728px;
+	padding: 30px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 29px;
+} */
+#mem_pw::placeholder {
+	font-size: 8px;
+}
+
+	.join-input {
+						width: 300px;
+					}
+
+					.zip {
+						width: 150px;
+					}

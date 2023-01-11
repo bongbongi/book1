@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.boardRegister{
+	text-align: left;
+}
+.brd_category{
+	margin:10px 0;
+}
+

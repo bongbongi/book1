@@ -32,6 +32,7 @@ button{
 			<button type="button" class="btn btn-outline-secondary">공지사항 목록</button>
 		</a>
 	</div>
-	⁠<jsp:include page="../layout/footer.jsp"></jsp:include>
+	
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>

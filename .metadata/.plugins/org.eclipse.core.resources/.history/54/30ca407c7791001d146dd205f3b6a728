@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.deleteTable {
+	width: 400px;
+	height: 200px;
+	
+	border:1px solid gray;
+}
+
+.checkbox {
+	margin: 0 auto;
+}
+
+.Withdrawal {
+	color: gray;
+	font-size: 13px;
+}
+.long {
+	font-size: 18px;
+	font-weight: 900;
+}
+
+.short {
+	color: gray;
+}

@@ -29,53 +29,78 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+   private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Inject
-	private BookService bsvc;
+   @Inject
+   private BookService bsvc;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+   /**
+    * Simply selects the home view to render by returning its name.
+    */
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+   @RequestMapping(value = "/", method = RequestMethod.GET)
+   public String home(Locale locale, Model model) {
+      logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+      Date date = new Date();
+      DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
-		String formattedDate = dateFormat.format(date);
+      String formattedDate = dateFormat.format(date);
 
-		model.addAttribute("serverTime", formattedDate);
+      model.addAttribute("serverTime", formattedDate);
 
-		ArrayList<BookVO> bvo = bsvc.getBookList(); //
-		model.addAttribute("book_list", bvo);
-		return "home";
-	}
-	@GetMapping("/introduce")
-	public String getIntroduce(Model model) {
-		String okay="main";
-		model.addAttribute("content", okay);
-		return "/board/boardIntroduce";
-	}
-	@GetMapping("/content")
-	public String detailList(Model model, @RequestParam("content")String content) {
-		String okay=content;
-		model.addAttribute("content", okay);
-		return "/board/boardIntroduce";	
-	}
-	@GetMapping("/tos")
-	public String getTos(Model model) {
-		String okay="tos";
-		model.addAttribute("content", okay);
-		return "/board/boardTos";
-	}
-	@GetMapping("/pp")
-	public String getPp(Model model) {
-		String okay="pp";
-		model.addAttribute("content", okay);
-		return "/board/boardTos";
-	}
-
+      ArrayList<BookVO> bvo = bsvc.getBookList(); //
+      model.addAttribute("book_list", bvo);
+      model.addAttribute("content", "main");
+      return "home";
+   }
+   @GetMapping("/introduce")
+   public String getIntroduce(Model model) {
+      String okay="main";
+      model.addAttribute("content", okay);
+      return "/board/boardIntroduce";
+   }
+   @GetMapping("/content")
+   public String detailList(Model model, @RequestParam("content")String content) {
+      String okay=content;
+      model.addAttribute("content", okay);
+      return "/board/boardIntroduce";   
+   }
+   @GetMapping("/tos")
+   public String getTos(Model model) {
+      String okay="tos";
+      model.addAttribute("content", okay);
+      return "/board/boardTos";
+   }
+   @GetMapping("/pp")
+   public String getPp(Model model) {
+      String okay="pp";
+      model.addAttribute("content", okay);
+      return "/board/boardTos";
+   }
+   @GetMapping("/novel")
+   public String novel(Model model) {
+      model.addAttribute("content", "novel");
+      int content=1;
+      ArrayList<BookVO> bvo = bsvc.getSelectBookList(content); //
+      model.addAttribute("book_list", bvo);
+      return "home";
+   }
+   @GetMapping("/essay")
+   public String essay(Model model) {
+      model.addAttribute("content", "essay");
+      int content=2;
+      ArrayList<BookVO> bvo = bsvc.getSelectBookList(content); //
+      model.addAttribute("book_list", bvo);
+      return "home";
+   }
+   @GetMapping("/problem")
+   public String problem(Model model) {
+      model.addAttribute("content", "problem");
+      int content=3;
+      ArrayList<BookVO> bvo = bsvc.getSelectBookList(content); //
+      model.addAttribute("book_list", bvo);
+      return "home";
+   }
+   
 }

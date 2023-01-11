@@ -20,6 +20,8 @@ public interface BookService {
 
 ArrayList<BookVO> getBookList();
 
+ArrayList<BookVO> getSelectBookList(int content);
+
 
 
    

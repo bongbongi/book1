@@ -23,6 +23,7 @@ public interface BookDAO {
 
 ArrayList<BookVO> getBookList();
 
+ArrayList<BookVO> getBookList2(int content);
 
 
 
