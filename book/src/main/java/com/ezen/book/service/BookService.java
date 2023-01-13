@@ -4,30 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ezen.book.domain.BoardVO;
+import com.ezen.book.domain.BookDTO;
 import com.ezen.book.domain.BookVO;
+import com.ezen.book.domain.FileVO;
+import com.ezen.book.domain.MemberVO;
 import com.ezen.book.domain.PagingVO;
 
 public interface BookService {
 
+	List<BoardVO> getSearchList(PagingVO pvo);
 
+	int getTotalCount(PagingVO pvo);
 
+	ArrayList<BookVO> getBookList();
 
+	ArrayList<BookVO> getSelectBookList(int content);
+	
+	int register(BookDTO bkto);
 
+	BookDTO getDetailBook(int book_num);
 
-   List<BoardVO> getList(PagingVO pvo);
+	int modify(BookDTO bookDTO);
 
-   int getTotalCount(PagingVO pvo);
+	FileVO getFile(int book_num);
 
-ArrayList<BookVO> getBookList();
+	int bookRemove(int book_num, MemberVO mem);
 
-ArrayList<BookVO> getSelectBookList(int content);
+	int removeFile(String uuid);
 
+	List<BookVO> getList(PagingVO pvo);
 
-
-   
-
-
-
-
+	BookVO detailSelectOne(int book_num);
 
 }

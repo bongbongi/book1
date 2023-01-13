@@ -1,5 +1,7 @@
 package com.ezen.book.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.ezen.book.domain.MemberVO;
@@ -28,6 +30,12 @@ public interface MemberDAO {
 	int memberDelete(int mem_num);
 
 	MemberVO getMember(String brd_writer);
+
+	List<MemberVO> memberList();
+
+	int memRemove(int mem_num);
+
+	MemberVO getUser(MemberVO attribute);
 
 	
 

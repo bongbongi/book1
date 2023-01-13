@@ -39,4 +39,13 @@
 		<select id="getMember" resultType="com.ezen.book.domain.MemberVO">
 		select*from member where mem_id=#{brd_writer}
 	</select>
+	<select id="memberList" resultType="com.ezen.book.domain.MemberVO">
+		select * from member
+	</select>
+	<delete id="memRemove">
+		delete from member where mem_num = #{mem_num}
+	</delete>
+		<select id="getUser" resultType="com.ezen.book.domain.MemberVO">
+		select * from member where mem_id = #{mem_id}
+	</select>
 </mapper>

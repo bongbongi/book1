@@ -36,6 +36,10 @@ public class MemberController {
 	@Inject
 	private OrderService osv;
 
+	   @GetMapping("adminPage")
+	   public String adminPage() {
+	      return "/member/memberAdmin";
+	   }
 	@GetMapping({ "loginPage", "login-member" })
 	public String loginPage() {
 		return "/member/memberLogin";
@@ -88,7 +92,8 @@ public class MemberController {
 		String detailAddress = req.getParameter("detailAddress");
 		String extraAddress = req.getParameter("extraAddress");
 
-		String mem_ad = address + " " + detailAddress + " " + extraAddress;
+		String mem_ad = address + "/" + detailAddress + "/" + extraAddress;
+		
 		log.info("addressAll : " + mem_ad);
 		int isOk2 = msv.update(mem_ad);
 		log.info(isOk2 > 0 ? "주소 업데이트 성공" : "주소 업데이트 실패");
@@ -207,34 +212,37 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
 	@GetMapping("/orderCheck")
 	public String orderList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
-		log.info(">>>pageNo :"+pvo.getPageNo());
-		log.info(">>>num :"+mem_num);
-		String status="주문";
-		List<OrderVO> list=osv.getList(pvo,status,mem_num);
-		model.addAttribute("list", list);
-		int totalCount=osv.getTotalCount(pvo);
-		PagingHandler ph = new PagingHandler(pvo,totalCount);
-		model.addAttribute("pgh",ph);
-		
-		model.addAttribute("content", "orderList");
-		return "/member/memberMypage";
-	}
-	@GetMapping("/buyCheck")
-	public String buyList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
-		log.info(">>>pageNo :"+pvo.getPageNo());
-		String status="구매";
-		List<OrderVO> list=osv.getList(pvo,status,mem_num);
-		
-		model.addAttribute("list", list);
-		int totalCount=osv.getTotalCount(pvo);
-		PagingHandler ph = new PagingHandler(pvo,totalCount);
-		model.addAttribute("pgh",ph);
-		
-		model.addAttribute("content", "buyList");
-		return "/member/memberMypage";
-	}
+	      log.info(">>>pageNo :"+pvo.getPageNo());
+	      log.info(">>>num :"+mem_num);
+	      String status="주문";
+	      List<OrderVO> list=osv.getList(pvo,status,mem_num);
+	      model.addAttribute("list", list);
+	      int totalCount=osv.getOrderTotalCount(mem_num);
+	      PagingHandler ph = new PagingHandler(pvo,totalCount);
+	      model.addAttribute("pgh",ph);
+	      model.addAttribute("content", "orderList");
+	      return "/member/memberMypage";
+	   }
+	   
+	 @GetMapping("/buyCheck")
+	  public String buyList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
+	      log.info(">>>pageNo :"+pvo.getPageNo());
+	      String status="구매";
+	      List<OrderVO> list=osv.getList(pvo,status,mem_num);
+	      
+	      model.addAttribute("list", list);
+	      int totalCount=osv.getBuyTotalCount(mem_num);
+	      
+	      PagingHandler ph = new PagingHandler(pvo,totalCount);
+	      model.addAttribute("pgh",ph);
+	      model.addAttribute("content", "buyList");
+	      return "/member/memberMypage";
+	   }
+	 
+	 
 	@GetMapping("/delete")
 	public String getDelte(Model model) {
 		model.addAttribute("content", "delete");

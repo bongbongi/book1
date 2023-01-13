@@ -71,11 +71,11 @@ i{
         <ul><a href="/mem/loginPage">로그인</a></ul>
         <ul><a href="/mem/joinPage">회원가입</a></ul>
         </c:if>
-        <c:if test="${ses.mem_id == 'admin' }">
+        <c:if test="${ses.mem_auth == '0' }">
         <ul><a href="/mem/logOut">로그아웃</a></ul>
-        <ul><a href="/mem/adminpage">관리인페이지</a></ul>
+        <ul><a href="/mem/adminPage">관리인페이지</a></ul>
         </c:if>
-        <c:if test="${ses.mem_id !=null && ses.mem_id !='admin' }">
+        <c:if test="${ses.mem_id !=null && ses.mem_auth !='0' }">
         <ul><a href="/mem/logOut">로그아웃</a></ul>
         <ul><a href="/mem/mypage">마이페이지</a></ul>
         </c:if>

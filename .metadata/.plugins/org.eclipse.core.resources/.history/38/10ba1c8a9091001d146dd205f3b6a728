@@ -1,0 +1,13 @@
+package com.ezen.book.repository;
+
+import java.util.List;
+
+import com.ezen.book.domain.NoticeVO;
+
+public interface NoticeDAO {
+
+	List<NoticeVO> getNoticeList();
+
+	NoticeVO getDetail(int ntc_num);
+
+}

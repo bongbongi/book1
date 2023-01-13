@@ -52,7 +52,7 @@ crossorigin="anonymous">
 
                 <input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소"
                     required>
-                <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목">
+                <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" readonly="readonly">
                 <br>
                 <lable for="mem_age">AGE</lable><br>
                 <td><input type="text" class="join-input" name="mem_age" placeholder="나이" required>

@@ -13,27 +13,30 @@ import com.ezen.book.domain.PagingVO;
 @Repository
 public interface BookDAO {
 
+	List<BoardVO> selectBookListPaging(PagingVO pvo);
 
+	int searchBookTotalCount(PagingVO pvo);
 
-   List<BoardVO> selectBookListPaging(PagingVO pvo);
+	ArrayList<BookVO> getBookList();
 
+	ArrayList<BookVO> getBookList2(int content);
 
-   int searchBookTotalCount(PagingVO pvo);
+	int regiBook(BookVO bvo);
 
+	List<BookVO> selectBookList(PagingVO pvo);
 
-ArrayList<BookVO> getBookList();
+	int searchTotalCount(PagingVO pvo);
 
-ArrayList<BookVO> getBookList2(int content);
+	int insertBook(BookVO bkvo);
 
+	int selectOneBookNum();
 
+	BookVO bookDetail(int book_num);
 
+	int updateBook(BookVO bkvo);
 
+	int deleteBook(int book_num);
 
-
-
-
-
-
-
+	BookVO detailSelectOne(int book_num);
 
 }

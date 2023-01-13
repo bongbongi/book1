@@ -17,21 +17,29 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-	@Inject
-	private OrderDAO odao;
+   @Inject
+   private OrderDAO odao;
 
-	@Override
-	public List<OrderVO> getList(PagingVO pvo, String status, int mem_num) {
-				log.info(">>> board list check2");
-				if(status.equals("주문")) {
-					return odao.selectOrderList(mem_num);				
-				}else {
-				return odao.selectBuyList(mem_num);
-				}
-		}
-	@Override
-	public int getTotalCount(PagingVO pvo) {
-		return odao.searchTotalCount(pvo);
-	}
-	
+   @Override
+   public List<OrderVO> getList(PagingVO pvo, String status, int mem_num) {
+            log.info(">>> board list check2");
+            if(status.equals("주문")) {
+               return odao.selectOrderList(pvo,mem_num);            
+            }else {
+            return odao.selectBuyList(pvo,mem_num);
+            }
+      }
+
+   @Override
+   public int getOrderTotalCount( int mem_num) {
+      // TODO Auto-generated method stub
+      return odao.orderTotalCount(mem_num);
+   }
+   
+   @Override
+   public int getBuyTotalCount(int mem_num) {
+      // TODO Auto-generated method stub
+      return odao.buyTotalCount(mem_num);
+   }
+   
 }

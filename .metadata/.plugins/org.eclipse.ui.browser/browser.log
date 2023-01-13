@@ -741,3 +741,94 @@
 1월 11, 2023 15:25:06.714 [9876:19436:0111/152506.713:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 1월 11, 2023 16:55:11.34 [9876:7004:0111/165511.033:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
 1월 11, 2023 16:55:42.542 [9876:7004:0111/165542.541:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -105
+1월 11, 2023 17:32:15.987 [9876:7004:0111/173215.986:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 18:18:51.273 [9876:7004:0111/181851.271:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 18:18:56.773 [9876:7004:0111/181856.771:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 11, 2023 22:51:32.528 [9876:17772:0111/225132.528:ERROR:device_event_log_impl.cc(215)] [22:51:32.526] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 11, 2023 22:51:32.855 [9876:1740:0111/225132.855:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 11, 2023 22:51:34.182 [9876:17772:0111/225134.182:ERROR:device_event_log_impl.cc(215)] [22:51:34.173] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 11, 2023 22:51:34.212 [9876:17772:0111/225134.212:ERROR:device_event_log_impl.cc(215)] [22:51:34.208] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+1월 11, 2023 22:51:43.550 [9876:17772:0111/225143.549:ERROR:device_event_log_impl.cc(215)] [22:51:43.548] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 11, 2023 23:24:30.936 [9876:7004:0111/232430.935:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+
+1월 12, 2023 15:20:17.501 NEW SESSION
+1월 12, 2023 15:20:17.501 [11800:6636:0112/152017.500:ERROR:device_event_log_impl.cc(215)] [15:20:17.500] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 12, 2023 15:20:17.502 [11800:6636:0112/152017.501:ERROR:device_event_log_impl.cc(215)] [15:20:17.501] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 12, 2023 15:21:15.402 [11800:10464:0112/152115.401:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 12, 2023 16:16:04.855 [11800:6636:0112/161604.854:ERROR:debug_utils.cc(14)] Hit debug scenario: 3
+1월 12, 2023 16:35:58.563 [11800:6636:0112/163558.563:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 12, 2023 16:36:02.462 [11800:6636:0112/163602.462:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+1월 12, 2023 17:20:19.685 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.685 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.685 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.686 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.686 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.686 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.687 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.687 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.688 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.688 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.688 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.688 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.689 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.689 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.689 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.690 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.690 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.691 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.691 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.691 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.692 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.692 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.692 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.692 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.692 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.693 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.694 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:19.694 [11800:6636:0112/172019.684:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.242 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.243 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.243 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.244 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.245 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.245 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.245 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.245 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.245 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.245 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.246 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.246 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.246 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.246 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.246 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.246 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.247 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.247 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.247 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.247 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.248 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.248 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.248 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.248 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.248 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.249 [11800:6636:0112/172020.242:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.249 [11800:6636:0112/172020.244:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.249 [11800:6636:0112/172020.244:ERROR:CONSOLE(6)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/console/console.js (6)
+1월 12, 2023 17:20:20.447 [11800:6636:0112/172020.447:ERROR:CONSOLE(1)] "Session is unregistering, can't dispatch pending call to DOM.getDocument", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
+1월 12, 2023 18:18:38.187 [11800:1128:0112/181838.187:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 12, 2023 18:18:45.575 [11800:1128:0112/181845.574:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 12, 2023 20:08:46.104 [11800:6636:0112/200846.104:ERROR:device_event_log_impl.cc(215)] [20:08:46.103] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 12, 2023 20:11:54.255 [11800:6636:0112/201154.253:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 12, 2023 20:16:25.705 [11800:1128:0112/201625.704:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 12, 2023 20:17:28.694 [11800:6636:0112/201728.694:ERROR:device_event_log_impl.cc(215)] [20:17:28.690] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 12, 2023 20:17:28.732 [11800:6636:0112/201728.731:ERROR:device_event_log_impl.cc(215)] [20:17:28.729] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: 사용 가능한 데이터가 없습니다. (0x103)
+1월 12, 2023 20:17:37.105 [11800:6636:0112/201737.104:ERROR:device_event_log_impl.cc(215)] [20:17:37.092] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 12, 2023 20:21:15.403 [11800:1952:0112/202115.402:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 12, 2023 22:00:40.244 [11800:6636:0112/220040.243:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+1월 12, 2023 22:18:55.631 [11800:6636:0112/221855.631:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost

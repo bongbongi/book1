@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="aladin"/>
+		<item key="selection" value="ses"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="aladin"/>
-			<item value="2021-09-08"/>
-			<item value="aladdin"/>
-			<item value="din"/>
-			<item value="h3"/>
-			<item value="h5"/>
-			<item value="h4"/>
-			<item value="margin"/>
-			<item value="padding"/>
-			<item value="paddi"/>
-			<item value="커뮤"/>
-			<item value="커뮤니"/>
-			<item value="알라딘"/>
-			<item value="json"/>
-			<item value="jstl"/>
+			<item value="ses"/>
+			<item value="category"/>
+			<item value="/board/boardNotice"/>
+			<item value="content"/>
+			<item value="order"/>
+			<item value="form"/>
+			<item value="from"/>
+			<item value="orderListtable"/>
+			<item value="orderList"/>
+			<item value="buylist"/>
+			<item value="select"/>
+			<item value="table"/>
+			<item value="info"/>
+			<item value="Withdrawal"/>
+			<item value="checkbox"/>
 		</list>
 		<list key="replacehistory">
+			<item value="content"/>
+			<item value="/member/memberAdmin"/>
+			<item value="category"/>
 			<item value="ww"/>
 			<item value="h5"/>
 			<item value="h6"/>
@@ -33,9 +36,9 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="494"/>
-		<item key="DIALOG_Y_ORIGIN" value="319"/>
-		<item key="DIALOG_WIDTH" value="614"/>
+		<item key="DIALOG_X_ORIGIN" value="1055"/>
+		<item key="DIALOG_Y_ORIGIN" value="567"/>
+		<item key="DIALOG_WIDTH" value="892"/>
 		<item key="DIALOG_HEIGHT" value="868"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>

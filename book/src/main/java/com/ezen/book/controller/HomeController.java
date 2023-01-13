@@ -32,7 +32,7 @@ public class HomeController {
    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
    @Inject
-   private BookService bsvc;
+   private BookService bks;
 
    /**
     * Simply selects the home view to render by returning its name.
@@ -49,7 +49,7 @@ public class HomeController {
 
       model.addAttribute("serverTime", formattedDate);
 
-      ArrayList<BookVO> bvo = bsvc.getBookList(); //
+      ArrayList<BookVO> bvo = bks.getBookList(); //
       model.addAttribute("book_list", bvo);
       model.addAttribute("content", "main");
       return "home";
@@ -82,7 +82,7 @@ public class HomeController {
    public String novel(Model model) {
       model.addAttribute("content", "novel");
       int content=1;
-      ArrayList<BookVO> bvo = bsvc.getSelectBookList(content); //
+      ArrayList<BookVO> bvo = bks.getSelectBookList(content); //
       model.addAttribute("book_list", bvo);
       return "home";
    }
@@ -90,7 +90,7 @@ public class HomeController {
    public String essay(Model model) {
       model.addAttribute("content", "essay");
       int content=2;
-      ArrayList<BookVO> bvo = bsvc.getSelectBookList(content); //
+      ArrayList<BookVO> bvo = bks.getSelectBookList(content); //
       model.addAttribute("book_list", bvo);
       return "home";
    }
@@ -98,7 +98,7 @@ public class HomeController {
    public String problem(Model model) {
       model.addAttribute("content", "problem");
       int content=3;
-      ArrayList<BookVO> bvo = bsvc.getSelectBookList(content); //
+      ArrayList<BookVO> bvo = bks.getSelectBookList(content); //
       model.addAttribute("book_list", bvo);
       return "home";
    }

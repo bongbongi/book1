@@ -1,8 +1,10 @@
 package com.ezen.book.service;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tika.sax.xpath.Matcher;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -156,6 +158,22 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(int mem_num) {
 		log.info(">>> member de;ete check msvI");
 		return mdao.memberDelete(mem_num);
+	}
+
+	@Override
+	public List<MemberVO> getMemList() {
+		return mdao.memberList();
+	}
+
+	@Override
+	public int removeMem(int mem_num, MemberVO member) {
+		log.info(">> 회원탈퇴 체크2<<");
+		return mdao.memRemove(mem_num);
+	}
+
+	public MemberVO getMember(HttpServletRequest req) {
+		MemberVO mem = (MemberVO)req.getSession().getAttribute("ses");
+		return mem;
 	}
 
 }

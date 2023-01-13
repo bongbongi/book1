@@ -1,5 +1,7 @@
 package com.ezen.book.service;
 
+import java.util.List;
+
 import com.ezen.book.domain.MemberVO;
 
 public interface MemberService {
@@ -25,5 +27,9 @@ public interface MemberService {
 	String cellNumCheck(String mem_cell_num);
 
 	int deleteMember(int mem_num);
+
+	List<MemberVO> getMemList();
+
+	int removeMem(int mem_num, MemberVO member);
 
 }

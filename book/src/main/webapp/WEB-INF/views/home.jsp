@@ -258,7 +258,7 @@ body {
                   <i class="fa-solid fa-1"></i>   
                </div>
                <div class="img_box">
-                  <a href="#">
+                  <a href="/book/bkDetailView?book_num=${list.book_num}">
                      <img class="book_img" src="${list.book_image}">
                   </a>
                </div>
@@ -369,6 +369,7 @@ body {
       </c:when>
       
       </c:choose>
+      <!-- order by rand() limit 1 로 mapper -->
       <div class="todayBook">
          <h1>오늘의 책</h1>
          <div class="todayBookIntroduce">
