@@ -35,8 +35,9 @@ public class NoticeController {
 		model.addAttribute("notice_list", nvo);
 		model.addAttribute("content", "notice_list");
 		model.addAttribute("category", "notice");
+		
 		int totalCount = nsv.getTotalCount(pvo);
-		log.info("totalCount : "+totalCount);
+		
 		PagingHandler ph = new PagingHandler(pvo, totalCount);
 		model.addAttribute("pgh", ph);
 		return "/member/memberAdmin";

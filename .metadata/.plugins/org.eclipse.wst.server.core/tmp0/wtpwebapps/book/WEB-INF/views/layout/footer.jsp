@@ -144,7 +144,7 @@ a:hover, a:active {
 					<li><a href="">마이페이지</a></li>
 					<li><a href="/ntc/notice">공지사항</a></li>
 					<li><a href="">1대1문의</a></li>
-					<li><a href="">FAQ</a></li>
+					<li><a href="/faq/faqListOnly">FAQ</a></li>
 				</ul>
 			</div>
 		</div>

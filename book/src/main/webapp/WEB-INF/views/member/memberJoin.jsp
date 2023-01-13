@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -22,13 +22,13 @@ crossorigin="anonymous">
             <div class="logo">
                 <a href="/"><img src="../resources/img/logo.jpg" alt="로고"></a><br>
             </div>
-				<lable for="mem_id">ID</lable>
-				<br> <input type="text" class="join-input" name="mem_id"
-					id="mem_id" placeholder="아이디" onchange="checkId()" required>
-					<span class="id_ok"><i class="fa-solid fa-check"></i></span>
-	                <span class="id_duplicate"><i class="fa-solid fa-x"></i></span>
-	                <span class="id_null"><i class="fa-solid fa-x"></i></span>
-	                <Br>
+            <lable for="mem_id">ID</lable>
+            <br> <input type="text" class="join-input" name="mem_id"
+               id="mem_id" placeholder="아이디" onchange="checkId()" required>
+               <span class="id_ok"><i class="fa-solid fa-check"></i></span>
+                   <span class="id_duplicate"><i class="fa-solid fa-x"></i></span>
+                   <span class="id_null"><i class="fa-solid fa-x"></i></span>
+                   <Br>
                 <lable for="mem_pw">PW</lable><br>
                 <input type="password" class="join-input" name="mem_pw" id="mem_pw"
                     placeholder="영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required>
@@ -58,10 +58,10 @@ crossorigin="anonymous">
                 <td><input type="text" class="join-input" name="mem_age" placeholder="나이" required>
                     <br>
                     <lable for="mem_gender">GENDER</lable><br>
-                    <select class="join-input" name="mem_gender" required="required">
-                        <option value="null">선택해주세요</option>
-                        <option value="1">남자</option>
-                        <option value="2">여자</option>
+                    <select class="join-input" name="mem_gender" >
+                    
+                        <option value="0">남자</option>
+                        <option value="1">여자</option>
                     </select>
                     <br>
                     <lable for="mem_cell_num">PHONE</lable><br>
@@ -73,12 +73,13 @@ crossorigin="anonymous">
                     <br>
                     <lable for="mno_cno">FAVORITE</lable><br>
 
-                    <select class="join-input" name="mno_cno" required="required">
-                        <option value="0" selected="selected">선택해주세요</option>
-                        <option value="1">소설</option>
-                        <option value="2">에세이</option>
-                        <option value="3">건강/취미</option>
-                        <option value="4">컴퓨터/모바일</option>
+                    <select class="join-input" name="mno_cno">
+                    
+                        <option value="novel">소설</option>
+                        <option value="essay">에세이</option>
+                        <option value="life">건강/취미</option>
+                        <option value="computer">컴퓨터/모바일</option>
+                        <option value="problem">문제집</option>
                     </select>
                     <Br>
                     <button type=submit" class="btn btn-outline-secondary btn-submit">가입하기</button>

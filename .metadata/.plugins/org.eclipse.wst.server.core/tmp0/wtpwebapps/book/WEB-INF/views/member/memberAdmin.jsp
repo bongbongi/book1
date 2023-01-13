@@ -7,7 +7,7 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/adminpage.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/adminpageFaq.css">
+<!-- <link rel="stylesheet" type="text/css" href="/resources/css/adminpageFaq.css"> -->
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -22,29 +22,25 @@
 	margin: 0 auto;
 	margin-top: 40px;
 }
-#logo{
-	width: 100px;
-	height: 100px;
+
+#logo {
+	width: 50px;
+	height: 50px;
 }
 </style>
 <body>
 	<script type="text/javascript">
 		const ses = '<c:out value="${ses.mem_id}" />';
-		if(ses == null || ses == ''){
+		if (ses == null || ses == '') {
 			alert('로그아웃 되었습니다. 메인화면으로 이동합니다.');
-			location.href='/';
+			location.href = '/';
 		}
-		
 	</script>
 	<div class="main">
 		<div class="menu_wrap">
 			<ul class="de01">
-				<li>
-					<a href="/"> <img src="../resources/img/logo.jpg" alt="로고" id="logo"></a>
-				</li>
-				<li>
-				관리자 ${ses.mem_name}님<br>환영합니다!!
-				</li>
+				<li><a href="/"> <img src="../resources/img/logo.jpg" alt="로고" id="logo"></a></li>
+
 				<li><a href="/admin/memList">회원관리</a>
 					<ul class="de02">
 						<li><a href="/admin/memList">리스트</a></li>
@@ -76,25 +72,27 @@
 				<c:forEach items="${content}" var="content">
 					<c:choose>
 						<c:when test="${category eq 'member'}">
-							<div>
-								<table border="1">
-									<tr>
-										<th>회원번호</th>
-										<th>아이디</th>
-										<th>이름</th>
-										<th>가입일자</th>
-										<th>회원탈퇴</th>
-									</tr>
-									<c:forEach items="${memLi }" var="ad">
+							<div class="tableBox">
+								<table class="table">
+									<thead class="table-dark">
 										<tr>
-											<td>${ad.mem_num }</td>
-											<td>${ad.mem_id }</td>
-											<td>${ad.mem_name }</td>
-											<td>${ad.mem_date }</td>
-											<td>
-												<a href="/admin/memRemove?mem_num=${ad.mem_num }">탈퇴</a>
-											</td>
+											<th>회원번호</th>
+											<th>아이디</th>
+											<th>이름</th>
+											<th>가입일자</th>
+											<th>회원탈퇴</th>
 										</tr>
+									</thead>
+									<c:forEach items="${memLi }" var="ad">
+										<tbody>
+											<tr>
+												<td>${ad.mem_num }</td>
+												<td>${ad.mem_id }</td>
+												<td>${ad.mem_name }</td>
+												<td>${ad.mem_date }</td>
+												<td><a href="/admin/memRemove?mem_num=${ad.mem_num }">탈퇴</a></td>
+											</tr>
+										</tbody>
 									</c:forEach>
 								</table>
 							</div>
@@ -104,24 +102,29 @@
 						<c:when test="${category eq 'notice'}">
 							<c:choose>
 								<c:when test="${content eq 'notice_list'}">
-									<table border="1">
-										<tr>
-											<th>NO</th>
-											<th>공지제목</th>
-											<th>작성자</th>
-											<th>작성일</th>
-										</tr>
-										<c:forEach items="${notice_list}" var="ntc">
-											<tr>
-												<td>${ntc.ntc_num}</td>
-												<td>
-													<a href="/ntc/noticeDetail?ntc_num=${ntc.ntc_num}">${ntc.ntc_title}</a>
-												</td>
-												<td>${ntc.ntc_writer}</td>
-												<td>${ntc.ntc_regdate}</td>
-											</tr>
-										</c:forEach>
-									</table>
+									<div class="tableBox">
+										<table class="table">
+											<thead class="table-dark">
+												<tr>
+													<th>NO</th>
+													<th>공지제목</th>
+													<th>작성자</th>
+													<th>작성일</th>
+												</tr>
+											</thead>
+
+											<c:forEach items="${notice_list}" var="ntc">
+												<tbody>
+													<tr>
+														<td>${ntc.ntc_num}</td>
+														<td><a href="/ntc/noticeDetail?ntc_num=${ntc.ntc_num}">${ntc.ntc_title}</a></td>
+														<td>${ntc.ntc_writer}</td>
+														<td>${ntc.ntc_regdate}</td>
+													</tr>
+												</tbody>
+											</c:forEach>
+										</table>
+									</div>
 									<div>
 										<c:if test="${pgh.prev}">
 											<a href="/ntc/noticeList?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}">prev</a>
@@ -136,26 +139,24 @@
 								</c:when>
 								<c:when test="${content eq 'noticeRegister' }">
 									<form action="/ntc/noticeRegister" method="post">
-										<table border="1">
+									
+										<table class="table">
+										<thead class="table-dark">
 											<tr>
 
 												<th>공지제목</th>
 												<th>작성자</th>
 												<th>내용</th>
 											</tr>
-
+										</thead>
+										<tbody>
 											<tr>
-												<td>
-													<input type="text" name="ntc_title">
-												</td>
-												<td>
-													<input type="text" name="ntc_writer" value="${ses.mem_name}" readonly="readonly">
-												</td>
+												<td><input type="text" name="ntc_title"></td>
+												<td><input type="text" name="ntc_writer" value="${ses.mem_name}" readonly="readonly"></td>
 
-												<td>
-													<input type="text" name="ntc_content">
-												</td>
+												<td><input type="text" name="ntc_content"></td>
 											</tr>
+											</tbody>
 										</table>
 										<button type="submit">작성</button>
 									</form>
@@ -184,19 +185,11 @@
 											</tr>
 
 											<tr>
-												<td>
-													<input type="text" name="ntc_num" value="${nvo.ntc_num}">
-												</td>
-												<td>
-													<input type="text" name="ntc_title" value="${nvo.ntc_title}">
-												</td>
-												<td>
-													<input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly="readonly">
-												</td>
+												<td><input type="text" name="ntc_num" value="${nvo.ntc_num}"></td>
+												<td><input type="text" name="ntc_title" value="${nvo.ntc_title}"></td>
+												<td><input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly="readonly"></td>
 
-												<td>
-													<input type="text" name="ntc_content" value="${nvo.ntc_content}">
-												</td>
+												<td><input type="text" name="ntc_content" value="${nvo.ntc_content}"></td>
 											</tr>
 										</table>
 										<button type="submit">수정</button>
@@ -211,20 +204,29 @@
 							<c:choose>
 
 								<c:when test="${content eq 'faqList' }">
-									<div class="accordion accordion-flush" id="accordionFlushExample">
-										<c:forEach items="${li }" var="faq">
-											<div class="accordion-item">
-												<h2 class="accordion-header" id="flush-headingOne">
-													<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">${faq.faq_num }${faq.faq_question }</button>
-												</h2>
-												<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-													<div class="accordion-body">${faq.faq_answer }</div>
-													<a href="/faq/faqDetail?faq_num=${faq.faq_num}">faq 상세</a><br>
-												</div>
-											</div>
-										</c:forEach>
+									<div class="tableBox">
+										<table class="table">
+											<thead class="table-dark">
+												<tr>
+													<th>공지사항 번호</th>
+													<th>질문</th>
+													<th>답변</th>
+												
+												</tr>
+
+											</thead>
+											<tbody>
+												<c:forEach items="${li }" var="faq">
+													<tr>
+														<td>${faq.faq_num }</td>
+														<td><a href="/faq/faqDetail?faq_num=${faq.faq_num}">${faq.faq_question }</a></td>
+														<td>${faq.faq_answer }</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
 									</div>
-									<a href="/">홈으로</a>
+
 
 								</c:when>
 								<c:when test="${content eq 'faqRegister' }">
@@ -233,15 +235,11 @@
 											<table>
 												<tr>
 													<th>질문</th>
-													<td>
-														<input type="text" name="faq_question" class="question">
-													</td>
+													<td><input type="text" name="faq_question" class="question"></td>
 												</tr>
 												<tr>
 													<th>답변</th>
-													<td>
-														<textarea rows="4" cols="40" name="faq_answer" style="resize: none;"></textarea>
-													</td>
+													<td><textarea rows="4" cols="40" name="faq_answer" style="resize: none;"></textarea></td>
 												</tr>
 											</table>
 											<button type="submit" class="btn btn-secondary">FAQ 쓰기</button>
@@ -274,15 +272,11 @@
 
 											<tr>
 												<th>질문</th>
-												<td>
-													<input type="text" name="faq_question" value="${fo.faq_question }">
-												</td>
+												<td><input type="text" name="faq_question" value="${fo.faq_question }"></td>
 											</tr>
 											<tr>
 												<th>답변</th>
-												<td>
-													<textarea rows="4" cols="40" name="faq_answer">${fo.faq_answer }</textarea>
-												</td>
+												<td><textarea rows="4" cols="40" name="faq_answer">${fo.faq_answer }</textarea></td>
 											</tr>
 
 										</table>
@@ -297,10 +291,10 @@
 							<c:choose>
 
 								<c:when test="${content eq 'boardList' }">
-									<div class="mypage-right">
+									<div class="tableBox">
 										<table class="table">
 											<h4>1대1문의</h4>
-											<thead>
+											<thead class="table-dark">
 												<tr>
 													<th scope="col">글번호</th>
 													<th scope="col">제목</th>
@@ -318,9 +312,7 @@
 														<tbody>
 															<tr>
 																<td scope="row">${board.brd_num}</td>
-																<td>
-																	<a href="/admin/boardDetail?brd_num=${board.brd_num}">${board.brd_title}</a>
-																</td>
+																<td><a href="/admin/boardDetail?brd_num=${board.brd_num}">${board.brd_title}</a></td>
 																<td>${board.brd_category}</td>
 																<td>${board.brd_writer}</td>
 																<td>${board.brd_regdate}</td>
@@ -333,16 +325,14 @@
 													<c:otherwise>
 														<tr>
 															<td>${board.brd_num}</td>
-															<td>
-																<c:choose>
+															<td><c:choose>
 																	<c:when test="${ses.mem_id eq board.brd_writer}">
                                                                ${board.brd_title}
                                                             </c:when>
 																	<c:otherwise>
                                                                ${board.brd_title}
                                                             </c:otherwise>
-																</c:choose>
-															</td>
+																</c:choose></td>
 															<td>${board.brd_category}</td>
 															<c:choose>
 																<c:when test="${ses.mem_id eq board.brd_writer}">
@@ -384,8 +374,7 @@
 														<option value="t" ${typed eq 't' ? 'selected' :'' }>제목</option>
 														<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
 														<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
-													</select>
-													<input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+													</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
 													<button type="submit" class="btn btn-success position-relative">
 														결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
 														</span>
@@ -472,47 +461,48 @@
 						<c:when test="${category eq 'product'}">
 							<c:choose>
 								<c:when test="${content eq 'bookList' }">
-									<table border="1" class="table table-hover">
-										<tr>
-											<th>book_num</th>
-											<th>book_image</th>
-											<th>book_title</th>
-											<th>book_writer</th>
-											<th>book_price</th>
-											<th>book_saleprice</th>
-											<th>book_sales</th>
-											<th>book_publisher</th>
-											<th>book_writer_num</th>
-											<th>book_date</th>
-											<th>book_count</th>
-											<th>book_content</th>
-											<th>book_ca_num</th>
-											<th>control</th>
-										</tr>
-										<c:forEach items="${li }" var="bo">
-											<tr>
-												<td>${bo.bvo.book_num }</td>
-												<td>
-													<img src="/upload/${fn:replace(bo.save_dir,'\\','/')}/${bo.uuid}_th_${bo.file_name}" alt="bookThumbnail">
-												</td>
-												<td>${bo.bvo.book_title }</td>
-												<td>${bo.bvo.book_writer }</td>
-												<td>${bo.bvo.book_price }</td>
-												<td>${bo.bvo.book_saleprice }</td>
-												<td>${bo.bvo.book_sales }</td>
-												<td>${bo.bvo.book_publisher }</td>
-												<td>${bo.bvo.book_writer_num }</td>
-												<td>${bo.bvo.book_date }</td>
-												<td>${bo.bvo.book_count }</td>
-												<td>${bo.bvo.book_content }</td>
-												<td>${bo.bvo.book_ca_num }</td>
-												<td>
-													<a href="/book/detail?book_num=${bo.bvo.book_num }"><button class="view">view</button></a> 
-													<a href="/book/bkRemove?book_num=${bo.bvo.book_num }"><button class="delete">Delete</button></a>
-												</td>
-											</tr>
-										</c:forEach>
-									</table>
+									<div class="tableBox">
+										<table border="1" class="table table-hover">
+											<thead class="table-dark">
+												<tr>
+													<th>책번호</th>
+													<th>썸네일</th>
+													<th>책제목</th>
+													<th>저자</th>
+													<th>정상가격</th>
+													<th>할인가격</th>
+													<th>판매량</th>
+													<th>출판사</th>
+													<th>작가번호</th>
+													<th>출판일</th>
+													<th>수량</th>
+													<th>책내용</th>
+													<th>카테고리번호</th>
+													<th>control</th>
+												</tr>
+											</thead>
+											<c:forEach items="${li }" var="bo">
+												<tbody>
+													<tr>
+														<td>${bo.bvo.book_num }</td>
+														<td><img src="/upload/${fn:replace(bo.save_dir,'\\','/')}/${bo.uuid}_th_${bo.file_name}" alt="bookThumbnail"></td>
+														<td>${bo.bvo.book_title }</td>
+														<td>${bo.bvo.book_writer }</td>
+														<td>${bo.bvo.book_price }</td>
+														<td>${bo.bvo.book_saleprice }</td>
+														<td>${bo.bvo.book_sales }</td>
+														<td>${bo.bvo.book_publisher }</td>
+														<td>${bo.bvo.book_writer_num }</td>
+														<td>${bo.bvo.book_date }</td>
+														<td>${bo.bvo.book_count }</td>
+														<td>${bo.bvo.book_content }</td>
+														<td>${bo.bvo.book_cno }</td>
+														<td><a href="/book/detail?book_num=${bo.bvo.book_num }"><button class="view">view</button></a> <a href="/book/bkRemove?book_num=${bo.bvo.book_num }"><button class="delete">Delete</button></a></td>
+													</tr>
+												</tbody>
+											</c:forEach>
+										</table>
+									</div>
 
 									<!-- paging line -->
 									<ul class="pagination justify-content-center">
@@ -572,13 +562,11 @@
 										</tr>
 										<tr>
 											<th>book_content</th>
-											<td>
-												<textarea rows="5" cols="50">${bo.book_content }</textarea>
-											</td>
+											<td><textarea rows="5" cols="50">${bo.book_content }</textarea></td>
 										</tr>
 										<tr>
-											<th>book_ca_num</th>
-											<td>${bo.book_ca_num }</td>
+											<th>book_cno</th>
+											<td>${bo.book_cno }</td>
 										</tr>
 
 									</table>
@@ -610,81 +598,63 @@
 									<a href="/book/bkModify?book_num=${bo.book_num}"><button type="button">책 수정</button></a>
 								</c:when>
 								<c:when test="${content eq 'bookRegister' }">
-									<div class=bookRegisterBox>
+									<div class="tableBox">
 										<form action="/book/bkRegister" method="post" enctype="multipart/form-data">
 											<table border="1" class="table table-hover">
 												<tr>
 													<td>책제목</td>
-													<td>
-														<input type="text" name="book_title">
-													</td>
+													<td><input type="text" name="book_title"></td>
 												</tr>
 												<tr>
 													<td>작가</td>
-													<td>
-														<input type="text" name="book_writer">
-													</td>
+													<td><input type="text" name="book_writer"></td>
 												</tr>
 												<tr>
 													<td>책가격</td>
-													<td>
-														<input type="text" name="book_price">
-													</td>
+													<td><input type="text" name="book_price"></td>
 												</tr>
 												<tr>
 													<td>할인가격</td>
-													<td>
-														<input type="text" name="book_saleprice">
-													</td>
+													<td><input type="text" name="book_saleprice"></td>
 												</tr>
 												<tr>
 													<td>판매량</td>
-													<td>
-														<input type="text" name="book_sales">
-													</td>
+													<td><input type="text" name="book_sales"></td>
 												</tr>
 												<tr>
 													<td>출판사</td>
-													<td>
-														<input type="text" name="book_publisher">
-													</td>
+													<td><input type="text" name="book_publisher"></td>
 												</tr>
 												<tr>
 													<td>작가번호</td>
-													<td>
-														<input type="text" name="book_writer_num">
-													</td>
+													<td><input type="text" name="book_writer_num"></td>
 												</tr>
 												<tr>
 													<td>출판일</td>
-													<td>
-														<input type="text" name="book_date">
-													</td>
+													<td><input type="date" name="book_date"></td>
 												</tr>
 												<tr>
 													<td>책수량</td>
-													<td>
-														<input type="text" name="book_count">
-													</td>
+													<td><input type="text" name="book_count"></td>
 												</tr>
 												<tr>
 													<td>책이미지</td>
-													<td>
-														<input type="file" style="display: none;" id="files" name="files" multiple>
-														<button type="button" id="trigger">Files Upload</button>
-													</td>
+													<td><input type="file" style="display: none;" id="files" name="files" multiple>
+														<button type="button" id="trigger">Files Upload</button></td>
 												</tr>
 												<tr>
 													<td>책소개내용</td>
-													<td>
-														<textarea rows="5" cols="50" name="book_content" style="resize: none; width: 185px;"></textarea>
-													</td>
+													<td><textarea rows="5" cols="50" name="book_content" style="resize: none; width: 185px;"></textarea></td>
 												</tr>
 												<tr>
-													<td>카테고리번호</td>
-													<td>
-														<input type="text" name="book_ca_num">
-													</td>
+													<td>카테고리</td>
+													<td><select class="join-input" name="book_cno">
+															<option value="1">소설</option>
+															<option value="2">에세이</option>
+															<option value="3">건강/취미</option>
+															<option value="4">컴퓨터/모바일</option>
+															<option value="5">문제집</option>
+													</select></td>
 												</tr>
 											</table>
 
@@ -699,45 +669,31 @@
 										<table border="1" class="table table-hover">
 											<tr>
 												<th>book_num</th>
-												<td>
-													<input type="text" name="book_num" value="${bo.book_num }" readonly>
-												</td>
+												<td><input type="text" name="book_num" value="${bo.book_num }" readonly></td>
 											</tr>
 											<tr>
 												<th>book_title</th>
-												<td>
-													<input type="text" name="book_title" value="${bo.book_title }">
-												</td>
+												<td><input type="text" name="book_title" value="${bo.book_title }"></td>
 											</tr>
 											<tr>
 												<th>book_writer</th>
-												<td>
-													<input type="text" name="book_writer" value="${bo.book_writer }">
-												</td>
+												<td><input type="text" name="book_writer" value="${bo.book_writer }"></td>
 											</tr>
 											<tr>
 												<th>book_price</th>
-												<td>
-													<input type="text" name="book_price" value="${bo.book_price }">
-												</td>
+												<td><input type="text" name="book_price" value="${bo.book_price }"></td>
 											</tr>
 											<tr>
 												<th>book_publisher</th>
-												<td>
-													<input type="text" name="book_publisher" value="${bo.book_publisher }">
-												</td>
+												<td><input type="text" name="book_publisher" value="${bo.book_publisher }"></td>
 											</tr>
 											<tr>
 												<th>book_count</th>
-												<td>
-													<input type="text" name="book_count" value="${bo.book_count }">
-												</td>
+												<td><input type="text" name="book_count" value="${bo.book_count }"></td>
 											</tr>
 											<tr>
 												<th>book_content</th>
-												<td>
-													<textarea rows="5" cols="50" name="book_content">${bo.book_content }</textarea>
-												</td>
+												<td><textarea rows="5" cols="50" name="book_content">${bo.book_content }</textarea></td>
 											</tr>
 										</table>
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <!DOCTYPE html>
@@ -63,19 +64,19 @@ float:right;
          <a href="/book/search?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}&keyword=${pgh.pgvo.keyword}">next</a>
          </c:if>
       </span>
-                  <c:forEach items="${list}" var="book">
+                  <c:forEach items="${list}" var="list">
                   <div class="box">
                   
                   <div class="left">
                
-                     <img class ="img" alt="아직없음" src="/resources/image/logo.jpg">
+                      <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
          
                   </div>
                   <div class="right">
-                     제목 : ${book.book_title}<br>      
-                     글쓴이 : ${book.book_writer}<br>
-                        가격 : ${book.book_price}<br>
-                     재고 : ${book.book_count}<br>
+                     제목 : ${list.bvo.book_title}<br>      
+                     글쓴이 : ${list.bvo.book_writer}<br>
+                        가격 : ${list.bvo.book_price}<br>
+                     재고 : ${list.bvo.book_count}<br>
                   </div>
                      <a href="#" class="button"><button  class="btn btn-outline-success">장바구니에넣기</button><br></a>
                      <a href="#" class="button"><button  class="btn btn-outline-success">바로구매</button><br></a>

@@ -47,7 +47,7 @@ public class FaqController {
       return "redirect:/faq/faqList";
    }
    
-   @GetMapping("/faqList")
+   @GetMapping("/faqList") //관리자 faq리스트
    public String faqList(Model model) {
       List<FaqVO> list = fs.getFaqList();
       model.addAttribute("li", list);
@@ -56,6 +56,12 @@ public class FaqController {
       model.addAttribute("category", "faq");
       model.addAttribute("content", "faqList");
       return "/member/memberAdmin";
+   }
+   @GetMapping("/faqListOnly") //유저 faq페이지
+   public String faqListOnly(Model model) {
+      List<FaqVO> list = fs.getFaqList();
+      model.addAttribute("li", list);
+      return "/board/boardFaq";
    }
    @GetMapping("faqDetail")
    public String faqDetail(Model model, @RequestParam("faq_num")int faq_num) {

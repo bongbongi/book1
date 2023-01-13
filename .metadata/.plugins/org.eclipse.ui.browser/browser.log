@@ -832,3 +832,44 @@
 1월 12, 2023 20:21:15.403 [11800:1952:0112/202115.402:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 1월 12, 2023 22:00:40.244 [11800:6636:0112/220040.243:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
 1월 12, 2023 22:18:55.631 [11800:6636:0112/221855.631:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+1월 13, 2023 09:38:13.272 NEW SESSION
+1월 13, 2023 09:38:13.272 [15960:7172:0113/093813.269:ERROR:device_event_log_impl.cc(215)] [09:38:13.269] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 09:38:13.274 [15960:7172:0113/093813.272:ERROR:device_event_log_impl.cc(215)] [09:38:13.272] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 09:39:10.124 [15960:3424:0113/093910.123:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 13, 2023 09:57:20.712 [13124:15820:0113/095720.712:ERROR:device_event_log_impl.cc(215)] [09:57:20.712] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 09:57:20.715 [13124:15820:0113/095720.714:ERROR:device_event_log_impl.cc(215)] [09:57:20.715] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 09:58:18.652 [13124:18784:0113/095818.652:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+1월 13, 2023 10:09:53.567 NEW SESSION
+1월 13, 2023 10:09:53.567 [14488:4756:0113/100953.565:ERROR:device_event_log_impl.cc(215)] [10:09:53.565] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 10:09:53.567 [14488:4756:0113/100953.567:ERROR:device_event_log_impl.cc(215)] [10:09:53.567] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 10:10:51.427 [14488:16672:0113/101051.426:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 13, 2023 10:18:26.826 [14488:13408:0113/101826.825:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 11:49:11.54 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 11:49:19.600 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 11:49:25.837 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 11:49:37.634 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 11:49:42.43 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 11:49:45.965 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 11:49:49.645 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 13:20:11.777 [14488:13408:0113/132011.776:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 13:20:58.588 [14488:13408:0113/132058.587:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 13:20:59.832 [14488:13408:0113/132059.831:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 13:22:05.06 [14488:13408:0113/132205.005:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 13:23:08.960 [14488:13408:0113/132308.959:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 14:12:25.318 [14488:6996:0113/141225.318:ERROR:get_updates_processor.cc(260)] PostClientToServerMessage() failed during GetUpdates with error 2
+1월 13, 2023 14:12:44.231 [14488:13408:0113/141244.230:ERROR:connection_factory_impl.cc(427)] Failed to connect to MCS endpoint with error -7
+1월 13, 2023 14:26:33.648 [14488:13408:0113/142633.648:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+1월 13, 2023 14:42:34.418 [14488:4756:0113/144234.417:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 13, 2023 15:02:24.862 [5212:2440:0113/150224.862:ERROR:device_event_log_impl.cc(215)] [15:02:24.862] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 15:02:24.864 [5212:2440:0113/150224.863:ERROR:device_event_log_impl.cc(215)] [15:02:24.863] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 15:03:22.864 [5212:9544:0113/150322.863:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 13, 2023 15:37:59.368 [16236:14292:0113/153759.368:ERROR:device_event_log_impl.cc(215)] [15:37:59.368] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 15:37:59.369 [16236:14292:0113/153759.369:ERROR:device_event_log_impl.cc(215)] [15:37:59.369] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 13, 2023 15:38:57.360 [16236:19004:0113/153857.360:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 13, 2023 15:43:33.692 [16236:14292:0113/154333.691:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 13, 2023 15:43:33.693 [16236:14292:0113/154333.692:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 13, 2023 17:27:12.161 [16236:14292:0113/172712.160:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+1월 13, 2023 17:31:22.994 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)
+1월 13, 2023 17:57:52.915 [16236:14292:0113/175752.914:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost

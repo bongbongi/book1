@@ -20,7 +20,7 @@ public class MemberVO {
 	private String mem_gender;
 	private int mem_cash;
 	private String mem_cell_num;
-	private String mno_cno;
+	private String mem_cno;
 	private String mem_date;
 	private String mem_rating;
 	private String mem_auth;

@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ezen.book.domain.BookVO;
+import com.ezen.book.domain.FileDTO;
+import com.ezen.book.domain.FileVO;
+import com.ezen.book.domain.PagingVO;
+import com.ezen.book.handler.PagingHandler;
 import com.ezen.book.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -49,11 +53,58 @@ public class HomeController {
 
       model.addAttribute("serverTime", formattedDate);
 
-      ArrayList<BookVO> bvo = bks.getBookList(); //
-      model.addAttribute("book_list", bvo);
-      model.addAttribute("content", "main");
+      ArrayList<BookVO> list = bks.getBookList(); //
+      
+      log.info("listsize"+list.size());
+      
+      FileVO fvo = new FileVO(); 
+      List<FileDTO> list2 = new ArrayList<FileDTO>();
+      for(BookVO b : list) {
+         int book_num = b.getBook_num();
+         fvo = bks.getFile(book_num);
+         if(fvo != null) {
+            FileDTO fdto = new FileDTO(b, fvo.getSave_dir(), fvo.getUuid(), fvo.getFile_name());
+            list2.add(fdto);
+      
+         }else {
+            FileDTO fdto = new FileDTO(b, "", "", "");
+            list2.add(fdto);
+         }
+      }
+      model.addAttribute("book_list", list2);
+         model.addAttribute("content", "main");
+         
+      
+      BookVO bvo=bks.getBookOne();   
+      log.info("bvo"+bvo.getBook_cno());
+      
+      FileVO fvo2 = new FileVO(); 
+      List<FileDTO> list3 = new ArrayList<FileDTO>();
+      
+         int book_num = bvo.getBook_num();
+         fvo2 = bks.getFile(book_num);
+         if(fvo2 != null) {
+            FileDTO fdto = new FileDTO(bvo, fvo2.getSave_dir(), fvo2.getUuid(), fvo2.getFile_name());
+            list3.add(fdto);
+      
+         }else {
+            FileDTO fdto = new FileDTO(bvo, "", "", "");
+            list3.add(fdto);
+         }   
+      
+ 
+      model.addAttribute("randombook", list3);
+      log.info("randombook"+list3.size());
       return "home";
+      
    }
+   
+ 
+   
+   
+   
+   
+   
    @GetMapping("/introduce")
    public String getIntroduce(Model model) {
       String okay="main";
@@ -78,29 +129,47 @@ public class HomeController {
       model.addAttribute("content", okay);
       return "/board/boardTos";
    }
-   @GetMapping("/novel")
-   public String novel(Model model) {
-      model.addAttribute("content", "novel");
-      int content=1;
-      ArrayList<BookVO> bvo = bks.getSelectBookList(content); //
-      model.addAttribute("book_list", bvo);
-      return "home";
+   
+  
+   @GetMapping("/interest")
+   public String interest(Model model,@RequestParam("mem_cno") int mem_cno) {
+      String content="";
+      switch (mem_cno) {
+   case 1: 
+      content="novel";
+      break;
+   case 2: 
+      content="essay";
+      break;
+   case 3: 
+      content="life";
+      break;
+   case 4: 
+      content="computer";
+      break;
+   default:
+      content="problem";
+      break;
    }
-   @GetMapping("/essay")
-   public String essay(Model model) {
-      model.addAttribute("content", "essay");
-      int content=2;
-      ArrayList<BookVO> bvo = bks.getSelectBookList(content); //
-      model.addAttribute("book_list", bvo);
-      return "home";
-   }
-   @GetMapping("/problem")
-   public String problem(Model model) {
-      model.addAttribute("content", "problem");
-      int content=3;
-      ArrayList<BookVO> bvo = bks.getSelectBookList(content); //
-      model.addAttribute("book_list", bvo);
-      return "home";
-   }
+         model.addAttribute("content", content);
+         ArrayList<BookVO> list = bks.getSelectBookList(mem_cno); // 
+         FileVO fvo = new FileVO(); 
+         List<FileDTO> list2 = new ArrayList<FileDTO>();
+         for(BookVO b : list) {
+            int book_num = b.getBook_num();
+            fvo = bks.getFile(book_num);
+            if(fvo != null) {
+               FileDTO fdto = new FileDTO(b, fvo.getSave_dir(), fvo.getUuid(), fvo.getFile_name());
+               list2.add(fdto);
+         
+            }else {
+               FileDTO fdto = new FileDTO(b, "", "", "");
+               list2.add(fdto);
+            }
+         }      
+         model.addAttribute("book_list", list2);   
+         return "home";      
+      }
+   
    
 }
