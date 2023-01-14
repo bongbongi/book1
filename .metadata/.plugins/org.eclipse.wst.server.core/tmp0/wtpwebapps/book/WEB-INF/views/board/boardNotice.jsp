@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.noticeDetail {
+.noticeBox {
 	margin: 0 auto;
 	width: 1260px;
 }
@@ -19,105 +18,119 @@ hr {
 button {
 	margin: 8px;
 }
+
+h1 {
+	text-align: center;
+}
+
+.pagination {
+	margin: 0 auto;
+	width: 300px;
+}
+
+.pagination>a {
+	margin: 20px auto;
+}
+
+.tableBox {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.tableBox>table {
+	text-align: center;
+}
+
+table {
+	table-layout: fixed;
+}
+
+.noticeDetail {
+	border: 1px solid gray;
+}
+
+.boardDetail-content {
+	height: 300px;
+	margin: 50px;
+}
+
+.boardDetail-regdate {
+	font-size: 10px;
+	color: gray;
+}
+
+.boardDetail-writer {
+	font-size: 15px;
+	color: gray;
+}
+
+.noticeBtnBox>button {
+	margin:0 auto;
+}
 </style>
 </head>
 <body>
-	<a href="/ntc/noticeList">리스트</a>
-	<a href="/ntc/noticeRegister">등록</a>
-	<a href="/ntc/noticeModify">수정</a>
-	<a href="/ntc/noticeDelete">삭제</a>
-	<c:forEach items="${content}" var="content">
-		<c:choose>
-			<c:when test="${content eq 'noticeList' || content == 'main' }">
-				<table border="1">
-					<tr>
-						<th>NO</th>
-						<th>공지제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-					</tr>
-					<c:forEach items="${notice_list}" var="ntc">
-						<tr>
-							<td>${ntc.ntc_num}</td>
-							<td><a href="/ntc/noticeDetail?ntc_num=${ntc.ntc_num}">${ntc.ntc_title}</a></td>
-							<td>${ntc.ntc_writer}</td>
-							<td>${ntc.ntc_regdate}</td>
-						</tr>
-					</c:forEach>
-				</table>
-				<div>
-										<c:if test="${pgh.prev}">
-											<a href="/ntc/noticeList?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}">prev</a>
-										</c:if>
-										<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-											<a href="/ntc/noticeList?pageNo=${i}&qty=${pgh.pgvo.qty}">${i} ｜ </a>
-										</c:forEach>
-										<c:if test="${pgh.next}">
-											<a href="/ntc/noticeList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">next</a>
-										</c:if>
-									</div>
-			</c:when>
-			<c:when test="${content eq 'noticeRegister'}">
-				<form action="/ntc/noticeRegister" method="post">
-					<table border="1">
-						<tr>
+	<div class="noticeBox">
+		<jsp:include page="../layout/header.jsp"></jsp:include>
+		<c:forEach items="${content}" var="content">
+			<c:choose>
+				<c:when test="${content eq 'notice_list'}">
+					<h1>공지사항</h1>
+					<div class="tableBox tableNormal">
+						<table class="table table-hover">
+							<thead class="table-dark">
+								<tr>
+									<th>NO</th>
+									<th colspan="2">공지제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
 
-							<th>공지제목</th>
-							<th>작성자</th>
-							<th>내용</th>
-						</tr>
+							<c:forEach items="${notice_list}" var="ntc">
+								<tbody>
+									<tr>
+										<td>${ntc.ntc_num}</td>
+										<td colspan="2"><a href="/ntc/noticeDetailOnly?ntc_num=${ntc.ntc_num}">${ntc.ntc_title}</a></td>
+										<td>${ntc.ntc_writer}</td>
+										<td>${ntc.ntc_regdate}</td>
+									</tr>
+								</tbody>
+							</c:forEach>
+						</table>
+					</div>
+					<div class="pagination">
+						<c:if test="${pgh.prev}">
+							<a href="/ntc/noticeOnly?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}"> < </a>
+						</c:if>
+						<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
+							<a href="/ntc/noticeOnly?pageNo=${i}&qty=${pgh.pgvo.qty}">&nbsp ${i} &nbsp</a>
+						</c:forEach>
+						<c:if test="${pgh.next}">
+							<a href="/ntc/noticeOnly?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">></a>
+						</c:if>
+					</div>
+				</c:when>
 
-						<tr>
-							<td><input type="text" name="ntc_title"></td>
-							<td><input type="text" name="ntc_writer"></td>
+				<c:when test="${content eq 'noticeDetail' }">
+					<div class="noticeBox">
+						<div class="tableBox noticeDetail">
+							<%-- <span class="boardDetail-num">글번호 ${nvo.ntc_num}</span> --%>
+							<h2>${nvo.ntc_title}</h2>
+							<span class="boardDetail-writer">${nvo.ntc_writer}</span> <span class="boardDetail-regdate">${nvo.ntc_regdate}</span>
+							<hr>
+							<div class="boardDetail-content">${nvo.ntc_content}</div>
 
-							<td><input type="text" name="ntc_content"></td>
-						</tr>
-					</table>
-					<button type="submit">작성</button>
-				</form>
-			</c:when>
-			<c:when test="${content eq 'noticeDetail'}">
-				<div class="noticeDetail">
-					<h2>${nvo.ntc_title}</h2>
-					${nvo.ntc_writer} ${nvo.ntc_regdate}
-					<hr>
-					${nvo.ntc_content} <Br> <a href="/ntc/notice">
-						<button type="button" class="btn btn-outline-secondary">공지사항
-							목록</button>
-					</a>
-				</div>
-
-				<a href="/ntc/noticeModify?ntc_num=${nvo.ntc_num}"><button
-						type="button">수정</button></a>
-				<a href="/ntc/noticeDelete?ntc_num=${nvo.ntc_num}"><button
-						type="button">삭제</button></a>
-			</c:when>
-			<c:when test="${content eq 'noticeModify'}">
-				<form action="/ntc/noticeModify" method="post">
-				<table border="1">
-					<tr>
-						<th>글번호</th>
-						<th>공지제목</th>
-						<th>작성자</th>
-						<th>내용</th>
-					</tr>
-					
-						<tr>
-							<td><input type="text" name="ntc_num" value="${nvo.ntc_num}" ></td>
-							<td><input type="text" name="ntc_title" value="${nvo.ntc_title}"></td>
-							<td><input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly="readonly"></td>
-		
-							<td><input type="text" name="ntc_content" value="${nvo.ntc_content}"></td>
-						</tr>
-				</table>
-				<button type="submit">수정</button>
-				<a href="/ntc/noticeList"><button type="button">공지사항목록으로</button></a>
-				</form>
-			</c:when>
-		</c:choose>
-	</c:forEach>
-
-
+						</div>
+						<div class="noticeBtnBox">
+							<a href="/ntc/noticeOnly"><Br>
+								<button type="button" class="btn btn-outline-secondary">리스트 목록 이동</button> </a> <br>
+						</div>
+					</div>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</div>
+	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
 </html>

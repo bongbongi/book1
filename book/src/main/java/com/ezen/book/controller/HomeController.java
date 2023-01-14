@@ -26,150 +26,127 @@ import com.ezen.book.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * Handles requests for the application home page.
- */
 @Slf4j
 @Controller
 public class HomeController {
 
-   private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-   @Inject
-   private BookService bks;
+	@Inject
+	private BookService bks;
 
-   /**
-    * Simply selects the home view to render by returning its name.
-    */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
 
-   @RequestMapping(value = "/", method = RequestMethod.GET)
-   public String home(Locale locale, Model model) {
-      logger.info("Welcome home! The client locale is {}.", locale);
+		ArrayList<BookVO> list = bks.getBookList();
 
-      Date date = new Date();
-      DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		log.info("listsize" + list.size());
 
-      String formattedDate = dateFormat.format(date);
+		FileVO fvo = new FileVO();
+		List<FileDTO> list2 = new ArrayList<FileDTO>();
+		for (BookVO b : list) {
+			int book_num = b.getBook_num();
+			fvo = bks.getFile(book_num);
+			if (fvo != null) {
+				FileDTO fdto = new FileDTO(b, fvo.getSave_dir(), fvo.getUuid(), fvo.getFile_name());
+				list2.add(fdto);
 
-      model.addAttribute("serverTime", formattedDate);
+			} else {
+				FileDTO fdto = new FileDTO(b, "", "", "");
+				list2.add(fdto);
+			}
+		}
+		model.addAttribute("book_list", list2);
+		model.addAttribute("content", "main");
 
-      ArrayList<BookVO> list = bks.getBookList(); //
-      
-      log.info("listsize"+list.size());
-      
-      FileVO fvo = new FileVO(); 
-      List<FileDTO> list2 = new ArrayList<FileDTO>();
-      for(BookVO b : list) {
-         int book_num = b.getBook_num();
-         fvo = bks.getFile(book_num);
-         if(fvo != null) {
-            FileDTO fdto = new FileDTO(b, fvo.getSave_dir(), fvo.getUuid(), fvo.getFile_name());
-            list2.add(fdto);
-      
-         }else {
-            FileDTO fdto = new FileDTO(b, "", "", "");
-            list2.add(fdto);
-         }
-      }
-      model.addAttribute("book_list", list2);
-         model.addAttribute("content", "main");
-         
-      
-      BookVO bvo=bks.getBookOne();   
-      log.info("bvo"+bvo.getBook_cno());
-      
-      FileVO fvo2 = new FileVO(); 
-      List<FileDTO> list3 = new ArrayList<FileDTO>();
-      
-         int book_num = bvo.getBook_num();
-         fvo2 = bks.getFile(book_num);
-         if(fvo2 != null) {
-            FileDTO fdto = new FileDTO(bvo, fvo2.getSave_dir(), fvo2.getUuid(), fvo2.getFile_name());
-            list3.add(fdto);
-      
-         }else {
-            FileDTO fdto = new FileDTO(bvo, "", "", "");
-            list3.add(fdto);
-         }   
-      
- 
-      model.addAttribute("randombook", list3);
-      log.info("randombook"+list3.size());
-      return "home";
-      
-   }
-   
- 
-   
-   
-   
-   
-   
-   @GetMapping("/introduce")
-   public String getIntroduce(Model model) {
-      String okay="main";
-      model.addAttribute("content", okay);
-      return "/board/boardIntroduce";
-   }
-   @GetMapping("/content")
-   public String detailList(Model model, @RequestParam("content")String content) {
-      String okay=content;
-      model.addAttribute("content", okay);
-      return "/board/boardIntroduce";   
-   }
-   @GetMapping("/tos")
-   public String getTos(Model model) {
-      String okay="tos";
-      model.addAttribute("content", okay);
-      return "/board/boardTos";
-   }
-   @GetMapping("/pp")
-   public String getPp(Model model) {
-      String okay="pp";
-      model.addAttribute("content", okay);
-      return "/board/boardTos";
-   }
-   
-  
-   @GetMapping("/interest")
-   public String interest(Model model,@RequestParam("mem_cno") int mem_cno) {
-      String content="";
-      switch (mem_cno) {
-   case 1: 
-      content="novel";
-      break;
-   case 2: 
-      content="essay";
-      break;
-   case 3: 
-      content="life";
-      break;
-   case 4: 
-      content="computer";
-      break;
-   default:
-      content="problem";
-      break;
-   }
-         model.addAttribute("content", content);
-         ArrayList<BookVO> list = bks.getSelectBookList(mem_cno); // 
-         FileVO fvo = new FileVO(); 
-         List<FileDTO> list2 = new ArrayList<FileDTO>();
-         for(BookVO b : list) {
-            int book_num = b.getBook_num();
-            fvo = bks.getFile(book_num);
-            if(fvo != null) {
-               FileDTO fdto = new FileDTO(b, fvo.getSave_dir(), fvo.getUuid(), fvo.getFile_name());
-               list2.add(fdto);
-         
-            }else {
-               FileDTO fdto = new FileDTO(b, "", "", "");
-               list2.add(fdto);
-            }
-         }      
-         model.addAttribute("book_list", list2);   
-         return "home";      
-      }
-   
-   
+		BookVO bvo = bks.getBookOne();
+
+		FileVO fvo2 = new FileVO();
+		List<FileDTO> list3 = new ArrayList<FileDTO>();
+
+		int book_num = bvo.getBook_num();
+		fvo2 = bks.getFile(book_num);
+		if (fvo2 != null) {
+			FileDTO fdto = new FileDTO(bvo, fvo2.getSave_dir(), fvo2.getUuid(), fvo2.getFile_name());
+			list3.add(fdto);
+
+		} else {
+			FileDTO fdto = new FileDTO(bvo, "", "", "");
+			list3.add(fdto);
+		}
+
+		model.addAttribute("randombook", list3);
+		log.info("randombook" + list3.size());
+		return "home";
+
+	}
+
+	@GetMapping("/introduce")
+	public String getIntroduce(Model model) {
+		String okay = "main";
+		model.addAttribute("content", okay);
+		return "/board/boardIntroduce";
+	}
+
+	@GetMapping("/content")
+	public String detailList(Model model, @RequestParam("content") String content) {
+		String okay = content;
+		model.addAttribute("content", okay);
+		return "/board/boardIntroduce";
+	}
+
+	@GetMapping("/tos")
+	public String getTos(Model model) {
+		String okay = "tos";
+		model.addAttribute("content", okay);
+		return "/board/boardTos";
+	}
+
+	@GetMapping("/pp")
+	public String getPp(Model model) {
+		String okay = "pp";
+		model.addAttribute("content", okay);
+		return "/board/boardTos";
+	}
+
+	@GetMapping("/interest")
+	public String interest(Model model, @RequestParam("mem_cno") int mem_cno) {
+		String content = "";
+		switch (mem_cno) {
+		case 1:
+			content = "novel";
+			break;
+		case 2:
+			content = "essay";
+			break;
+		case 3:
+			content = "life";
+			break;
+		case 4:
+			content = "computer";
+			break;
+		default:
+			content = "problem";
+			break;
+		}
+		model.addAttribute("content", content);
+		ArrayList<BookVO> list = bks.getSelectBookList(mem_cno); //
+		FileVO fvo = new FileVO();
+		List<FileDTO> list2 = new ArrayList<FileDTO>();
+		for (BookVO b : list) {
+			int book_num = b.getBook_num();
+			fvo = bks.getFile(book_num);
+			if (fvo != null) {
+				FileDTO fdto = new FileDTO(b, fvo.getSave_dir(), fvo.getUuid(), fvo.getFile_name());
+				list2.add(fdto);
+
+			} else {
+				FileDTO fdto = new FileDTO(b, "", "", "");
+				list2.add(fdto);
+			}
+		}
+		model.addAttribute("book_list", list2);
+		return "home";
+	}
+
 }

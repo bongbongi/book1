@@ -51,4 +51,9 @@ public class NoticeServiceImpl implements NoticeService {
 		return ndao.getTotalCount(pvo);
 	}
 
+	@Override
+	public List<NoticeVO> getNoticeListOnly(PagingVO pvo) {
+		return ndao.getNoticeListOnly(pvo);
+	}
+
 }

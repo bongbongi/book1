@@ -26,4 +26,9 @@
 	<delete id="getDelete">
 		delete from notice where ntc_num=#{ntc_num}
 	</delete>
+	<select id="getNoticeListOnly"  resultType="com.ezen.book.domain.NoticeVO">
+		select * from notice
+		order by ntc_num desc
+		limit #{pvo.pageStart}, #{pvo.qty}
+	</select>
 </mapper>

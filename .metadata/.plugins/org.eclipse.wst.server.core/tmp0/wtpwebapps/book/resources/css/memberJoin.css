@@ -22,7 +22,8 @@ input{
 	
 	margin: 30px auto;
 }
-#mem_pw::placeholder{
+#mem_pw::placeholder,
+#mem_pwRe::placeholder{
 	font-size:8px;
 }
 .join-input {

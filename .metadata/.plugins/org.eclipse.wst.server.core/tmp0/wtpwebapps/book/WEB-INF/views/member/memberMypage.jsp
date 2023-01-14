@@ -7,11 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+      <script type="text/javascript" src="/resources/js/memberJoin.js"></script>
 <script type="text/javascript" src="/resources/js/boardComment.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="/resources/js/memberJoin.js"></script>
-<title>Insert title here</title>
+
+<title>mypage</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageDelete.css">
@@ -27,10 +27,9 @@
    <script type="text/javascript">
       const ses = '<c:out value="${ses.mem_id}" />';
       if(ses == null || ses == ''){
-         alert('로그아웃 되었습니다. 메인화면으로 이동합니다.');
+    	  alert('로그인시 이용가능합니다. 메인 페이지로 이동합니다.');
          location.href='/';
       }
-      
    </script>
    <script type="text/javascript" src="/resources/js/boardComment.js"></script>
    <script type="text/javascript">
@@ -77,8 +76,10 @@
       <c:forEach items="${content}" var="content">
          <c:choose>
             <c:when test="${content eq 'modify' || content == 'main' }">
+      
                <form action="/mem/modify" method="post">      
                <div class="MypageModify mypage-right">
+                  <h4>회원정보수정</h4>
                   <input type="text" name="mem_num" value="${ses.mem_num}" hidden ><br>
                   <lable for="mem_id">ID</lable>
                   <br> <input type="text" class="join-input" name="mem_id" value="${ses.mem_id}" id="mem_id" placeholder="아이디" onchange="checkId()" required> <Br>
@@ -90,7 +91,7 @@
                   <br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" value="${ses.mem_postzip}" required> <input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> <input type="text" class="join-input" id="address" name="address" placeholder="주소" value="${ses.mem_ad.substring(0,ses.mem_ad.indexOf('/'))}" required> <br> <input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" value="${ses.mem_ad.substring(ses.mem_ad.indexOf('/')+2,ses.mem_ad.lastIndexOf('/'))}" required><br> <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" value="${ses.mem_ad.substring(ses.mem_ad.lastIndexOf('/')+1)}" readonly="readonly"> <br>
                   <lable for="mem_age">AGE</lable>
                   <br>
-                  <td>
+              
                      <input type="text" class="join-input" name="mem_age" placeholder="나이" value="${ses.mem_age}" required> <br>
                      <lable for="mem_cell_num">PHONE</lable>
                      <br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
@@ -102,11 +103,15 @@
                         <option value="essay">에세이</option>
                         <option value="life">건강/취미</option>
                         <option value="computer">컴퓨터/모바일</option>
+                         <option value="problem">문제집</option>
                      </select>
                      <Br> <br>
                      <button type=submit " class="btn btn-outline-secondary btn-submit">수정하기</button>
+                  
+                   </div>
+                   
                      </form>
-               </div>
+             
             </c:when>
             <c:when test="${content eq 'orderList'}">
                <div class="memberOrderList mypage-right">

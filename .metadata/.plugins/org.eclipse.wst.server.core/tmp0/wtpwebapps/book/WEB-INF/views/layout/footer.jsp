@@ -141,9 +141,9 @@ a:hover, a:active {
 			<div class="online-serviceBar">
 				<strong>온라인 서비스</strong>
 				<ul>
-					<li><a href="">마이페이지</a></li>
-					<li><a href="/ntc/notice">공지사항</a></li>
-					<li><a href="">1대1문의</a></li>
+					<li><a href="/mem/mypage">마이페이지</a></li>
+					<li><a href="/ntc/noticeOnly">공지사항</a></li>
+					<li><a href="/board/list">1대1문의</a></li>
 					<li><a href="/faq/faqListOnly">FAQ</a></li>
 				</ul>
 			</div>

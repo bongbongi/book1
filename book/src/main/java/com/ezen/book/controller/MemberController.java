@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,10 +37,11 @@ public class MemberController {
 	@Inject
 	private OrderService osv;
 
-	   @GetMapping("adminPage")
-	   public String adminPage() {
-	      return "/member/memberAdmin";
-	   }
+	@GetMapping("adminPage")
+	public String adminPage() {
+		return "/member/memberAdmin";
+	}
+
 	@GetMapping({ "loginPage", "login-member" })
 	public String loginPage() {
 		return "/member/memberLogin";
@@ -66,8 +68,17 @@ public class MemberController {
 	@ResponseBody
 	public String pwCheck(MemberVO mvo) {
 		String isOk = msv.pwCheck(mvo.getMem_pw());
-		log.info(mvo.getMem_pw());
-		log.info("비번 체크 isok : " + isOk);
+		mvo.setMem_pw(mvo.getMem_pw());
+//		log.info(mvo.getMem_pw());
+		return isOk;
+	}
+	@PostMapping("pwCheckRe") // 회원가입시 pw 재확인 메서드
+	@ResponseBody
+	public String pwCheckRe(@RequestParam("mem_pw")String mem_pw,@RequestParam("mem_pwRe")String mem_pwRe) {
+		log.info("mem_pw : "+mem_pw);
+		log.info("mem_pwRe : "+mem_pwRe);
+		String isOk = msv.pwCheckRe(mem_pw,mem_pwRe);
+		log.info("비번 체크 Re isok : " + isOk);
 		return isOk;
 	}
 
@@ -93,7 +104,7 @@ public class MemberController {
 		String extraAddress = req.getParameter("extraAddress");
 
 		String mem_ad = address + "/" + detailAddress + "/" + extraAddress;
-		
+
 		log.info("addressAll : " + mem_ad);
 		int isOk2 = msv.update(mem_ad);
 		log.info(isOk2 > 0 ? "주소 업데이트 성공" : "주소 업데이트 실패");
@@ -126,7 +137,6 @@ public class MemberController {
 		return "redirect:/";
 
 	}
-
 
 	@GetMapping("/join-ts")
 	public String joinTs() {
@@ -203,60 +213,60 @@ public class MemberController {
 	}
 
 	@PostMapping("/modify")
-	public String modifyPost(MemberVO mvo,Model model,HttpServletRequest req) {
+	public String modifyPost(MemberVO mvo, Model model, HttpServletRequest req) {
 		log.info("modify>>>" + mvo.toString());
 		int isUp = msv.usermodify(mvo);
 		log.info(">>>modify:" + (isUp > 0 ? "ok" : "fail"));
 		req.getSession().removeAttribute("ses");
 		req.getSession().invalidate();
-		
+
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/orderCheck")
-	public String orderList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
-	      log.info(">>>pageNo :"+pvo.getPageNo());
-	      log.info(">>>num :"+mem_num);
-	      String status="주문";
-	      List<OrderVO> list=osv.getList(pvo,status,mem_num);
-	      model.addAttribute("list", list);
-	      int totalCount=osv.getOrderTotalCount(mem_num);
-	      PagingHandler ph = new PagingHandler(pvo,totalCount);
-	      model.addAttribute("pgh",ph);
-	      model.addAttribute("content", "orderList");
-	      return "/member/memberMypage";
-	   }
-	   
-	 @GetMapping("/buyCheck")
-	  public String buyList(Model model,PagingVO pvo,@RequestParam("mem_num")int mem_num){
-	      log.info(">>>pageNo :"+pvo.getPageNo());
-	      String status="구매";
-	      List<OrderVO> list=osv.getList(pvo,status,mem_num);
-	      
-	      model.addAttribute("list", list);
-	      int totalCount=osv.getBuyTotalCount(mem_num);
-	      
-	      PagingHandler ph = new PagingHandler(pvo,totalCount);
-	      model.addAttribute("pgh",ph);
-	      model.addAttribute("content", "buyList");
-	      return "/member/memberMypage";
-	   }
-	 
-	 
+	public String orderList(Model model, PagingVO pvo, @RequestParam("mem_num") int mem_num) {
+		log.info(">>>pageNo :" + pvo.getPageNo());
+		log.info(">>>num :" + mem_num);
+		String status = "주문";
+		List<OrderVO> list = osv.getList(pvo, status, mem_num);
+		model.addAttribute("list", list);
+		int totalCount = osv.getOrderTotalCount(mem_num);
+		PagingHandler ph = new PagingHandler(pvo, totalCount);
+		model.addAttribute("pgh", ph);
+		model.addAttribute("content", "orderList");
+		return "/member/memberMypage";
+	}
+
+	@GetMapping("/buyCheck")
+	public String buyList(Model model, PagingVO pvo, @RequestParam("mem_num") int mem_num) {
+		log.info(">>>pageNo :" + pvo.getPageNo());
+		String status = "구매";
+		List<OrderVO> list = osv.getList(pvo, status, mem_num);
+
+		model.addAttribute("list", list);
+		int totalCount = osv.getBuyTotalCount(mem_num);
+
+		PagingHandler ph = new PagingHandler(pvo, totalCount);
+		model.addAttribute("pgh", ph);
+		model.addAttribute("content", "buyList");
+		return "/member/memberMypage";
+	}
+
 	@GetMapping("/delete")
 	public String getDelte(Model model) {
 		model.addAttribute("content", "delete");
 		return "/member/memberMypage";
 	}
-	
+
 	@PostMapping("/delete")
-	public String MemberDelete(Model model, HttpServletRequest req, RedirectAttributes reAttr,@RequestParam("mem_num")int mem_num){
-		log.info("mem_num"+mem_num);
-		int deleteOk=msv.deleteMember(mem_num);
+	public String MemberDelete(Model model, HttpServletRequest req, RedirectAttributes reAttr,
+			@RequestParam("mem_num") int mem_num) {
+		log.info("mem_num" + mem_num);
+		int deleteOk = msv.deleteMember(mem_num);
 		req.getSession().removeAttribute("ses");
 		req.getSession().invalidate();
 		return "/home";
-		
+
 	}
 
 }

@@ -20,7 +20,6 @@ public class BookVO {
    private int book_saleprice;
    private int book_sales;
    private String book_publisher;
-   private int book_writer_num;
    private String book_date;
    private int book_count;
    private String book_image;

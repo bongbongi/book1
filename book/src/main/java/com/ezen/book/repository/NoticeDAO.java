@@ -24,4 +24,6 @@ public interface NoticeDAO {
 
 	int getTotalCount(PagingVO pvo);
 
+	List<NoticeVO> getNoticeListOnly(@Param("pvo")PagingVO pvo);
+
 }

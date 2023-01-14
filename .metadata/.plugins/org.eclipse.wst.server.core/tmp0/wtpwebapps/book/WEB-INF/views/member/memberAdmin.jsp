@@ -9,48 +9,70 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/adminpage.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/mypageBoardDetail.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/adminpageNotice.css">
-</head>
+<link rel="stylesheet" type="text/css" href="../resources/css/adminpageProduct.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+	text-transform: none;
+}
+.pagination {
+	margin: 0 auto;
+	width: 300px;
+}
+
+.pagination>a {
+	margin: 20px auto;
+}
+
+</style>
+</head>
 
 <body>
 	<script type="text/javascript">
 		const ses = '<c:out value="${ses.mem_id}" />';
 		if (ses == null || ses == '') {
-			alert('로그아웃 되었습니다. 메인화면으로 이동합니다.');
+			alert('로그인시 이용가능합니다. 메인 페이지로 이동합니다.');
 			location.href = '/';
 		}
 	</script>
 	<div class="main">
-		<div class="menu_wrap">
-			<ul class="de01">
-				<li><a href="/"> <img src="/resources/img/logo.jpg" alt="로고" id="logo"></a></li>
-
-				<li><a href="/admin/memList">회원관리</a>
-					<ul class="de02">
-						<li><a href="/admin/memList">리스트</a></li>
-					</ul></li>
-				<li><a href="/ntc/noticeList">공지사항</a>
-					<ul class="de02">
-						<li><a href="/ntc/noticeList">리스트</a></li>
-						<li><a href="/ntc/noticeRegister">등록</a></li>
-					</ul></li>
-				<li><a href="/faq/faqList">FAQ</a>
-					<ul class="de02">
-						<li><a href="/faq/faqList">리스트</a></li>
-						<li><a href="/faq/faqReg">등록</a></li>
-					</ul></li>
-				<li><a href="/admin/list">1대1문의</a>
-					<ul class="de02">
-						<li><a href="/admin/list">리스트</a></li>
-					</ul></li>
-				<li><a href="/book/list">상품관리</a>
-					<ul class="de02">
-						<li><a href="/book/list">리스트</a></li>
-						<li><a href="/book/bkRegister">등록</a></li>
-					</ul></li>
-				<li><a href="/mem/logOut">로그아웃</a></li>
-			</ul>
+		<div class="menu">
+			<div class="menu_logo">
+					<a href="/"> <img src="/resources/img/logo.jpg" alt="로고" id="logo"></a>
+			</div>
+			<div class="menu_wrap">
+				<ul class="de01">
+	
+					<li><a href="/admin/memList">회원관리</a>
+						<ul class="de02">
+							<li><a href="/admin/memList">리스트</a></li>
+						</ul></li>
+					<li><a href="/ntc/noticeList">공지사항</a>
+						<ul class="de02">
+							<li><a href="/ntc/noticeList">리스트</a></li>
+							<li><a href="/ntc/noticeRegister">등록</a></li>
+						</ul></li>
+					<li><a href="/faq/faqList">FAQ</a>
+						<ul class="de02">
+							<li><a href="/faq/faqList">리스트</a></li>
+							<li><a href="/faq/faqReg">등록</a></li>
+						</ul></li>
+					<li><a href="/admin/list">1대1문의</a>
+						<ul class="de02">
+							<li><a href="/admin/list">리스트</a></li>
+						</ul></li>
+					<li><a href="/book/list">상품관리</a>
+						<ul class="de02">
+							<li><a href="/book/list">리스트</a></li>
+							<li><a href="/book/bkRegister">등록</a></li>
+						</ul></li>
+					<li><a href="/mem/logOut">로그아웃</a></li>
+				</ul>
+			</div>
 		</div>
 		<div>
 			<c:forEach items="${category}" var="category">
@@ -136,23 +158,22 @@
 									</div>
 								</c:when>
 								<c:when test="${content eq 'noticeRegister' }">
-				                       <h1>공지사항 등록</h1>
-							 <div class="boardRegisterBox">
-				                     <form action="/ntc/noticeRegister" method="post">
-				                        <div class="brd_titleAndWriter">
-				                           <label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				                           <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${ses.mem_id}" readonly><br>
-				                        </div>
-				                        <div class="contentBox">
-				                           <label for="ntc_content" class="contentLabel">내용</label><br>
-				                           <textarea rows="10" cols="100" name="ntc_content"></textarea>
-				                           <br>
-				                        </div>
-				
-				                        <button type="submit" class="btn btn-secondary">작성하기</button>
-				                     </form>
-				                  </div>
-								
+									<h1>공지사항 등록</h1>
+									<div class="boardRegisterBox">
+										<form action="/ntc/noticeRegister" method="post">
+											<div class="brd_titleAndWriter">
+												<label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${ses.mem_id}" readonly><br>
+											</div>
+											<div class="contentBox">
+												<label for="ntc_content" class="contentLabel">내용</label><br>
+												<textarea rows="10" cols="100" name="ntc_content"></textarea>
+												<br>
+											</div>
+
+											<button type="submit" class="btn btn-secondary">작성하기</button>
+										</form>
+									</div>
+
 								</c:when>
 								<c:when test="${content eq 'noticeDetail' }">
 									<div class="mypage-right boardDetail tableNormal noticeDetail">
@@ -174,26 +195,23 @@
 
 
 
-								
+
 								</c:when>
 								<c:when test="${content eq 'noticeModify' }">
-								 <h1>공지사항 수정</h1>
-								 <div class="boardRegisterBox">
-				                    <form action="/ntc/noticeModify" method="post">
-				                        <div class="brd_titleAndWriter">
-				                           <label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title"  value="${nvo.ntc_title}" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				                           <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly><br>
-				                        </div>
-				                        <div class="contentBox-Input">
-				                           <label for="ntc_content" class="contentLabel">내용</label><br>
-				                           <input type="text" name="ntc_content" value="${nvo.ntc_content}">
-				                           <br>
-				                        </div>
-				
-				                        <button type="submit" class="btn btn-secondary">수정완료</button>
-				                        <a href="/ntc/noticeList"><button type="button"  class="btn btn-secondary">공지사항목록으로</button></a>
-				                     </form>
-				                  </div>
+									<h1>공지사항 수정</h1>
+									<div class="boardRegisterBox">
+										<form action="/ntc/noticeModify" method="post">
+											<div class="brd_titleAndWriter">
+												<label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" value="${nvo.ntc_title}" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly><br>
+											</div>
+											<div class="contentBox-Input">
+												<label for="ntc_content" class="contentLabel">내용</label><br> <input type="text" name="ntc_content" value="${nvo.ntc_content}"> <br>
+											</div>
+
+											<button type="submit" class="btn btn-secondary">수정완료</button>
+											<a href="/ntc/noticeList"><button type="button" class="btn btn-secondary">공지사항목록으로</button></a>
+										</form>
+									</div>
 								</c:when>
 							</c:choose>
 						</c:when>
@@ -241,59 +259,64 @@
 
 								</c:when>
 								<c:when test="${content eq 'faqRegister' }">
-									<div class="faqRegister">
+									<h1>FAQ 등록</h1>
+									<div class="boardRegisterBox">
 										<form action="/faq/faqReg" method="post">
-											<table>
-												<tr>
-													<th>질문</th>
-													<td><input type="text" name="faq_question" class="question"></td>
-												</tr>
-												<tr>
-													<th>답변</th>
-													<td><textarea rows="4" cols="40" name="faq_answer" style="resize: none;"></textarea></td>
-												</tr>
-											</table>
-											<button type="submit" class="btn btn-secondary">FAQ 쓰기</button>
+											<div class="brd_titleAndWriter">
+												<label for="faq_question">질문</label> <input type="text" name="faq_question" class="faq_question" style="width: 763px" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+											</div>
+											<div class="contentBox">
+												<label for="faq_answer" class="contentLabel">답변</label><br>
+												<textarea rows="10" cols="100" name="faq_answer"></textarea>
+												<br>
+											</div>
+
+											<button type="submit" class="btn btn-secondary">작성하기</button>
 										</form>
 									</div>
 
+
 								</c:when>
 								<c:when test="${content eq 'faqDetail' }">
-								<div class="mypage-right boardDetail tableNormal noticeDetail">
+									<div class="mypage-right boardDetail tableNormal noticeDetail">
 										글번호 ${fo.faq_num }
 										<h2>${fo.faq_question }</h2>
-										
+
 										<hr>
 										<div class="boardDetail-content">${fo.faq_answer }</div>
 										<Br> <a href="/faq/faqModify?faq_num=${fo.faq_num}">
 											<button type="button" class="btn btn-success">수정</button>
 										</a> <a href="/faq/faqRemove?faq_num=${fo.faq_num}">
 											<button type="button" class="btn btn-danger">삭제</button>
-										</a><a href="/ntc/notice"><Br>
+										</a><a href="/faq/faqList"><Br>
 											<button type="button" class="btn btn-outline-secondary">리스트 목록 이동</button> </a> <br>
 
 									</div>
-								
-								
-								
+
+
+
 
 								</c:when>
 								<c:when test="${content eq 'faqModify' }">
-									<form action="/faq/faqModify?faq_num=${fo.faq_num }" method="post">
-										<table>
+									<h1>FAQ 수정</h1>
+									<div class="boardRegisterBox">
+										<form action="/faq/faqModify?faq_num=${fo.faq_num }" method="post">
+											<div class="brd_titleAndWriter">
+												<label for="faq_question">질문</label> <input type="text" name="faq_question" class="faq_question" value="${fo.faq_question }" style="width: 763px" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
-											<tr>
-												<th>질문</th>
-												<td><input type="text" name="faq_question" value="${fo.faq_question }"></td>
-											</tr>
-											<tr>
-												<th>답변</th>
-												<td><textarea rows="4" cols="40" name="faq_answer">${fo.faq_answer }</textarea></td>
-											</tr>
+											</div>
+											<div class="contentBox-Input">
+												<label for="faq_answer" class="contentLabel">답변</label><br> <input name="faq_answer" value="${fo.faq_answer }"> <br>
+											</div>
 
-										</table>
-										<button type="submit">faq 수정하기</button>
-									</form>
+											<button type="submit" class="btn btn-secondary">수정하기</button>
+										</form>
+									</div>
+
+
+
+
 
 								</c:when>
 							</c:choose>
@@ -407,9 +430,7 @@
 										<span class="boardDetail-regdate">${board.brd_regdate}</span>
 										<hr>
 										<div class="boardDetail-content">${board.brd_content}</div>
-										<Br> <a href="/admin/boardModify?brd_num=${board.brd_num}">
-											<button type="button" class="btn btn-success">수정</button>
-										</a> <a href="/admin/boardRemove?brd_num=${board.brd_num}">
+										<Br> </a> <a href="/admin/boardRemove?brd_num=${board.brd_num}">
 											<button type="button" class="btn btn-danger">삭제</button>
 										</a><a href="/admin/list"><Br>
 											<button type="button" class="btn btn-outline-secondary">1대1문의 리스트 목록</button> </a> <br>
@@ -443,28 +464,6 @@
 									</div>
 
 								</c:when>
-								<c:when test="${content eq 'boardModify' }">
-									<div class="boardRegister mypage-right">
-										<div class="boardRegisterBox">
-											<form action="/admin/modify" method="post">
-												<input type="text" name="brd_num" value="${board.brd_num}" readonly hidden><br>
-
-												<div class="brd_titleAndWriter">
-													<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" value="${board.brd_title}" required> <label for="brd_writer">작성자</label> <input type="text" name="brd_writer" value="${ses.mem_id}" value="${board.brd_writer}" readonly><br>
-												</div>
-												<div class="brd_regdate">
-													<label for="brd_regdate">작성일</label> <input type="text" name="brd_regdate" value="${board.brd_regdate}" readonly><br>
-												</div>
-												<div class="brd_content">
-													<label for="brd_content">내용</label><br> <input type="text" name="brd_content" class="brd_content" value="${board.brd_title}" required>
-
-												</div>
-												<button type="submit" class="btn btn-secondary btnModify">수정</button>
-												<div name="brd_mem_num" value="${ses.mem_num}"></div>
-											</form>
-										</div>
-									</div>
-								</c:when>
 
 							</c:choose>
 
@@ -485,12 +484,12 @@
 													<th>정상가격</th>
 													<th>할인가격</th>
 													<th>판매량</th>
-													<th>출판사</th>									
+													<th>출판사</th>
 													<th>출판일</th>
 													<th>수량</th>
 													<!-- <th>책내용</th> -->
 													<th>카테고리</th>
-													<th>control</th>
+													<th colspan="2">control</th>
 												</tr>
 											</thead>
 											<c:forEach items="${li }" var="bo">
@@ -503,13 +502,13 @@
 														<td>${bo.bvo.book_price }</td>
 														<td>${bo.bvo.book_saleprice }</td>
 														<td>${bo.bvo.book_sales }</td>
-														<td>${bo.bvo.book_publisher }</td>									
+														<td>${bo.bvo.book_publisher }</td>
 														<td>${bo.bvo.book_date }</td>
 														<td>${bo.bvo.book_count }</td>
 														<%-- <td class="ellipsis-one">${bo.bvo.book_content
 																		}</td> --%>
 														<td>${bo.bvo.book_cno }</td>
-														<td>
+														<td colspan="2">
 															<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
 																<a href="/book/detail?book_num=${bo.bvo.book_num }">
 																	<button type="button" class="btn btn-outline-dark">view</button>
@@ -526,132 +525,111 @@
 									</div>
 
 
-									<!-- paging line -->
-								
-										<%-- 			<ul class="pagination justify-content-center">
-														<c:if test="${pgn.prev }">
-															<li class="page-item">
-																<a href="/book/list?pageNo=${pgn.startPage - 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }" class="page-link">
-																Prev
-																</a>
-															</li>
-														</c:if>
-														<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
-															<li class="page-item ${pgn.pgvo.pageNo == i ? 'active':''}"aria-current="page">
-																<a class="page-link" href="/book/list?pageNo=${i }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }">
-																	${i }
-																</a>
-															</li>
-														</c:forEach>
-														<c:if test="${pgn.next }">
-															<li class="page-item">
-																<a class="page-link" href="/book/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }">
-																Next
-																</a>
-															</li>
-														</c:if>
-													</ul> --%>
-									
-								
-								<div class="pagination">
+
+									<div class="pagination">
 										<c:if test="${pgn.prev}">
-											<a href="/faq/faqList?pageNo=${pgn.startPage-1}&qty=${pgn.pgvo.qty}">&nbsp<&nbsp</a> 
+											<a href="/book/list?pageNo=${pgn.startPage-1}&qty=${pgn.pgvo.qty}">&nbsp<&nbsp</a>
 										</c:if>
 										<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
-											<a href="/faq/faqList?pageNo=${i}&qty=${pgn.pgvo.qty}">&nbsp ${i} &nbsp</a>
+											<a href="/book/list?pageNo=${i}&qty=${pgn.pgvo.qty}">&nbsp ${i} &nbsp</a>
 										</c:forEach>
 										<c:if test="${pgn.next}">
-											<a href="/faq/faqList?pageNo=${pgn.endPage+1}&qty=${pgn.pgvo.qty}">&nbsp>&nbsp</a>
+											<a href="/book/list?pageNo=${pgn.endPage+1}&qty=${pgn.pgvo.qty}">&nbsp>&nbsp</a>
 										</c:if>
 									</div>
-								
+
 									<a href="/book/bkRegister">
 										<button type="button" class="btn btn-outline-info">상품등록</button>
 									</a>
 								</c:when>
 
 								<c:when test="${content eq 'bookDetail' }">
+								
 									<div class="tableBox tableNormal">
 
-										<table border="1" class="table table-hover">
+										<table border="1" class="table table-hover trBorder">
 											<tr>
-												<th>book_title</th>
+												<th>책제목</th>
 												<td>${bo.book_title }</td>
 											</tr>
 											<tr>
-												<th>book_writer</th>
+												<th>저자</th>
 												<td>${bo.book_writer }</td>
 											</tr>
 											<tr>
-												<th>book_price</th>
+												<th>정상가격</th>
 												<td>${bo.book_price }</td>
 											</tr>
 											<tr>
-												<th>book_saleprice</th>
+												<th>할인가격</th>
 												<td>${bo.book_saleprice }</td>
 											</tr>
 											<tr>
-												<th>book_sales</th>
+												<th>판매량</th>
 												<td>${bo.book_sales }</td>
 											</tr>
 											<tr>
-												<th>book_publisher</th>
+												<th>출판사</th>
 												<td>${bo.book_publisher }</td>
 											</tr>
+
 											<tr>
-												<th>book_writer_num</th>
-												<td>${bo.book_writer_num }</td>
-											</tr>
-											<tr>
-												<th>book_date</th>
+												<th>출판일</th>
 												<td>${bo.book_date }</td>
 											</tr>
 											<tr>
-												<th>book_count</th>
+												<th>수량</th>
 												<td>${bo.book_count }</td>
 											</tr>
 											<tr>
-												<th>book_content</th>
-												<td><textarea rows="5" cols="50">${bo.book_content }</textarea></td>
+												<th>책내용</th>
+												<td><textarea rows="5" cols="50" readonly="readonly">${bo.book_content }</textarea></td>
 											</tr>
 											<tr>
-												<th>book_cno</th>
+												<th>카테고리</th>
 												<td>${bo.book_cno }</td>
 											</tr>
-
-										</table>
-									</div>
-									<!-- file 표현라인 -->
-									<div>
-										<ul style="list-style: none;">
-											<!-- c:if 파일이 없으면 첨부 File이 없습니다. 출력 -->
-											<c:forEach items="${fList }" var="fvo">
-												<!-- 파일이 여러개 일 때 반복적으로 li 추가 -->
-												<li><c:choose>
-														<c:when test="${fvo.file_type > 0 }">
-															<div>
-																<!--D:~fileUpload/2022/12/28/dog.jpg -->
-																<img src="/upload/${fn:replace(fvo.save_dir,'\\','/')}/${fvo.uuid}_th_${fvo.file_name}" style="list-style: none;">
-															</div>
-														</c:when>
-														<c:otherwise>
-															<div>
-																<!-- 파일모양 아이콘을 넣어서 일반 파일임을 표현하면 됨. -->
-															</div>
-														</c:otherwise>
-													</c:choose> <!-- 파일이름, 등록일, 사이즈 -->
+											<tr>
+												<th>책사진</th>
+												<td>
+													<!-- file 표현라인 -->
 													<div>
-														<div>${fvo.file_name }</div>
-													</div></li>
-											</c:forEach>
-										</ul>
+														<ul style="list-style: none;">
+															<!-- c:if 파일이 없으면 첨부 File이 없습니다. 출력 -->
+															<c:forEach items="${fList }" var="fvo">
+																<!-- 파일이 여러개 일 때 반복적으로 li 추가 -->
+																<li><c:choose>
+																		<c:when test="${fvo.file_type > 0 }">
+																			<div>
+																				<!--D:~fileUpload/2022/12/28/dog.jpg -->
+																				<img src="/upload/${fn:replace(fvo.save_dir,'\\','/')}/${fvo.uuid}_th_${fvo.file_name}" style="list-style: none;">
+																			</div>
+																		</c:when>
+																		<c:otherwise>
+																			<div>
+																				<!-- 파일모양 아이콘을 넣어서 일반 파일임을 표현하면 됨. -->
+																			</div>
+																		</c:otherwise>
+																	</c:choose> <!-- 파일이름, 등록일, 사이즈 -->
+																	<div>
+																		<br>
+																		<div>${fvo.file_name }</div>
+																	</div></li>
+															</c:forEach>
+														</ul>
+													</div>
+
+												</td>
+											</tr>
+										</table>
+										<a href="/book/bkModify?book_num=${bo.book_num}"><button type="button" class="btn btn-outline-secondary">책 수정</button></a>
 									</div>
-									<a href="/book/bkModify?book_num=${bo.book_num}"><button type="button">책 수정</button></a>
 								</c:when>
 								<c:when test="${content eq 'bookRegister' }">
-									<div class="tableBox">
+								<h1>상품등록</h1>
+									<div class="tableBox tableNormal">
 										<form action="/book/bkRegister" method="post" enctype="multipart/form-data">
-											<table border="1" class="table table-hover">
+											<table border="1" class="table table-hover trBorder">
 												<tr>
 													<td>책제목</td>
 													<td><input type="text" name="book_title"></td>
@@ -676,10 +654,7 @@
 													<td>출판사</td>
 													<td><input type="text" name="book_publisher"></td>
 												</tr>
-												<tr>
-													<td>작가번호</td>
-													<td><input type="text" name="book_writer_num"></td>
-												</tr>
+										
 												<tr>
 													<td>출판일</td>
 													<td><input type="date" name="book_date"></td>
@@ -691,7 +666,7 @@
 												<tr>
 													<td>책이미지</td>
 													<td><input type="file" style="display: none;" id="files" name="files" multiple>
-														<button type="button" id="trigger">Files Upload</button></td>
+														<button type="button" id="trigger" class="btn btn-secondary">Files Upload</button></td>
 												</tr>
 												<tr>
 													<td>책소개내용</td>
@@ -716,71 +691,81 @@
 									<script src="/resources/js/bookRegister.js"></script>
 								</c:when>
 								<c:when test="${content eq 'bookModify' }">
-									<form action="/book/modify" method="post" enctype="multipart/form-data">
-										<table border="1" class="table table-hover">
-											<tr>
-												<th>book_num</th>
-												<td><input type="text" name="book_num" value="${bo.book_num }" readonly></td>
-											</tr>
-											<tr>
-												<th>book_title</th>
-												<td><input type="text" name="book_title" value="${bo.book_title }"></td>
-											</tr>
-											<tr>
-												<th>book_writer</th>
-												<td><input type="text" name="book_writer" value="${bo.book_writer }"></td>
-											</tr>
-											<tr>
-												<th>book_price</th>
-												<td><input type="text" name="book_price" value="${bo.book_price }"></td>
-											</tr>
-											<tr>
-												<th>book_publisher</th>
-												<td><input type="text" name="book_publisher" value="${bo.book_publisher }"></td>
-											</tr>
-											<tr>
-												<th>book_count</th>
-												<td><input type="text" name="book_count" value="${bo.book_count }"></td>
-											</tr>
-											<tr>
-												<th>book_content</th>
-												<td><textarea rows="5" cols="50" name="book_content">${bo.book_content }</textarea></td>
-											</tr>
-										</table>
-
-										<!-- file 표현라인 -->
-										<div>
-											<ul style="list-style: none;">
-												<c:forEach items="${fList }" var="fvo">
-													<!-- 파일이 여러개 일 때 반복적으로 li 추가 -->
-													<li><c:choose>
-															<c:when test="${fvo.file_type > 0 }">
-																<div>
-																	<!--D:~fileUpload/2022/12/28/dog.jpg -->
-																	<img src="/upload/${fn:replace(fvo.save_dir,'\\','/')}/${fvo.uuid}_th_${fvo.file_name}">
-																</div>
-															</c:when>
-															<c:otherwise>
-																<div>
-																	<!-- 파일모양 아이콘을 넣어서 일반 파일임을 표현하면 됨. -->
-																</div>
-															</c:otherwise>
-														</c:choose> <!-- 파일이름, 등록일, 사이즈 -->
+								<h1>상품수정</h1>
+									<div class="tableBox tableNormal">
+										<form action="/book/modify" method="post" enctype="multipart/form-data">
+											<table border="1" class="table table-hover">
+												<tr>
+													<th>책번호</th>
+													<td><input type="text" name="book_num" value="${bo.book_num }" readonly></td>
+												</tr>
+												<tr>
+													<th>책제목</th>
+													<td><input type="text" name="book_title" value="${bo.book_title }"></td>
+												</tr>
+												<tr>
+													<th>저자</th>
+													<td><input type="text" name="book_writer" value="${bo.book_writer }"></td>
+												</tr>
+												<tr>
+													<th>정상가격</th>
+													<td><input type="text" name="book_price" value="${bo.book_price }"></td>
+												</tr>
+												<tr>
+													<th>출판사</th>
+													<td><input type="text" name="book_publisher" value="${bo.book_publisher }"></td>
+												</tr>
+												<tr>
+													<th>수량</th>
+													<td><input type="text" name="book_count" value="${bo.book_count }"></td>
+												</tr>
+												<tr>
+													<th>책내용</th>
+													<td><textarea rows="5" cols="50" name="book_content">${bo.book_content }</textarea></td>
+												</tr>
+												<tr>
+													<th>책사진</th>
+													<td>
+														<!-- file 표현라인 -->
 														<div>
-															<div>${fvo.file_name }</div>
-															${fvo.reg_at }
-														</div> <span>${fvo.file_size } Byte</span>
-														<button type="button" data-uuid=${fvo.uuid } class="file-x">X</button></li>
-												</c:forEach>
-											</ul>
-										</div>
-										<!-- 파일 수정에 따른 등록라인 -->
-										<input type="file" style="display: none;" id="files" name="files" multiple>
-										<button type="button" id="trigger">Files Upload</button>
+															<ul style="list-style: none;">
+																<c:forEach items="${fList }" var="fvo">
+																	<!-- 파일이 여러개 일 때 반복적으로 li 추가 -->
+																	<li><c:choose>
+																			<c:when test="${fvo.file_type > 0 }">
+																				<div>
+																					<!--D:~fileUpload/2022/12/28/dog.jpg -->
+																					<img src="/upload/${fn:replace(fvo.save_dir,'\\','/')}/${fvo.uuid}_th_${fvo.file_name}">
+																				</div>
+																			</c:when>
+																			<c:otherwise>
+																				<div>
+																					<!-- 파일모양 아이콘을 넣어서 일반 파일임을 표현하면 됨. -->
+																				</div>
+																			</c:otherwise>
+																		</c:choose> <!-- 파일이름, 등록일, 사이즈 -->
+																		<div>
+																			<div>${fvo.file_name }</div>
+																			${fvo.reg_at }
+																		</div> <span>${fvo.file_size } Byte</span>
+																		<button type="button" data-uuid=${fvo.uuid } class="file-x">X</button></li>
+																</c:forEach>
+															</ul>
+														</div>
 
-										<div id="fileZone"></div>
-										<button type="submit" id="regBtn">수정</button>
-									</form>
+
+													</td>
+												</tr>
+											</table>
+											<!-- 파일 수정에 따른 등록라인 -->
+											<input type="file" style="display: none;" id="files" name="files" multiple>
+											<button type="button" id="trigger" class="btn btn-secondary">Files Upload</button>
+
+
+											<div id="fileZone"></div>
+											<button type="submit" id="regBtn" class="btn btn-secondary">수정</button>
+										</form>
+									</div>
 									<script src="/resources/js/bookRegister.js"></script>
 									<script src="/resources/js/bookRemove.js"></script>
 								</c:when>

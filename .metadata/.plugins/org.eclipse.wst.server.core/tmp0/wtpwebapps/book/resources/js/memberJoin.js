@@ -80,7 +80,7 @@
         };
 	function checkPw(){
 	var mem_pw = document.getElementById('mem_pw').value; //id값이 "id"인 입력란의 값을 저장
-	console.log(mem_pw);
+	//console.log(mem_pw);
 	$.ajax({
 		url:'/mem/pwCheck', //Controller에서 요청 받을 주소
 		type:'post', //POST 방식으로 전달
@@ -109,6 +109,41 @@
 
 	});
 	};	
+	
+	function checkPwRe(){
+	var mem_pw = document.getElementById('mem_pw').value; 
+	var mem_pwRe = document.getElementById('mem_pwRe').value; 
+	console.log(mem_pw);
+	console.log(mem_pwRe);
+	$.ajax({
+		url:'/mem/pwCheckRe', //Controller에서 요청 받을 주소
+		type:'post', //POST 방식으로 전달
+		data:{mem_pwRe:mem_pwRe,mem_pw:mem_pw},
+		success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
+			if(isOk == 'pwRe_ok'){ //ok이면 가입 가능
+				$('.pwRe_ok').css("display","inline-block"); 
+				$('.pwRe_rewrite').css("display", "none"); //정규식 어긋나면
+				$('.pwRe_null').css("display", "none");
+			}else if(isOk =='pwRe_null'){//input이 null값임. 입력 요청
+				$('.pwRe_ok').css("display","none"); 
+				$('.pwRe_rewrite').css("display", "none");
+				$('.pwRe_null').css("display", "inline-block");
+			} 
+			else { //중복일 경우
+				$('.pwRe_ok').css("display", "none");
+				$('.pwRe_rewrite').css("display","inline-block");
+				$('.pwRe_null').css("display", "none");
+				// alert("아이디를 다시 입력해주세요");
+				$('#mem_pwRe').val('');
+			}
+		},
+		error:function(request,status,error){
+		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}	
+
+	});
+	};	
+	
 	function checkCellNum(){
         var mem_cell_num = document.getElementById('mem_cell_num').value; //id값이 "id"인 입력란의 값을 저장
 		console.log(mem_cell_num);

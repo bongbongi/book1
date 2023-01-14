@@ -19,6 +19,8 @@ public interface NoticeService {
 
 	int getTotalCount(PagingVO pvo);
 
+	List<NoticeVO> getNoticeListOnly(PagingVO pvo);
+
 
 
 }

@@ -68,15 +68,7 @@ public class AdminController {
 		return "/member/memberAdmin";
 	}
 
-	@GetMapping("/boardModify")
-	public String boardModify(Model model, @RequestParam("brd_num") int brd_num) {
-		BoardVO board = bsv.getDetail(brd_num);
-		bdao.countup(brd_num);
-		model.addAttribute("board", board);
-		model.addAttribute("category", "mantoman");
-		model.addAttribute("content", "boardModify");
-		return "/member/memberAdmin";
-	}
+	
 
 	@PostMapping("/modify")
 	public String modify(RedirectAttributes reAttr, BoardVO bvo, Model model) {
@@ -94,7 +86,7 @@ public class AdminController {
 	public String remove(@RequestParam("brd_num") int brd_num) {
 		bdao.removerBoard(brd_num);
 		cdao.removeComment(brd_num);
-		return "/member/memberAdmin";
+		return "redirect:/admin/list";
 	}
 
 	@GetMapping("/memList")
