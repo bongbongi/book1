@@ -98,9 +98,13 @@ public class AdminController {
 	}
 
 	@GetMapping("/memList")
-	public String memList(Model model) {
-		List<MemberVO> list = msv.getMemList();
+	public String memList(Model model,PagingVO pvo) {
+		List<MemberVO> list = msv.getMemList(pvo);
+		 int totalCount=msv.totalCount();
+		 PagingHandler ph = new PagingHandler(pvo,totalCount);
+		
 		model.addAttribute("memLi", list);
+		model.addAttribute("pgh", ph);
 		model.addAttribute("category", "member");
 		model.addAttribute("content", "memberList");
 		return "/member/memberAdmin";

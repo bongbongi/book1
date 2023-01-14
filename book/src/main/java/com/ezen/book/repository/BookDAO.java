@@ -41,4 +41,6 @@ public interface BookDAO {
 
    BookVO getBookOne();
 
+	int getTotalCount2();
+
 }

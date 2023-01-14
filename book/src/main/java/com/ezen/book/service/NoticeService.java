@@ -7,7 +7,7 @@ import com.ezen.book.domain.PagingVO;
 
 public interface NoticeService {
 
-	List<NoticeVO> getNoticeList();
+	List<NoticeVO> getNoticeList(PagingVO pvo);
 
 	NoticeVO getDetail(int ntc_num);
 

@@ -9,6 +9,12 @@
 	</insert>
 	<select id="faqList" resultType="com.ezen.book.domain.FaqVO">
 		select * from faq
+		order by faq_num desc
+		limit #{pvo.pageStart},#{pvo.qty}
+		
+	</select>
+	<select id="getFaqListOnly" resultType="com.ezen.book.domain.FaqVO">
+	select * from faq
 	</select>
 	<select id="faqDetail" resultType="com.ezen.book.domain.FaqVO">
 		select * from faq where faq_num = #{faq_num}
@@ -20,4 +26,7 @@
 	<delete id="faqRemove">
 		delete from faq where faq_num = #{faq_num}
 	</delete>
+	<select id="totalCount" resultType="int">
+		select count(faq_num) from faq
+	</select>
 </mapper>

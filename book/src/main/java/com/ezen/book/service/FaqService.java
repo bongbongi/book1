@@ -4,17 +4,22 @@ import java.util.List;
 
 import com.ezen.book.domain.FaqVO;
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.PagingVO;
 
 public interface FaqService {
 
 	int register(FaqVO fvo);
 
-	List<FaqVO> getFaqList();
+	List<FaqVO> getFaqList(PagingVO pvo);
 
 	FaqVO getDetail(int faq_num);
 
 	int modifyFaq(FaqVO fvo);
 
 	int removeFaq(int faq_num, MemberVO mem);
+
+	int totalCount();
+
+	List<FaqVO> getFaqList();
 
 }

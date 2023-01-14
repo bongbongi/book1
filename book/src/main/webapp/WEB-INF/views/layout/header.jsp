@@ -21,9 +21,9 @@ body{
    /*  background-color: pink; */
 }
 .menu{
-	display: flex;
-	justify-content: flex-end;
-	padding:5px;
+   display: flex;
+   justify-content: flex-end;
+   padding:5px;
 
 }
 .logo{
@@ -32,11 +32,11 @@ body{
     background-color: blue;
 }
 .logo>a>img{
- 	width: 150px;
+    width: 150px;
     height: 150px;
 }
 .searchBar{
-	/* position:absolute; */
+   /* position:absolute; */
     width: 484px;
     height: 42px;
     /* background-color: gold; */
@@ -46,14 +46,14 @@ body{
 }
 .bar{
 
-	height: 150px; 
-	display: flex;
-	flex-direction: row;
-	flex-wrap:nowrap;
-	justify-content:space-around;
-/* 	align-items: baseline; */
-	
-	
+   height: 150px; 
+   display: flex;
+   flex-direction: row;
+   flex-wrap:nowrap;
+   justify-content:space-around;
+/*    align-items: baseline; */
+   
+   
 }
 i{
     font-size: 42px;
@@ -82,28 +82,49 @@ i{
         <ul><a href="#">장바구니</a></ul>
     </div>
     <div class="bar">
-	    <div class="logo">
-			<a href="/"><img src="../resources/img/logo.jpg" alt="로고"></a>
-	    </div>
-			  <div class="searchBar">         
-            <form action="/book/search" class="d-flex" role="search" method="get" >
-                 <input class="form-control me-2" name="keyword" type="text" placeholder="Search">
-                 <button class="btn btn-outline-success" type="submit" >Search</button>
-              </form>
-              
-              
-              
-              
-           
-         </div>
-			
-			
-			
-	    <div class="icons">	
-			<a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+       <div class="logo">
+         <a href="/"><img src="../resources/img/logo.jpg" alt="로고"></a>
+       </div>
+       
+       
+       
+
+      
+      
+      <div class="searchBar">         
+            <form action="/book/search" class="d-flex" role="search" method="get" >           
+                 <div class="input-group mb-3">
+               <!-- 값을 별도 저장 -->
+               <c:set value="${pgh.pgvo.type}" var="typed" />
+               <select class="form-select" name="type">
+                  <option value="t" ${typed eq 't' ? 'selected' :'' }>책제목</option>
+                  <option value="c" ${typed eq 'c' ? 'selected' :'' }>작가이름</option>
+                  <option value="w" ${typed eq 'w' ? 'selected' :'' }>출판사</option>
+               </select> 
+               <input class="form-control me-2" type="text" name="keyword" placeholder="포함해서찾기"> 
+               <input type="hidden" name="pageNo" value="1">
+               <input type="hidden" name="qty" value="10">
+               <button class="btn btn-outline-success" type="submit">Search</button>
+               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
+                  </span>
+               
+            </div>              
+             </form>
+      </div>   
+      
+      
+         
+      
+      
+       <div class="icons">   
+         <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
             <a href=""><i class="fa-solid fa-user"></i></a>
-	    </div>    
+       </div>    
     </div>
+    
+    
+    
 </div>
+
 </body>
 </html>

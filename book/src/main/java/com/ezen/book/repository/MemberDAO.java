@@ -2,9 +2,11 @@ package com.ezen.book.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.PagingVO;
 
 @Repository
 public interface MemberDAO {
@@ -31,11 +33,13 @@ public interface MemberDAO {
 
 	MemberVO getMember(String brd_writer);
 
-	List<MemberVO> memberList();
+	List<MemberVO> memberList(@Param("pvo")PagingVO pvo);
 
 	int memRemove(int mem_num);
 
 	MemberVO getUser(MemberVO attribute);
+
+	int totalCount();
 
 	
 

@@ -31,7 +31,7 @@ public class NoticeController {
 	
 	@GetMapping({"/noticeList","/notice"})
 	public String notice(Model model, PagingVO pvo){
-		List<NoticeVO> nvo = nsv.getNoticeList();
+		List<NoticeVO> nvo = nsv.getNoticeList(pvo);
 		model.addAttribute("notice_list", nvo);
 		model.addAttribute("content", "notice_list");
 		model.addAttribute("category", "notice");

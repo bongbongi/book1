@@ -12,7 +12,7 @@ import com.ezen.book.domain.PagingVO;
 @Repository
 public interface NoticeDAO {
 
-	List<NoticeVO> getNoticeList();
+	List<NoticeVO> getNoticeList(@Param("pvo")PagingVO pvo);
 
 	NoticeVO getDetail(int ntc_num);
 

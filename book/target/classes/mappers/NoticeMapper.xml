@@ -6,7 +6,9 @@
 		select count(ntc_num) from notice 
 	</select>
 	<select id="getNoticeList" resultType="com.ezen.book.domain.NoticeVO">
-		select * from notice order by ntc_num desc
+		select * from notice
+		order by ntc_num desc
+		limit #{pvo.pageStart}, #{pvo.qty}
 	</select>
 	<select id="getDetail" resultType="com.ezen.book.domain.NoticeVO">
 		select * from notice where ntc_num=#{ntc_num}

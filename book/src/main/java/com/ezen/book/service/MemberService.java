@@ -3,6 +3,7 @@ package com.ezen.book.service;
 import java.util.List;
 
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.PagingVO;
 
 public interface MemberService {
 
@@ -28,8 +29,10 @@ public interface MemberService {
 
 	int deleteMember(int mem_num);
 
-	List<MemberVO> getMemList();
+	List<MemberVO> getMemList(PagingVO pvo);
 
 	int removeMem(int mem_num, MemberVO member);
+
+	int totalCount();
 
 }

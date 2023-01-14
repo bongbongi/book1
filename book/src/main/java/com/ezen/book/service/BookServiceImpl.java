@@ -127,4 +127,9 @@ public class BookServiceImpl implements BookService {
       return bko.getBookOne();
    }
 
+@Override
+public int getTotalCount2() {
+	return bko.getTotalCount2();
+}
+
 }

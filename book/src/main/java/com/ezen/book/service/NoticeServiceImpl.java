@@ -20,8 +20,10 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeDAO ndao;
 
 	@Override
-	public List<NoticeVO> getNoticeList() {
-		return ndao.getNoticeList();
+	public List<NoticeVO> getNoticeList(PagingVO pvo) {
+		log.info("getPageStart"+pvo.getPageStart());
+		log.info("getQty"+pvo.getQty());
+		return ndao.getNoticeList(pvo);
 	}
 
 	@Override

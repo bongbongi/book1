@@ -1,9 +1,0 @@
-package com.ezen.book.service;
-
-import com.ezen.book.domain.BookVO;
-
-public interface BookService {
-
-	BookVO getBookList();
-
-}

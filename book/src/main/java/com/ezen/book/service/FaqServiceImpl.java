@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ezen.book.domain.FaqVO;
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.PagingVO;
 import com.ezen.book.repository.FaqDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,9 +25,9 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public List<FaqVO> getFaqList() {
+	public List<FaqVO> getFaqList(PagingVO pvo) {
 		log.info("FAQ 목록 체크1");
-		return fao.faqList();
+		return fao.faqList(pvo);
 	}
 
 	@Override
@@ -46,4 +47,17 @@ public class FaqServiceImpl implements FaqService {
 		log.info("FAQ 삭제 체크2");
 		return fao.faqRemove(faq_num);
 	}
+
+	@Override
+	public int totalCount() {
+		return fao.totalCount();
+	}
+
+	@Override
+	public List<FaqVO> getFaqList() {
+		// TODO Auto-generated method stub
+		return fao.getFaqListOnly();
+	}
+
+
 }

@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.PagingVO;
 import com.ezen.book.repository.MemberDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -161,8 +162,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberVO> getMemList() {
-		return mdao.memberList();
+	public List<MemberVO> getMemList(PagingVO pvo) {
+		return mdao.memberList(pvo);
 	}
 
 	@Override
@@ -174,6 +175,12 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO getMember(HttpServletRequest req) {
 		MemberVO mem = (MemberVO)req.getSession().getAttribute("ses");
 		return mem;
+	}
+
+	@Override
+	public int totalCount() {
+
+		return mdao.totalCount();
 	}
 
 }

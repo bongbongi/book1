@@ -6,28 +6,13 @@
 
 <head>
 
-<link rel="stylesheet" type="text/css" href="/resources/css/adminpage.css">
-<!-- <link rel="stylesheet" type="text/css" href="/resources/css/adminpageFaq.css"> -->
+<link rel="stylesheet" type="text/css" href="../resources/css/adminpage.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/mypageBoardDetail.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/adminpageNotice.css">
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<style>
-.accordion-flush {
-	margin: 0 auto;
-	width: 500px;
-}
 
-.bookRegisterBox {
-	width: 400px;
-	margin: 0 auto;
-	margin-top: 40px;
-}
-
-#logo {
-	width: 50px;
-	height: 50px;
-}
-</style>
 <body>
 	<script type="text/javascript">
 		const ses = '<c:out value="${ses.mem_id}" />';
@@ -39,7 +24,7 @@
 	<div class="main">
 		<div class="menu_wrap">
 			<ul class="de01">
-				<li><a href="/"> <img src="../resources/img/logo.jpg" alt="로고" id="logo"></a></li>
+				<li><a href="/"> <img src="/resources/img/logo.jpg" alt="로고" id="logo"></a></li>
 
 				<li><a href="/admin/memList">회원관리</a>
 					<ul class="de02">
@@ -72,8 +57,9 @@
 				<c:forEach items="${content}" var="content">
 					<c:choose>
 						<c:when test="${category eq 'member'}">
-							<div class="tableBox">
-								<table class="table">
+							<h1>회원관리</h1>
+							<div class="tableBox tableNormal">
+								<table class="table table-hover">
 									<thead class="table-dark">
 										<tr>
 											<th>회원번호</th>
@@ -96,14 +82,26 @@
 									</c:forEach>
 								</table>
 							</div>
+							<div class="pagination">
+								<c:if test="${pgh.prev}">
+									<a href="/admin/memList?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}"> < </a>
+								</c:if>
+								<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
+									<a href="/admin/memList?pageNo=${i}&qty=${pgh.pgvo.qty}">&nbsp ${i} &nbsp</a>
+								</c:forEach>
+								<c:if test="${pgh.next}">
+									<a href="/admin/memList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}"> > </a>
+								</c:if>
+							</div>
 						</c:when>
 
 
 						<c:when test="${category eq 'notice'}">
 							<c:choose>
 								<c:when test="${content eq 'notice_list'}">
-									<div class="tableBox">
-										<table class="table">
+									<h1>공지사항 관리</h1>
+									<div class="tableBox tableNormal">
+										<table class="table table-hover">
 											<thead class="table-dark">
 												<tr>
 													<th>NO</th>
@@ -125,76 +123,77 @@
 											</c:forEach>
 										</table>
 									</div>
-									<div>
+									<div class="pagination">
 										<c:if test="${pgh.prev}">
-											<a href="/ntc/noticeList?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}">prev</a>
+											<a href="/ntc/noticeList?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}"> < </a>
 										</c:if>
 										<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-											<a href="/ntc/noticeList?pageNo=${i}&qty=${pgh.pgvo.qty}">${i} ｜ </a>
+											<a href="/ntc/noticeList?pageNo=${i}&qty=${pgh.pgvo.qty}">&nbsp ${i} &nbsp</a>
 										</c:forEach>
 										<c:if test="${pgh.next}">
-											<a href="/ntc/noticeList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">next</a>
+											<a href="/ntc/noticeList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">></a>
 										</c:if>
 									</div>
 								</c:when>
 								<c:when test="${content eq 'noticeRegister' }">
-									<form action="/ntc/noticeRegister" method="post">
-									
-										<table class="table">
-										<thead class="table-dark">
-											<tr>
-
-												<th>공지제목</th>
-												<th>작성자</th>
-												<th>내용</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td><input type="text" name="ntc_title"></td>
-												<td><input type="text" name="ntc_writer" value="${ses.mem_name}" readonly="readonly"></td>
-
-												<td><input type="text" name="ntc_content"></td>
-											</tr>
-											</tbody>
-										</table>
-										<button type="submit">작성</button>
-									</form>
+				                       <h1>공지사항 등록</h1>
+							 <div class="boardRegisterBox">
+				                     <form action="/ntc/noticeRegister" method="post">
+				                        <div class="brd_titleAndWriter">
+				                           <label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				                           <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${ses.mem_id}" readonly><br>
+				                        </div>
+				                        <div class="contentBox">
+				                           <label for="ntc_content" class="contentLabel">내용</label><br>
+				                           <textarea rows="10" cols="100" name="ntc_content"></textarea>
+				                           <br>
+				                        </div>
+				
+				                        <button type="submit" class="btn btn-secondary">작성하기</button>
+				                     </form>
+				                  </div>
+								
 								</c:when>
 								<c:when test="${content eq 'noticeDetail' }">
-									<div class="noticeDetail">
+									<div class="mypage-right boardDetail tableNormal noticeDetail">
+										글번호 ${nvo.ntc_num}
 										<h2>${nvo.ntc_title}</h2>
-										${nvo.ntc_writer} ${nvo.ntc_regdate}
+										<sapn class="boardDetail-writer">${nvo.ntc_writer}</sapn>
+										<span class="boardDetail-regdate">${nvo.ntc_regdate}</span>
 										<hr>
-										${nvo.ntc_content} <Br> <a href="/ntc/notice">
-											<button type="button" class="btn btn-outline-secondary">공지사항 목록</button>
-										</a>
+										<div class="boardDetail-content">${nvo.ntc_content}</div>
+										<Br> <a href="/ntc/noticeModify?ntc_num=${nvo.ntc_num}">
+											<button type="button" class="btn btn-success">수정</button>
+										</a> <a href="/ntc/noticeDelete?ntc_num=${nvo.ntc_num}">
+											<button type="button" class="btn btn-danger">삭제</button>
+										</a><a href="/ntc/notice"><Br>
+											<button type="button" class="btn btn-outline-secondary">리스트 목록 이동</button> </a> <br>
+
 									</div>
 
-									<a href="/ntc/noticeModify?ntc_num=${nvo.ntc_num}"><button type="button">수정</button></a>
-									<a href="/ntc/noticeDelete?ntc_num=${nvo.ntc_num}"><button type="button">삭제</button></a>
+
+
+
+								
 								</c:when>
 								<c:when test="${content eq 'noticeModify' }">
-									<form action="/ntc/noticeModify" method="post">
-										<table border="1">
-											<tr>
-												<th>글번호</th>
-												<th>공지제목</th>
-												<th>작성자</th>
-												<th>내용</th>
-											</tr>
-
-											<tr>
-												<td><input type="text" name="ntc_num" value="${nvo.ntc_num}"></td>
-												<td><input type="text" name="ntc_title" value="${nvo.ntc_title}"></td>
-												<td><input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly="readonly"></td>
-
-												<td><input type="text" name="ntc_content" value="${nvo.ntc_content}"></td>
-											</tr>
-										</table>
-										<button type="submit">수정</button>
-										<a href="/ntc/noticeList"><button type="button">공지사항목록으로</button></a>
-									</form>
+								 <h1>공지사항 수정</h1>
+								 <div class="boardRegisterBox">
+				                    <form action="/ntc/noticeModify" method="post">
+				                        <div class="brd_titleAndWriter">
+				                           <label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title"  value="${nvo.ntc_title}" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				                           <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly><br>
+				                        </div>
+				                        <div class="contentBox-Input">
+				                           <label for="ntc_content" class="contentLabel">내용</label><br>
+				                           <input type="text" name="ntc_content" value="${nvo.ntc_content}">
+				                           <br>
+				                        </div>
+				
+				                        <button type="submit" class="btn btn-secondary">수정완료</button>
+				                        <a href="/ntc/noticeList"><button type="button"  class="btn btn-secondary">공지사항목록으로</button></a>
+				                     </form>
+				                  </div>
 								</c:when>
 							</c:choose>
 						</c:when>
@@ -204,14 +203,15 @@
 							<c:choose>
 
 								<c:when test="${content eq 'faqList' }">
-									<div class="tableBox">
-										<table class="table">
+									<h1>FAQ 관리</h1>
+									<div class="tableBox tableNormal">
+										<table class="table table-hover">
 											<thead class="table-dark">
 												<tr>
 													<th>공지사항 번호</th>
 													<th>질문</th>
 													<th>답변</th>
-												
+
 												</tr>
 
 											</thead>
@@ -219,14 +219,25 @@
 												<c:forEach items="${li }" var="faq">
 													<tr>
 														<td>${faq.faq_num }</td>
-														<td><a href="/faq/faqDetail?faq_num=${faq.faq_num}">${faq.faq_question }</a></td>
+														<td><a href="/faq/faqDetail?faq_num=${faq.faq_num}">${faq.faq_question
+																			}</a></td>
 														<td>${faq.faq_answer }</td>
 													</tr>
 												</c:forEach>
 											</tbody>
 										</table>
 									</div>
-
+									<div class="pagination">
+										<c:if test="${pgh.prev}">
+											<a href="/faq/faqList?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}"> << /a> 
+										</c:if>
+										<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
+											<a href="/faq/faqList?pageNo=${i}&qty=${pgh.pgvo.qty}">&nbsp ${i} &nbsp</a>
+										</c:forEach>
+										<c:if test="${pgh.next}">
+											<a href="/faq/faqList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">></a>
+										</c:if>
+									</div>
 
 								</c:when>
 								<c:when test="${content eq 'faqRegister' }">
@@ -248,22 +259,23 @@
 
 								</c:when>
 								<c:when test="${content eq 'faqDetail' }">
-									<table border="1">
-										<tr>
-											<th>faq_num</th>
-											<td>${fo.faq_num }</td>
-										</tr>
-										<tr>
-											<th>faq_question</th>
-											<td>${fo.faq_question }</td>
-										</tr>
-										<tr>
-											<th>faq_answer</th>
-											<td>${fo.faq_answer }</td>
-										</tr>
-									</table>
-									<a href="/faq/faqModify?faq_num=${fo.faq_num }">수정</a>
-									<a href="/faq/faqRemove?faq_num=${fo.faq_num }">삭제</a>
+								<div class="mypage-right boardDetail tableNormal noticeDetail">
+										글번호 ${fo.faq_num }
+										<h2>${fo.faq_question }</h2>
+										
+										<hr>
+										<div class="boardDetail-content">${fo.faq_answer }</div>
+										<Br> <a href="/faq/faqModify?faq_num=${fo.faq_num}">
+											<button type="button" class="btn btn-success">수정</button>
+										</a> <a href="/faq/faqRemove?faq_num=${fo.faq_num}">
+											<button type="button" class="btn btn-danger">삭제</button>
+										</a><a href="/ntc/notice"><Br>
+											<button type="button" class="btn btn-outline-secondary">리스트 목록 이동</button> </a> <br>
+
+									</div>
+								
+								
+								
 
 								</c:when>
 								<c:when test="${content eq 'faqModify' }">
@@ -291,9 +303,10 @@
 							<c:choose>
 
 								<c:when test="${content eq 'boardList' }">
-									<div class="tableBox">
-										<table class="table">
-											<h4>1대1문의</h4>
+									<h1>1대1 문의 관리</h1>
+									<div class="tableBox tableNormal">
+										<table class="table table-hover">
+
 											<thead class="table-dark">
 												<tr>
 													<th scope="col">글번호</th>
@@ -301,7 +314,7 @@
 													<th scope="col">카테고리</th>
 													<th scope="col">글쓴이</th>
 													<th scope="col">작성일자</th>
-													<th scope="col">조회수</th>
+
 												</tr>
 											</thead>
 
@@ -316,7 +329,7 @@
 																<td>${board.brd_category}</td>
 																<td>${board.brd_writer}</td>
 																<td>${board.brd_regdate}</td>
-																<td>${board.brd_views}</td>
+
 
 															</tr>
 														</tbody>
@@ -327,11 +340,11 @@
 															<td>${board.brd_num}</td>
 															<td><c:choose>
 																	<c:when test="${ses.mem_id eq board.brd_writer}">
-                                                               ${board.brd_title}
-                                                            </c:when>
+																					${board.brd_title}
+																				</c:when>
 																	<c:otherwise>
-                                                               ${board.brd_title}
-                                                            </c:otherwise>
+																					${board.brd_title}
+																				</c:otherwise>
 																</c:choose></td>
 															<td>${board.brd_category}</td>
 															<c:choose>
@@ -356,7 +369,7 @@
 												<a href="/admin/list?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">prev</a>
 											</c:if>
 											<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-												<a href="/admin/list?pageNo=${i}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">${i} ｜ </a>
+												<a href="/admin/list?pageNo=${i}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">&nbsp ${i} &nbsp</a>
 											</c:forEach>
 											<c:if test="${pgh.next}">
 												<a href="/admin/list?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">next</a>
@@ -387,7 +400,7 @@
 								</c:when>
 
 								<c:when test="${content eq 'boardDetail' }">
-									<div class="mypage-right boardDetail">
+									<div class="mypage-right boardDetail tableNormal">
 										글번호 ${board.brd_num}
 										<h2>${board.brd_title}</h2>
 										<sapn class="boardDetail-writer">${board.brd_writer}</sapn>
@@ -398,9 +411,8 @@
 											<button type="button" class="btn btn-success">수정</button>
 										</a> <a href="/admin/boardRemove?brd_num=${board.brd_num}">
 											<button type="button" class="btn btn-danger">삭제</button>
-										</a><a href="/admin/list">
-											<button type="button" class="btn btn-outline-secondary">1대1문의 리스트 목록</button>
-										</a> <br>
+										</a><a href="/admin/list"><Br>
+											<button type="button" class="btn btn-outline-secondary">1대1문의 리스트 목록</button> </a> <br>
 
 										<div class="container">
 											<div class="input-group my-3">
@@ -461,23 +473,23 @@
 						<c:when test="${category eq 'product'}">
 							<c:choose>
 								<c:when test="${content eq 'bookList' }">
+									<h1>상품 관리</h1>
 									<div class="tableBox">
-										<table border="1" class="table table-hover">
+										<table class="table table-hover tableBig">
 											<thead class="table-dark">
 												<tr>
 													<th>책번호</th>
 													<th>썸네일</th>
-													<th>책제목</th>
+													<th colspan="2">책제목</th>
 													<th>저자</th>
 													<th>정상가격</th>
 													<th>할인가격</th>
 													<th>판매량</th>
-													<th>출판사</th>
-													<th>작가번호</th>
+													<th>출판사</th>									
 													<th>출판일</th>
 													<th>수량</th>
-													<th>책내용</th>
-													<th>카테고리번호</th>
+													<!-- <th>책내용</th> -->
+													<th>카테고리</th>
 													<th>control</th>
 												</tr>
 											</thead>
@@ -486,90 +498,129 @@
 													<tr>
 														<td>${bo.bvo.book_num }</td>
 														<td><img src="/upload/${fn:replace(bo.save_dir,'\\','/')}/${bo.uuid}_th_${bo.file_name}" alt="bookThumbnail"></td>
-														<td>${bo.bvo.book_title }</td>
+														<td class="ellipsis-one" colspan="2">${bo.bvo.book_title }</td>
 														<td>${bo.bvo.book_writer }</td>
 														<td>${bo.bvo.book_price }</td>
 														<td>${bo.bvo.book_saleprice }</td>
 														<td>${bo.bvo.book_sales }</td>
-														<td>${bo.bvo.book_publisher }</td>
-														<td>${bo.bvo.book_writer_num }</td>
+														<td>${bo.bvo.book_publisher }</td>									
 														<td>${bo.bvo.book_date }</td>
 														<td>${bo.bvo.book_count }</td>
-														<td>${bo.bvo.book_content }</td>
+														<%-- <td class="ellipsis-one">${bo.bvo.book_content
+																		}</td> --%>
 														<td>${bo.bvo.book_cno }</td>
-														<td><a href="/book/detail?book_num=${bo.bvo.book_num }"><button class="view">view</button></a> <a href="/book/bkRemove?book_num=${bo.bvo.book_num }"><button class="delete">Delete</button></a></td>
+														<td>
+															<div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+																<a href="/book/detail?book_num=${bo.bvo.book_num }">
+																	<button type="button" class="btn btn-outline-dark">view</button>
+																</a><br> <a href="/book/bkRemove?book_num=${bo.bvo.book_num }">
+																	<button type="button" class="btn btn-outline-dark">Delete</button>
+																</a>
+															</div>
+
+														</td>
 													</tr>
 												</tbody>
 											</c:forEach>
 										</table>
 									</div>
 
+
 									<!-- paging line -->
-									<ul class="pagination justify-content-center">
-										<c:if test="${pgn.prev }">
-											<li class="page-item"><a href="/book/list?pageNo=${pgn.startPage - 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword=" ${pgn.pgvo.keyword }" class="page-link">Prev</a></li>
+								
+										<%-- 			<ul class="pagination justify-content-center">
+														<c:if test="${pgn.prev }">
+															<li class="page-item">
+																<a href="/book/list?pageNo=${pgn.startPage - 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }" class="page-link">
+																Prev
+																</a>
+															</li>
+														</c:if>
+														<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
+															<li class="page-item ${pgn.pgvo.pageNo == i ? 'active':''}"aria-current="page">
+																<a class="page-link" href="/book/list?pageNo=${i }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }">
+																	${i }
+																</a>
+															</li>
+														</c:forEach>
+														<c:if test="${pgn.next }">
+															<li class="page-item">
+																<a class="page-link" href="/book/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }">
+																Next
+																</a>
+															</li>
+														</c:if>
+													</ul> --%>
+									
+								
+								<div class="pagination">
+										<c:if test="${pgn.prev}">
+											<a href="/faq/faqList?pageNo=${pgn.startPage-1}&qty=${pgn.pgvo.qty}">&nbsp<&nbsp</a> 
 										</c:if>
 										<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
-											<li class="page-item ${pgn.pgvo.pageNo == i ? 'active':''}" aria-current="page"><a class="page-link" href="/book/list?pageNo=${i }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }">${i }</a></li>
+											<a href="/faq/faqList?pageNo=${i}&qty=${pgn.pgvo.qty}">&nbsp ${i} &nbsp</a>
 										</c:forEach>
-										<c:if test="${pgn.next }">
-											<li class="page-item"><a class="page-link" href="/book/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&keyword="${pgn.pgvo.keyword }">Next</a></li>
+										<c:if test="${pgn.next}">
+											<a href="/faq/faqList?pageNo=${pgn.endPage+1}&qty=${pgn.pgvo.qty}">&nbsp>&nbsp</a>
 										</c:if>
-									</ul>
+									</div>
+								
 									<a href="/book/bkRegister">
-										<button type="button" class="btn btn-outline-info">글쓰기</button>
+										<button type="button" class="btn btn-outline-info">상품등록</button>
 									</a>
-
 								</c:when>
 
 								<c:when test="${content eq 'bookDetail' }">
-									<table border="1" class="table table-hover">
-										<tr>
-											<th>book_title</th>
-											<td>${bo.book_title }</td>
-										</tr>
-										<tr>
-											<th>book_writer</th>
-											<td>${bo.book_writer }</td>
-										</tr>
-										<tr>
-											<th>book_price</th>
-											<td>${bo.book_price }</td>
-										</tr>
-										<tr>
-											<th>book_saleprice</th>
-											<td>${bo.book_saleprice }</td>
-										</tr>
-										<tr>
-											<th>book_sales</th>
-											<td>${bo.book_sales }</td>
-										</tr>
-										<tr>
-											<th>book_publisher</th>
-											<td>${bo.book_publisher }</td>
-										</tr>
-										<tr>
-											<th>book_writer_num</th>
-											<td>${bo.book_writer_num }</td>
-										</tr>
-										<tr>
-											<th>book_date</th>
-											<td>${bo.book_date }</td>
-										</tr>
-										<tr>
-											<th>book_count</th>
-											<td>${bo.book_count }</td>
-										</tr>
-										<tr>
-											<th>book_content</th>
-											<td><textarea rows="5" cols="50">${bo.book_content }</textarea></td>
-										</tr>
-										<tr>
-											<th>book_cno</th>
-											<td>${bo.book_cno }</td>
-										</tr>
+									<div class="tableBox tableNormal">
 
-									</table>
+										<table border="1" class="table table-hover">
+											<tr>
+												<th>book_title</th>
+												<td>${bo.book_title }</td>
+											</tr>
+											<tr>
+												<th>book_writer</th>
+												<td>${bo.book_writer }</td>
+											</tr>
+											<tr>
+												<th>book_price</th>
+												<td>${bo.book_price }</td>
+											</tr>
+											<tr>
+												<th>book_saleprice</th>
+												<td>${bo.book_saleprice }</td>
+											</tr>
+											<tr>
+												<th>book_sales</th>
+												<td>${bo.book_sales }</td>
+											</tr>
+											<tr>
+												<th>book_publisher</th>
+												<td>${bo.book_publisher }</td>
+											</tr>
+											<tr>
+												<th>book_writer_num</th>
+												<td>${bo.book_writer_num }</td>
+											</tr>
+											<tr>
+												<th>book_date</th>
+												<td>${bo.book_date }</td>
+											</tr>
+											<tr>
+												<th>book_count</th>
+												<td>${bo.book_count }</td>
+											</tr>
+											<tr>
+												<th>book_content</th>
+												<td><textarea rows="5" cols="50">${bo.book_content }</textarea></td>
+											</tr>
+											<tr>
+												<th>book_cno</th>
+												<td>${bo.book_cno }</td>
+											</tr>
+
+										</table>
+									</div>
 									<!-- file 표현라인 -->
 									<div>
 										<ul style="list-style: none;">

@@ -38,4 +38,6 @@ public interface BookService {
 
    BookVO getBookOne();
 
+int getTotalCount2();
+
 }

@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.book.domain.FaqVO;
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.PagingVO;
+import com.ezen.book.handler.PagingHandler;
 import com.ezen.book.repository.MemberDAO;
 import com.ezen.book.service.FaqService;
 
@@ -48,11 +50,13 @@ public class FaqController {
    }
    
    @GetMapping("/faqList") //관리자 faq리스트
-   public String faqList(Model model) {
-      List<FaqVO> list = fs.getFaqList();
+   public String faqList(Model model,PagingVO pvo) {
+      List<FaqVO> list = fs.getFaqList(pvo);
+      int totalCount=fs.totalCount();
+      PagingHandler ph  =  new PagingHandler(pvo, totalCount);
       model.addAttribute("li", list);
       log.info("FAQ 목록 체크2");
-      
+      model.addAttribute("pgh",ph);
       model.addAttribute("category", "faq");
       model.addAttribute("content", "faqList");
       return "/member/memberAdmin";

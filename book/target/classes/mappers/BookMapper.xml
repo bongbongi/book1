@@ -7,18 +7,21 @@
       select * from book order by book_sales desc
    </select>
    
+   
+   
+   
    <select id="selectBookListPaging"
       resultType="com.ezen.book.domain.BookVO">
-      select*from book where
-      book_title like CONCAT('%',
-      #{keyword}, '%')
+      select*from book where book_num>0
+      <include refid="search"></include>
       order by book_num desc limit #{pageStart},#{qty}
    </select>
 
+
    <select id="searchBookTotalCount" resultType="int">
       select
-      count(book_num) from book where book_title like CONCAT('%',
-      #{keyword}, '%')
+      count(book_num) from book where book_num>0
+      <include refid="search"></include>   
    </select>
 
    <select id="getBookList2"
@@ -30,13 +33,13 @@
       parameterType="com.ezen.book.domain.BookVO">
       insert into book(book_title, book_writer, book_price,
       book_saleprice,
-      book_sales, book_publisher, book_writer_num, book_date,
+      book_sales, book_publisher, book_date,
       book_count,book_content, book_cno)
       values
       (#{book_title},
       #{book_writer}, #{book_price},#{book_saleprice},
       #{book_sales},
-      #{book_publisher}, #{book_writer_num}, #{book_date},
+      #{book_publisher},  #{book_date},
       #{book_count},
       #{book_content}, #{book_cno})
    </insert>
@@ -46,10 +49,12 @@
       <!-- select * from book a left join file b on a.book_num = b.book_num order 
          by a.book_num desc limit #{pageStart}, #{qty} -->
    </select>
+   
    <select id="searchTotalCount" resultType="int">
       select count(book_num)
       from book
    </select>
+   
    <select id="selectOneBookNum" resultType="int">
       select max(book_num)
       from book
@@ -78,6 +83,36 @@
    <select id="getBookOne" resultType="com.ezen.book.domain.BookVO">
       select*from book order by rand() limit 1;
    </select>
+   
+   <sql id="search">
+      <if test="type != null">
+         <trim prefix="and (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeToArray" item="type">
+               <trim prefix="OR">
+                  <choose>
+                     <when test="type=='t'.toString()">
+                        book_title like CONCAT('%', #{keyword}, '%')
+                     </when>
+                     <when test="type=='c'.toString()">
+                        book_writer like CONCAT('%', #{keyword}, '%')
+                     </when>
+                     
+                     <when test="type=='w'.toString()">
+                        book_publisher like CONCAT('%', #{keyword}, '%')
+                        
+                     </when>
+                     
+                  </choose>
+               </trim>
+            </foreach>
+         </trim>
+      </if>
+   </sql>
+   
+   <select id="getTotalCount2" resultType="int">
+		select count(book_num) from book
+	</select>
+   
    
    
 </mapper>
