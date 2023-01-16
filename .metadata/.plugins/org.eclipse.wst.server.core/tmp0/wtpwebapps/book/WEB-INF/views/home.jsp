@@ -103,17 +103,20 @@
 .d-block {
 	height: 500px;
 }
-
+.rank{
+	margin-top:8px;
+}
 .rank>i {
-	margin: 5px;
+	margin-right:0px;
 	padding: 0;
 	text-align: center;
 	/*    text-align: left; */
 }
 
-.fa-1 {
+.fa-solid {
 	font-size: 15px;
-	margin-left: 8px;
+	
+	margin-top:3px;
 }
 
 .foot-ad {
@@ -245,14 +248,18 @@ padding-bottom: 0.14em
 					<h1>베스트 셀러</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="10">
+							<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">
 								<li class="Best_item">
-									<div class="rank">
-										<i class="fa-solid fa-1"></i>
+									<div class="rank">		
+										<i class="fa-solid fa-${i.count}"></i>
+										<c:if test="${i.count > 9}">
+											<i class="fa-solid fa-1"></i>
+											<i class="fa-solid fa-0"></i>
+										</c:if>
 									</div>
 									<div class="img_box">
 										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
-											<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+											<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 										</a>
 									</div>
 									<div class="info_box">
@@ -273,13 +280,14 @@ padding-bottom: 0.14em
 					<h1>베스트 셀러</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="10">
+							<c:forEach items="${book_list}" var="list" begin="0" end="9">
 								<li class="Best_item">
 									<div class="rank">
 										<i class="fa-solid fa-1"></i>
 									</div>
 									<div class="img_box">
-										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+										<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 										</a>
 									</div>
 									<div class="info_box">
@@ -299,13 +307,14 @@ padding-bottom: 0.14em
 					<h1>베스트 셀러</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="10">
+							<c:forEach items="${book_list}" var="list" begin="0" end="9">
 								<li class="Best_item">
 									<div class="rank">
 										<i class="fa-solid fa-1"></i>
 									</div>
 									<div class="img_box">
-										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+										<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 										</a>
 									</div>
 									<div class="info_box">
@@ -325,13 +334,14 @@ padding-bottom: 0.14em
 					<h1>베스트 셀러</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="10">
+							<c:forEach items="${book_list}" var="list" begin="0" end="9">
 								<li class="Best_item">
 									<div class="rank">
 										<i class="fa-solid fa-1"></i>
 									</div>
 									<div class="img_box">
-										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+										<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 										</a>
 									</div>
 									<div class="info_box">
@@ -351,13 +361,14 @@ padding-bottom: 0.14em
 					<h1>베스트 셀러</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="10">
+							<c:forEach items="${book_list}" var="list" begin="0" end="9">
 								<li class="Best_item">
 									<div class="rank">
 										<i class="fa-solid fa-1"></i>
 									</div>
 									<div class="img_box">
-										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+										<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 										</a>
 									</div>
 									<div class="info_box">
@@ -377,13 +388,14 @@ padding-bottom: 0.14em
 					<h1>베스트 셀러</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="10">
+							<c:forEach items="${book_list}" var="list" begin="0" end="9">
 								<li class="Best_item">
 									<div class="rank">
 										<i class="fa-solid fa-1"></i>
 									</div>
 									<div class="img_box">
-										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+										<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 										</a>
 									</div>
 									<div class="info_box">
@@ -403,13 +415,16 @@ padding-bottom: 0.14em
 			<h1>오늘의 책</h1>
 			<div class="BestSeller">
 				<ul class="BestSellerList">
-					<c:forEach items="${randombook}" var="list" begin="0" end="10">
+					<c:forEach items="${randombook}" var="list" begin="0" end="9">
 						<li class="Best_item">
 							<div class="rank">
-								<i class="fa-solid fa-1"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
 							</div>
 							<div class="img_box">
-								<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_th_${list.file_name}" alt="bookThumbnail">
+								<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+								<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
 								</a>
 							</div>
 							<div class="info_box">

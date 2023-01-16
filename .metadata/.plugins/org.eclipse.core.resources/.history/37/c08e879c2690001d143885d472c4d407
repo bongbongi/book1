@@ -1,9 +1,0 @@
-@charset "UTF-8";
-.main{
-	width:1260px;
-	margin: 0 auto;
-}
-.intro{
-   display: flex;
-   justify-content: flex-start;
-}

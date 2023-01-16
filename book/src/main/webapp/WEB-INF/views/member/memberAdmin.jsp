@@ -639,18 +639,6 @@ a {
 													<td><input type="text" name="book_writer"></td>
 												</tr>
 												<tr>
-													<td>책가격</td>
-													<td><input type="text" name="book_price"></td>
-												</tr>
-												<tr>
-													<td>할인가격</td>
-													<td><input type="text" name="book_saleprice"></td>
-												</tr>
-												<tr>
-													<td>판매량</td>
-													<td><input type="text" name="book_sales"></td>
-												</tr>
-												<tr>
 													<td>출판사</td>
 													<td><input type="text" name="book_publisher"></td>
 												</tr>
@@ -660,8 +648,21 @@ a {
 													<td><input type="date" name="book_date"></td>
 												</tr>
 												<tr>
+													<td>책가격</td>
+													<td><input type="text" name="book_price"></td>
+												</tr>
+												<tr>
+													<td>할인가격</td>
+													<td><input type="text" name="book_saleprice"></td>
+												</tr>
+												<tr>
+													<td>판매량</td>
+													<td><input type="text" name="book_sales" value=0></td>
+												</tr>
+												
+												<tr>
 													<td>책수량</td>
-													<td><input type="text" name="book_count"></td>
+													<td><input type="text" name="book_count"  value=100></td>
 												</tr>
 												<tr>
 													<td>책이미지</td>

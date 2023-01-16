@@ -9,20 +9,20 @@
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
 			<item value="product"/>
+			<item value="faqlist"/>
+			<item value="mno"/>
+			<item value="mem"/>
+			<item value="1.8"/>
+			<item value="hika"/>
+			<item value="api"/>
+			<item value="11"/>
+			<item value="springframework"/>
 			<item value="fix"/>
 			<item value="noticeList"/>
 			<item value="32px"/>
 			<item value="padding"/>
 			<item value="member"/>
 			<item value="리스트"/>
-			<item value="리스트목록"/>
-			<item value="리스트모"/>
-			<item value="faqdetail"/>
-			<item value="manto"/>
-			<item value="faqmodi"/>
-			<item value="faqre"/>
-			<item value="total"/>
-			<item value="search"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

@@ -35,6 +35,6 @@ public interface MemberService {
 
 	int totalCount();
 
-	String pwCheckRe(String mem_pw, String mem_pwRe);
+	String pwCheckRe(String mem_pwRe);
 
 }

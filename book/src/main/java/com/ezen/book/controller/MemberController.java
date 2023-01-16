@@ -67,17 +67,19 @@ public class MemberController {
 	@PostMapping("pwCheck") // 회원가입시 pw가 null,정규화부합 확인 메서드
 	@ResponseBody
 	public String pwCheck(MemberVO mvo) {
+		log.info("컨트롤러 pw 체크 : "+mvo.getMem_pw());
 		String isOk = msv.pwCheck(mvo.getMem_pw());
 		mvo.setMem_pw(mvo.getMem_pw());
-//		log.info(mvo.getMem_pw());
+		log.info("pwCheck : "+mvo.getMem_pw());
 		return isOk;
 	}
 	@PostMapping("pwCheckRe") // 회원가입시 pw 재확인 메서드
 	@ResponseBody
-	public String pwCheckRe(@RequestParam("mem_pw")String mem_pw,@RequestParam("mem_pwRe")String mem_pwRe) {
-		log.info("mem_pw : "+mem_pw);
+	public String pwCheckRe(@RequestParam("mem_pwRe")String mem_pwRe) {
+		//@RequestParam(value="mem_pw", required=false)String mem_pw,
+		//log.info("mem_pw : "+mem_pw);
 		log.info("mem_pwRe : "+mem_pwRe);
-		String isOk = msv.pwCheckRe(mem_pw,mem_pwRe);
+		String isOk = msv.pwCheckRe(mem_pwRe);
 		log.info("비번 체크 Re isok : " + isOk);
 		return isOk;
 	}

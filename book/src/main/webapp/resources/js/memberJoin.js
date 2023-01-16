@@ -78,9 +78,15 @@
 
         });
         };
+        
+        
+        
+    
+    
+        
 	function checkPw(){
-	var mem_pw = document.getElementById('mem_pw').value; //id값이 "id"인 입력란의 값을 저장
-	//console.log(mem_pw);
+	 var mem_pw = document.getElementById('mem_pw').value; //pw값이 "pw"인 입력란의 값을 저장
+	console.log("js mem_pw 출력 : "+mem_pw);
 	$.ajax({
 		url:'/mem/pwCheck', //Controller에서 요청 받을 주소
 		type:'post', //POST 방식으로 전달
@@ -111,7 +117,6 @@
 	};	
 	
 	function checkPwRe(){
-	var mem_pw = document.getElementById('mem_pw').value; 
 	var mem_pwRe = document.getElementById('mem_pwRe').value; 
 	console.log(mem_pw);
 	console.log(mem_pwRe);

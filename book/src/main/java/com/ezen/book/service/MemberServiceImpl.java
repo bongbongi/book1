@@ -23,6 +23,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO mdao;
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
+	private String pwCheck; //ajax에서 넘어온 pw를 저장할 변수
 
 	@Override
 	public String idCheck(String mem_id) {
@@ -46,9 +47,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String pwCheck(String mem_pw) {
 		// 비밀번호 유효성 검사 : 비밀번호가 입력되었는지 체크
-		// 정규식 (영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리)
-		String pwPattern = "^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-z])(?=.*[A-Z]).{9,12}$";
-		String pwCheck = mem_pw;
+		// 정규식 (영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리) 
+		// "^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-z])(?=.*[A-Z]).{9,12}$";
+		
+		//영문(대소문자 구분x), 숫자, 특수문자 조합, 9~12자리
+		String pwPattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{9,12}$";
+		pwCheck = mem_pw;
 
 		// null값일 경우
 		if (pwCheck == null || pwCheck.length() == 0) {
@@ -63,17 +67,18 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String pwCheckRe(String mem_pw, String mem_pwRe) {
-		String pwCheck = mem_pw;
+	public String pwCheckRe(String mem_pwRe) {
+		log.info("pw_check 테스트 : "+pwCheck);
+	
 		// null값일 경우
 		if (mem_pwRe == null || mem_pwRe.length() == 0) {
 			return "pwRe_null";
 		}
 		// 비밀번호와 비밀번호재입력값이 맞는지 확인
-		if (pwCheck != mem_pwRe) {
-			return "pwRe_rewrite";
+		if (pwCheck.equals(mem_pwRe)) {
+			return "pwRe_ok";
 		}
-		return "pwRe_ok";
+		return "pwRe_rewrite";
 	}
 
 	@Override

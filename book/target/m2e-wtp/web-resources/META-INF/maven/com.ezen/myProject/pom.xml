@@ -95,7 +95,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.0</version>
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -141,6 +141,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- spring-text -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -233,7 +239,12 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.11.3</version>
 		</dependency>
-
+		<!-- HikariCP  -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>4.0.3</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -86,7 +86,7 @@
          
       <div class="abcd">
          <div class="pyoji">
-            <img src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_th_${book.file_name}" style="list-style:none;">
+            <img src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name}" style="list-style:none;">
          </div>
          <div class="seoji">
             서지 정보<br> 판매가 OOOOO원<br> 어쩌구저쩌구<br> 배송료 OOOO원<br> 어쩌구<br>

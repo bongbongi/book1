@@ -30,39 +30,6 @@
 </style>
 </head>
 <body>
-<script type="text/javascript">
-function checkPwRe(){
-	var mem_pwRe = document.getElementById('mem_pwRe').value; //id값이 "id"인 입력란의 값을 저장
-	console.log(mem_pwRe);
-	$.ajax({
-		url:'/mem/pwCheckRe', //Controller에서 요청 받을 주소
-		type:'post', //POST 방식으로 전달
-		data:{mem_pwRe:mem_pwRe},
-		success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
-			if(isOk == 'pwRe_ok'){ //ok이면 가입 가능
-				$('.pwRe_ok').css("display","inline-block"); 
-				$('.pwRe_rewrite').css("display", "none"); //정규식 어긋나면
-				$('.pwRe_null').css("display", "none");
-			}else if(isOk =='pwRe_null'){//input이 null값임. 입력 요청
-				$('.pwRe_ok').css("display","none"); 
-				$('.pwRe_rewrite').css("display", "none");
-				$('.pwRe_null').css("display", "inline-block");
-			} 
-			else { //중복일 경우
-				$('.pwRe_ok').css("display", "none");
-				$('.pwRe_rewrite').css("display","inline-block");
-				$('.pwRe_null').css("display", "none");
-				// alert("아이디를 다시 입력해주세요");
-				$('#mem_pwRe').val('');
-			}
-		},
-		error:function(request,status,error){
-		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}	
-
-	});
-	};	
-</script>
 	<form action="/mem/join" method="post">
 		<div class="join-container">
 			<div class="logo">
@@ -71,7 +38,7 @@ function checkPwRe(){
 			<lable for="mem_id">ID</lable>
 			<br> <input type="text" class="join-input" name="mem_id" id="mem_id" placeholder="아이디" onchange="checkId()" required> <span class="id_ok"><i class="fa-solid fa-check"></i></span> <span class="id_duplicate"><i class="fa-solid fa-x"></i></span> <span class="id_null"><i class="fa-solid fa-x"></i></span> <Br>
 			<lable for="mem_pw">PW</lable>
-			<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> <span class="pw_ok"><i class="fa-solid fa-check"></i></span> <span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pw_null"><i class="fa-solid fa-x"></i></span><br>
+			<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분X), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> <span class="pw_ok"><i class="fa-solid fa-check"></i></span> <span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pw_null"><i class="fa-solid fa-x"></i></span><br>
 
 			<lable for="mem_pwRe">PW Re</lable>
 			<br> <input type="password" class="join-input" name="mem_pwRe" id="mem_pwRe" placeholder="비밀번호 확인을 위해 한번 더 입력해주세요" onchange="checkPwRe()" required> <span class="pwRe_ok"><i class="fa-solid fa-check"></i></span> <span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
@@ -90,8 +57,8 @@ function checkPwRe(){
 			</select> <br>
 			<lable for="mem_cell_num">PHONE</lable>
 			<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
-			<lable for="mno_cno">FAVORITE</lable>
-			<br> <select class="join-input" name="mno_cno">
+			<lable for="mem_cno">FAVORITE</lable>
+			<br> <select class="join-input" name="mem_cno">
 
 				<option value="novel">소설</option>
 				<option value="essay">에세이</option>
