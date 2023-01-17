@@ -191,11 +191,18 @@ padding-bottom: 0.14em
 								<li><a class="dropdown-item" href="/interest/?mem_cno=5">문제집</a></li>
 							</ul></li>
 						<li class="nav-item"><a class="nav-link" href="/"></a></li>
-						<c:if test="${ses.mem_id !=null}">
-							<li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
-
-							<li class="nav-item"><a class="nav-link" href="/interest/?mem_cno=${ses.mem_cno}">나의 관심 카테고리 책</a></li>
-						</c:if>
+						
+						
+						<c:if test="${ses.mem_id ne null}">
+		                  <c:if test="${ses.mem_rating eq null}">                  
+		                  <li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>                  
+		                  <li class="nav-item"><a class="nav-link" href="/interest/?mem_cno=${ses.mem_cno}">나의 관심 카테고리 책</a></li>
+		                  </c:if>                        
+		                  <c:if test="${ses.mem_rating ne null}">
+		                  <li class="nav-item"><a class="nav-link" href="/event">이벤트참여완료</a></li>                  
+		                  <li class="nav-item"><a class="nav-link" href="/interest/?mem_cno=${ses.mem_cno}">나의 관심 카테고리 책</a></li>
+		                  </c:if>
+		                 </c:if>
 					</ul>
 				</div>
 			</div>
@@ -308,7 +315,7 @@ padding-bottom: 0.14em
 			<c:when test="${content eq 'essay'}">
 
 				<div class="hidden">
-					<h1>essat top10</h1>
+					<h1>essay top10</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
 								<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">

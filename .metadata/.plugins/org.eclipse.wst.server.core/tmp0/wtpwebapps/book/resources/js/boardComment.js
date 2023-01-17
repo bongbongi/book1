@@ -37,7 +37,7 @@ document.getElementById('cmtPostBtn').addEventListener('click',()=>{
                 alert('댓글 등록 성공~!!');
             }
             //화면에 출력
-            getCommentList(cmtData.cot_brd_num);
+            getCommentList(cmtData.cot_brd_num,auth);
         });
     }
 });
@@ -53,9 +53,9 @@ async function spreadCommentFromServer(cot_brd_num){
     }
 }
 
-function getCommentList(cot_brd_num){
+function getCommentList(cot_brd_num,auth){
+   if(auth==0){
     spreadCommentFromServer(cot_brd_num).then(result=>{
-
     console.log(result);
     const ul=document.getElementById('cmtListArea');
     if(result.length>0){
@@ -77,6 +77,28 @@ function getCommentList(cot_brd_num){
                 ul.innerHTML+=li;
             }
     })
+    }else{
+    spreadCommentFromServer(cot_brd_num).then(result=>{
+    console.log(result);
+    const ul=document.getElementById('cmtListArea');
+    if(result.length>0){
+        ul.innerHTML="";
+        for(let cvo of result){
+            let li=`<li data-cot_num="${cvo.cot_num}" class="list-group-item d-flex justify-content-between align-items-start">`;
+                li+=`<div class="ms-2 me-auto"><div class="fw-bold">${cvo.cot_writer}</div>`;
+                li+=`<input type="text" class="form-control" id="cmtTextMod" value="${cvo.cot_content}" readonly></div>`;
+                li+=`<span class="badge bg-dark rounded-pill">${cvo.cot_regdate}</span>`;
+              
+                li+=`</li>`;
+                ul.innerHTML+=li;
+            }
+        }else{
+                let li=`<li class="list-group-item d-flex justify-content-between align-items-start">`;
+                ul.innerHTML+=li;
+            }
+    })
+    
+    }
 }
 
 async function editCommentToServer(cmtTextMod){
@@ -112,7 +134,7 @@ document.addEventListener('click',(e)=>{
             if(result>0){
                 alert('댓글 수정 성공~!!');
             }
-            getCommentList(bnoVal);
+            getCommentList(bnoVal,auth);
         });
     }else if(e.target.classList.contains('del')){
         //삭제 값 처리
@@ -125,7 +147,7 @@ document.addEventListener('click',(e)=>{
 
                     alert("댓글 삭제 성공");
                 }
-                getCommentList(bnoVal);
+                getCommentList(bnoVal,auth);
             })
     }
 }
@@ -148,6 +170,5 @@ async function deleteCommentToServer(cnoVal){
         console.log(error);
     }
 }
-
 
 

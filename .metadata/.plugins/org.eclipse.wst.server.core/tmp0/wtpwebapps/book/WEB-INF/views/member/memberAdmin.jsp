@@ -463,16 +463,18 @@ a {
 										</div>
 
 
-										<script type="text/javascript">
-											const bnoVal = '<c:out value="${board.brd_num}" />';
-											const id = '<c:out value="${ses.mem_id}"/>'
-											console.log(id);
-											console.log(bnoVal);
-										</script>
-										<script type="text/javascript" src="/resources/js/boardComment.js"></script>
-										<script type="text/javascript">
-											getCommentList(bnoVal, id);
-										</script>
+										 <script type="text/javascript">
+                     const bnoVal = '<c:out value="${board.brd_num}" />';
+                  
+                     const auth = '<c:out value="${ses.mem_auth}"/>';
+          
+                     console.log(auth);
+                     console.log(bnoVal);
+                  </script>
+                  <script type="text/javascript" src="/resources/js/boardComment.js"></script>
+                  <script type="text/javascript">
+                     getCommentList(bnoVal, auth);
+                  </script>
 									</div>
 
 								</c:when>

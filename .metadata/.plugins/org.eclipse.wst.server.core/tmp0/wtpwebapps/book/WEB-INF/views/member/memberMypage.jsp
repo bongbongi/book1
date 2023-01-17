@@ -13,6 +13,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 <script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link href="/resources/css/memberJoin.css" type="text/css" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageDelete.css">
@@ -32,10 +33,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 			location.href = '/';
 		}
 	</script>
-	<script type="text/javascript" src="/resources/js/boardComment.js"></script>
-	<script type="text/javascript">
-		getCommentList(bnoVal, id);
-	</script>
+
 	<div class="main">
 		<!-- 왼쪽 메뉴 -->
 		<div class="select">
@@ -484,16 +482,21 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 						</div>
 
 
-						<script type="text/javascript">
-							const bnoVal = '<c:out value="${board.brd_num}" />';
-							const id = '<c:out value="${ses.mem_id}"/>'
-							console.log(id);
-							console.log(bnoVal);
-						</script>
-						<script type="text/javascript" src="/resources/js/boardComment.js"></script>
-						<script type="text/javascript">
-							getCommentList(bnoVal, id);
-						</script>
+						
+						
+						
+				<script type="text/javascript">
+                     const bnoVal = '<c:out value="${board.brd_num}" />';
+                  
+                     const auth = '<c:out value="${ses.mem_auth}"/>';
+          
+                     console.log(auth);
+                     console.log(bnoVal);
+                  </script>
+                  <script type="text/javascript" src="/resources/js/boardComment.js"></script>
+                  <script type="text/javascript">
+                     getCommentList(bnoVal, auth);
+                  </script>
 					</div>
 
 				</c:when>

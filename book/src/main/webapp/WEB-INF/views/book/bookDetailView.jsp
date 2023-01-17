@@ -22,15 +22,21 @@
     text-decoration:none;
     }
 .bookDetail {
+	width: 1260px;
+	margin:0 auto;
    display: flex;
    flex-direction: column;
    align-items: center;
 }
 
 .title {
-   width: 900px;
-   height: 100px;
-   background-color: aquamarine;
+	margin:0 auto;
+
+    width: 1260px;
+    height: 100px;
+    font-size: 55px;
+    text-align: center;
+    background-color: aquamarine;
 }
 
 .pyoji {
@@ -39,6 +45,7 @@
 
 .seoji {
    margin-right: 100px;
+   width: 442px;
 }
 
 .intro {
@@ -47,7 +54,7 @@
 }
 
 .detail {
-   width: 600px;
+   width: 1000px;
    height: 400px;
    background-color: beige;
 }
@@ -58,6 +65,8 @@
 
 .abcd {
    display: flex;
+   width:1000px;
+   justify-content: space-between;
 }
 
 .arrow {
@@ -73,6 +82,10 @@
 .qty>input {
    height: 20px;
    width: 60px;
+}
+
+hr {
+    width: 1260px;
 }
 </style>
 </head>
@@ -105,8 +118,13 @@
       </div>
       </c:forEach>
       <br>
-      <div class="intro">책 소개 ${bvo.book_content}</div>
-      <div class="detail">책 상세</div>
+      
+      
+      <hr>
+      <%-- <div class="intro">책 소개 ${bvo.book_content}</div> --%>
+      
+      
+      <div class="detail">${bvo.book_content}</div>
       <div class="review">
          <form class="mb-3" name="myform" id="myform" method="post">
             <fieldset>
