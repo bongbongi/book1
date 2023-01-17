@@ -963,3 +963,42 @@
 1월 17, 2023 24:22:12.388 [16772:7760:0117/002212.388:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
 1월 17, 2023 24:22:12.389 [16772:7760:0117/002212.388:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
 1월 17, 2023 24:22:12.389 [16772:7760:0117/002212.388:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+1월 17, 2023 09:38:36.219 NEW SESSION
+1월 17, 2023 09:38:36.219 [18316:18320:0117/093836.217:ERROR:device_event_log_impl.cc(215)] [09:38:36.217] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 17, 2023 09:38:36.219 [18316:18320:0117/093836.219:ERROR:device_event_log_impl.cc(215)] [09:38:36.219] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 17, 2023 09:39:33.213 [18316:18424:0117/093933.211:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+1월 17, 2023 10:38:07.768 NEW SESSION
+1월 17, 2023 10:38:07.768 [17628:17928:0117/103807.767:ERROR:device_event_log_impl.cc(215)] [10:38:07.767] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 17, 2023 10:38:07.770 [17628:17928:0117/103807.769:ERROR:device_event_log_impl.cc(215)] [10:38:07.769] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 17, 2023 10:39:04.676 [17628:9256:0117/103904.675:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 17, 2023 10:45:03.48 [17628:17928:0117/104503.047:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.48 [17628:17928:0117/104503.048:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.49 [17628:17928:0117/104503.048:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.49 [17628:17928:0117/104503.048:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.49 [17628:17928:0117/104503.048:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.49 [17628:17928:0117/104503.048:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.50 [17628:17928:0117/104503.048:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.181 [17628:17928:0117/104503.180:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.181 [17628:17928:0117/104503.180:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.182 [17628:17928:0117/104503.180:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.182 [17628:17928:0117/104503.180:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.182 [17628:17928:0117/104503.181:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.182 [17628:17928:0117/104503.181:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:45:03.183 [17628:17928:0117/104503.181:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.540 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.540 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.541 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.542 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.542 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.543 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.543 [17628:17928:0117/104614.539:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.729 [17628:17928:0117/104614.729:ERROR:CONSOLE(1)] "Error: Object properties is empty", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.952 [17628:17928:0117/104614.951:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.953 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.954 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.955 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.955 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.956 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+1월 17, 2023 10:46:14.956 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)

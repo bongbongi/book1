@@ -41,6 +41,10 @@ public interface MemberDAO {
 
 	int totalCount();
 
+	int insertGrade(MemberVO mvo);
+
+	int moneyCharge(MemberVO mvo);
+
 	
 
 

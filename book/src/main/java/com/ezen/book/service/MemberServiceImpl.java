@@ -204,4 +204,15 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.totalCount();
 	}
 
+	@Override
+	public int putGrade(MemberVO mvo) {
+		  log.info("member service check2");
+	      return mdao.insertGrade(mvo);
+	}
+	@Override
+	   public int moneyCharge(MemberVO mvo) {
+	      return mdao.moneyCharge(mvo);
+	      
+	   }
+
 }

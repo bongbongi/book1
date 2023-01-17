@@ -27,7 +27,34 @@
 	margin: 20px;
 }
 
-/* 비밀번호, 핸드폰번호 사용 가능 여부 */
+.join-input {
+	width: 300px;
+}
+
+.zip {
+	width: 150px;
+}
+
+.button {
+	text-align: center;
+	margin-top: 50px;
+}
+/* 아이디,비밀번호, 핸드폰번호 사용 가능 여부 */
+.id_ok {
+	color: #008000;
+	display: none;
+}
+
+.id_duplicate {
+	color: #ff0000;
+	display: none;
+}
+
+.id_null {
+	color: #ff0000;
+	display: none;
+}
+
 .pw_ok {
 	color: #008000;
 	display: none;
@@ -39,6 +66,21 @@
 }
 
 .pw_null {
+	color: #ff0000;
+	display: none;
+}
+
+.pwRe_ok {
+	color: #008000;
+	display: none;
+}
+
+.pwRe_rewrite {
+	color: #ff0000;
+	display: none;
+}
+
+.pwRe_null {
 	color: #ff0000;
 	display: none;
 }
@@ -56,17 +98,4 @@
 .cellNum_null {
 	color: #ff0000;
 	display: none;
-}
-
-.join-input {
-	width: 300px;
-}
-
-.zip {
-	width: 150px;
-}
-
-.button {
-	text-align: center;
-	margin-top: 50px;
 }

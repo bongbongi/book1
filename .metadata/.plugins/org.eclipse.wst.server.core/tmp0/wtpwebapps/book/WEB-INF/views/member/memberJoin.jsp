@@ -7,10 +7,10 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script>
-<link href="../resources/css/memberJoin.css" type="text/css" rel="stylesheet">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="/resources/js/memberJoin.js"></script>
+<link href="/resources/css/memberJoin.css" type="text/css" rel="stylesheet">
 <title>회원가입</title>
 <style type="text/css">
 .pwRe_ok {
@@ -38,10 +38,16 @@
 			<lable for="mem_id">ID</lable>
 			<br> <input type="text" class="join-input" name="mem_id" id="mem_id" placeholder="아이디" onchange="checkId()" required> <span class="id_ok"><i class="fa-solid fa-check"></i></span> <span class="id_duplicate"><i class="fa-solid fa-x"></i></span> <span class="id_null"><i class="fa-solid fa-x"></i></span> <Br>
 			<lable for="mem_pw">PW</lable>
-			<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분X), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> <span class="pw_ok"><i class="fa-solid fa-check"></i></span> <span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pw_null"><i class="fa-solid fa-x"></i></span><br>
+			<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분X), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> 
+				<span class="pw_ok"><i class="fa-solid fa-check"></i></span> 
+				<span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> 
+				<span class="pw_null"><i class="fa-solid fa-x"></i></span><br>
 
 			<lable for="mem_pwRe">PW Re</lable>
-			<br> <input type="password" class="join-input" name="mem_pwRe" id="mem_pwRe" placeholder="비밀번호 확인을 위해 한번 더 입력해주세요" onchange="checkPwRe()" required> <span class="pwRe_ok"><i class="fa-solid fa-check"></i></span> <span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
+			<br> <input type="password" class="join-input" name="mem_pwRe" id="mem_pwRe" placeholder="비밀번호 확인을 위해 한번 더 입력해주세요" onchange="checkPwRe()" required> 
+				<span class="pwRe_ok"><i class="fa-solid fa-check"></i></span> 
+				<span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span> 
+				<span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
 
 			<lable for="mem_name">NAME</lable>
 			<br> <input type="text" class="join-input" name="mem_name" placeholder="이름" required> <br>
@@ -56,7 +62,10 @@
 				<option value="1">여자</option>
 			</select> <br>
 			<lable for="mem_cell_num">PHONE</lable>
-			<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
+			<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> 
+				<span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> 
+				<span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> 
+				<span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
 			<lable for="mem_cno">FAVORITE</lable>
 			<br> <select class="join-input" name="mem_cno">
 

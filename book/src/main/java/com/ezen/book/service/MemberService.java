@@ -37,4 +37,8 @@ public interface MemberService {
 
 	String pwCheckRe(String mem_pwRe);
 
+	int putGrade(MemberVO mvo);
+
+	int moneyCharge(MemberVO mvo);
+
 }

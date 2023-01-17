@@ -5,10 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script type="text/javascript" src="/resources/js/memberJoin.js"></script>
 <script type="text/javascript" src="/resources/js/boardComment.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<link href="/resources/css/memberJoin.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageDelete.css">
@@ -20,6 +24,7 @@
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
+
 	<script type="text/javascript">
 		const ses = '<c:out value="${ses.mem_id}" />';
 		if (ses == null || ses == '') {
@@ -45,6 +50,9 @@
 					<td><a href="/mem/modify" class="box">회원정보수정</a></td>
 				</tr>
 				<tr>
+					<td><a href="/mem/charge" class="box">충전하기</a></td>
+				</tr>
+				<tr>
 					<td><a href="/mem/orderCheck?mem_num=${ses.mem_num}">주문/배송조회</a></td>
 				</tr>
 				<tr>
@@ -62,33 +70,39 @@
 		<c:forEach items="${content}" var="content">
 			<c:choose>
 				<c:when test="${content eq 'modify' || content == 'main' }">
+				<script type="text/javascript" src="/resources/js/memberJoin.js"></script>
 					<form action="/mem/modify" method="post">
 						<div class="MypageModify mypage-right">
 							<h4>회원정보수정</h4>
 							<input type="text" name="mem_num" value="${ses.mem_num}" hidden><br>
 							<lable for="mem_id">ID</lable>
-							<br> <input type="text" class="join-input" name="mem_id" value="${ses.mem_id}" id="mem_id" placeholder="아이디" onchange="checkId()" required> <Br>
+							<br> <input type="text" class="join-input" name="mem_id" value="${ses.mem_id}" id="mem_id" placeholder="아이디" onchange="checkId()" readonly="readonly" required> <Br>
 							<lable for="mem_pw">PW</lable>
 							<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분X), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> 
-							<span class="pw_ok"><i class="fa-solid fa-check"></i></span> 
-							<span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> 
-							<span class="pw_null"><i class="fa-solid fa-x"></i></span> <br>
+								<span class="pw_ok"><i class="fa-solid fa-check"></i></span> 
+								<span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> 
+								<span class="pw_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mem_pwRe">PW Re</lable>
 							<br> <input type="password" class="join-input" name="mem_pwRe" id="mem_pwRe" placeholder="비밀번호 확인을 위해 한번 더 입력해주세요" onchange="checkPwRe()" required> 
-							<span class="pwRe_ok"><i class="fa-solid fa-check"></i></span>
-							<span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span>
-							<span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
+								<span class="pwRe_ok"><i class="fa-solid fa-check"></i></span>
+								<span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span>
+								<span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mem_name">NAME</lable>
 							<br> <input type="text" class="join-input" name="mem_name" placeholder="이름" value="${ses.mem_name}" required> <br>
 							<lable for="mem_postzip">ADDRESS</lable>
-							<br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" value="${ses.mem_postzip}" required> <input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> <input type="text" class="join-input" id="address" name="address" placeholder="주소" value="${ses.mem_ad.substring(0,ses.mem_ad.indexOf('/'))}" required> <br> <input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" value="${ses.mem_ad.substring(ses.mem_ad.indexOf('/')+2,ses.mem_ad.lastIndexOf('/'))}" required><br> <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" value="${ses.mem_ad.substring(ses.mem_ad.lastIndexOf('/')+1)}" readonly="readonly"> <br>
+							<br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" value="${ses.mem_postzip}" required> 
+							<input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> 
+							<input type="text" class="join-input" id="address" name="address" placeholder="주소" value="${ses.mem_ad.substring(0,ses.mem_ad.indexOf('/'))}" required> <br> 
+							<input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" 
+							value="${ses.mem_ad.substring(ses.mem_ad.indexOf('/')+2,ses.mem_ad.lastIndexOf('/'))}" required><br> 
+							<input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" value="${ses.mem_ad.substring(ses.mem_ad.lastIndexOf('/')+1)}" readonly="readonly"> <br>
 							<lable for="mem_age">AGE</lable>
 							<br> <input type="text" class="join-input" name="mem_age" placeholder="나이" value="${ses.mem_age}" required> <br>
 							<lable for="mem_cell_num">PHONE</lable>
 							<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> 
-							<span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> 
-							<span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> 
-							<span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
+								<span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> 
+								<span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> 
+								<span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mno_cno">FAVORITE</lable>
 							<br> <select class="join-input" name="mno_cno">
 								<option value="novel">소설</option>
@@ -101,6 +115,21 @@
 						</div>
 					</form>
 				</c:when>
+				<c:when test="${content eq 'charge'}">
+            
+            <div class="moneyCharge mypage-right">
+            <div class="sum">현재 충전금액 : ${ses.mem_sum}원</div><br><br><br><br><br><br><br><br><br><br><br>
+            
+          
+            <form src="/mem/charge" method="post">
+            <input type="text" hidden name="mem_num" value="${ses.mem_num}">
+            <input type="text" hidden name="mem_id" value="${ses.mem_id}">
+            <input type="text" hidden name="mem_pw" value="${ses.mem_pw}">
+            <input type="number" name="mem_sum">
+            <button type="submit">충전하기</button>
+            </form>
+            </div>
+            </c:when>
 				<c:when test="${content eq 'orderList'}">
 					<div class="memberOrderList mypage-right">
 						<h4>주문/배송조회</h4>
@@ -345,9 +374,14 @@
 										<option value="t" ${typed eq 't' ? 'selected' :'' }>제목</option>
 										<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
 										<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
-									</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+									</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> 
+									<input type="hidden" name="pageNo" value="1"> 
+									<input type="hidden" name="qty" value="${pgh.pgvo.qty }">
 									<button type="submit" class="btn btn-success position-relative">
-										결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span></span>
+										결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
+												${pgh.totalCount}개 
+												<span class="visually-hidden">unread messages</span>
+											</span>
 									</button>
 								</div>
 							</form>
@@ -399,7 +433,9 @@
 									</select>
 								</div>
 								<div class="brd_titleAndWriter">
-									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" required> <label for="brd_writer">작성자</label> <input type="text" name="brd_writer" value="${ses.mem_id}" readonly><br>
+									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" required> 
+									<label for="brd_writer">작성자</label> 
+									<input type="text" name="brd_writer" value="${ses.mem_id}" readonly><br>
 								</div>
 								<div class="brd_content">
 									<label for="brd_content">내용</label><br>
@@ -431,15 +467,18 @@
 
 						<div class="container">
 							<div class="input-group my-3">
-								<span class="input-group-text" id="cmtWriter">${ses.mem_id}</span> <input type="text" class="form-control" id="cmtText" placeholder="Test Add Comment ">
+								<span class="input-group-text" id="cmtWriter">${ses.mem_id}</span> 
+								<input type="text" class="form-control" id="cmtText" placeholder="Test Add Comment ">
 								<button class="btn btn-success" id="cmtPostBtn" type="button">Post</button>
 							</div>
 							<ul class="list-group list-group-flush" id="cmtListArea">
 								<li class="list-group-item d-flex justify-content-between align-items-start">
 									<div class="ms-2 me-auto">
-										<div class="fw-bold">Writer</div>
+										<div class="fw-bold">Writer
+										<span class="badge bg-dark rounded-pill">modAt</span>
+										</div>
 										Content for Comment
-									</div> <span class="badge bg-dark rounded-pill">modAt</span>
+									</div> 
 								</li>
 							</ul>
 						</div>
@@ -465,7 +504,9 @@
 								<input type="text" name="brd_num" value="${board.brd_num}" readonly hidden><br>
 
 								<div class="brd_titleAndWriter">
-									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" value="${board.brd_title}" required> <label for="brd_writer">작성자</label> <input type="text" name="brd_writer" value="${ses.mem_id}" value="${board.brd_writer}" readonly><br>
+									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" value="${board.brd_title}" required> 
+									<label for="brd_writer">작성자</label> 
+									<input type="text" name="brd_writer" value="${ses.mem_id}" value="${board.brd_writer}" readonly><br>
 								</div>
 								<div class="brd_regdate">
 									<label for="brd_regdate">작성일</label> <input type="text" name="brd_regdate" value="${board.brd_regdate}" readonly><br>
@@ -484,191 +525,7 @@
 		</c:forEach>
 	</div>
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
-	<script type="text/javascript">
-
-	function execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postcode').value = data.zonecode;
-                document.getElementById("address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("detailAddress").focus();
-            }
-        }).open();
-    }
 	
-	function checkId(){
-        var mem_id = document.getElementById('mem_id').value; //id값이 "id"인 입력란의 값을 저장
-		console.log(mem_id);
-        $.ajax({
-            url:'/mem/idCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{mem_id:mem_id},
-            success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
-                if(isOk == 'id_ok'){ //ok이면 가입 가능
-                    $('.id_ok').css("display","inline-block"); 
-                    $('.id_duplicate').css("display", "none");
-					$('.id_null').css("display", "none");
-                }else if(isOk =='id_null'){//input이 null값임. 입력 요청
-					$('.id_ok').css("display","none"); 
-                    $('.id_duplicate').css("display", "none");
-					$('.id_null').css("display", "inline-block");
-				} 
-				else { //중복일 경우
-                    $('.id_ok').css("display", "none");
-                    $('.id_duplicate').css("display","inline-block");
-					$('.id_null').css("display", "none");
-                    // alert("아이디를 다시 입력해주세요");
-                    $('#mem_id').val('');
-                }
-            },
-			error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			}	
-
-        });
-        };
-        
-        
-        
-    
-    
-        
-	function checkPw(){
-	 var mem_pw = document.getElementById('mem_pw').value; //pw값이 "pw"인 입력란의 값을 저장
-	console.log("js mem_pw 출력 : "+mem_pw);
-	$.ajax({
-		url:'/mem/pwCheck', //Controller에서 요청 받을 주소
-		type:'post', //POST 방식으로 전달
-		data:{mem_pw:mem_pw},
-		success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
-			if(isOk == 'pw_ok'){ //ok이면 가입 가능
-				$('.pw_ok').css("display","inline-block"); 
-				$('.pw_rewrite').css("display", "none"); //정규식 어긋나면
-				$('.pw_null').css("display", "none");
-			}else if(isOk =='pw_null'){//input이 null값임. 입력 요청
-				$('.pw_ok').css("display","none"); 
-				$('.pw_rewrite').css("display", "none");
-				$('.pw_null').css("display", "inline-block");
-			} 
-			else { //중복일 경우
-				$('.pw_ok').css("display", "none");
-				$('.pw_rewrite').css("display","inline-block");
-				$('.pw_null').css("display", "none");
-				// alert("아이디를 다시 입력해주세요");
-				$('#mem_pw').val('');
-			}
-		},
-		error:function(request,status,error){
-		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}	
-
-	});
-	};	
-	
-	function checkPwRe(){
-	var mem_pwRe = document.getElementById('mem_pwRe').value; 
-	console.log(mem_pw);
-	console.log(mem_pwRe);
-	$.ajax({
-		url:'/mem/pwCheckRe', //Controller에서 요청 받을 주소
-		type:'post', //POST 방식으로 전달
-		data:{mem_pwRe:mem_pwRe,mem_pw:mem_pw},
-		success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
-			if(isOk == 'pwRe_ok'){ //ok이면 가입 가능
-				$('.pwRe_ok').css("display","inline-block"); 
-				$('.pwRe_rewrite').css("display", "none"); //정규식 어긋나면
-				$('.pwRe_null').css("display", "none");
-			}else if(isOk =='pwRe_null'){//input이 null값임. 입력 요청
-				$('.pwRe_ok').css("display","none"); 
-				$('.pwRe_rewrite').css("display", "none");
-				$('.pwRe_null').css("display", "inline-block");
-			} 
-			else { //중복일 경우
-				$('.pwRe_ok').css("display", "none");
-				$('.pwRe_rewrite').css("display","inline-block");
-				$('.pwRe_null').css("display", "none");
-				// alert("아이디를 다시 입력해주세요");
-				$('#mem_pwRe').val('');
-			}
-		},
-		error:function(request,status,error){
-		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}	
-
-	});
-	};	
-	
-	function checkCellNum(){
-        var mem_cell_num = document.getElementById('mem_cell_num').value; //id값이 "id"인 입력란의 값을 저장
-		console.log(mem_cell_num);
-        $.ajax({
-            url:'/mem/cellNumCheck', //Controller에서 요청 받을 주소
-            type:'post', //POST 방식으로 전달
-            data:{mem_cell_num:mem_cell_num},
-            success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
-                if(isOk == 'cellNum_ok'){ //ok이면 가입 가능
-                    $('.cellNum_ok').css("display","inline-block"); 
-                    $('.cellNum_duplicate').css("display", "none");
-					$('.cellNum_null').css("display", "none");
-                }else if(isOk =='cellNum_null'){//input이 null값임. 입력 요청
-					$('.cellNum_ok').css("display","none"); 
-                    $('.cellNum_duplicate').css("display", "none");
-					$('.cellNum_null').css("display", "inline-block");
-				}
-				else { //중복일 경우
-                    $('.cellNum_ok').css("display", "none");
-                    $('.cellNum_duplicate').css("display","inline-block");
-					$('.cellNum_null').css("display", "none");
-                    // alert("아이디를 다시 입력해주세요");
-                    $('#mem_cell_num').val('');
-                }
-            },
-			error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			}	
-
-        });
-        };
-
-	</script>
 </body>
 
 </html>

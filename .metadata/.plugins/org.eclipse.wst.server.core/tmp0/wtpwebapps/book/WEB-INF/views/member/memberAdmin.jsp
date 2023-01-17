@@ -6,12 +6,15 @@
 
 <head>
 
-<link rel="stylesheet" type="text/css" href="../resources/css/adminpage.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/mypageBoardDetail.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/adminpageNotice.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/adminpageProduct.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/adminpage.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mypageBoardDetail.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/adminpageNotice.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/adminpageProduct.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mypageBuyList.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <style type="text/css">
 a {
@@ -27,7 +30,15 @@ a {
 .pagination>a {
 	margin: 20px auto;
 }
-
+.col-sm-12{
+	
+	margin:20px auto;
+	
+	
+}
+.tableBoxBig td{
+	    line-height: 97px;
+}
 </style>
 </head>
 
@@ -137,7 +148,7 @@ a {
 												<tbody>
 													<tr>
 														<td>${ntc.ntc_num}</td>
-														<td><a href="/ntc/noticeDetail?ntc_num=${ntc.ntc_num}">${ntc.ntc_title}</a></td>
+														<td class="ellipsis-one"><a href="/ntc/noticeDetail?ntc_num=${ntc.ntc_num}">${ntc.ntc_title}</a></td>
 														<td>${ntc.ntc_writer}</td>
 														<td>${ntc.ntc_regdate}</td>
 													</tr>
@@ -236,10 +247,10 @@ a {
 											<tbody>
 												<c:forEach items="${li }" var="faq">
 													<tr>
-														<td>${faq.faq_num }</td>
+														<td class="ellipsis-one">${faq.faq_num }</td>
 														<td><a href="/faq/faqDetail?faq_num=${faq.faq_num}">${faq.faq_question
 																			}</a></td>
-														<td>${faq.faq_answer }</td>
+														<td class="ellipsis-one">${faq.faq_answer }</td>
 													</tr>
 												</c:forEach>
 											</tbody>
@@ -387,7 +398,8 @@ a {
 
 
 										</table>
-										<div>
+										</div>
+										<div class="pagination">
 											<c:if test="${pgh.prev}">
 												<a href="/admin/list?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">prev</a>
 											</c:if>
@@ -419,7 +431,7 @@ a {
 											</form>
 										</div>
 
-									</div>
+									
 								</c:when>
 
 								<c:when test="${content eq 'boardDetail' }">
@@ -473,7 +485,7 @@ a {
 							<c:choose>
 								<c:when test="${content eq 'bookList' }">
 									<h1>상품 관리</h1>
-									<div class="tableBox">
+									<div class="tableBoxBig">
 										<table class="table table-hover tableBig">
 											<thead class="table-dark">
 												<tr>
@@ -498,11 +510,11 @@ a {
 														<td>${bo.bvo.book_num }</td>
 														<td><img src="/upload/${fn:replace(bo.save_dir,'\\','/')}/${bo.uuid}_th_${bo.file_name}" alt="bookThumbnail"></td>
 														<td class="ellipsis-one" colspan="2">${bo.bvo.book_title }</td>
-														<td>${bo.bvo.book_writer }</td>
+														<td  class="ellipsis-one">${bo.bvo.book_writer }</td>
 														<td>${bo.bvo.book_price }</td>
 														<td>${bo.bvo.book_saleprice }</td>
 														<td>${bo.bvo.book_sales }</td>
-														<td>${bo.bvo.book_publisher }</td>
+														<td  class="ellipsis-one">${bo.bvo.book_publisher }</td>
 														<td>${bo.bvo.book_date }</td>
 														<td>${bo.bvo.book_count }</td>
 														<%-- <td class="ellipsis-one">${bo.bvo.book_content

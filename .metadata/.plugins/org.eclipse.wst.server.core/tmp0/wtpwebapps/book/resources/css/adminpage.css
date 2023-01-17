@@ -54,6 +54,10 @@ a:hover {
 .tableBox{
 	height: 500px;
 }
+.tableBoxBig{
+	
+	height: 1200px;
+}
 .tableTHColor>tr>th{
 	color:red;
 }

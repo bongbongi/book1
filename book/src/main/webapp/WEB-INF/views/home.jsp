@@ -190,9 +190,9 @@ padding-bottom: 0.14em
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="/interest/?mem_cno=5">문제집</a></li>
 							</ul></li>
-						<li class="nav-item"><a class="nav-link" href="/">베스트</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">이벤트</a></li>
+						<li class="nav-item"><a class="nav-link" href="/"></a></li>
 						<c:if test="${ses.mem_id !=null}">
+							<li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
 
 							<li class="nav-item"><a class="nav-link" href="/interest/?mem_cno=${ses.mem_cno}">나의 관심 카테고리 책</a></li>
 						</c:if>
@@ -277,13 +277,17 @@ padding-bottom: 0.14em
 			<c:when test="${content eq 'novel' }">
 
 				<div class="hidden">
-					<h1>베스트 셀러</h1>
+					<h1>소설 top10</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="9">
+								<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">
 								<li class="Best_item">
-									<div class="rank">
-										<i class="fa-solid fa-1"></i>
+									<div class="rank">		
+										<i class="fa-solid fa-${i.count}"></i>
+										<c:if test="${i.count > 9}">
+											<i class="fa-solid fa-1"></i>
+											<i class="fa-solid fa-0"></i>
+										</c:if>
 									</div>
 									<div class="img_box">
 										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
@@ -304,13 +308,17 @@ padding-bottom: 0.14em
 			<c:when test="${content eq 'essay'}">
 
 				<div class="hidden">
-					<h1>베스트 셀러</h1>
+					<h1>essat top10</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="9">
+								<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">
 								<li class="Best_item">
-									<div class="rank">
-										<i class="fa-solid fa-1"></i>
+									<div class="rank">		
+										<i class="fa-solid fa-${i.count}"></i>
+										<c:if test="${i.count > 9}">
+											<i class="fa-solid fa-1"></i>
+											<i class="fa-solid fa-0"></i>
+										</c:if>
 									</div>
 									<div class="img_box">
 										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
@@ -331,13 +339,17 @@ padding-bottom: 0.14em
 			<c:when test="${content eq 'life'}">
 
 				<div class="hidden">
-					<h1>베스트 셀러</h1>
+					<h1>건강/취미 top10</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="9">
+								<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">
 								<li class="Best_item">
-									<div class="rank">
-										<i class="fa-solid fa-1"></i>
+									<div class="rank">		
+										<i class="fa-solid fa-${i.count}"></i>
+										<c:if test="${i.count > 9}">
+											<i class="fa-solid fa-1"></i>
+											<i class="fa-solid fa-0"></i>
+										</c:if>
 									</div>
 									<div class="img_box">
 										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
@@ -358,13 +370,17 @@ padding-bottom: 0.14em
 			<c:when test="${content eq 'computer'}">
 
 				<div class="hidden">
-					<h1>베스트 셀러</h1>
+					<h1>컴퓨터/과학 top10</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="9">
+								<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">
 								<li class="Best_item">
-									<div class="rank">
-										<i class="fa-solid fa-1"></i>
+									<div class="rank">		
+										<i class="fa-solid fa-${i.count}"></i>
+										<c:if test="${i.count > 9}">
+											<i class="fa-solid fa-1"></i>
+											<i class="fa-solid fa-0"></i>
+										</c:if>
 									</div>
 									<div class="img_box">
 										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
@@ -385,13 +401,17 @@ padding-bottom: 0.14em
 			<c:when test="${content eq 'problem'}">
 
 				<div class="hidden">
-					<h1>베스트 셀러</h1>
+					<h1>문제집 top10</h1>
 					<div class="BestSeller">
 						<ul class="BestSellerList">
-							<c:forEach items="${book_list}" var="list" begin="0" end="9">
+								<c:forEach items="${book_list}" var="list" varStatus="i" begin="0" end="9">
 								<li class="Best_item">
-									<div class="rank">
-										<i class="fa-solid fa-1"></i>
+									<div class="rank">		
+										<i class="fa-solid fa-${i.count}"></i>
+										<c:if test="${i.count > 9}">
+											<i class="fa-solid fa-1"></i>
+											<i class="fa-solid fa-0"></i>
+										</c:if>
 									</div>
 									<div class="img_box">
 										<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 

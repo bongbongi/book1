@@ -48,7 +48,7 @@
 	/*    align-items: baseline; */
 }
 
-i {
+.icons>a>i {
 	font-size: 42px;
 	color: black;
 	margin-top: 54px;

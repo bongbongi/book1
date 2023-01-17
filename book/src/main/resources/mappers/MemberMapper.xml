@@ -66,4 +66,11 @@
 		select count(mem_num) from
 		member
 	</select>
+	<insert id="insertGrade"
+		parameterType="com.ezen.book.domain.MemberVO">
+		update member set mem_rating=#{mem_rating} where mem_num=#{mem_num}
+	</insert>
+	<update id="moneyCharge">
+		update member set mem_sum=mem_sum+#{mem_sum} where mem_num=#{mem_num}
+	</update>
 </mapper>

@@ -67,18 +67,19 @@ public class MemberController {
 	@PostMapping("pwCheck") // 회원가입시 pw가 null,정규화부합 확인 메서드
 	@ResponseBody
 	public String pwCheck(MemberVO mvo) {
-		log.info("컨트롤러 pw 체크 : "+mvo.getMem_pw());
+		log.info("컨트롤러 pw 체크 : " + mvo.getMem_pw());
 		String isOk = msv.pwCheck(mvo.getMem_pw());
 		mvo.setMem_pw(mvo.getMem_pw());
-		log.info("pwCheck : "+mvo.getMem_pw());
+		log.info("pwCheck : " + mvo.getMem_pw());
 		return isOk;
 	}
+
 	@PostMapping("pwCheckRe") // 회원가입시 pw 재확인 메서드
 	@ResponseBody
-	public String pwCheckRe(@RequestParam("mem_pwRe")String mem_pwRe) {
-		//@RequestParam(value="mem_pw", required=false)String mem_pw,
-		//log.info("mem_pw : "+mem_pw);
-		log.info("mem_pwRe : "+mem_pwRe);
+	public String pwCheckRe(@RequestParam("mem_pwRe") String mem_pwRe) {
+		// @RequestParam(value="mem_pw", required=false)String mem_pw,
+		// log.info("mem_pw : "+mem_pw);
+		log.info("mem_pwRe : " + mem_pwRe);
 		String isOk = msv.pwCheckRe(mem_pwRe);
 		log.info("비번 체크 Re isok : " + isOk);
 		return isOk;
@@ -269,6 +270,22 @@ public class MemberController {
 		req.getSession().invalidate();
 		return "/home";
 
+	}
+
+	@GetMapping("/charge")
+	public String boardRegisterGet(Model model) {
+		model.addAttribute("content", "charge");
+		return "/member/memberMypage";
+	}
+
+	@PostMapping("/charge")
+	public String moneyCharge(MemberVO mvo, HttpServletRequest req) {
+		log.info(mvo.toString());
+		int isOk = msv.moneyCharge(mvo);
+		log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
+		req.getSession().removeAttribute("ses");
+		req.getSession().invalidate();
+		return "redirect:/";
 	}
 
 }

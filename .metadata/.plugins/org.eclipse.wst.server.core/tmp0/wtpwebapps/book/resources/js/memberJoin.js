@@ -118,12 +118,11 @@
 	
 	function checkPwRe(){
 	var mem_pwRe = document.getElementById('mem_pwRe').value; 
-	console.log(mem_pw);
 	console.log(mem_pwRe);
 	$.ajax({
 		url:'/mem/pwCheckRe', //Controller에서 요청 받을 주소
 		type:'post', //POST 방식으로 전달
-		data:{mem_pwRe:mem_pwRe,mem_pw:mem_pw},
+		data:{mem_pwRe:mem_pwRe},
 		success:function(isOk){ //컨트롤러에서 넘어온 isOK값을 받는다 
 			if(isOk == 'pwRe_ok'){ //ok이면 가입 가능
 				$('.pwRe_ok').css("display","inline-block"); 

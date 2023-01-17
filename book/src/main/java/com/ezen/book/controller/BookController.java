@@ -106,7 +106,7 @@ public class BookController {
 	}
 
 	@PostMapping("/bkRegister")
-	public String register(Model model,BookVO bkvo,@RequestParam(name = "files", required = false) MultipartFile[] files) {
+	public String register(RedirectAttributes reAttr,BookVO bkvo,@RequestParam(name = "files", required = false) MultipartFile[] files) {
 		log.info(">>> bkvo 등록 : " + bkvo.toString());
 		// log.info(">>> files 등록 : "+files.toString());
 		List<FileVO> fList = null;
@@ -117,9 +117,9 @@ public class BookController {
 		}
 		BookDTO bkto = new BookDTO(bkvo, fList);
 		int isOk = bks.register(bkto);
-		model.addAttribute("isOk", isOk > 0 ? "1" : "0");
+		reAttr.addAttribute("isOk", isOk > 0 ? "1" : "0");
 		log.info("board register >> " + (isOk > 0 ? "OK" : "FAIL"));
-		return "/member/memberAdmin";
+		return "redirect:/book/list";
 	}
 
 	@GetMapping("/list")
