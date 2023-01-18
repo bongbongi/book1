@@ -21,3 +21,9 @@
 .short {
 	color: gray;
 }
+
+.mypageDeleteInfo {
+    width: 330px;
+    height: 50px;
+    margin: 50px auto;
+}

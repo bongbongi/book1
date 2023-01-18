@@ -7,7 +7,7 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="/resources/css/adminpage.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/mypageBoardDetail.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/adminBoardDetail.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/adminpageNotice.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/adminpageProduct.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBuyList.css">
@@ -199,7 +199,7 @@ a {
 										</a> <a href="/ntc/noticeDelete?ntc_num=${nvo.ntc_num}">
 											<button type="button" class="btn btn-danger">삭제</button>
 										</a><a href="/ntc/notice"><Br>
-											<button type="button" class="btn btn-outline-secondary">리스트 목록 이동</button> </a> <br>
+											<button type="button" class="btn btn-outline-secondary">목록</button> </a> <br>
 
 									</div>
 
@@ -220,7 +220,7 @@ a {
 											</div>
 
 											<button type="submit" class="btn btn-secondary">수정완료</button>
-											<a href="/ntc/noticeList"><button type="button" class="btn btn-secondary">공지사항목록으로</button></a>
+											<a href="/ntc/noticeList"><button type="button" class="btn btn-secondary">목록</button></a>
 										</form>
 									</div>
 								</c:when>
@@ -238,7 +238,7 @@ a {
 											<thead class="table-dark">
 												<tr>
 													<th>공지사항 번호</th>
-													<th>질문</th>
+													<th colspan="2">질문</th>
 													<th>답변</th>
 
 												</tr>
@@ -248,7 +248,7 @@ a {
 												<c:forEach items="${li }" var="faq">
 													<tr>
 														<td class="ellipsis-one">${faq.faq_num }</td>
-														<td><a href="/faq/faqDetail?faq_num=${faq.faq_num}">${faq.faq_question
+														<td colspan="2"><a href="/faq/faqDetail?faq_num=${faq.faq_num}">${faq.faq_question
 																			}</a></td>
 														<td class="ellipsis-one">${faq.faq_answer }</td>
 													</tr>
@@ -301,7 +301,7 @@ a {
 										</a> <a href="/faq/faqRemove?faq_num=${fo.faq_num}">
 											<button type="button" class="btn btn-danger">삭제</button>
 										</a><a href="/faq/faqList"><Br>
-											<button type="button" class="btn btn-outline-secondary">리스트 목록 이동</button> </a> <br>
+											<button type="button" class="btn btn-outline-secondary">목록</button> </a> <br>
 
 									</div>
 
@@ -445,7 +445,7 @@ a {
 										<Br> </a> <a href="/admin/boardRemove?brd_num=${board.brd_num}">
 											<button type="button" class="btn btn-danger">삭제</button>
 										</a><a href="/admin/list"><Br>
-											<button type="button" class="btn btn-outline-secondary">1대1문의 리스트 목록</button> </a> <br>
+											<button type="button" class="btn btn-outline-secondary">목록</button> </a> <br>
 
 										<div class="container">
 											<div class="input-group my-3">

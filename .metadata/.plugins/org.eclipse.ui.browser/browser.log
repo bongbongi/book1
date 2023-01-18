@@ -1002,3 +1002,8 @@
 1월 17, 2023 10:46:14.955 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
 1월 17, 2023 10:46:14.956 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
 1월 17, 2023 10:46:14.956 [17628:17928:0117/104614.952:ERROR:CONSOLE(1)] "Error: Exception in callFunction or empty result", source: devtools://devtools/bundled/devtools-frontend/front_end/panels/event_listeners/event_listeners.js (1)
+
+1월 18, 2023 09:36:35.253 NEW SESSION
+1월 18, 2023 09:36:35.253 [17864:16172:0118/093635.250:ERROR:device_event_log_impl.cc(215)] [09:36:35.251] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 18, 2023 09:36:35.253 [17864:16172:0118/093635.252:ERROR:device_event_log_impl.cc(215)] [09:36:35.252] USB: usb_device_handle_win.cc:1045 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 18, 2023 09:37:32.588 [17864:18580:0118/093732.588:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater

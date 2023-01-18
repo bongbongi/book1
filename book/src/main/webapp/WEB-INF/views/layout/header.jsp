@@ -111,9 +111,17 @@
 				<a href="">
 					<i class="fa-solid fa-cart-shopping"></i>
 				</a> 
-				<a href="/mem/adminPage">
-					<i class="fa-solid fa-user"></i>
-				</a>
+				<c:if test="${ses.mem_auth == '0' }">
+					<a href="/mem/adminPage">
+						<i class="fa-solid fa-user"></i>
+					</a>
+				</c:if>
+				<c:if test="${ses.mem_auth != '0' }">
+					<a href="/mem/mypage">
+						<i class="fa-solid fa-user"></i>
+					</a>
+				</c:if>
+					
 			</div>
 		</div>
 	</div>

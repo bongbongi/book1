@@ -52,11 +52,11 @@ a:hover {
 	height: 50px;
 }
 .tableBox{
-	height: 500px;
+	/* height: 500px; */
 }
 .tableBoxBig{
 	
-	height: 1200px;
+	/* height: 1200px; */
 }
 .tableTHColor>tr>th{
 	color:red;
@@ -93,6 +93,7 @@ table{
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	word-break: break-all;
 }
 /* 메뉴바 CSS */
 .menu_wrap {

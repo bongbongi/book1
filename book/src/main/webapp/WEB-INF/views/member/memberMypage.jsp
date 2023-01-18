@@ -12,7 +12,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<link href="/resources/css/memberJoin.css" type="text/css" rel="stylesheet">
+
 
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
@@ -399,7 +399,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 						<div class="long">탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.</div>
 						<div class="short">게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다. 삭제를 원하는 게시글이 있다면 반드시 탈퇴 전 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.</div>
 						<div class="deleteTableBox">
-							<table class="table table-striped">
+							<table class="table table-striped mypageDeleteInfo">
 								<tr>
 									<td>개인정보</td>
 									<td>개인정보 전체 삭제</td>

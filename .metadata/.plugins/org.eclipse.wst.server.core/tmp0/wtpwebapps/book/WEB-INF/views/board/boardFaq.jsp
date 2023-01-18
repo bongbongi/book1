@@ -16,7 +16,9 @@
 	width: 500px;
 	
 }
-
+.accordion-body{
+	text-align: left;
+}
 </style>
 </head>
 <body>
@@ -26,7 +28,7 @@
 		<c:forEach items="${li }" var="faq" varStatus="i" begin="0" end="9">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="flush-heading${i.count }">
-					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${i.count }" aria-expanded="false" aria-controls="flush-collapse${i.count }">${faq.faq_num } ${faq.faq_question }</button>
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${i.count }" aria-expanded="false" aria-controls="flush-collapse${i.count }">${i.count} ${faq.faq_question }</button>
 				</h2>
 				<div id="flush-collapse${i.count }" class="accordion-collapse collapse" aria-labelledby="flush-heading${i.count }" data-bs-parent="#accordionFlushExample">
 					<div class="accordion-body">${faq.faq_answer }</div>

@@ -50,7 +50,7 @@ table {
 }
 
 .boardDetail-content {
-	height: 300px;
+	/* height: 300px; */
 	margin: 50px;
 }
 
