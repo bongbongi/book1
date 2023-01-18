@@ -39,9 +39,10 @@ public interface MemberService {
 
 	int putGrade(MemberVO mvo);
 
-	int moneyCharge(MemberVO mvo);
+	int moneyCharge(String mem_id, int mem_sum);
 
 	int getCharge(String mem_id);
+
 
 
 

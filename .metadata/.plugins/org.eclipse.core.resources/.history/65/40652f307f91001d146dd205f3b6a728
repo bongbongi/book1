@@ -1,8 +1,0 @@
-@charset "UTF-8";
-.boardRegister{
-	text-align: left;
-}
-select{
-	margin:5px;
-}
-

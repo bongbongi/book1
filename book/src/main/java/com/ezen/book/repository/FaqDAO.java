@@ -2,8 +2,6 @@ package com.ezen.book.repository;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.ezen.book.domain.FaqVO;
 import com.ezen.book.domain.PagingVO;
 
@@ -11,7 +9,7 @@ public interface FaqDAO {
 
 	int insertFaq(FaqVO fvo);
 
-	List<FaqVO> faqList(@Param("pvo")PagingVO pvo);
+	List<FaqVO> faqList(PagingVO pvo);
 
 	FaqVO faqDetail(int faq_num);
 
@@ -19,7 +17,7 @@ public interface FaqDAO {
 
 	int faqRemove(int faq_num);
 
-	int totalCount();
+	int totalCount(PagingVO pvo);
 
 	List<FaqVO> getFaqListOnly();
 

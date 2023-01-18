@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO mdao;
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
-	private String pwCheck; //ajax에서 넘어온 pw를 저장할 변수
+	private String pwCheck; // ajax에서 넘어온 pw를 저장할 변수
 
 	@Override
 	public String idCheck(String mem_id) {
@@ -47,10 +47,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String pwCheck(String mem_pw) {
 		// 비밀번호 유효성 검사 : 비밀번호가 입력되었는지 체크
-		// 정규식 (영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리) 
+		// 정규식 (영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리)
 		// "^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-z])(?=.*[A-Z]).{9,12}$";
-		
-		//영문(대소문자 구분x), 숫자, 특수문자 조합, 9~12자리
+
+		// 영문(대소문자 구분x), 숫자, 특수문자 조합, 9~12자리
 		String pwPattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{9,12}$";
 		pwCheck = mem_pw;
 
@@ -68,8 +68,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String pwCheckRe(String mem_pwRe) {
-		log.info("pw_check 테스트 : "+pwCheck);
-	
+		log.info("pw_check 테스트 : " + pwCheck);
+
 		// null값일 경우
 		if (mem_pwRe == null || mem_pwRe.length() == 0) {
 			return "pwRe_null";
@@ -206,29 +206,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int putGrade(MemberVO mvo) {
-		  log.info("member service check2");
-	      return mdao.insertGrade(mvo);
+		log.info("member service check2");
+		return mdao.insertGrade(mvo);
 	}
-	/*
-	 * @Override public int moneyCharge(MemberVO mvo) { return
-	 * mdao.moneyCharge(mvo);
-	 * 
-	 * }
-	 */
 
 	@Override
-	   public int moneyCharge(MemberVO mvo) {
-		return mdao.moneyCharge(mvo);
-
-	      
-	   }
-		/*
-		 * @Override public int moneyCharge(MemberVO mvo) { mdao.moneyCharge(mvo);
-		 * log.info("서비스임플 charge 아이디 : "+mvo.getMem_id()); int sum =
-		 * mdao.getCharge(mvo.getMem_id()); return sum;
-		 * 
-		 * }
-		 */
+	public int moneyCharge(String mem_id, int mem_sum) {
+		return mdao.moneyCharge(mem_id, mem_sum);
+	}
 
 	@Override
 	public int getCharge(String mem_id) {

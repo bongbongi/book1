@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.sum {
+	height: 65px;
+	background: pink;
+	/* margin: 50px auto; */
+	/* padding: 80px; */
+}
+
+input#sum {
+	border: none;
+	font-size: 35px;
+    width: 200px;
+    text-align: right;
+}
+
+#sumNow {
+	font-size: 35px;
+}
+
+.moneyCharge #chargeHr{
+	
+	border:  1px solid gray;
+}

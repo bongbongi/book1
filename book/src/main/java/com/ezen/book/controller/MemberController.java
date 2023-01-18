@@ -289,20 +289,23 @@ public class MemberController {
 	
 	@PostMapping("/charge2")
 	@ResponseBody
-	public String moneyCharge(Model model, MemberVO mvo, HttpServletRequest req) {
-		int isOk = msv.moneyCharge(mvo);
-		log.info("charge mem_id : "+mvo.getMem_id());
+	public String moneyCharge(Model model, MemberVO mvo, HttpServletRequest req,
+			@RequestParam(value="mem_id", required=false) String mem_id,@RequestParam("mem_sum") int mem_sum) {
+		log.info("js넘어온 mem_id : "+mem_id);
+		log.info("js넘어온 mem_sum : "+mem_sum);
+		int isOk = msv.moneyCharge(mem_id,mem_sum);
 		log.info("컨트롤러 charge2 sum값 : "+isOk);
 		
-		int sum = msv.getCharge(mvo.getMem_id());
-		log.info("sum 컨트롤러 : "+sum);
+		int sumNow = msv.getCharge(mem_id);
+		String sumNow2 =String.valueOf(sumNow);
+		log.info("sum 컨트롤러 : "+sumNow);
 		//log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
 		
 		/*
 		 * req.getSession().removeAttribute("ses"); 
 		 * req.getSession().invalidate();
 		 */
-		return "sum";
+		return sumNow2;
 	}
 
 }

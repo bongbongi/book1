@@ -53,12 +53,13 @@
 
 .book_img {
 	width: 240px;
-    height: 295px;
-    margin: 7;
+	height: 295px;
+	margin: 7;
 }
 
 .btnBox {
 	height: 100px;
+	margin-top: 30px;
 }
 
 #title {
@@ -94,8 +95,8 @@
 
 				<div class="left">
 
-					<img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
-
+					<a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="책표지">
+					</a>
 				</div>
 				<div class="right">
 					<span id="title">${list.bvo.book_title}</span><br> <span id="info">글쓴이 : ${list.bvo.book_writer}<br> 가격 : ${list.bvo.book_price}<br> 재고 : ${list.bvo.book_count}<br></span>

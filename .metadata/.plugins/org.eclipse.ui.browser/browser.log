@@ -1015,3 +1015,16 @@
 1월 18, 2023 13:16:34.791 [6408:10796:0118/131634.791:ERROR:CONSOLE(1)] "console.assert", source: devtools://devtools/bundled/devtools-frontend/front_end/core/sdk/sdk.js (1)
 1월 18, 2023 13:16:34.792 [6408:10796:0118/131634.791:ERROR:CONSOLE(0)] "TypeError: Cannot read properties of null (reading 'resourceURL')", source:  (0)
 1월 18, 2023 15:29:45.613 [6408:10796:0118/152945.612:ERROR:interface_endpoint_client.cc(694)] Message 5 rejected by interface blink.mojom.WidgetHost
+1월 18, 2023 17:32:18.443 [6408:16808:0118/173218.442:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 18, 2023 17:52:22.575 [3600:2012:0118/175222.575:ERROR:device_event_log_impl.cc(215)] [17:52:22.575] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 18, 2023 17:52:22.577 [3600:2012:0118/175222.576:ERROR:device_event_log_impl.cc(215)] [17:52:22.576] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 18, 2023 17:53:20.25 [3600:17944:0118/175320.024:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+1월 18, 2023 17:59:51.588 NEW SESSION
+1월 18, 2023 17:59:51.588 [10116:18628:0118/175951.587:ERROR:device_event_log_impl.cc(215)] [17:59:51.586] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 18, 2023 17:59:51.588 [10116:18628:0118/175951.588:ERROR:device_event_log_impl.cc(215)] [17:59:51.588] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 18, 2023 18:00:49.68 [10116:4680:0118/180049.067:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 18, 2023 19:20:08.716 [10116:18628:0118/192008.715:ERROR:device_event_log_impl.cc(215)] [19:20:08.711] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 18, 2023 19:40:48.145 [10116:18628:0118/194048.145:ERROR:interface_endpoint_client.cc(695)] Message 0 rejected by interface blink.mojom.WidgetHost
+1월 18, 2023 22:20:16.469 [10116:18628:0118/222016.467:ERROR:device_event_log_impl.cc(215)] [22:20:16.277] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+1월 18, 2023 23:00:52.359 [10116:10816:0118/230052.358:ERROR:util.cc(134)] Can't create base directory: C:\Program Files\Google\GoogleUpdater

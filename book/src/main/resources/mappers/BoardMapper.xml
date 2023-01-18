@@ -14,11 +14,17 @@
 	</select>
 	
 	  
+	  
+	  
 	<select id="selectBoardListPaging" resultType="com.ezen.book.domain.BoardVO">
 			select*from board where brd_num>0
 			<include refid="search"></include>
 			order by brd_num desc limit #{pageStart},#{qty}
 	</select>
+	
+	
+	
+	
 	
 	<select id="selectTotalCount" resultType="int">
 	select count(brd_num) from board 
@@ -54,7 +60,7 @@
 		update board set brd_views=brd_views-1 where brd_num=#{brd_num}
 	</update>
 	
-	<sql id="search">
+		<sql id="search">
 		<if test="type != null">
 			<trim prefix="and (" suffix=")" prefixOverrides="OR">
 				<foreach collection="typeToArray" item="type">
@@ -74,6 +80,6 @@
 				</foreach>
 			</trim>
 		</if>
-</sql>
+	</sql>
 	
 	</mapper>

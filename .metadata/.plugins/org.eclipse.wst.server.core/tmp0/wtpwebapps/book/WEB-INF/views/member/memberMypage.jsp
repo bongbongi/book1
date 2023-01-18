@@ -16,6 +16,7 @@
 
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mypageCharge.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageDelete.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageOrderList.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBuyList.css">
@@ -102,31 +103,40 @@
 				<c:when test="${content eq 'charge'}">
 
 					<div class="moneyCharge mypage-right">
-						<div class="sum" id="sum">
-						현재 충전금액 <input type="text" value="${ses.mem_sum}원">
+						<div class="sum" >
+						<span id="sumNow">현재 충전금액 </span> <input type="text" value="${ses.mem_sum}원" id="sum">
 						</div>
 						<br>
-					
+						
 						
 						<form src="/mem/charge2" method="post">
-							<input type="text" hidden name="mem_num" value="${ses.mem_num}"> 
-							<input type="text" hidden name="mem_id" value="${ses.mem_id}"> 
-							<input type="text" hidden name="mem_pw" value="${ses.mem_pw}"> 
+							<input type="text"  name="mem_num" value="${ses.mem_num}" hidden> 
+							<input type="text"  name="mem_id" value="${ses.mem_id}" id="mem_id" hidden> 
+							<input type="text"  name="mem_pw" value="${ses.mem_pw}" hidden> 
 							<input type="number" name="mem_sum" id="mem_sum">
 							<button type="button" onclick="charge()">충전하기</button>
 						</form>
 					</div>
+					<hr id="chargeHr">
 					<script type="text/javascript">
 					function charge(){
 					    let mem_sum = document.getElementById('mem_sum').value;
+					    let mem_id = document.getElementById('mem_id').value;
 					    console.log("js mem_sum 테스트 : "+mem_sum);
+					    console.log("js mem_id 테스트 : "+mem_id);
 					    $.ajax({
 					        url:'/mem/charge2', //Controller에서 요청 받을 주소
 					        type:'post', //POST 방식으로 전달
-					        data:{mem_sum:mem_sum},
-					        success:function(sum){ //컨트롤러에서 넘어온 isOK값을 받는다 
-					            console.log("컨트롤러에서 건너온 sum : "+sum);
-					            //document.getElementById('sum').value = isOk;
+					        data:{
+					        		mem_sum:mem_sum,
+					        		mem_id:mem_id
+					        		},
+					        success:function(sumNow2){ //컨트롤러에서 넘어온 값을 받는다 
+					            console.log("컨트롤러에서 건너온 sum : "+sumNow2); //결과값 : [object XMLDocument]
+					        
+					        	document.getElementById('mem_sum').value=""; //입력한 값은 지워주기
+					            document.getElementById('sum').value = sumNow2; //잔액 변동사항을 반영
+					        
 					        },
 					        error:function(request,status,error){
 					        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

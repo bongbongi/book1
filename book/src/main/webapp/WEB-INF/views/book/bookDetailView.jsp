@@ -36,36 +36,38 @@
 	margin: 0 auto;
 	width: 1260px;
 	height: 100px;
-	font-size: 55px;
+	font-size: 40px;
 	text-align: center;
-	
 }
 
-.pyoji {
-	margin-right: 50px;
+.seoji, .infoEtc {
+	width: 300px;
+}
+
+.infoEtc {
+	    padding: 148px 0px;
+    text-align: center;
 }
 
 .seoji {
-	margin-right: 100px;
-	width: 442px;
+	text-align: center;
+	margin: 85px auto;
 }
 
 .intro {
 	width: 600px;
-	
 }
 
 .detail {
 	width: 1000px;
-	height: 400px;
-	
+	margin: 30px;
 }
 
 .review {
 	
 }
 
-.abcd {
+.detailViewBox {
 	display: flex;
 	width: 1000px;
 	justify-content: space-between;
@@ -76,18 +78,69 @@
 	flex-direction: column;
 }
 
+img.upArrow, img.downArrow {
+	width: 20px;
+}
+
 .qty {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 }
 
-.qty>input {
+.qty > input {
 	height: 20px;
-	width: 60px;
+	width: 40px;
+	margin: 15px 7px;
+	text-align: right;
+}
+
+.qty > span {
+	margin: 13px 0;
 }
 
 hr {
 	width: 1260px;
+}
+
+#rightBoxHr {
+	width: 300px;
+}
+
+.book_img {
+	width: 400px;
+	height: 450px;
+}
+
+textarea#reviewContents {
+	width: 1000px;
+}
+
+button#revPostBtn:hover {
+	background-color: #80808042;
+}
+
+button#revPostBtn {
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid gray;
+}
+
+#cmtListArea {
+	margin-bottom: 40px;
+}
+
+#writer {
+	font-size: 35px;
+}
+
+#rightBoxHr {
+	width: 285px;
+	margin: 20px auto;
+}
+
+span#price {
+	font-size: 45px;
 }
 </style>
 </head>
@@ -100,22 +153,30 @@ hr {
 		<c:forEach items="${fList}" var="book">
 
 
-			<div class="abcd">
+			<div class="detailViewBox">
+				<div class="infoEtc">
+					<span id="writer">${bvo.book_writer}</span><br> <span>${bvo.book_publisher}</span>
+					<spna>${bvo.book_date}</spna>
+				</div>
 				<div class="pyoji">
 					<img class="book_img" src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name}" alt="bookThumbnail">
 					<%-- <img src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name} style="list-style: none;" alt="사진"> --%>
 				</div>
 				<div class="seoji">
-					원가 ${bvo.book_price}원<br> 판매가 ${bvo.book_saleprice}원<br> 출판사 ${bvo.book_publisher}<br> 출판일 ${bvo.book_date}<br>
+					<%-- 원가 ${bvo.book_price}원<br> 판매가 ${bvo.book_saleprice}원 --%>
+					<span id="price">${bvo.book_price}원</span>
+					<hr id="rightBoxHr">
 					<div class="qty">
-						수량 <input type="number" name="book_count" min="1" value="1">
+						<span>수량</span>
+						 <input type="number" name="book_count" min="1" value="1">
 						<div class="arrow">
-							<a href="#"><img src="/resources/img/upArrow.png" class="upArrow" alt="upArrow"></a>
-							 <a href="#"><img src="/resources/img/downArrow.png" class="downArrow" alt="downArrow"></a><br> <br>
+							<a href="#"><img src="/resources/img/upArrow.png" class="upArrow" alt="upArrow"></a> <a href="#"><img src="/resources/img/downArrow.png" class="downArrow" alt="downArrow"></a><br> <br>
 						</div>
 					</div>
-					<button type="button" class="btn btn-secondary">장바구니 담기</button>
-					<button type="button" class="btn btn-success">바로구매</button>
+					<div class="btnBox">
+						<button type="button" class="btn btn-secondary">장바구니 담기</button>
+						<button type="button" class="btn btn-success">바로구매</button>
+					</div>
 				</div>
 			</div>
 		</c:forEach>
@@ -123,9 +184,6 @@ hr {
 
 
 		<hr>
-		<%-- <div class="intro">책 소개 ${bvo.book_content}
-				</div> --%>
-
 
 		<div class="detail">${bvo.book_content}</div>
 		<div class="review">
@@ -133,7 +191,7 @@ hr {
 				<fieldset>
 					<span class="text-bold">별점을 선택해주세요</span> <input type="radio" name="review_rating" value="5" id="rate1"> <label for="rate1">★</label> <input type="radio" name="review_rating" value="4" id="rate2"> <label for="rate2">★</label> <input type="radio" name="review_rating" value="3" id="rate3"> <label for="rate3">★</label> <input type="radio" name="review_rating" value="2" id="rate4"> <label for="rate4">★</label> <input type="radio" name="review_rating" value="1" id="rate5"> <label for="rate5">★</label>
 				</fieldset>
-				<div>
+				<div class="reviewBox">
 					<span class="input-group-text" id="revWriter">${ses.mem_id }</span>
 					<textarea class="col-auto form-control" name="review_content" id="reviewContents" placeholder="좋은 수강평을 남겨주시면 Cocolo에 큰 힘이 됩니다! 포인트 5000p도 지급!!"></textarea>
 					<br> <span>${review_mem_id }</span>

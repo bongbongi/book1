@@ -7,6 +7,9 @@
       select * from book order by book_sales desc
    </select>
    
+   
+   
+   
    <select id="selectBookListPaging"
       resultType="com.ezen.book.domain.BookVO">
       select*from book where book_num>0
@@ -14,8 +17,10 @@
       order by book_num desc limit #{pageStart},#{qty}
    </select>
 
+
    <select id="searchBookTotalCount" resultType="int">
-      select count(book_num) from book where book_num>0
+      select
+      count(book_num) from book where book_num>0
       <include refid="search"></include>   
    </select>
 
@@ -38,7 +43,8 @@
    <select id="selectBookList"
       resultType="com.ezen.book.domain.BookVO">
       select * from book order by book_num desc limit #{pageStart}, #{qty}
-
+      <!-- select * from book a left join file b on a.book_num = b.book_num order 
+         by a.book_num desc limit #{pageStart}, #{qty} -->
    </select>
    
    <select id="searchTotalCount" resultType="int">
@@ -75,10 +81,6 @@
       select*from book order by rand() limit 1;
    </select>
    
-   <select id="getTotalCount2" resultType="int">
-		select count(book_num) from book
-	</select>
-   
    <sql id="search">
       <if test="type != null">
          <trim prefix="and (" suffix=")" prefixOverrides="OR">
@@ -90,15 +92,21 @@
                      </when>
                      <when test="type=='c'.toString()">
                         book_writer like CONCAT('%', #{keyword}, '%')
-                     </when>                  
+                     </when>
+                     
                      <when test="type=='w'.toString()">
-                        book_publisher like CONCAT('%', #{keyword}, '%')                        
-                     </when>                     
+                        book_publisher like CONCAT('%', #{keyword}, '%')
+                        
+                     </when>
+                     
                   </choose>
                </trim>
             </foreach>
          </trim>
       </if>
    </sql>
-      
+   
+
+   
+   
 </mapper>

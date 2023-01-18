@@ -125,7 +125,7 @@ public class BookController {
 	@GetMapping("/list")
 	public String list(Model model, PagingVO pvo) {
 		log.info(">>>> pageNo : " + pvo.getPageNo());
-		List<BookVO> list = bks.getList(pvo);
+		List<BookVO> list = bks.getSearchList(pvo);
 		FileVO fvo = new FileVO();
 		List<FileDTO> list2 = new ArrayList<FileDTO>();
 		for (BookVO b : list) {
@@ -144,7 +144,7 @@ public class BookController {
 
 		model.addAttribute("li", list2);
 
-		int totalCount2 = bks.getTotalCount2();
+		int totalCount2 = bks.getTotalCount(pvo);
 		PagingHandler ph = new PagingHandler(pvo, totalCount2);
 		log.info("pgvo" + ph.getPgvo());
 		model.addAttribute("pgn", ph);

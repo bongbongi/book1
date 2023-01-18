@@ -43,12 +43,8 @@ public interface MemberDAO {
 
 	int insertGrade(MemberVO mvo);
 
-	int moneyCharge(MemberVO mvo);
+	int moneyCharge(@Param("mem_id") String mem_id, @Param("mem_sum") int mem_sum);
 
 	int getCharge(String mem_id);
-
-	
-
-
 
 }

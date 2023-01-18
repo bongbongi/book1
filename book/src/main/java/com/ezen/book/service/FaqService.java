@@ -18,7 +18,7 @@ public interface FaqService {
 
 	int removeFaq(int faq_num, MemberVO mem);
 
-	int totalCount();
+	int totalCount(PagingVO pvo);
 
 	List<FaqVO> getFaqList();
 

@@ -75,7 +75,7 @@ function getReviewList(book_num){
             }
 
         }else{
-            let li = `<li>Review List Empty</li>`;
+            let li = `<li>이 책의 첫 리뷰어가 되어주세요.</li>`;
             ul.innerHTML += li;
         }
     })

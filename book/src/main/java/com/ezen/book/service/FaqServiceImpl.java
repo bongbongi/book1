@@ -49,8 +49,8 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public int totalCount() {
-		return fao.totalCount();
+	public int totalCount(PagingVO pvo) {
+		return fao.totalCount(pvo);
 	}
 
 	@Override
