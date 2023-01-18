@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -37,7 +38,7 @@
 	height: 100px;
 	font-size: 55px;
 	text-align: center;
-	background-color: aquamarine;
+	
 }
 
 .pyoji {
@@ -51,13 +52,13 @@
 
 .intro {
 	width: 600px;
-	background-color: gray;
+	
 }
 
 .detail {
 	width: 1000px;
 	height: 400px;
-	background-color: beige;
+	
 }
 
 .review {
@@ -90,6 +91,7 @@ hr {
 }
 </style>
 </head>
+
 <body>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 	<div class="bookDetail">
@@ -100,14 +102,16 @@ hr {
 
 			<div class="abcd">
 				<div class="pyoji">
-					<img src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name}" style="list-style: none;">
+					<img class="book_img" src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name}" alt="bookThumbnail">
+					<%-- <img src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name} style="list-style: none;" alt="사진"> --%>
 				</div>
 				<div class="seoji">
-					서지 정보<br> 판매가 OOOOO원<br> 어쩌구저쩌구<br> 배송료 OOOO원<br> 어쩌구<br> <br>
+					원가 ${bvo.book_price}원<br> 판매가 ${bvo.book_saleprice}원<br> 출판사 ${bvo.book_publisher}<br> 출판일 ${bvo.book_date}<br>
 					<div class="qty">
 						수량 <input type="number" name="book_count" min="1" value="1">
 						<div class="arrow">
-							<a href="#"><img src="/resources/images/up.png" class="upArrow" alt="upArrow"></a> <a href="#"><img src="/resources/images/down.png" class="downArrow" alt="downArrow"></a><br> <br>
+							<a href="#"><img src="/resources/img/upArrow.png" class="upArrow" alt="upArrow"></a>
+							 <a href="#"><img src="/resources/img/downArrow.png" class="downArrow" alt="downArrow"></a><br> <br>
 						</div>
 					</div>
 					<button type="button" class="btn btn-secondary">장바구니 담기</button>
@@ -119,14 +123,15 @@ hr {
 
 
 		<hr>
-		<%-- <div class="intro">책 소개 ${bvo.book_content}</div> --%>
+		<%-- <div class="intro">책 소개 ${bvo.book_content}
+				</div> --%>
 
 
 		<div class="detail">${bvo.book_content}</div>
 		<div class="review">
 			<form class="mb-3" name="myform" id="myform" method="post">
 				<fieldset>
-					<span class="text-bold">별점을 선택해주세요</span> <input type="radio" name="review_rating" value="5" id="rate1"><label for="rate1">★</label> <input type="radio" name="review_rating" value="4" id="rate2"><label for="rate2">★</label> <input type="radio" name="review_rating" value="3" id="rate3"><label for="rate3">★</label> <input type="radio" name="review_rating" value="2" id="rate4"><label for="rate4">★</label> <input type="radio" name="review_rating" value="1" id="rate5"><label for="rate5">★</label>
+					<span class="text-bold">별점을 선택해주세요</span> <input type="radio" name="review_rating" value="5" id="rate1"> <label for="rate1">★</label> <input type="radio" name="review_rating" value="4" id="rate2"> <label for="rate2">★</label> <input type="radio" name="review_rating" value="3" id="rate3"> <label for="rate3">★</label> <input type="radio" name="review_rating" value="2" id="rate4"> <label for="rate4">★</label> <input type="radio" name="review_rating" value="1" id="rate5"> <label for="rate5">★</label>
 				</fieldset>
 				<div>
 					<span class="input-group-text" id="revWriter">${ses.mem_id }</span>
@@ -147,7 +152,8 @@ hr {
 	<script type="text/javascript">
 		getReviewList(revVal);
 	</script>
-	
+
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
 </body>
+
 </html>

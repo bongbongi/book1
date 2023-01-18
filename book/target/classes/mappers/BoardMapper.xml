@@ -54,7 +54,7 @@
 		update board set brd_views=brd_views-1 where brd_num=#{brd_num}
 	</update>
 	
-		<sql id="search">
+	<sql id="search">
 		<if test="type != null">
 			<trim prefix="and (" suffix=")" prefixOverrides="OR">
 				<foreach collection="typeToArray" item="type">
@@ -74,6 +74,6 @@
 				</foreach>
 			</trim>
 		</if>
-	</sql>
+</sql>
 	
 	</mapper>

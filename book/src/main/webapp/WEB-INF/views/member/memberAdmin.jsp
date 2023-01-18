@@ -126,6 +126,25 @@ a {
 									<a href="/admin/memList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}"> > </a>
 								</c:if>
 							</div>
+								<!-- search -->
+
+						<div class="col-sm-12 col-md-6">
+								<form action="/admin/memList" method="get">
+									<div class="input-group mb-3">
+										<!-- 값을 별도 저장 -->
+										<c:set value="${pgh.pgvo.type}" var="typed" />
+										<select class="form-select" name="type" style="height: 50px; width:30px;">
+											<option ${typed==null ? 'selected' :'' }>항목</option>
+											<option value="t" ${typed eq 't' ? 'selected' :'' }>아이디</option>
+											<option value="c" ${typed eq 'c' ? 'selected' :'' }>이름</option>
+										</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+										<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top:0px" >
+											결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
+											</span>
+										</button>
+									</div>
+								</form>
+							</div>
 						</c:when>
 
 

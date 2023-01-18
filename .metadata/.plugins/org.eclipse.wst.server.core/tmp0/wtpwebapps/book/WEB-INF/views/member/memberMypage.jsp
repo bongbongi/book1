@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script type="text/javascript" src="/resources/js/memberJoin.js"></script>
+<script type="text/javascript" src="/resources/js/memberCharge.js"></script>
 <script type="text/javascript" src="/resources/js/boardComment.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://kit.fontawesome.com/92e616dfba.js" crossorigin="anonymous"></script>
@@ -68,7 +68,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 		<c:forEach items="${content}" var="content">
 			<c:choose>
 				<c:when test="${content eq 'modify' || content == 'main' }">
-				<script type="text/javascript" src="/resources/js/memberJoin.js"></script>
+					<script type="text/javascript" src="/resources/js/memberJoin.js"></script>
 					<form action="/mem/modify" method="post">
 						<div class="MypageModify mypage-right">
 							<h4>회원정보수정</h4>
@@ -76,31 +76,17 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 							<lable for="mem_id">ID</lable>
 							<br> <input type="text" class="join-input" name="mem_id" value="${ses.mem_id}" id="mem_id" placeholder="아이디" onchange="checkId()" readonly="readonly" required> <Br>
 							<lable for="mem_pw">PW</lable>
-							<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분X), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> 
-								<span class="pw_ok"><i class="fa-solid fa-check"></i></span> 
-								<span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> 
-								<span class="pw_null"><i class="fa-solid fa-x"></i></span> <br>
+							<br> <input type="password" class="join-input" name="mem_pw" id="mem_pw" placeholder="영문(대소문자 구분X), 숫자, 특수문자 조합, 9~12자리" onchange="checkPw()" required> <span class="pw_ok"><i class="fa-solid fa-check"></i></span> <span class="pw_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pw_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mem_pwRe">PW Re</lable>
-							<br> <input type="password" class="join-input" name="mem_pwRe" id="mem_pwRe" placeholder="비밀번호 확인을 위해 한번 더 입력해주세요" onchange="checkPwRe()" required> 
-								<span class="pwRe_ok"><i class="fa-solid fa-check"></i></span>
-								<span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span>
-								<span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
+							<br> <input type="password" class="join-input" name="mem_pwRe" id="mem_pwRe" placeholder="비밀번호 확인을 위해 한번 더 입력해주세요" onchange="checkPwRe()" required> <span class="pwRe_ok"><i class="fa-solid fa-check"></i></span> <span class="pwRe_rewrite"><i class="fa-solid fa-x"></i></span> <span class="pwRe_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mem_name">NAME</lable>
 							<br> <input type="text" class="join-input" name="mem_name" placeholder="이름" value="${ses.mem_name}" required> <br>
 							<lable for="mem_postzip">ADDRESS</lable>
-							<br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" value="${ses.mem_postzip}" required> 
-							<input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> 
-							<input type="text" class="join-input" id="address" name="address" placeholder="주소" value="${ses.mem_ad.substring(0,ses.mem_ad.indexOf('/'))}" required> <br> 
-							<input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" 
-							value="${ses.mem_ad.substring(ses.mem_ad.indexOf('/')+2,ses.mem_ad.lastIndexOf('/'))}" required><br> 
-							<input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" value="${ses.mem_ad.substring(ses.mem_ad.lastIndexOf('/')+1)}" readonly="readonly"> <br>
+							<br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" value="${ses.mem_postzip}" required> <input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> <input type="text" class="join-input" id="address" name="address" placeholder="주소" value="${ses.mem_ad.substring(0,ses.mem_ad.indexOf('/'))}" required> <br> <input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" value="${ses.mem_ad.substring(ses.mem_ad.indexOf('/')+2,ses.mem_ad.lastIndexOf('/'))}" required><br> <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" value="${ses.mem_ad.substring(ses.mem_ad.lastIndexOf('/')+1)}" readonly="readonly"> <br>
 							<lable for="mem_age">AGE</lable>
 							<br> <input type="text" class="join-input" name="mem_age" placeholder="나이" value="${ses.mem_age}" required> <br>
 							<lable for="mem_cell_num">PHONE</lable>
-							<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> 
-								<span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> 
-								<span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> 
-								<span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
+							<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mno_cno">FAVORITE</lable>
 							<br> <select class="join-input" name="mno_cno">
 								<option value="novel">소설</option>
@@ -114,20 +100,43 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 					</form>
 				</c:when>
 				<c:when test="${content eq 'charge'}">
-            
-            <div class="moneyCharge mypage-right">
-            <div class="sum">현재 충전금액 : ${ses.mem_sum}원</div><br><br><br><br><br><br><br><br><br><br><br>
-            
-          
-            <form src="/mem/charge" method="post">
-            <input type="text" hidden name="mem_num" value="${ses.mem_num}">
-            <input type="text" hidden name="mem_id" value="${ses.mem_id}">
-            <input type="text" hidden name="mem_pw" value="${ses.mem_pw}">
-            <input type="number" name="mem_sum">
-            <button type="submit">충전하기</button>
-            </form>
-            </div>
-            </c:when>
+
+					<div class="moneyCharge mypage-right">
+						<div class="sum" id="sum">
+						현재 충전금액 <input type="text" value="${ses.mem_sum}원">
+						</div>
+						<br>
+					
+						
+						<form src="/mem/charge2" method="post">
+							<input type="text" hidden name="mem_num" value="${ses.mem_num}"> 
+							<input type="text" hidden name="mem_id" value="${ses.mem_id}"> 
+							<input type="text" hidden name="mem_pw" value="${ses.mem_pw}"> 
+							<input type="number" name="mem_sum" id="mem_sum">
+							<button type="button" onclick="charge()">충전하기</button>
+						</form>
+					</div>
+					<script type="text/javascript">
+					function charge(){
+					    let mem_sum = document.getElementById('mem_sum').value;
+					    console.log("js mem_sum 테스트 : "+mem_sum);
+					    $.ajax({
+					        url:'/mem/charge2', //Controller에서 요청 받을 주소
+					        type:'post', //POST 방식으로 전달
+					        data:{mem_sum:mem_sum},
+					        success:function(sum){ //컨트롤러에서 넘어온 isOK값을 받는다 
+					            console.log("컨트롤러에서 건너온 sum : "+sum);
+					            //document.getElementById('sum').value = isOk;
+					        },
+					        error:function(request,status,error){
+					        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					        }	
+
+					    });
+					    };
+					</script>
+				</c:when>
+			
 				<c:when test="${content eq 'orderList'}">
 					<div class="memberOrderList mypage-right">
 						<h4>주문/배송조회</h4>
@@ -372,14 +381,15 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 										<option value="t" ${typed eq 't' ? 'selected' :'' }>제목</option>
 										<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
 										<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
-									</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> 
-									<input type="hidden" name="pageNo" value="1"> 
-									<input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+									</select>
+									 <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> 
+									<input type="hidden" name="pageNo" value="1">
+									 <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
 									<button type="submit" class="btn btn-success position-relative">
 										결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
-												${pgh.totalCount}개 
-												<span class="visually-hidden">unread messages</span>
-											</span>
+										${pgh.totalCount}개 
+										<span class="visually-hidden">unread messages</span>
+										</span>
 									</button>
 								</div>
 							</form>
@@ -399,7 +409,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 						<div class="long">탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.</div>
 						<div class="short">게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다. 삭제를 원하는 게시글이 있다면 반드시 탈퇴 전 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.</div>
 						<div class="deleteTableBox">
-							<table class="table table-striped mypageDeleteInfo">
+							<table class="table table-striped mypageDeleteInfoTable">
 								<tr>
 									<td>개인정보</td>
 									<td>개인정보 전체 삭제</td>
@@ -410,7 +420,9 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 								</tr>
 							</table>
 						</div>
-						탈퇴 후에는 아이디 ${ses.mem_id}에 대한 데이터는 복구할 수 없습니다. 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.
+						탈퇴 후에는 아이디 ${ses.mem_id}에 대한 데이터는 복구할 수 없습니다. <br>
+						<br> 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.<br>
+						<Br>
 						<form action="/mem/delete?mem_num=${ses.mem_num}" method="post">
 							<input type="checkbox" class="checkbox" required> 안내 사항을 모두 확인하였으며, 이에 모두 동의합니다. <br>
 							<div class="button">
@@ -431,9 +443,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 									</select>
 								</div>
 								<div class="brd_titleAndWriter">
-									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" required> 
-									<label for="brd_writer">작성자</label> 
-									<input type="text" name="brd_writer" value="${ses.mem_id}" readonly><br>
+									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" required> <label for="brd_writer">작성자</label> <input type="text" name="brd_writer" value="${ses.mem_id}" readonly><br>
 								</div>
 								<div class="brd_content">
 									<label for="brd_content">내용</label><br>
@@ -465,38 +475,37 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 
 						<div class="container">
 							<div class="input-group my-3">
-								<span class="input-group-text" id="cmtWriter">${ses.mem_id}</span> 
-								<input type="text" class="form-control" id="cmtText" placeholder="Test Add Comment ">
+								<span class="input-group-text" id="cmtWriter">${ses.mem_id}</span> <input type="text" class="form-control" id="cmtText" placeholder="Test Add Comment ">
 								<button class="btn btn-success" id="cmtPostBtn" type="button">Post</button>
 							</div>
 							<ul class="list-group list-group-flush" id="cmtListArea">
 								<li class="list-group-item d-flex justify-content-between align-items-start">
 									<div class="ms-2 me-auto">
-										<div class="fw-bold">Writer
-										<span class="badge bg-dark rounded-pill">modAt</span>
+										<div class="fw-bold">
+											Writer <span class="badge bg-dark rounded-pill">modAt</span>
 										</div>
 										Content for Comment
-									</div> 
+									</div>
 								</li>
 							</ul>
 						</div>
 
 
-						
-						
-						
-				<script type="text/javascript">
-                     const bnoVal = '<c:out value="${board.brd_num}" />';
-                  
-                     const auth = '<c:out value="${ses.mem_auth}"/>';
-          
-                     console.log(auth);
-                     console.log(bnoVal);
-                  </script>
-                  <script type="text/javascript" src="/resources/js/boardComment.js"></script>
-                  <script type="text/javascript">
-                     getCommentList(bnoVal, auth);
-                  </script>
+
+
+
+						<script type="text/javascript">
+							const bnoVal = '<c:out value="${board.brd_num}" />';
+
+							const auth = '<c:out value="${ses.mem_auth}"/>';
+
+							console.log(auth);
+							console.log(bnoVal);
+						</script>
+						<script type="text/javascript" src="/resources/js/boardComment.js"></script>
+						<script type="text/javascript">
+							getCommentList(bnoVal, auth);
+						</script>
 					</div>
 
 				</c:when>
@@ -507,9 +516,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 								<input type="text" name="brd_num" value="${board.brd_num}" readonly hidden><br>
 
 								<div class="brd_titleAndWriter">
-									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" value="${board.brd_title}" required> 
-									<label for="brd_writer">작성자</label> 
-									<input type="text" name="brd_writer" value="${ses.mem_id}" value="${board.brd_writer}" readonly><br>
+									<label for="brd_title">제목</label> <input type="text" name="brd_title" class="brd_title" value="${board.brd_title}" required> <label for="brd_writer">작성자</label> <input type="text" name="brd_writer" value="${ses.mem_id}" value="${board.brd_writer}" readonly><br>
 								</div>
 								<div class="brd_regdate">
 									<label for="brd_regdate">작성일</label> <input type="text" name="brd_regdate" value="${board.brd_regdate}" readonly><br>
@@ -528,7 +535,7 @@ integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WT
 		</c:forEach>
 	</div>
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
-	
+
 </body>
 
 </html>

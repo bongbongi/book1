@@ -278,14 +278,31 @@ public class MemberController {
 		return "/member/memberMypage";
 	}
 
-	@PostMapping("/charge")
-	public String moneyCharge(MemberVO mvo, HttpServletRequest req) {
-		log.info(mvo.toString());
+	/*
+	 * @PostMapping("/charge") public String moneyCharge(MemberVO mvo,
+	 * HttpServletRequest req) { log.info(mvo.toString()); int isOk =
+	 * msv.moneyCharge(mvo); log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
+	 * req.getSession().removeAttribute("ses"); req.getSession().invalidate();
+	 * return "redirect:/"; }
+	 */
+	
+	
+	@PostMapping("/charge2")
+	@ResponseBody
+	public String moneyCharge(Model model, MemberVO mvo, HttpServletRequest req) {
 		int isOk = msv.moneyCharge(mvo);
-		log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
-		req.getSession().removeAttribute("ses");
-		req.getSession().invalidate();
-		return "redirect:/";
+		log.info("charge mem_id : "+mvo.getMem_id());
+		log.info("컨트롤러 charge2 sum값 : "+isOk);
+		
+		int sum = msv.getCharge(mvo.getMem_id());
+		log.info("sum 컨트롤러 : "+sum);
+		//log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
+		
+		/*
+		 * req.getSession().removeAttribute("ses"); 
+		 * req.getSession().invalidate();
+		 */
+		return "sum";
 	}
 
 }

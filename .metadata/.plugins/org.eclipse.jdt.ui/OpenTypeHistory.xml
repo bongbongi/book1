@@ -6,4 +6,5 @@
     <typeInfo handle="=book/C:\/Users\/hshee\/.m2\/repository\/org\/apache\/poi\/poi-scratchpad\/4.1.2\/poi-scratchpad-4.1.2.jar=/maven.pomderived=/true=/=/org.eclipse.jst.component.dependency=/\/WEB-INF\/lib=/=/maven.pomderived=/true=/=/org.eclipse.jst.component.archivename=/poi-scratchpad-4.1.2.jar=/=/maven.groupId=/org.apache.poi=/=/maven.artifactId=/poi-scratchpad=/=/maven.version=/4.1.2=/=/maven.scope=/compile=/&lt;org.apache.poi.hwpf.usermodel(Bookmark.class[Bookmark" modifiers="1537" timestamp="1672800706211"/>
     <typeInfo handle="=book/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ezen.book.service{OrderService.java[OrderService" modifiers="513" timestamp="1673503514969"/>
     <typeInfo handle="=book/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ezen.book.service{FaqService.java[FaqService" modifiers="513" timestamp="1673620691070"/>
+    <typeInfo handle="=book/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ezen.book.service{ReviewService.java[ReviewService" modifiers="513" timestamp="1674009629758"/>
 </typeInfoHistroy>

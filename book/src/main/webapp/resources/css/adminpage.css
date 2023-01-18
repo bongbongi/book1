@@ -83,6 +83,13 @@ a:hover {
 .pagination>a {
 	margin: 20px auto;
 }
+/* 439.01*37.98 */
+.col-sm-12 .mb-3{
+	margin:0 auto;
+	width: 439.01px;
+	height: 37.98px;
+}
+
 /* 한 줄 말줄임 */
 table{
 	table-layout: fixed;

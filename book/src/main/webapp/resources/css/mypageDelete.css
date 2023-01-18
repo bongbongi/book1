@@ -13,6 +13,11 @@
 	color: gray;
 	font-size: 13px;
 }
+.long,
+.short{
+	
+	text-align: left;
+}
 .long {
 	font-size: 18px;
 	font-weight: 900;
@@ -22,7 +27,7 @@
 	color: gray;
 }
 
-.mypageDeleteInfo {
+.deleteTableBox .mypageDeleteInfoTable {
     width: 330px;
     height: 50px;
     margin: 50px auto;

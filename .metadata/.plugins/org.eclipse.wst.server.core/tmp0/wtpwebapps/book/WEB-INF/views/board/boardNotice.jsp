@@ -67,6 +67,10 @@ table {
 .noticeBtnBox>button {
 	margin:0 auto;
 }
+.noticeBtnBox {
+    text-align: center;
+    margin-bottom: 23px;
+}
 </style>
 </head>
 <body>

@@ -199,9 +199,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int totalCount() {
+	public int totalCount(PagingVO pvo) {
 
-		return mdao.totalCount();
+		return mdao.totalCount(pvo);
 	}
 
 	@Override
@@ -209,10 +209,30 @@ public class MemberServiceImpl implements MemberService {
 		  log.info("member service check2");
 	      return mdao.insertGrade(mvo);
 	}
+	/*
+	 * @Override public int moneyCharge(MemberVO mvo) { return
+	 * mdao.moneyCharge(mvo);
+	 * 
+	 * }
+	 */
+
 	@Override
 	   public int moneyCharge(MemberVO mvo) {
-	      return mdao.moneyCharge(mvo);
+		return mdao.moneyCharge(mvo);
+
 	      
 	   }
+		/*
+		 * @Override public int moneyCharge(MemberVO mvo) { mdao.moneyCharge(mvo);
+		 * log.info("서비스임플 charge 아이디 : "+mvo.getMem_id()); int sum =
+		 * mdao.getCharge(mvo.getMem_id()); return sum;
+		 * 
+		 * }
+		 */
+
+	@Override
+	public int getCharge(String mem_id) {
+		return mdao.getCharge(mem_id);
+	}
 
 }
