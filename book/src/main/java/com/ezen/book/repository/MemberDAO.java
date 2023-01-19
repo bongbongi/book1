@@ -43,7 +43,7 @@ public interface MemberDAO {
 
 	int insertGrade(MemberVO mvo);
 
-	int moneyCharge(@Param("mem_id") String mem_id, @Param("mem_sum") int mem_sum);
+	int moneyCharge(@Param("mem_id") String mem_id, @Param("mem_cash") int mem_cash);
 
 	int getCharge(String mem_id);
 
@@ -54,5 +54,21 @@ public interface MemberDAO {
 	int memberCartNumDown(int mem_num);	// 장바구니에서 삭제하면 -1
 
 	void deletememberCartNum(int order_mem_num);  // 구매시 회원의 장바구니 넘버를 0으로 만듬
+
+	MemberVO getIdAll(String mem_id);
+
+	MemberVO getMemNumAll(int mem_num);
+
+	/*
+	 * String putGrade(@Param("mem_num")int mem_num,@Param("mem_rating") String
+	 * mem_rating);
+	 */
+
+	/*
+	 * int insertGrade(@Param("mem_num")int mem_num,@Param("mem_rating") String
+	 * mem_rating);
+	 */
+
+	/* String getRating(int mem_num); */
 	
 }

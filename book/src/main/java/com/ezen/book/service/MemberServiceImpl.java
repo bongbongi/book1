@@ -204,15 +204,14 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.totalCount(pvo);
 	}
 
-	@Override
-	public int putGrade(MemberVO mvo) {
-		log.info("member service check2");
-		return mdao.insertGrade(mvo);
-	}
+	
+	  @Override public int putGrade(MemberVO mvo) {
+	  log.info("member service check2"); return mdao.insertGrade(mvo); }
+	 
 
 	@Override
-	public int moneyCharge(String mem_id, int mem_sum) {
-		return mdao.moneyCharge(mem_id, mem_sum);
+	public int moneyCharge(String mem_id, int mem_cash) {
+		return mdao.moneyCharge(mem_id, mem_cash);
 	}
 
 	@Override
@@ -237,5 +236,40 @@ public class MemberServiceImpl implements MemberService {
 	public int memberCartNumDown(int mem_num) {
 		// 장바구니 삭제시 숫자 줄이기
 		return mdao.memberCartNumDown(mem_num);
-	}	
+	}
+
+	@Override
+	public MemberVO getIdAll(String mem_id) {
+		// TODO Auto-generated method stub
+		return mdao.getIdAll(mem_id);
+	}
+
+
+	@Override
+	public MemberVO getNumAll(int mem_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MemberVO getMemNumAll(int mem_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	/*
+	 * @Override public int putGrade(int mem_num, String mem_rating) {
+	 * 
+	 * return mdao.insertGrade(mem_num,mem_rating); }
+	 */
+
+	/*
+	 * @Override public String getRating(int mem_num) {
+	 * 
+	 * return mdao.getRating(mem_num); }
+	 */
+
+	
 }

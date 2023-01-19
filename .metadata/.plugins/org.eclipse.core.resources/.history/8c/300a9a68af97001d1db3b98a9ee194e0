@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.cashBox {
+	height: 65px;
+	background: pink;
+	/* margin: 50px auto; */
+	/* padding: 80px; */
+}
+
+input#cash {
+	border: none;
+	font-size: 35px;
+    width: 200px;
+    text-align: right;
+}
+
+#cashNow {
+	font-size: 35px;
+}
+
+.moneyCharge #chargeHr{
+	width: 878px;
+	border:  1px solid gray;
+}

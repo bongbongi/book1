@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,7 @@ import com.ezen.book.domain.FileVO;
 import com.ezen.book.domain.MemberVO;
 import com.ezen.book.domain.PagingVO;
 import com.ezen.book.handler.PagingHandler;
+import com.ezen.book.repository.MemberDAO;
 import com.ezen.book.service.BookService;
 import com.ezen.book.service.MemberService;
 
@@ -49,13 +52,16 @@ public class HomeController {
 
    @Inject
    private MemberService msv;
+   
+   @Inject
+   private MemberDAO mdao;
    /**
     * Simply selects the home view to render by returning its name.
     */
 
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String home(Locale locale, Model model) {
-      logger.info("Welcome home! The client locale is {}.", locale);
+      
 
       Date date = new Date();
       DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -192,19 +198,21 @@ public class HomeController {
    }
    
    @PostMapping(value="/event", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-   public ResponseEntity<String> post(@RequestBody MemberVO mvo){
-      int isUp =msv.putGrade(mvo);
+   public ResponseEntity<String> post(@RequestBody MemberVO mvo,HttpServletRequest req){
+      int isUp = msv.putGrade(mvo);
+      log.info("이벤트 mvo"+mvo.toString());
       log.info(">>> register isUp : "+(isUp>0? "ok" : "fail"));
-      return isUp>0? new ResponseEntity<String>("1",HttpStatus.OK)
-            : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-   }
-   
-   
+      
+      MemberVO mvo2 = mdao.getMemNumAll(mvo.getMem_num());
+		log.info("이벤트 mvo2"+mvo2.toString());
+		  HttpSession ses = req.getSession(); 
+		  ses.setAttribute("ses", mvo2);
+		  ses.setMaxInactiveInterval(60 * 10);
+		
+		  return isUp>0? new ResponseEntity<String>("1",HttpStatus.OK)
+		            : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 
-   
- 
-   
-   
+   }
    
    
 }

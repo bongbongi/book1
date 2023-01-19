@@ -1,24 +1,29 @@
 @charset "UTF-8";
 
-.sum {
+.cashBox {
 	height: 65px;
-	background: pink;
+	/* background: pink; */
 	/* margin: 50px auto; */
 	/* padding: 80px; */
 }
 
-input#sum {
+input#cash {
 	border: none;
 	font-size: 35px;
-    width: 200px;
-    text-align: right;
+	width: 200px;
+	text-align: right;
 }
 
-#sumNow {
+#cashNow {
 	font-size: 35px;
 }
 
-.moneyCharge #chargeHr{
+.moneyCharge #chargeHr {
 	width: 878px;
-	border:  1px solid gray;
+	border: 1px solid gray;
 }
+
+.cashImgBox>img {
+	width: 620px;
+}
+

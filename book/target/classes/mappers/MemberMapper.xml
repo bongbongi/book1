@@ -82,11 +82,11 @@
 		mem_num=#{mem_num}
 	</insert>
 	<update id="moneyCharge">
-		update member set mem_sum=mem_sum+#{mem_sum} where
+		update member set mem_cash=mem_cash+#{mem_cash} where
 		mem_id=#{mem_id}
 	</update>
 	<select id="getCharge" resultType="int">
-		select mem_sum from member
+		select mem_cash from member
 		where mem_id=#{mem_id}
 	</select>
 	<select id="getMemberInfo"
@@ -113,6 +113,15 @@
 		update member set mem_cartNum = 0 where mem_num = #{mem_num}
 
 	</update>
+	<select id="getIdAll" resultType="com.ezen.book.domain.MemberVO">
+		select * from member where mem_id=#{mem_id}
+	</select>
+	<select id="getMemNumAll"  resultType="com.ezen.book.domain.MemberVO">
+		select * from member where mem_num=#{mem_num}
+	</select>
+	<select id="getRating" resultType="String">
+		select mem_rating from member where mem_num=#{mem_num}
+	</select>
 
 	<sql id="search">
 		<if test="type != null">

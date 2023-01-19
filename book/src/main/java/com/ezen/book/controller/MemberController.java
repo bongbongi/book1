@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.book.domain.MemberVO;
+import com.ezen.book.domain.OrderItemDTO;
 import com.ezen.book.domain.OrderVO;
 import com.ezen.book.domain.PagingVO;
 import com.ezen.book.handler.PagingHandler;
@@ -289,23 +290,35 @@ public class MemberController {
 	
 	@PostMapping("/charge2")
 	@ResponseBody
-	public String moneyCharge(Model model, MemberVO mvo, HttpServletRequest req,
-			@RequestParam(value="mem_id", required=false) String mem_id,@RequestParam("mem_sum") int mem_sum) {
+	public String moneyCharge(Model model,MemberVO mvo,HttpServletRequest req,
+			@RequestParam(value="mem_id", required=false) String mem_id,@RequestParam("mem_cash") int mem_cash) {
+		//log.info("charge mvo 출력 : "+mvo.toString());
 		log.info("js넘어온 mem_id : "+mem_id);
-		log.info("js넘어온 mem_sum : "+mem_sum);
-		int isOk = msv.moneyCharge(mem_id,mem_sum);
+		log.info("js넘어온 mem_sum : "+mem_cash);
+		int isOk = msv.moneyCharge(mem_id,mem_cash);
 		log.info("컨트롤러 charge2 sum값 : "+isOk);
 		
-		int sumNow = msv.getCharge(mem_id);
-		String sumNow2 =String.valueOf(sumNow);
-		log.info("sum 컨트롤러 : "+sumNow);
+		int cashNow = msv.getCharge(mem_id);
+		String cashNow2 =String.valueOf(cashNow);
+		log.info("sum 컨트롤러 : "+cashNow);
 		//log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
 		
+		MemberVO mvo2 = msv.getIdAll(mvo.getMem_id());
+		HttpSession ses = req.getSession();
+		ses.setAttribute("ses", mvo2);
 		/*
-		 * req.getSession().removeAttribute("ses"); 
-		 * req.getSession().invalidate();
+		 * req.getSession().removeAttribute("ses"); req.getSession().invalidate();
 		 */
-		return sumNow2;
+		 
+		return cashNow2;
+	}
+	@GetMapping("/orderListDetail")
+	public String orderListDetail(Model model, @RequestParam("order_num") String order_num) {
+		log.info(">>>num :" + order_num);
+		List<OrderItemDTO> Olist = osv.orderDetail(order_num);
+		model.addAttribute("list", Olist);
+		model.addAttribute("content", "orderDetail");
+		return "/member/memberMypage";
 	}
 
 }

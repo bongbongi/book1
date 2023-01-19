@@ -15,8 +15,8 @@
 
 
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageCharge.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mypageModify.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageDelete.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageOrderList.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBuyList.css">
@@ -55,9 +55,6 @@
 					<td><a href="/mem/orderCheck?mem_num=${ses.mem_num}">주문/배송조회</a></td>
 				</tr>
 				<tr>
-					<td><a href="/mem/buyCheck?mem_num=${ses.mem_num}">구매함</a></td>
-				</tr>
-				<tr>
 					<td><a href="/board/list" class="box">1대1문의</a></td>
 				</tr>
 				<tr>
@@ -85,9 +82,9 @@
 							<lable for="mem_postzip">ADDRESS</lable>
 							<br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" value="${ses.mem_postzip}" required> <input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> <input type="text" class="join-input" id="address" name="address" placeholder="주소" value="${ses.mem_ad.substring(0,ses.mem_ad.indexOf('/'))}" required> <br> <input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" value="${ses.mem_ad.substring(ses.mem_ad.indexOf('/')+2,ses.mem_ad.lastIndexOf('/'))}" required><br> <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" value="${ses.mem_ad.substring(ses.mem_ad.lastIndexOf('/')+1)}" readonly="readonly"> <br>
 							<lable for="mem_age">AGE</lable>
-							<br> <input type="text" class="join-input" name="mem_age" placeholder="나이" value="${ses.mem_age}" required> <br>
+							<br> <input type="number" class="join-input" name="mem_age" placeholder="나이" value="${ses.mem_age}" required> <br>
 							<lable for="mem_cell_num">PHONE</lable>
-							<br> <input type="text" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
+							<br> <input type="number" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mno_cno">FAVORITE</lable>
 							<br> <select class="join-input" name="mno_cno">
 								<option value="novel">소설</option>
@@ -103,71 +100,78 @@
 				<c:when test="${content eq 'charge'}">
 
 					<div class="moneyCharge mypage-right">
-						<div class="sum" >
-						<span id="sumNow">현재 충전금액 </span> <input type="text" value="${ses.mem_sum}원" id="sum">
+						<div class="cashBox">
+							<span id="cashNow">현재 충전금액 </span> 
+							<input type="text" value="${ses.mem_cash}원" id="cash">
 						</div>
 						<br>
-						
-						
+
+
 						<form src="/mem/charge2" method="post">
-							<input type="text"  name="mem_num" value="${ses.mem_num}" hidden> 
-							<input type="text"  name="mem_id" value="${ses.mem_id}" id="mem_id" hidden> 
-							<input type="text"  name="mem_pw" value="${ses.mem_pw}" hidden> 
-							<input type="number" name="mem_sum" id="mem_sum">
+							<input type="text" name="mem_num" value="${ses.mem_num}" hidden> 
+							<input type="text" name="mem_id" value="${ses.mem_id}" id="mem_id" hidden> 
+							<input type="text" name="mem_pw" value="${ses.mem_pw}" hidden> 
+							<input type="number" name="mem_cash" id="mem_cash">
 							<button type="button" onclick="charge()">충전하기</button>
 						</form>
+						<div class="cashImgBox">
+							<img src="/resources/img/coin.png">
+						</div>
 					</div>
 					<hr id="chargeHr">
 					<script type="text/javascript">
-					function charge(){
-					    let mem_sum = document.getElementById('mem_sum').value;
-					    let mem_id = document.getElementById('mem_id').value;
-					    console.log("js mem_sum 테스트 : "+mem_sum);
-					    console.log("js mem_id 테스트 : "+mem_id);
-					    $.ajax({
-					        url:'/mem/charge2', //Controller에서 요청 받을 주소
-					        type:'post', //POST 방식으로 전달
-					        data:{
-					        		mem_sum:mem_sum,
-					        		mem_id:mem_id
-					        		},
-					        success:function(sumNow2){ //컨트롤러에서 넘어온 값을 받는다 
-					            console.log("컨트롤러에서 건너온 sum : "+sumNow2); //결과값 : [object XMLDocument]
-					        
-					        	document.getElementById('mem_sum').value=""; //입력한 값은 지워주기
-					            document.getElementById('sum').value = sumNow2; //잔액 변동사항을 반영
-					        
-					        },
-					        error:function(request,status,error){
-					        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					        }	
+						function charge() {
+							let mem_cash = document.getElementById('mem_cash').value;
+							let mem_id = document.getElementById('mem_id').value;
+							console.log("js mem_cash 테스트 : " + mem_cash);
+							console.log("js mem_id 테스트 : " + mem_id);
+							$.ajax({
+										url : '/mem/charge2', //Controller에서 요청 받을 주소
+										type : 'post', //POST 방식으로 전달
+										data : {
+											mem_cash : mem_cash,
+											mem_id : mem_id
+										},
+										success : function(cashNow2) { //컨트롤러에서 넘어온 값을 받는다 
+											console.log("컨트롤러에서 건너온 sum : "
+													+ cashNow2); //결과값 : [object XMLDocument]
 
-					    });
-					    };
+											document.getElementById('mem_cash').value = ""; //입력한 값은 지워주기
+											document.getElementById('cash').value = cashNow2+"원"; //잔액 변동사항을 반영
+											
+
+										},
+										error : function(request, status, error) {
+											console.log("code:"
+													+ request.status + "\n"
+													+ "message:"
+													+ request.responseText
+													+ "\n" + "error:" + error);
+										}
+
+									});
+						};
 					</script>
 				</c:when>
-			
 				<c:when test="${content eq 'orderList'}">
 					<div class="memberOrderList mypage-right">
 						<h4>주문/배송조회</h4>
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col"><a href="#">주문번호</a></th>
+									<th scope="col">주문번호</a></th>
 									<th scope="col">주문자</th>
 									<th scope="col">주문상태</th>
-									<th scope="col">주문날짜</th>
-									<th scope="col">수령인</th>
+									<th scope="col">주소</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="order">
 									<tr>
-										<th scope="row">${order.order_num}</th>
+										<th scope="row"><a href="/mem/orderListDetail?order_num=${order.order_num}">${order.order_num}</a></th>
 										<td>${ses.mem_id}</td>
 										<td>${order.order_sta}</td>
-										<td>${order.order_date }</td>
-										<td>${order.order_recepient}</td>
+										<td>${order.order_add2}</td>
 									</tr>
 								</c:forEach>
 
@@ -187,125 +191,48 @@
 
 					</div>
 				</c:when>
-				<c:when test="${content eq 'buyList' }">
+
+				<c:when test="${content eq 'orderDetail' }">
 					<div class="mypage-right">
-						<h4>구매내역화면</h4>
+						<h4>주문상세화면</h4>
 						<table class="table ">
 							<thead>
 								<tr>
-									<th scope="col">주문번호</th>
-									<th scope="col">주문자</th>
-									<th scope="col">주문상태</th>
-									<th scope="col">주문날짜</th>
-									<th scope="col">수령인</th>
+									<th scope="col">책이름</th>
+									<th scope="col">책가격</th>
+									<th scope="col">주문권수</th>
+									<th scope="col">적립포인트</th>
+
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="order">
 									<tr>
-										<td>${order.order_num}</td>
-										<td>${ses.mem_id}</td>
-										<td>${order.order_sta}</td>
-										<td>${order.order_date}</td>
-										<td>${order.order_recepient}</td>
+										<td><a href="/book/bkDetailView?book_num=${order.book_num}">${order.book_name}</a></td>
+										<td>${order.book_price}</td>
+										<td>${order.bookCount}</td>
+										<c:if test="${ses.mem_rating eq 'A'}">
+											<td>${order.savePoint*4}</td>
+										</c:if>
+										<c:if test="${ses.mem_rating eq 'B'}">
+											<td>${order.savePoint*3}</td>
+										</c:if>
+										<c:if test="${ses.mem_rating eq 'C'}">
+											<td>${order.savePoint*2}</td>
+										</c:if>
+										<c:if test="${ses.mem_rating eq 'D'}">
+											<td>${order.savePoint}</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 
 							</tbody>
 						</table>
-						<div>
-							<c:if test="${pgh.prev}">
-								<a href="/mem/buyCheck?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}&mem_num=${ses.mem_num}">prev</a>
-							</c:if>
-							<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-								<a href="/mem/buyCheck?pageNo=${i}&qty=${pgh.pgvo.qty}&mem_num=${ses.mem_num}">${i} ｜ </a>
-							</c:forEach>
-							<c:if test="${pgh.next}">
-								<a href="/mem/buyCheck?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}&mem_num=${ses.mem_num}">next</a>
-							</c:if>
-						</div>
+						<div></div>
 					</div>
+
 				</c:when>
-				<c:when test="${content eq 'orderList'}">
-					<div class="memberOrderList mypage-right">
 
-						<h4>주문/배송조회</h4>
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col"><a href="#">주문번호</a></th>
-									<th scope="col">주문자</th>
-									<th scope="col">주문상태</th>
-									<th scope="col">주문날짜</th>
-									<th scope="col">수령인</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${list}" var="order">
-									<tr>
-										<th scope="row">${order.order_num}</th>
-										<td>${ses.mem_id}</td>
-										<td>${order.order_sta}</td>
-										<td>${order.order_date }</td>
-										<td>${order.order_recepient}</td>
-									</tr>
-								</c:forEach>
-
-							</tbody>
-						</table>
-						<div>
-							<c:if test="${pgh.prev}">
-								<a href="/mem/orderCheck?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}">prev</a>
-							</c:if>
-							<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-								<a href="/mem/orderCheck?pageNo=${i}&qty=${pgh.pgvo.qty}">${i} ｜ </a>
-							</c:forEach>
-							<c:if test="${pgh.next}">
-								<a href="/mem/orderCheck?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">next</a>
-							</c:if>
-						</div>
-
-					</div>
-				</c:when>
-				<c:when test="${content eq 'buyList' }">
-					<div class="mypage-right">
-						<h4>구매내역화면</h4>
-						<table class="table ">
-							<thead>
-								<tr>
-									<th scope="col">주문번호</th>
-									<th scope="col">주문자</th>
-									<th scope="col">주문상태</th>
-									<th scope="col">주문날짜</th>
-									<th scope="col">수령인</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${list}" var="order">
-									<tr>
-										<td>${order.order_num}</td>
-										<td>${ses.mem_id}</td>
-										<td>${order.order_sta}</td>
-										<td>${order.order_date}</td>
-										<td>${order.order_recepient}</td>
-									</tr>
-								</c:forEach>
-
-							</tbody>
-						</table>
-						<div>
-							<c:if test="${pgh.prev}">
-								<a href="/mem/buyCheck?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}">prev</a>
-							</c:if>
-							<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-								<a href="/mem/buyCheck?pageNo=${i}&qty=${pgh.pgvo.qty}">${i} ｜ </a>
-							</c:forEach>
-							<c:if test="${pgh.next}">
-								<a href="/mem/buyCheck?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">next</a>
-							</c:if>
-						</div>
-					</div>
-				</c:when>
 
 				<c:when test="${content eq 'boardList'}">
 					<div class="mypage-right">
@@ -391,14 +318,9 @@
 										<option value="t" ${typed eq 't' ? 'selected' :'' }>제목</option>
 										<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
 										<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
-									</select>
-									 <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> 
-									<input type="hidden" name="pageNo" value="1">
-									 <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+									</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
 									<button type="submit" class="btn btn-success position-relative">
-										결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
-										${pgh.totalCount}개 
-										<span class="visually-hidden">unread messages</span>
+										결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
 										</span>
 									</button>
 								</div>
@@ -419,7 +341,7 @@
 						<div class="long">탈퇴 후에도 게시판형 서비스에 등록한 게시물은 그대로 남아 있습니다.</div>
 						<div class="short">게시글 및 댓글은 탈퇴 시 자동 삭제되지 않고 그대로 남아 있습니다. 삭제를 원하는 게시글이 있다면 반드시 탈퇴 전 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.</div>
 						<div class="deleteTableBox">
-							<table class="table table-striped mypageDeleteInfoTable">
+							<table class="table table-striped">
 								<tr>
 									<td>개인정보</td>
 									<td>개인정보 전체 삭제</td>
@@ -430,9 +352,7 @@
 								</tr>
 							</table>
 						</div>
-						탈퇴 후에는 아이디 ${ses.mem_id}에 대한 데이터는 복구할 수 없습니다. <br>
-						<br> 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.<br>
-						<Br>
+						탈퇴 후에는 아이디 ${ses.mem_id}에 대한 데이터는 복구할 수 없습니다. 게시판형 서비스에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.
 						<form action="/mem/delete?mem_num=${ses.mem_num}" method="post">
 							<input type="checkbox" class="checkbox" required> 안내 사항을 모두 확인하였으며, 이에 모두 동의합니다. <br>
 							<div class="button">
