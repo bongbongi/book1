@@ -2,6 +2,9 @@ package com.ezen.book.service;
 
 import java.util.List;
 
+import com.ezen.book.domain.OrderDTO;
+import com.ezen.book.domain.OrderItemDTO;
+import com.ezen.book.domain.OrderPageItemDTO;
 import com.ezen.book.domain.OrderVO;
 import com.ezen.book.domain.PagingVO;
 
@@ -14,5 +17,13 @@ public interface OrderService {
    int getOrderTotalCount(int mem_num);
 
    int getBuyTotalCount(int mem_num);
+   
+   public List<OrderPageItemDTO> getGoodsInfo(List<OrderPageItemDTO> orders);
+
+  	public void order(OrderDTO od);
+
+  	public List<OrderDTO> getOrderList(int order_mem_num);
+
+  	public List<OrderItemDTO> orderDetail(String order_num);
 
 }

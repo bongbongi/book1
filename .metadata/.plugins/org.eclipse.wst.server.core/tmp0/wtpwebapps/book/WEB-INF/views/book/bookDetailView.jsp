@@ -173,9 +173,45 @@ span#price {
 							<a href="#"><img src="/resources/img/upArrow.png" class="upArrow" alt="upArrow"></a> <a href="#"><img src="/resources/img/downArrow.png" class="downArrow" alt="downArrow"></a><br> <br>
 						</div>
 					</div>
+					
+					<input type="hidden" id="mem_num" value="${ses.mem_num}">
+					<input type="hidden" id="book_num" value="${book.book_num}">
+            
+            
+					
+					
+					
+					
 					<div class="btnBox">
-						<button type="button" class="btn btn-secondary">장바구니 담기</button>
-						<button type="button" class="btn btn-success">바로구매</button>
+					<!-- 	<button type="button" class="btn btn-secondary">장바구니 담기</button>
+						<button type="button" class="btn btn-success">바로구매</button> -->
+						
+						
+						<!-- 로그인이 되었을때 -->
+            <c:if test="${ses.mem_id !=null}">
+			<button type="button" class="btn btn-secondary" id="Cart_btn" >장바구니</button>
+			</c:if>
+			
+			
+			
+			<c:if test="${ses.mem_id != null}">
+			<button type="button" class="btn btn-success" id="Purchase_btn" >바로구매</button>
+				
+			</c:if>
+			
+			
+			<!-- 로그인 되지 않았을때 -->
+			<c:if test="${ses.mem_id == null}">
+					<button type="button" class="btn btn-secondary">
+					<a href="/mem/loginPage" onclick="gologin(event)" style="color: white;">장바구니</a></button>
+			</c:if>
+			
+			<c:if test="${ses.mem_id == null}">
+			<button type="button" class="btn btn-success">
+					<a href="/mem/loginPage" onclick="gologin(event)" style="color: white;">바로구매</a>
+					</button>
+			</c:if>
+					
 					</div>
 				</div>
 			</div>
@@ -201,7 +237,118 @@ span#price {
 			<div id="cmtListArea"></div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function gologin(event) {
+			alert("로그인이 필요합니다!");
+		}
+		
+		/* function stopCart(event) {
+			alert("장바구니에 상품을 담았습니다!");
+			location.reload();
+		} */
+		
+		/* function goCart(event) {
+			alert("장바구니로 이동합니다!");
+		} */ 
+		
+		function count(type)  {
+			 
+			  const resultElement = document.getElementById('book_cnt');
+			  
+			  let number = resultElement.innerText;
+			  
+			  if(type === 'plus') {
+			    number = parseInt(number) + 1;
+			  }else if(type === 'minus')  {
+			    if(number > 1){
+			      number = parseInt(number) - 1;
+			    }
+			  }
+			  
+			  resultElement.innerText = number;
+			}
+		
+		document.getElementById('Cart_btn').addEventListener('click',()=>{
+		    const mem_num = document.getElementById('mem_num').value;
+		    const book_num = document.getElementById('book_num').value;
+		    const book_cnt = document.getElementById('book_cnt').innerText;
 
+		        let bookDate ={
+		            mem_num : mem_num,
+		            book_num : book_num,
+		            book_cnt : book_cnt,
+		        };
+		       
+		        console.log(bookDate);
+		        putDataToServer(bookDate).then(result =>{
+		            if(result > 0){
+		                alert('장바구니에 담겼습니다!');
+		            }
+		            
+		        });
+		});
+		
+		async function putDataToServer(bookDate){
+		    try{
+		        const url = '/cart/cartadd';
+		        const config = {
+		            method : 'put',
+		            headers : {
+		                'content-type':'application/json; charset=utf-8'
+		            },
+		            body:JSON.stringify(bookDate)
+		        };
+		        const resp = await fetch(url, config);
+		        const result = await resp.text(); 
+		        return result;
+		    }catch(error){
+		        console.log(error);
+		    }
+		}
+		
+		
+		// 바로구매
+		document.getElementById('Purchase_btn').addEventListener('click',()=>{
+		    const mem_num = document.getElementById('mem_num').value;
+		    const book_num = document.getElementById('book_num').value;
+		    const book_cnt = document.getElementById('book_cnt').innerText;
+
+		        let bookDate ={
+		            mem_num : mem_num,
+		            book_num : book_num,
+		            book_cnt : book_cnt,
+		        };
+		       
+		        console.log(bookDate);
+		        putDataToServer(bookDate).then(result =>{
+		            if(result > 0){
+		                alert('장바구니로 이동합니다');
+		            }
+					
+					location.href = '/cart/cartdetail?mem_num='+mem_num;
+					// Location.replace('/cart/cartdetail'+mem_num);
+		            
+		        });
+		});
+		
+		async function putDataToServer(bookDate){
+		    try{
+		        const url = '/cart/directCartadd';
+		        const config = {
+		            method : 'put',
+		            headers : {
+		                'content-type':'application/json; charset=utf-8'
+		            },
+		            body:JSON.stringify(bookDate)
+		        };
+		        const resp = await fetch(url, config);
+		        const result = await resp.text(); 
+		        return result;
+		    }catch(error){
+		        console.log(error);
+		    }
+		}
+</script>
 	<script type="text/javascript">
 		const revVal = '<c:out value="${bvo.book_num }" />';
 		console.log(revVal);

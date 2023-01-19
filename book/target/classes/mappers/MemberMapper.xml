@@ -50,43 +50,70 @@
 		resultType="com.ezen.book.domain.MemberVO">
 		select*from member where mem_id=#{brd_writer}
 	</select>
-	
-	
+
+
 	<select id="memberList"
 		resultType="com.ezen.book.domain.MemberVO">
 		select * from member where mem_num>0
-		<include refid="search"></include>	
-		order by mem_num desc limit #{pageStart},#{qty}	
-		
-	</select>
-	
+		<include refid="search"></include>
+		order by mem_num desc limit #{pageStart},#{qty}
 
-	
-	
+	</select>
+
+
+
+
 	<delete id="memRemove">
 		delete from member where mem_num = #{mem_num}
 	</delete>
 	<select id="getUser" resultType="com.ezen.book.domain.MemberVO">
-		select * from member where 
+		select * from member where
 		mem_id = #{mem_id}
 	</select>
 	<select id="totalCount" resultType="int">
 		select count(mem_num) from member
 		where mem_num>0
-	<include refid="search"></include>	
+		<include refid="search"></include>
 	</select>
-	
+
 	<insert id="insertGrade"
 		parameterType="com.ezen.book.domain.MemberVO">
-		update member set mem_rating=#{mem_rating} where mem_num=#{mem_num}
+		update member set mem_rating=#{mem_rating} where
+		mem_num=#{mem_num}
 	</insert>
 	<update id="moneyCharge">
-		update member set mem_sum=mem_sum+#{mem_sum} where mem_id=#{mem_id}
+		update member set mem_sum=mem_sum+#{mem_sum} where
+		mem_id=#{mem_id}
 	</update>
 	<select id="getCharge" resultType="int">
-		select mem_sum from member where mem_id=#{mem_id}
+		select mem_sum from member
+		where mem_id=#{mem_id}
 	</select>
-	
+	<select id="getMemberInfo"
+		resultType="com.ezen.book.domain.MemberVO">
+
+		SELECT * FROM member WHERE mem_num = #{mem_num}
+
+	</select>
+
+	<update id="memberCartNumUP">
+
+		update member set mem_cartNum = mem_cartNum+1 where mem_num = #{mem_num}
+
+	</update>
+
+	<update id="memberCartNumDown">
+
+		update member set mem_cartNum = mem_cartNum-1 where mem_num = #{mem_num}
+
+	</update>
+
+	<update id="deletememberCartNum">
+
+		update member set mem_cartNum = 0 where mem_num = #{mem_num}
+
+	</update>
+
 	<sql id="search">
 		<if test="type != null">
 			<trim prefix="and (" suffix=")" prefixOverrides="OR">
@@ -99,13 +126,13 @@
 							<when test="type=='c'.toString()">
 								mem_name like CONCAT('%', #{keyword}, '%')
 							</when>
-							
+
 						</choose>
 					</trim>
 				</foreach>
 			</trim>
 		</if>
 	</sql>
-	
-	
+
+
 </mapper>

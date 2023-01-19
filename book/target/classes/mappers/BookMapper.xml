@@ -80,6 +80,13 @@
    <select id="getBookOne" resultType="com.ezen.book.domain.BookVO">
       select*from book order by rand() limit 1;
    </select>
+   <!-- 상품 정보 -->
+	<select id="getGoodsInfo" resultType="com.ezen.book.domain.BookVO">
+	
+			select * from book where book_num = #{book_num}	
+	
+	</select>
+	
    
    <sql id="search">
       <if test="type != null">

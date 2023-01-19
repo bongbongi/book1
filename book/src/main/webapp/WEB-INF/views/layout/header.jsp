@@ -83,9 +83,17 @@
 					<a href="/mem/mypage">마이페이지</a>
 				</ul>
 			</c:if>
+			<%-- <ul>
+				<a href="/cart/cartdetail?mem_num=${ses.mem_num}">장바구니</a>
+			</ul> --%>
+			<c:if test="${ses.mem_id !=null}">
 			<ul>
-				<a href="#">장바구니</a>
+				<a href="/cart/cartdetail?mem_num=${ses.mem_num}">장바구니</a>
 			</ul>
+			</c:if>
+			<c:if test="${ses.mem_id == null}">
+					<a href="/mem/loginPage" onclick="gologin(event)">&nbsp&nbsp&nbsp장바구니</a>
+			</c:if>
 		</div>
 		<div class="bar">
 			<div class="logo">

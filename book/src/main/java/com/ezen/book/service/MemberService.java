@@ -44,6 +44,11 @@ public interface MemberService {
 	int getCharge(String mem_id);
 
 
+	public MemberVO getMemberInfo(int mem_num);  // 구매페이지에 회원정보를 불러오기 
+
+	public int memberCartNumUP(int mn);	 // 회원정보에 장바구니 숫자를 올리기!
+
+	public int memberCartNumDown(int mem_num);
 
 
 

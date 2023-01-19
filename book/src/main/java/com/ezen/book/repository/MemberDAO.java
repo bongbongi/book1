@@ -47,4 +47,12 @@ public interface MemberDAO {
 
 	int getCharge(String mem_id);
 
+	MemberVO getMemberInfo(int mem_num); // 멤버 정보 결제페이지로 불러오기
+
+	int memberCartNumUP(int mem_num); // 회원정보에서 장바구니 갯수 표시
+
+	int memberCartNumDown(int mem_num);	// 장바구니에서 삭제하면 -1
+
+	void deletememberCartNum(int order_mem_num);  // 구매시 회원의 장바구니 넘버를 0으로 만듬
+	
 }

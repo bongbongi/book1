@@ -28,6 +28,8 @@ public class MemberVO {
 	private String mem_auth;
 	private int mem_sum;
 	private String mem_postzip;
+	private int mem_point;
+	private String mem_cartNum;
+	private int mem_book_count;
 
 }
-

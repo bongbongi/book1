@@ -219,5 +219,23 @@ public class MemberServiceImpl implements MemberService {
 	public int getCharge(String mem_id) {
 		return mdao.getCharge(mem_id);
 	}
+	/* 주문자 정보 */
+	@Override
+	public MemberVO getMemberInfo(int mem_num) {
+		
+		return mdao.getMemberInfo(mem_num);
+		
+	}
 
+	@Override
+	public int memberCartNumUP(int mem_num) {
+		// TODO Auto-generated method stub
+		return mdao.memberCartNumUP(mem_num);
+	}
+
+	@Override
+	public int memberCartNumDown(int mem_num) {
+		// 장바구니 삭제시 숫자 줄이기
+		return mdao.memberCartNumDown(mem_num);
+	}	
 }
