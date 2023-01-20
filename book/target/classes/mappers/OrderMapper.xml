@@ -94,4 +94,19 @@
 		select * from orderitem where order_num = #{order_num}
 
 	</select>
+	
+	<update id="Confirmed">
+	
+		update productorder set order_sta = '구매완료' where order_num = #{order_num}
+	
+	</update>
+	
+	<update id="setDelivery" parameterType="com.ezen.book.domain.DeliveryDTO" >
+	
+	<![CDATA[
+		update productorder set order_sta = '배송중' where order_mem_num = #{mem_num} and order_date < #{order_date} and order_sta != '구매완료'
+	]]>	
+	
+	</update> 
+	
 </mapper>

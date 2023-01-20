@@ -54,7 +54,7 @@
          <lable for="mem_postzip">ADDRESS</lable>
          <br> <input type="text" class="join-input zip" id="postcode" name="mem_postzip" placeholder="우편번호" required> <input type="button" class="join-input zip btn btn-outline-primary" onclick="execDaumPostcode()" value="우편번호 찾기"> <br> <input type="text" class="join-input" id="address" name="address" placeholder="주소" required> <br> <input type="text" class="join-input" id="detailAddress" name="detailAddress" placeholder="상세주소" required> <input type="text" class="join-input" id="extraAddress" name="extraAddress" placeholder="참고항목" readonly="readonly"> <br>
          <lable for="mem_age">AGE</lable>
-         <br> <input type="number" class="join-input" name="mem_age" placeholder="나이" required> <br>
+         <br> <input type="text" class="join-input" name="mem_age" placeholder="나이" required> <br>
          <lable for="mem_gender">GENDER</lable>
          <br> <select class="join-input" name="mem_gender">
 

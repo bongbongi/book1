@@ -11,12 +11,12 @@ input#cash {
 	border: none;
 	font-size: 35px;
 	width: 200px;
-	text-align: right;
+	text-align: center;
 }
 
-#cashNow {
+/* #cashNow {
 	font-size: 35px;
-}
+} */
 
 .moneyCharge #chargeHr {
 	width: 878px;

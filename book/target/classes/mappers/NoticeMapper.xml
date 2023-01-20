@@ -23,9 +23,9 @@
 		select * from notice where ntc_num=#{ntc_num}
 	</select>
 	<insert id="noticeRegister">
-		insert into notice (ntc_title,ntc_writer,ntc_content)
+		insert into notice (ntc_title,ntc_writer,ntc_content,ntc_mem_num)
 		values
-		(#{ntc_title},#{ntc_writer},#{ntc_content})
+		(#{ntc_title},#{ntc_writer},#{ntc_content},#{ntc_mem_num})
 	</insert>
 	<update id="getModify">
 		update notice set 

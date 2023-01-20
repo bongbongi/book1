@@ -14,9 +14,12 @@
 	height: 801px;
 	text-align: center;
 }
+td#mem_info {
+    height: 300px;
+}
 /* 마이페이지 오른쪽 div 구역 */
 .mypage-right {
-	margin: 29px auto;
+	margin: 29px;
 	padding: 30px;
 	width: 940px;
 	height: 800px;

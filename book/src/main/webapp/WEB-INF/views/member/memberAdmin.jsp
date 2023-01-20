@@ -11,8 +11,10 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/adminpageNotice.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/adminpageProduct.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBuyList.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <style type="text/css">
 a {
@@ -20,7 +22,6 @@ a {
 	color: black;
 	text-transform: none;
 }
-
 .pagination {
 	margin: 0 auto;
 	width: 300px;
@@ -29,20 +30,15 @@ a {
 .pagination>a {
 	margin: 20px auto;
 }
-
-.col-sm-12 {
-	margin: 30px auto;
+.col-sm-12{
+	
+	margin:30px auto;
+	
+	
 }
-
-.tableBoxBig td {
-	line-height: 97px;
+.tableBoxBig td{
+	    line-height: 97px;
 }
-/* .adminPageImg{
-	background-image: url("/resources/img/adminPageImg.png");
-	background-size: cover;
-	width:500px;
-	height: 500px;
-} */
 </style>
 </head>
 
@@ -57,11 +53,11 @@ a {
 	<div class="main">
 		<div class="menu">
 			<div class="menu_logo">
-				<a href="/"> <img src="/resources/img/logo.jpg" alt="로고" id="logo"></a>
+					<a href="/"> <img src="/resources/img/logo.jpg" alt="로고" id="logo"></a>
 			</div>
 			<div class="menu_wrap">
 				<ul class="de01">
-
+	
 					<li><a href="/admin/memList">회원관리</a>
 						<ul class="de02">
 							<li><a href="/admin/memList">리스트</a></li>
@@ -88,10 +84,6 @@ a {
 					<li><a href="/mem/logOut">로그아웃</a></li>
 				</ul>
 			</div>
-
-			<!-- <div class="adminPageImg">
-				
-			</div> -->
 		</div>
 		<div>
 			<c:forEach items="${category}" var="category">
@@ -111,16 +103,24 @@ a {
 										</tr>
 									</thead>
 									<c:forEach items="${memLi }" var="ad">
-										<tbody>
-											<tr>
-												<td>${ad.mem_num }</td>
-												<td>${ad.mem_id }</td>
-												<td>${ad.mem_name }</td>
-												<td>${ad.mem_date }</td>
-												<td><a href="/admin/memRemove?mem_num=${ad.mem_num }">탈퇴</a></td>
-											</tr>
-										</tbody>
-									</c:forEach>
+                              <tbody>
+                                 <tr>
+                                    <td>${ad.mem_num }</td>
+                                    <td>${ad.mem_id }</td>
+                                    <td>${ad.mem_name }</td>
+                                    <td>${ad.mem_date }</td>
+                                    <c:choose>
+                                    <c:when test="${ad.mem_auth eq '0'}">
+                                    <td>관리자</td>
+                                    </c:when>
+                                    <c:when test="${ad.mem_auth ne '0'}">
+                                    <td><a href="/admin/memRemove?mem_num=${ad.mem_num }">탈퇴</a></td>
+                                    </c:when>
+                                    </c:choose>
+                                    
+                                 </tr>
+                              </tbody>
+                           </c:forEach>
 								</table>
 							</div>
 							<div class="pagination">
@@ -134,7 +134,7 @@ a {
 									<a href="/admin/memList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}"> > </a>
 								</c:if>
 							</div>
-
+							
 							<!-- search -->
 
 							<div class="col-sm-12 col-md-6">
@@ -142,12 +142,12 @@ a {
 									<div class="input-group mb-3">
 										<!-- 값을 별도 저장 -->
 										<c:set value="${pgh.pgvo.type}" var="typed" />
-										<select class="form-select" name="type" style="height: 50px; width: 30px;">
+										<select class="form-select" name="type" style="height: 50px; width:30px;">
 											<option ${typed==null ? 'selected' :'' }>항목</option>
 											<option value="t" ${typed eq 't' ? 'selected' :'' }>아이디</option>
 											<option value="c" ${typed eq 'c' ? 'selected' :'' }>이름</option>
 										</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
-										<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top: 0px">
+										<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top:0px" >
 											결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
 											</span>
 										</button>
@@ -195,30 +195,33 @@ a {
 											<a href="/ntc/noticeList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">></a>
 										</c:if>
 									</div>
+										<div class="col-sm-12 col-md-6">
 									<form action="/ntc/noticeList" method="get">
-										<div class="input-group mb-3">
-											<!-- 값을 별도 저장 -->
-											<c:set value="${pgh.pgvo.type}" var="typed" />
-											<select class="form-select" name="type" style="height: 50px; width: 30px;">
-												<option ${typed==null ? 'selected' :'' }>항목</option>
-												<option value="t" ${typed eq 't' ? 'selected' :'' }>공지제목</option>
-												<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
-												<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
-											</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
-											<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top: 0px">
-												결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
-												</span>
-											</button>
-										</div>
+												<div class="input-group mb-3">
+													<!-- 값을 별도 저장 -->
+													<c:set value="${pgh.pgvo.type}" var="typed" />
+													<select class="form-select" name="type" style="height: 50px; width:30px;">
+														<option ${typed==null ? 'selected' :'' }>항목</option>
+														<option value="t" ${typed eq 't' ? 'selected' :'' }>공지제목</option>
+														<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
+														<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
+													</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+													<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top:0px" >
+														결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
+														</span>
+													</button>
+												</div>
 									</form>
-
-
+									</div>
+									
+									
 								</c:when>
 								<c:when test="${content eq 'noticeRegister' }">
 									<h1>공지사항 등록</h1>
 									<div class="boardRegisterBox">
 										<form action="/ntc/noticeRegister" method="post">
 											<div class="brd_titleAndWriter">
+											<input type="hidden" name="ntc_mem_num" value="${ses.mem_num }">
 												<label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${ses.mem_id}" readonly><br>
 											</div>
 											<div class="contentBox">
@@ -262,10 +265,7 @@ a {
 												<label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" value="${nvo.ntc_title}" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly><br>
 											</div>
 											<div class="contentBox-Input">
-												<label for="ntc_content" class="contentLabel">내용</label><br>
-												<%-- <input type="text" name="ntc_content" value="${nvo.ntc_content}">  --%>
-												<br>
-												<textarea rows="10" cols="100" name="ntc_content">${nvo.ntc_content}</textarea>
+												<label for="ntc_content" class="contentLabel">내용</label><br> <input type="text" name="ntc_content" value="${nvo.ntc_content}"> <br>
 											</div>
 
 											<button type="submit" class="btn btn-secondary">수정완료</button>
@@ -316,25 +316,25 @@ a {
 											<a href="/faq/faqList?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}">></a>
 										</c:if>
 									</div>
-
+									
 									<div class="col-sm-12 col-md-6">
-										<form action="/faq/faqList" method="get">
-											<div class="input-group mb-3">
-												<!-- 값을 별도 저장 -->
-												<c:set value="${pgh.pgvo.type}" var="typed" />
-												<select class="form-select" name="type" style="height: 50px; width: 30px;">
-													<option ${typed==null ? 'selected' :'' }>항목</option>
-													<option value="t" ${typed eq 't' ? 'selected' :'' }>질문</option>
-													<option value="c" ${typed eq 'c' ? 'selected' :'' }>답변</option>
-
-												</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
-												<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top: 0px">
-													결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
-													</span>
-												</button>
-											</div>
-										</form>
-									</div>
+											<form action="/faq/faqList" method="get">
+												<div class="input-group mb-3">
+													<!-- 값을 별도 저장 -->
+													<c:set value="${pgh.pgvo.type}" var="typed" />
+													<select class="form-select" name="type" style="height: 50px; width:30px;">
+														<option ${typed==null ? 'selected' :'' }>항목</option>
+														<option value="t" ${typed eq 't' ? 'selected' :'' }>질문</option>
+														<option value="c" ${typed eq 'c' ? 'selected' :'' }>답변</option>
+									
+													</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+													<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top:0px" >
+														결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
+														</span>
+													</button>
+												</div>
+											</form>
+										</div>
 								</c:when>
 								<c:when test="${content eq 'faqRegister' }">
 									<h1>FAQ 등록</h1>
@@ -465,40 +465,40 @@ a {
 
 
 										</table>
-									</div>
-									<div class="pagination">
-										<c:if test="${pgh.prev}">
-											<a href="/admin/list?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">prev</a>
-										</c:if>
-										<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
-											<a href="/admin/list?pageNo=${i}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">&nbsp ${i} &nbsp</a>
-										</c:forEach>
-										<c:if test="${pgh.next}">
-											<a href="/admin/list?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">next</a>
-										</c:if>
-									</div>
-									<!-- search -->
+										</div>
+										<div class="pagination">
+											<c:if test="${pgh.prev}">
+												<a href="/admin/list?pageNo=${pgh.startPage-1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">prev</a>
+											</c:if>
+											<c:forEach begin="${pgh.startPage }" end="${pgh.endPage }" var="i">
+												<a href="/admin/list?pageNo=${i}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">&nbsp ${i} &nbsp</a>
+											</c:forEach>
+											<c:if test="${pgh.next}">
+												<a href="/admin/list?pageNo=${pgh.endPage+1}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">next</a>
+											</c:if>
+										</div>
+										<!-- search -->
 
-									<div class="col-sm-12 col-md-6">
-										<form action="/admin/list" method="get">
-											<div class="input-group mb-3">
-												<!-- 값을 별도 저장 -->
-												<c:set value="${pgh.pgvo.type}" var="typed" />
-												<select class="form-select" name="type" style="height: 50px; width: 30px;">
-													<option ${typed==null ? 'selected' :'' }>항목</option>
-													<option value="t" ${typed eq 't' ? 'selected' :'' }>제목</option>
-													<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
-													<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
-												</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
-												<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top: 0px">
-													결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
-													</span>
-												</button>
-											</div>
-										</form>
-									</div>
+										<div class="col-sm-12 col-md-6">
+											<form action="/admin/list" method="get">
+												<div class="input-group mb-3">
+													<!-- 값을 별도 저장 -->
+													<c:set value="${pgh.pgvo.type}" var="typed" />
+													<select class="form-select" name="type" style="height: 50px; width:30px;">
+														<option ${typed==null ? 'selected' :'' }>항목</option>
+														<option value="t" ${typed eq 't' ? 'selected' :'' }>제목</option>
+														<option value="c" ${typed eq 'c' ? 'selected' :'' }>내용</option>
+														<option value="w" ${typed eq 'w' ? 'selected' :'' }>작성자</option>
+													</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgh.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgh.pgvo.qty }">
+													<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top:0px" >
+														결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
+														</span>
+													</button>
+												</div>
+											</form>
+										</div>
 
-
+									
 								</c:when>
 
 								<c:when test="${content eq 'boardDetail' }">
@@ -530,18 +530,18 @@ a {
 										</div>
 
 
-										<script type="text/javascript">
-											const bnoVal = '<c:out value="${board.brd_num}" />';
-
-											const auth = '<c:out value="${ses.mem_auth}"/>';
-
-											console.log(auth);
-											console.log(bnoVal);
-										</script>
-										<script type="text/javascript" src="/resources/js/boardComment.js"></script>
-										<script type="text/javascript">
-											getCommentList(bnoVal, auth);
-										</script>
+										 <script type="text/javascript">
+                     const bnoVal = '<c:out value="${board.brd_num}" />';
+                  
+                     const auth = '<c:out value="${ses.mem_auth}"/>';
+          
+                     console.log(auth);
+                     console.log(bnoVal);
+                  </script>
+                  <script type="text/javascript" src="/resources/js/boardComment.js"></script>
+                  <script type="text/javascript">
+                     getCommentList(bnoVal, auth);
+                  </script>
 									</div>
 
 								</c:when>
@@ -579,11 +579,11 @@ a {
 														<td>${bo.bvo.book_num }</td>
 														<td><img src="/upload/${fn:replace(bo.save_dir,'\\','/')}/${bo.uuid}_th_${bo.file_name}" alt="bookThumbnail"></td>
 														<td class="ellipsis-one" colspan="2">${bo.bvo.book_title }</td>
-														<td class="ellipsis-one">${bo.bvo.book_writer }</td>
+														<td  class="ellipsis-one">${bo.bvo.book_writer }</td>
 														<td>${bo.bvo.book_price }</td>
 														<td>${bo.bvo.book_saleprice }</td>
 														<td>${bo.bvo.book_sales }</td>
-														<td class="ellipsis-one">${bo.bvo.book_publisher }</td>
+														<td  class="ellipsis-one">${bo.bvo.book_publisher }</td>
 														<td>${bo.bvo.book_date }</td>
 														<td>${bo.bvo.book_count }</td>
 														<%-- <td class="ellipsis-one">${bo.bvo.book_content
@@ -619,23 +619,23 @@ a {
 										</c:if>
 									</div>
 									<div class="col-sm-12 col-md-6">
-										<form action="/book/list" method="get">
-											<div class="input-group mb-3">
-												<!-- 값을 별도 저장 -->
-												<c:set value="${pgn.pgvo.type}" var="typed" />
-												<select class="form-select" name="type" style="height: 50px; width: 30px;">
-													<option ${typed==null ? 'selected' :'' }>항목</option>
-													<option value="t" ${typed eq 't' ? 'selected' :'' }>책제목</option>
-													<option value="c" ${typed eq 'c' ? 'selected' :'' }>저자</option>
-													<option value="w" ${typed eq 'w' ? 'selected' :'' }>출판사</option>
-												</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgn.pgvo.qty }">
-												<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top: 0px">
-													결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
-													</span>
-												</button>
-											</div>
-										</form>
-									</div>
+											<form action="/book/list" method="get">
+												<div class="input-group mb-3">
+													<!-- 값을 별도 저장 -->
+													<c:set value="${pgn.pgvo.type}" var="typed" />
+													<select class="form-select" name="type" style="height: 50px; width:30px;">
+														<option ${typed==null ? 'selected' :'' }>항목</option>
+														<option value="t" ${typed eq 't' ? 'selected' :'' }>책제목</option>
+														<option value="c" ${typed eq 'c' ? 'selected' :'' }>저자</option>
+														<option value="w" ${typed eq 'w' ? 'selected' :'' }>출판사</option>
+													</select> <input class="form-control" type="text" name="keyword" placeholder="포함해서찾기" value="${pgn.pgvo.keyword }" style="height: 50px;"> <input type="hidden" name="pageNo" value="1"> <input type="hidden" name="qty" value="${pgn.pgvo.qty }">
+													<button type="submit" class="btn btn-success position-relative" style="height: 50px; margin-top:0px" >
+														결과 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> ${pgh.totalCount}개 <span class="visually-hidden">unread messages</span>
+														</span>
+													</button>
+												</div>
+											</form>
+										</div>
 
 									<!-- <a href="/book/bkRegister">
 										<button type="button" class="btn btn-outline-dark">상품등록</button>
@@ -643,7 +643,7 @@ a {
 								</c:when>
 
 								<c:when test="${content eq 'bookDetail' }">
-
+								
 									<div class="tableBox tableNormal">
 
 										<table border="1" class="table table-hover trBorder">
@@ -725,7 +725,7 @@ a {
 									</div>
 								</c:when>
 								<c:when test="${content eq 'bookRegister' }">
-									<h1>상품등록</h1>
+								<h1>상품등록</h1>
 									<div class="tableBox tableNormal">
 										<form action="/book/bkRegister" method="post" enctype="multipart/form-data">
 											<table border="1" class="table table-hover trBorder">
@@ -741,7 +741,7 @@ a {
 													<td>출판사</td>
 													<td><input type="text" name="book_publisher"></td>
 												</tr>
-
+										
 												<tr>
 													<td>출판일</td>
 													<td><input type="date" name="book_date"></td>
@@ -758,10 +758,10 @@ a {
 													<td>판매량</td>
 													<td><input type="text" name="book_sales" value=0></td>
 												</tr>
-
+												
 												<tr>
 													<td>책수량</td>
-													<td><input type="text" name="book_count" value=100></td>
+													<td><input type="text" name="book_count"  value=100></td>
 												</tr>
 												<tr>
 													<td>책이미지</td>
@@ -791,7 +791,7 @@ a {
 									<script src="/resources/js/bookRegister.js"></script>
 								</c:when>
 								<c:when test="${content eq 'bookModify' }">
-									<h1>상품수정</h1>
+								<h1>상품수정</h1>
 									<div class="tableBox tableNormal">
 										<form action="/book/modify" method="post" enctype="multipart/form-data">
 											<table border="1" class="table table-hover">

@@ -2,6 +2,7 @@ package com.ezen.book.service;
 
 import java.util.List;
 
+import com.ezen.book.domain.DeliveryDTO;
 import com.ezen.book.domain.FileVO;
 import com.ezen.book.domain.OrderDTO;
 import com.ezen.book.domain.OrderItemDTO;
@@ -30,5 +31,13 @@ public interface OrderService {
 
 
 	List<FileVO> selectFileList(int cart_book_num);
+
+
+
+	void Confirmed(String order_num);
+
+
+
+	void setDelivery(DeliveryDTO ddto);
 
 }

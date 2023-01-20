@@ -56,7 +56,7 @@ function getReviewList(book_num){
             let star="";
             for(let rev of result){
                 switch(rev.review_rating){
-                    case 1: star="★☆☆☆☆☆";
+                    case 1: star="★☆☆☆☆";
                     break;
                     case 2: star="★★☆☆☆";
                     break;

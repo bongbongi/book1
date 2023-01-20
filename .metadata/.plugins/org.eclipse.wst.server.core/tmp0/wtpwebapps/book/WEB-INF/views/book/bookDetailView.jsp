@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link href="/resources/css/bookDetailView.css" rel="stylesheet" />
+<link href="/resources/css/bookDetailView.css" rel="stylesheet" /> 
 <style>
 .intro {
 	display: -webkit-box;
@@ -163,16 +163,13 @@ span#price {
 	<div class="bookDetail">
 		<div class="title">${bvo.book_title}</div>
 
-		<c:forEach items="${fList}" var="book">
-
-
 			<div class="detailViewBox">
 				<div class="infoEtc">
 					<span id="writer">${bvo.book_writer}</span><br> <span>${bvo.book_publisher}</span>
 					<spna>${bvo.book_date}</spna>
 				</div>
 				<div class="pyoji">
-					<img class="book_img" src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name}" alt="bookThumbnail">
+					<img class="book_img" src="/upload/${fn:replace(fList[0].save_dir,'\\','/')}/${fList[0].uuid}_${fList[0].file_name}" alt="bookThumbnail">
 					<%-- <img src="/upload/${fn:replace(book.save_dir,'\\','/')}/${book.uuid}_${book.file_name} style="list-style: none;" alt="사진"> --%>
 				</div>
 				<div class="seoji">
@@ -191,41 +188,25 @@ span#price {
 						 <div class="susu">수량</div>
                     <span class="bcc" id="book_cnt">1</span>
                   <div class="arrow">
-                     <a href="#"><img onclick='count("plus")' src="/resources/img/upArrow.png" class="upArrow" alt="upArrow" style="width: 35px"></a> 
-                     <a href="#"><img onclick='count("minus")' src="/resources/img/downArrow.png" class="downArrow" alt="downArrow" style="width: 35px"></a><br> <br>
+                     <img onclick='count("plus")' src="/resources/img/upArrow.png" class="upArrow" alt="upArrow" style="width: 35px">
+                     <img onclick='count("minus")' src="/resources/img/downArrow.png" class="downArrow" alt="downArrow" style="width: 35px"><br> <br>
                   </div>
-						
-						
-           
-						
 					</div>
 					
 					<input type="hidden" id="mem_num" value="${ses.mem_num}">
-					<input type="hidden" id="book_num" value="${book.book_num}">
-            
-            
-					
-					
-					
-					
+					<input type="hidden" id="book_num" value="${bvo.book_num}">
 					<div class="btnBox">
 					<!-- 	<button type="button" class="btn btn-secondary">장바구니 담기</button>
 						<button type="button" class="btn btn-success">바로구매</button> -->
-						
-						
 						<!-- 로그인이 되었을때 -->
             <c:if test="${ses.mem_id !=null}">
 			<button type="button" class="btn btn-secondary" id="Cart_btn" >장바구니</button>
 			</c:if>
 			
-			
-			
 			<c:if test="${ses.mem_id != null}">
 			<button type="button" class="btn btn-success" id="Purchase_btn" >바로구매</button>
 				
 			</c:if>
-			
-			
 			<!-- 로그인 되지 않았을때 -->
 			<c:if test="${ses.mem_id == null}">
 					<button type="button" class="btn btn-secondary">
@@ -241,7 +222,8 @@ span#price {
 					</div>
 				</div>
 			</div>
-		</c:forEach>
+
+					<input type="hidden" id="book_inventory" value="${bvo.book_count}">
 		<br>
 
 
@@ -255,7 +237,7 @@ span#price {
 				</fieldset>
 				<div class="reviewBox">
 					<span class="input-group-text" id="revWriter">${ses.mem_id }</span>
-					<textarea class="col-auto form-control" name="review_content" id="reviewContents" placeholder="좋은 감상평을 남겨주시면 저자에게 큰 힘이 됩니다! 포인트 5000p도 지급!!"></textarea>
+					<textarea class="col-auto form-control" name="review_content" id="reviewContents" placeholder="좋은 감상평을 남겨주시면 저자에게 큰 힘이 됩니다!"></textarea>
 					<br> <span>${review_mem_id }</span>
 					<span class="btnBox">
 					<button type="button" id="revPostBtn" name="revPostBtn">리뷰등록</button></span>

@@ -8,6 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome BookMall</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/resources/css/cart.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -80,7 +84,7 @@ a{
     }
        .content_btn_section a{
        color: #fefeff;
-       background-color: #ddd236;
+       background-color: grey;
        min-width: 125px;
        padding: 17px 25px;
        display: inline-block;
@@ -192,9 +196,6 @@ a{
          .table_text_align_center{
             text-align: center;
          }
-         .delete_btn{
-            width: 40px;      
-         }
       
    .content_total_section{
           background-color: rgb(227, 237, 247);
@@ -249,15 +250,15 @@ a{
 </head>
 <body>
 
-   <jsp:include page="../layout/header.jsp"></jsp:include>
+    <jsp:include page="../layout/header.jsp"></jsp:include> 
+   
 
 <div class="wrapper">
    <div class="wrap">
       
       <div class="content_area">
          
-         
-         <jsp:include page="../cart/cartHeader.jsp"></jsp:include>
+          <jsp:include page="../cart/cartHeader.jsp"></jsp:include> 
          
          <!-- 장바구니 리스트 -->
          <div class="content_middle_section"></div>
@@ -292,18 +293,18 @@ a{
                      <tr>
                         <td class="td_width_1 cart_info_td">
                            <input type="checkbox" class="individual_cart_checkbox input_size_20" checked="checked">
-                           <input type="hidden" class="individual_bookPrice_input" value="${cvo.cart_price}">
-                           <input type="hidden" class="individual_salePrice_input" value="${cvo.cart_price}">
-                           <input type="hidden" class="individual_bookCount_input" value="${cvo.cart_amount}">
-                           <input type="hidden" class="individual_totalPrice_input" value="${cvo.cart_price * cvo.cart_amount}">
-                           <input type="hidden" class="individual_point_input" value="${(cvo.cart_price*0.5)}">
-                           <input type="hidden" class="individual_totalPoint_input" value="${(cvo.cart_price*0.05)*cvo.cart_amount}">
-                           <input type="hidden" class="individual_bookId_input" value="${cvo.cart_book_num}">                      
+                           <input type="hidden" class="bookPrice_input" value="${cvo.cart_price}">
+                           <input type="hidden" class="salePrice_input" value="${cvo.cart_price}">
+                           <input type="hidden" class="bookCount_input" value="${cvo.cart_amount}">
+                           <input type="hidden" class="totalPrice_input" value="${cvo.cart_price * cvo.cart_amount}">
+                           <input type="hidden" class="point_input" value="${(cvo.cart_price*0.5)}">
+                           <input type="hidden" class="totalPoint_input" value="${(cvo.cart_price*0.05)*cvo.cart_amount}">
+                           <input type="hidden" class="bookId_input" value="${cvo.cart_book_num}">                      
                         </td>
                         <td>
                         <div class="td_width_2">
                               <a href="/book/bkDetailView?book_num=${cvo.cart_book_num}"> 
-                                 <img class="book_img" src="/upload/${fn:replace(cvo.imageList[0].save_dir,'\\','/')}/${cvo.imageList[0].uuid}_${cvo.imageList[0].file_name}" style="height: 50px; width: 50px;" alt="bookThumbnail">
+                                 <img class="book_img" src="/upload/${fn:replace(cvo.imageList[0].save_dir,'\\','/')}/${cvo.imageList[0].uuid}_${cvo.imageList[0].file_name}" style="height: 80px; width: 70px;" alt="bookThumbnail">
                               </a>
                            </div>
                            </td>
@@ -332,7 +333,7 @@ a{
                         <td class="td_width_4 table_text_align_center">
                         
                         <form action="/cart/delete?cartnum=${cvo.cart_num}&mem_num=${cvo.cart_mem_num}" method="post" class="quantity_delete_form">
-                           <button class="delete_btn" >삭제</button>
+                           <button class="btn btn-danger" >삭제</button>
                            </form>      
                         </td>
                      </tr>
@@ -420,12 +421,6 @@ a{
             
          </div>
          
-         
-         <%-- <form action="/cart/update" method="post" class="quantity_update_form">
-            <input type="hidden" name="memberId" value="${member.memberId}">
-         </form> --%>   
-         
-         
          <!-- 주문 form -->
          <form action="/order/order1/${mvo.mem_num}" method="get" class="order_form">
 
@@ -434,133 +429,130 @@ a{
          
       </div>
       
-      
-      
    </div>   <!-- class="wrap" -->
 </div>   <!-- class="wrapper" -->
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
-   
-   setTotalInfo();   
-   
-});   
-
-/* 체크여부에따른 종합 정보 변화 */
-$(".individual_cart_checkbox").on("change", function(){
-   /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
-   setTotalInfo($(".cart_info_td"));
-});
-
-/* 체크박스 전체 선택 */
-$(".all_check_input").on("click", function(){
-
-   /* 체크박스 체크/해제 */
-   if($(".all_check_input").prop("checked")){
-      $(".individual_cart_checkbox").attr("checked", true);
-   } else{
-      $(".individual_cart_checkbox").attr("checked", false);
-   }
-   
-   /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
-   setTotalInfo($(".cart_info_td"));   
-   
-});
-
-
-/* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
-function setTotalInfo(){
-   
-   let totalPrice = 0;            // 총 가격
-   let totalCount = 0;            // 총 갯수
-   let totalKind = 0;            // 총 종류
-   let totalPoint = 0;            // 총 마일리지               
-   let deliveryPrice = 0;         // 배송비
-   let finalTotalPrice = 0;       // 최종 가격(총 가격 + 배송비)  1
-
-   $(".cart_info_td").each(function(index, element){
       
-      if($(element).find(".individual_cart_checkbox").is(":checked") === true){   
+      setTotalInfo();   
       
-         totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
-                  
-         totalCount += parseInt($(element).find(".individual_bookCount_input").val());
-         
-         totalKind += 1;
-         
-         totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());         
-      }
+   });   
 
+   /* 체크여부에따른 종합 정보 변화 */
+   $(".individual_cart_checkbox").on("change", function(){
+      /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+      setTotalInfo($(".cart_info_td"));
    });
-   
-   if(totalPrice >= 30000){
-      deliveryPrice = 0;
-   } else if(totalPrice == 0){
-      deliveryPrice = 0;
-   } else {
-      deliveryPrice = 3000;   
-   }
-   
-      finalTotalPrice = totalPrice + deliveryPrice;
-   
+
+   /* 체크박스 전체 선택 */
+   $(".all_check_input").on("click", function(){
+
+      /* 체크박스 체크/해제 */
+      if($(".all_check_input").prop("checked")){
+         $(".individual_cart_checkbox").attr("checked", true);
+      } else{
+         $(".individual_cart_checkbox").attr("checked", false);
+      }
       
-   $(".totalPrice_span").text(totalPrice.toLocaleString());
+      /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+      setTotalInfo($(".cart_info_td"));   
+      
+   });
 
-   $(".totalCount_span").text(totalCount);
-   
-   $(".totalKind_span").text(totalKind);
-   
-   $(".totalPoint_span").text(totalPoint.toLocaleString());
-   
-   $(".delivery_price").text(deliveryPrice);   
-   
-   $(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());      
-}
 
-/* 주문 페이지 이동 */   
-$(".order_btn").on("click", function(){
-   
-   
-   
-     if('${mvo.mem_cartNum}' == 0){ 
-      alert("장바구니가 비었습니다!");
-      event.preventDefault();
-          }else{
-            let form_contents ='';
-            let orderNumber = 0;
-            
-            $(".cart_info_td").each(function(index, element){
-               
-               if($(element).find(".individual_cart_checkbox").is(":checked") == true){   //체크여부
-                  
-                  let cart_book_num = $(element).find(".individual_bookId_input").val();
-                  let bookCount = $(element).find(".individual_bookCount_input").val();
-                  
-                  console.log(cart_book_num);
-                  console.log(bookCount);
-                   
-                  let cart_book_num_input = "<input name='orders[" + orderNumber + "].cart_book_num' type='hidden' value='" + cart_book_num + "'>";
-                  form_contents += cart_book_num_input;
-                  
-                  let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
-                  form_contents += bookCount_input;
-                  
-                  orderNumber += 1;
-                  
-               }
-            });   
+   /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+   function setTotalInfo(){
+      
+      let totalPrice = 0;            // 총 가격
+      let totalCount = 0;            // 총 갯수
+      let totalKind = 0;            // 총 종류
+      let totalPoint = 0;            // 총 마일리지               
+      let deliveryPrice = 0;         // 배송비
+      let finalTotalPrice = 0;       // 최종 가격(총 가격 + 배송비)  1
+
+      $(".cart_info_td").each(function(index, element){
          
-            $(".order_form").html(form_contents);
-            $(".order_form").submit();
-             
-      } /* else문 끝  */
-      
+         if($(element).find(".individual_cart_checkbox").is(":checked") === true){   
+         
+            totalPrice += parseInt($(element).find(".totalPrice_input").val());
+                     
+            totalCount += parseInt($(element).find(".bookCount_input").val());
             
-   
-});
+            totalKind += 1;
+            
+            totalPoint += parseInt($(element).find(".totalPoint_input").val());         
+         }
+
+      });
       
+      if(totalPrice >= 30000){
+         deliveryPrice = 0;
+      } else if(totalPrice == 0){
+         deliveryPrice = 0;
+      } else {
+         deliveryPrice = 3000;   
+      }
+      
+         finalTotalPrice = totalPrice + deliveryPrice;
+      
+         
+      $(".totalPrice_span").text(totalPrice.toLocaleString());
+
+      $(".totalCount_span").text(totalCount);
+      
+      $(".totalKind_span").text(totalKind);
+      
+      $(".totalPoint_span").text(totalPoint.toLocaleString());
+      
+      $(".delivery_price").text(deliveryPrice);   
+      
+      $(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());      
+   }
+
+   /* 주문 페이지 이동 */   
+   $(".order_btn").on("click", function(){
+      
+        if('${mvo.mem_cartNum}' == 0){ 
+         alert("장바구니가 비었습니다!");
+         event.preventDefault();
+             }else{
+               let form_contents ='';
+               let orderNumber = 0;
+               
+               $(".cart_info_td").each(function(index, element){
+                  
+                  if($(element).find(".individual_cart_checkbox").is(":checked") == true){   //체크여부
+                     
+                     let cart_book_num = $(element).find(".bookId_input").val();
+                     let bookCount = $(element).find(".bookCount_input").val();
+                     
+                     console.log(cart_book_num);
+                     console.log(bookCount);
+                      
+                     let cart_book_num_input = "<input name='orders[" + orderNumber + "].cart_book_num' type='hidden' value='" + cart_book_num + "'>";
+                     form_contents += cart_book_num_input;
+                     
+                     let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
+                     form_contents += bookCount_input;
+                     
+                     orderNumber += 1;
+                     
+                  }
+               });   
+            
+               $(".order_form").html(form_contents);
+               $(".order_form").submit();
+                
+         } /* else문 끝  */
+         
+               
+      
+   });
+
+
 
 </script>
 

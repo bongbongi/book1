@@ -51,17 +51,17 @@ public class HomeController {
    private BookService bks;
 
    @Inject
-   private MemberService msv;
+   private MemberDAO mdao;
    
    @Inject
-   private MemberDAO mdao;
+   private MemberService msv;
    /**
     * Simply selects the home view to render by returning its name.
     */
 
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String home(Locale locale, Model model) {
-      
+      logger.info("Welcome home! The client locale is {}.", locale);
 
       Date date = new Date();
       DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -184,6 +184,26 @@ public class HomeController {
                list2.add(fdto);
             }
          }      
+         BookVO bvo=bks.getBookOne();   
+         log.info("bvo"+bvo.getBook_cno());
+         
+         FileVO fvo2 = new FileVO(); 
+         List<FileDTO> list3 = new ArrayList<FileDTO>();
+         
+            int book_num = bvo.getBook_num();
+            fvo2 = bks.getFile(book_num);
+            if(fvo2 != null) {
+               FileDTO fdto = new FileDTO(bvo, fvo2.getSave_dir(), fvo2.getUuid(), fvo2.getFile_name());
+               list3.add(fdto);
+         
+            }else {
+               FileDTO fdto = new FileDTO(bvo, "", "", "");
+               list3.add(fdto);
+            }   
+         
+    
+         model.addAttribute("randombook", list3);
+         log.info("randombook"+list3.size());
          model.addAttribute("book_list", list2);   
          return "home";      
       }
@@ -204,15 +224,21 @@ public class HomeController {
       log.info(">>> register isUp : "+(isUp>0? "ok" : "fail"));
       
       MemberVO mvo2 = mdao.getMemNumAll(mvo.getMem_num());
-		log.info("이벤트 mvo2"+mvo2.toString());
-		  HttpSession ses = req.getSession(); 
-		  ses.setAttribute("ses", mvo2);
-		  ses.setMaxInactiveInterval(60 * 10);
-		
-		  return isUp>0? new ResponseEntity<String>("1",HttpStatus.OK)
-		            : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+      log.info("이벤트 mvo2"+mvo2.toString());
+        HttpSession ses = req.getSession(); 
+        ses.setAttribute("ses", mvo2);
+        ses.setMaxInactiveInterval(60 * 10);
+      
+        return isUp>0? new ResponseEntity<String>("1",HttpStatus.OK)
+                  : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 
    }
+   
+
+   
+ 
+   
+   
    
    
 }

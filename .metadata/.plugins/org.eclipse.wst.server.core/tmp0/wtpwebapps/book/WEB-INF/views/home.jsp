@@ -120,7 +120,7 @@
 }
 
 .foot-ad {
-   /* background-color: purple; */
+   background-color: purple;
    height: 200px;
    margin: 20px 0px;
 }
@@ -279,31 +279,6 @@ padding-bottom: 0.14em
                   </ul>
                </div>
             </div>
-             <div class="todayBook">
-         <h1>오늘의 책</h1>
-         <div class="BestSeller">
-            <ul class="BestSellerList">
-               <c:forEach items="${randombook}" var="list" begin="0" end="9">
-                  <li class="Best_item">
-                     <div class="rank">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                     </div>
-                     <div class="img_box">
-                        <a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
-                        <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
-                        </a>
-                     </div>
-                     <div class="info_box">
-                        <span class="main_book_header ellipsis-two">${list.bvo.book_title}</span>
-                        <span class="main_book_writer">${list.bvo.book_writer} : ${list.bvo.book_publisher}</span>
-                     </div>
-                  </li>
-               </c:forEach>
-            </ul>
-         </div>
-         </div>
          </c:when>
 
          <c:when test="${content eq 'novel' }">
@@ -463,7 +438,30 @@ padding-bottom: 0.14em
          </c:when>
 
       </c:choose>
-     
+      <div class="todayBook">
+         <h1>오늘의 책</h1>
+         <div class="BestSeller">
+            <ul class="BestSellerList">
+               <c:forEach items="${randombook}" var="list" begin="0" end="9">
+                  <li class="Best_item">
+                     <div class="rank">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                     </div>
+                     <div class="img_box">
+                        <a href="/book/bkDetailView?book_num=${list.bvo.book_num}"> 
+                        <img class="book_img" src="/upload/${fn:replace(list.save_dir,'\\','/')}/${list.uuid}_${list.file_name}" alt="bookThumbnail">
+                        </a>
+                     </div>
+                     <div class="info_box">
+                        <span class="main_book_header ellipsis-two">${list.bvo.book_title}</span>
+                        <span class="main_book_writer">${list.bvo.book_writer} : ${list.bvo.book_publisher}</span>
+                     </div>
+                  </li>
+               </c:forEach>
+            </ul>
+         </div>
 
 
       </div>

@@ -9,11 +9,14 @@
 <meta charset="UTF-8">
 <title>Welcome BookMall</title>
 <link rel="stylesheet" href="/resources/css/order.css">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-  <!-- 다음주소 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 <style type="text/css">
    @charset "UTF-8";
@@ -184,15 +187,18 @@ height: 110px;
    width : 300px;
    border : 1px solid #333;
    border-top-width:2px;   
+    /* margin-right: 30px;  */
    
 }
 .total_info_price_div{
    width: 90%;
     margin: auto;
    position: relative;
+    margin-right: 30px; 
 }
 .total_info_div ul{
    list-style: none;
+   
 }
 .total_info_div li{
    text-align: right;
@@ -256,6 +262,9 @@ height: 110px;
          
          
          <jsp:include page="../cart/cartHeader.jsp"></jsp:include>
+         
+         <div style="height: 50px"></div>
+         
          <div class="content_main">
             <!-- 회원 정보 -->
             <div class="member_info_div">
@@ -336,7 +345,7 @@ height: 110px;
                            <td>
                            <div class="img_box">
                               <a href="/book/bkDetailView?book_num=${cvo.cart_book_num}"> 
-                                 <img class="book_img" src="/upload/${fn:replace(cvo.imageList[0].save_dir,'\\','/')}/${cvo.imageList[0].uuid}_${cvo.imageList[0].file_name}" style="width: 50px; height: 50px" alt="bookThumbnail">
+                                 <img class="book_img" src="/upload/${fn:replace(cvo.imageList[0].save_dir,'\\','/')}/${cvo.imageList[0].uuid}_${cvo.imageList[0].file_name}" style="height: 80px; width: 80px; padding-left:20px;" alt="bookThumbnail">
                               </a>
                            </div>
                            </td>
@@ -344,15 +353,15 @@ height: 110px;
                            <td class="goods_table_price_td">
                               <fmt:formatNumber value="${cvo.salePrice}" pattern="#,### 원" /> | 수량 ${cvo.bookCount}권
                               <br><fmt:formatNumber value="${cvo.salePrice * cvo.bookCount}" pattern="#,### 원" />
-                              <input type="hidden" class="individual_salePrice_input" value="${cvo.salePrice}">
-                              <input type="hidden" class="individual_bookPrice_input" value="${cvo.book_price}">
+                              <input type="hidden" class="salePrice_input" value="${cvo.salePrice}">
+                              <input type="hidden" class="bookPrice_input" value="${cvo.book_price}">
                               
-                           <input type="hidden" class="individual_book_name_input" value="${cvo.book_title}">
-                           <input type="hidden" class="individual_bookCount_input" value="${cvo.bookCount}">
-                           <input type="hidden" class="individual_totalPrice_input" value="${cvo.salePrice * cvo.bookCount}">
-                           <input type="hidden" class="individual_point_input" value="${cvo.point}">
-                           <input type="hidden" class="individual_totalPoint_input" value="${cvo.totalPoint}">
-                           <input type="hidden" class="individual_book_num_input" value="${cvo.cart_book_num}">    
+                           <input type="hidden" class="book_name_input" value="${cvo.book_title}">
+                           <input type="hidden" class="bookCount_input" value="${cvo.bookCount}">
+                           <input type="hidden" class="totalPrice_input" value="${cvo.salePrice * cvo.bookCount}">
+                           <input type="hidden" class="point_input" value="${cvo.point}">
+                           <input type="hidden" class="totalPoint_input" value="${cvo.totalPoint}">
+                           <input type="hidden" class="book_num_input" value="${cvo.cart_book_num}">    
                            </td>
                         </tr>                     
                      </c:forEach>
@@ -373,7 +382,7 @@ height: 110px;
                      <tr>
                         <th>포인트 사용</th>
                         <td>
-                           ${memberInfo.mem_point} | <input class="order_point_input" value="0">포인트
+                           ${memberInfo.mem_point} | <input class="order_point" value="0">포인트
                            <a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
                            <a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
                            
@@ -466,252 +475,248 @@ height: 110px;
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>
 
-<script>
-
+<script type="text/javascript">
 $(document).ready(function(){
-   
-   
-   setTotalInfo();
-   
-   let finalTotalPrice;
-   
-});
-
-
-function setTotalInfo(){
-
-   let totalPrice = 0;            // 총 가격
-   let totalCount = 0;            // 총 갯수
-   let totalKind = 0;            // 총 종류
-   let totalPoint = 0;            // 총 마일리지
-   let deliveryPrice = 0;         // 배송비
-   let usePoint = 0;            // 사용 포인트(할인가격)
-   finalTotalPrice = 0;       // 최종 가격(총 가격 + 배송비)
-   let memberRank = "";         // 멤버 랭크
-   let AmemberRanK = 0;
-   let BmemberRanK = 0;
-   let CmemberRanK = 0;
-   
-   $(".goods_table_price_td").each(function(index, element){
       
-      totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
       
-      totalCount += parseInt($(element).find(".individual_bookCount_input").val());
+      setTotalInfo();
       
-      totalKind += 1;
-      
-      totalPoint += parseInt($(element).find(".individual_totalPoint_input").val());
-   });   
-   
-   memberRank = '${memberInfo.mem_rating}';
-   
-   
-   console.log(memberRank);
-   
-   <!-- A등급 20퍼센트 B등급 15퍼센트 C등급 10퍼센트 D(기본)5퍼센트 -->
-   
-   if(memberRank == "A"){         
-      AmemberRanK = totalPoint*3;  
-      totalPoint = totalPoint*4;    
-   }else if(memberRank == "B"){      
-      BmemberRanK = totalPoint*2;                  
-      totalPoint = totalPoint*3;                  
-   }else if(memberRank == "C"){
-      CmemberRanK = totalPoint;                  
-      totalPoint = totalPoint*2;                  
-   }
-
-   if(totalPrice >= 30000){
-      deliveryPrice = 0;
-   } else if(totalPrice == 0){
-      deliveryPrice = 0;
-   } else {
-      deliveryPrice = 3000;   
-   }
-   
-   finalTotalPrice = totalPrice + deliveryPrice;   
-   
-   usePoint = $(".order_point_input").val();
-   
-   finalTotalPrice = finalTotalPrice - usePoint;   
-   
-   
-   $(".totalPrice_span").text(totalPrice.toLocaleString());
-
-   $(".goods_kind_div_count").text(totalCount);
-
-   $(".goods_kind_div_kind").text(totalKind);
-   
-   $(".totalPoint_span").text(totalPoint.toLocaleString());
-   
-   $(".addPointA").text(AmemberRanK.toLocaleString());
-   
-   $(".addPointB").text(BmemberRanK.toLocaleString());
-   
-   $(".addPointC").text(CmemberRanK.toLocaleString());
-   
-   $(".delivery_price_span").text(deliveryPrice.toLocaleString());   
-
-   $(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());      
-
-   $(".usePoint_span").text(usePoint.toLocaleString());   
-   
-}
-
-//0 이상 & 최대 포인트 수 이하
-$(".order_point_input").on("propertychange change keyup paste input", function(){
-
-   let totalPrice = 0;
-   let deliveryPrice = 0;
-   let point = parseInt('${memberInfo.mem_point}');
-   let finalprice = 0;
-   
-   $(".goods_table_price_td").each(function(index, element){
-      
-   totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+      let finalTotalPrice;
       
    });
-   
-   if(totalPrice >= 30000){
-      deliveryPrice = 0;
-   } else if(totalPrice == 0){
-      deliveryPrice = 0;
-   } else {
-      deliveryPrice = 3000;   
-   }
-   
-   finalprice = totalPrice + deliveryPrice;
-   
-   console.log(point);
-   console.log(totalPrice);
-   console.log(finalprice);
-   
-   if(point > finalprice){
-       maxPoint = parseInt((finalprice - point) + point);   
-   }else{
-       maxPoint = parseInt('${memberInfo.mem_point}');   
-   }
-   
-   console.log(maxPoint);
-   
-   let inputValue = parseInt($(this).val());   
-   
-   if(inputValue < 0){
-      $(this).val(0);
-   } else if(inputValue > maxPoint){
-      $(this).val(maxPoint);
-   }   
-   
-   setTotalInfo();   
-   
-});
 
 
-/* 포인트 모두사용 취소 버튼 
- * Y: 모두사용 상태 / N : 모두 취소 상태
- */
-$(".order_point_input_btn").on("click", function(){
-   
-   
-   let totalPrice = 0;
-   let deliveryPrice = 0;
-   let point = parseInt('${memberInfo.mem_point}');
-   let finalprice = 0;
-   
-   $(".goods_table_price_td").each(function(index, element){
+   function setTotalInfo(){
+
+      let totalPrice = 0;            // 총 가격
+      let totalCount = 0;            // 총 갯수
+      let totalKind = 0;            // 총 종류
+      let totalPoint = 0;            // 총 마일리지
+      let deliveryPrice = 0;         // 배송비
+      let usePoint = 0;            // 사용 포인트(할인가격)
+      finalTotalPrice = 0;       // 최종 가격(총 가격 + 배송비)
+      let memberRank = "";         // 멤버 랭크
+      let AmemberRanK = 0;
+      let BmemberRanK = 0;
+      let CmemberRanK = 0;
       
-   totalPrice += parseInt($(element).find(".individual_totalPrice_input").val());
+      $(".goods_table_price_td").each(function(index, element){
+         
+         totalPrice += parseInt($(element).find(".totalPrice_input").val());
+         
+         totalCount += parseInt($(element).find(".bookCount_input").val());
+         
+         totalKind += 1;
+         
+         totalPoint += parseInt($(element).find(".totalPoint_input").val());
+      });   
+      
+      memberRank = '${memberInfo.mem_rating}';
+      
+      
+      console.log(memberRank);
+      
+      <!-- A등급 20퍼센트 B등급 15퍼센트 C등급 10퍼센트 D(기본)5퍼센트 -->
+      
+      if(memberRank == "A"){         
+         AmemberRanK = totalPoint*3;  
+         totalPoint = totalPoint*4;    
+      }else if(memberRank == "B"){      
+         BmemberRanK = totalPoint*2;                  
+         totalPoint = totalPoint*3;                  
+      }else if(memberRank == "C"){
+         CmemberRanK = totalPoint;                  
+         totalPoint = totalPoint*2;                  
+      }
+
+      if(totalPrice >= 30000){
+         deliveryPrice = 0;
+      } else if(totalPrice == 0){
+         deliveryPrice = 0;
+      } else {
+         deliveryPrice = 3000;   
+      }
+      
+      finalTotalPrice = totalPrice + deliveryPrice;   
+      
+      usePoint = $(".order_point").val();
+      
+      finalTotalPrice = finalTotalPrice - usePoint;   
+      
+      
+      $(".totalPrice_span").text(totalPrice.toLocaleString());
+
+      $(".goods_kind_div_count").text(totalCount);
+
+      $(".goods_kind_div_kind").text(totalKind);
+      
+      $(".totalPoint_span").text(totalPoint.toLocaleString());
+      
+      $(".addPointA").text(AmemberRanK.toLocaleString());
+      
+      $(".addPointB").text(BmemberRanK.toLocaleString());
+      
+      $(".addPointC").text(CmemberRanK.toLocaleString());
+      
+      $(".delivery_price_span").text(deliveryPrice.toLocaleString());   
+
+      $(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());      
+
+      $(".usePoint_span").text(usePoint.toLocaleString());   
+      
+   }
+
+   //0 이상 & 최대 포인트 수 이하
+   $(".order_point").on("propertychange change keyup paste input", function(){
+
+      let totalPrice = 0;
+      let deliveryPrice = 0;
+      let point = parseInt('${memberInfo.mem_point}');
+      let finalprice = 0;
+      
+      $(".goods_table_price_td").each(function(index, element){
+         
+      totalPrice += parseInt($(element).find(".totalPrice_input").val());
+         
+      });
+      
+      if(totalPrice >= 30000){
+         deliveryPrice = 0;
+      } else if(totalPrice == 0){
+         deliveryPrice = 0;
+      } else {
+         deliveryPrice = 3000;   
+      }
+      
+      finalprice = totalPrice + deliveryPrice;
+      
+      console.log(point);
+      console.log(totalPrice);
+      console.log(finalprice);
+      
+      if(point > finalprice){
+          maxPoint = parseInt((finalprice - point) + point);   
+      }else{
+          maxPoint = parseInt('${memberInfo.mem_point}');   
+      }
+      
+      console.log(maxPoint);
+      
+      let inputValue = parseInt($(this).val());   
+      
+      if(inputValue < 0){
+         $(this).val(0);
+      } else if(inputValue > maxPoint){
+         $(this).val(maxPoint);
+      }   
+      
+      setTotalInfo();   
       
    });
-   
-   if(totalPrice >= 30000){
-      deliveryPrice = 0;
-   } else if(totalPrice == 0){
-      deliveryPrice = 0;
-   } else {
-      deliveryPrice = 3000;   
-   }
-   
-   finalprice = totalPrice + deliveryPrice;
-   
-   console.log(point);
-   console.log(totalPrice);
-   console.log(finalprice);
-   
-   if(point > finalprice){
-       maxPoint = parseInt((finalprice - point) + point);   
-   }else{
-       maxPoint = parseInt('${memberInfo.mem_point}');   
-   }
-   
-   /* const maxPoint = parseInt(4000); */ 
-   
-   console.log(maxPoint);
-   
-   let state = $(this).data("state");   
-   
-   if(state == 'N'){
-      console.log("n동작");
-      $(".order_point_input").val(maxPoint);
-      $(".order_point_input_btn_Y").css("display", "inline-block");
-      $(".order_point_input_btn_N").css("display", "none");
-   } else if(state == 'Y'){
-      console.log("y동작");
-      $(".order_point_input").val(0);
-      $(".order_point_input_btn_Y").css("display", "none");
-      $(".order_point_input_btn_N").css("display", "inline-block");      
-   }   
-   
-   setTotalInfo();   
-   
-});
 
-$(".order_btn").on("click", function(){
-   
-   console.log(finalTotalPrice);
-   
-   let input = confirm('주문하시겠습니까?');
+
+   /* 포인트 모두사용 취소 버튼 
+    * Y: 모두사용 상태 / N : 모두 취소 상태
+    */
+   $(".order_point_input_btn").on("click", function(){
       
-      if(input){
       
-       if('${memberInfo.mem_cash}' < finalTotalPrice){ 
-         alert("지갑금액이 부족합니다!");
-         event.preventDefault();
-          }else{
-                
-            $(".addressInfo_input_div").each(function(i, obj){
-               if($(obj).find(".selectAddress").val() === 'T'){
-                  $("input[name='addressee']").val($(obj).find(".addressee_input").val());
-                  $("input[name='memberAddr1']").val($(obj).find(".address1_input").val());
-               }
-            });   
-            
-            $("input[name='usePoint']").val($(".order_point_input").val());   
-            
-            let form_contents = '';  
-            $(".goods_table_price_td").each(function(index, element){
-               let book_num = $(element).find(".individual_book_num_input").val();
-               let bookCount = $(element).find(".individual_bookCount_input").val();
-               let book_name = $(element).find(".individual_book_name_input").val();
-               let book_num_input = "<input name='orders[" + index + "].book_num' type='hidden' value='" + book_num + "'>";
-               form_contents += book_num_input;
-               let bookCount_input = "<input name='orders[" + index + "].bookCount' type='hidden' value='" + bookCount + "'>";
-               form_contents += bookCount_input;
-               let book_name_input = "<input name='orders[" + index + "].book_name' type='hidden' value='" + book_name + "'>";
-               form_contents += book_name_input;
+      let totalPrice = 0;
+      let deliveryPrice = 0;
+      let point = parseInt('${memberInfo.mem_point}');
+      let finalprice = 0;
+      
+      $(".goods_table_price_td").each(function(index, element){
+         
+      totalPrice += parseInt($(element).find(".totalPrice_input").val());
+         
+      });
+      
+      if(totalPrice >= 30000){
+         deliveryPrice = 0;
+      } else if(totalPrice == 0){
+         deliveryPrice = 0;
+      } else {
+         deliveryPrice = 3000;   
+      }
+      
+      finalprice = totalPrice + deliveryPrice;
+      
+      console.log(point);
+      console.log(totalPrice);
+      console.log(finalprice);
+      
+      if(point > finalprice){
+          maxPoint = parseInt((finalprice - point) + point);   
+      }else{
+          maxPoint = parseInt('${memberInfo.mem_point}');   
+      }
+      
+      console.log(maxPoint);
+      
+      let state = $(this).data("state");   
+      
+      if(state == 'N'){
+         console.log("n동작");
+         $(".order_point").val(maxPoint);
+         $(".order_point_input_btn_Y").css("display", "inline-block");
+         $(".order_point_input_btn_N").css("display", "none");
+      } else if(state == 'Y'){
+         console.log("y동작");
+         $(".order_point_input").val(0);
+         $(".order_point_input_btn_Y").css("display", "none");
+         $(".order_point_input_btn_N").css("display", "inline-block");      
+      }   
+      
+      setTotalInfo();   
+      
+   });
+
+   $(".order_btn").on("click", function(){
+      
+      console.log(finalTotalPrice);
+      
+      let input = confirm('주문하시겠습니까?');
+         
+         if(input){
+         
+          if('${memberInfo.mem_cash}' < finalTotalPrice){ 
+            alert("지갑금액이 부족합니다!");
+            event.preventDefault();
+             }else{
+                   
+               $(".addressInfo_input_div").each(function(i, obj){
+                  if($(obj).find(".selectAddress").val() === 'T'){
+                     $("input[name='addressee']").val($(obj).find(".addressee_input").val());
+                     $("input[name='memberAddr1']").val($(obj).find(".address1_input").val());
+                  }
+               });   
                
-            });   
-            $(".order_form").append(form_contents);    // 선택된 요소의 마지막에 새로운 요소나 콘텐츠를 추가한다
-            
-            $(".order_form").submit();   
-                
-       }  /* else문 끝  */
+               $("input[name='usePoint']").val($(".order_point").val());   
+               
+               let form_contents = '';  
+               $(".goods_table_price_td").each(function(index, element){
+                  let book_num = $(element).find(".book_num_input").val();
+                  let bookCount = $(element).find(".bookCount_input").val();
+                  let book_name = $(element).find(".book_name_input").val();
+                  let book_num_input = "<input name='orders[" + index + "].book_num' type='hidden' value='" + book_num + "'>";
+                  form_contents += book_num_input;
+                  let bookCount_input = "<input name='orders[" + index + "].bookCount' type='hidden' value='" + bookCount + "'>";
+                  form_contents += bookCount_input;
+                  let book_name_input = "<input name='orders[" + index + "].book_name' type='hidden' value='" + book_name + "'>";
+                  form_contents += book_name_input;
+                  
+               });   
+               $(".order_form").append(form_contents);    // 선택된 요소의 마지막에 새로운 요소나 콘텐츠를 추가한다
+               
+               $(".order_form").submit();   
+                   
+          }  /* else문 끝  */
 
-      } /* 주문확인 */
+         } /* 주문확인 */
 
-   
-});   
-
+      
+   });   
 
 </script>
 

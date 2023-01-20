@@ -65,18 +65,6 @@
 		</c:otherwise>
 		</c:choose>
 		
-		<c:choose>
-		<c:when test="${msg eq 4}">
-		<div style="color: red" id="pagetop4">
-		<sup>step3</sup>주문완료
-		</div>
-		</c:when>
-		<c:otherwise>
-		<div id="pagetop4">
-		<sup>step3</sup>주문완료
-		</div>
-		</c:otherwise>
-		</c:choose>
 		
 		</div>
 	</div>

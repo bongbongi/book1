@@ -21,6 +21,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageOrderList.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBuyList.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBoardList.css">
+
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBoardDetail.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypageBoardRegisterAndModify.css">
 </head>
@@ -40,9 +41,10 @@
 		<div class="select">
 			<table class="mypage-left">
 				<tr>
-					<td>
-						<h4>${ses.mem_name}님<br>환영합니다!!
-						</h4>
+					<td id="mem_info">
+						<h4>${ses.mem_name}님<br>환영합니다!!<br>
+							<br>
+						</h4> 지갑: <strong>${ses.mem_cash}</strong>원<br>포인트: <strong>${ses.mem_point}</strong>포인트
 					</td>
 				</tr>
 				<tr>
@@ -86,12 +88,12 @@
 							<lable for="mem_cell_num">PHONE</lable>
 							<br> <input type="number" class="join-input" name="mem_cell_num" id="mem_cell_num" value="${ses.mem_cell_num}" placeholder="숫자만 써주세요" onchange="checkCellNum()" required> <span class="cellNum_ok"><i class="fa-solid fa-check"></i></span> <span class="cellNum_duplicate"><i class="fa-solid fa-x"></i></span> <span class="cellNum_null"><i class="fa-solid fa-x"></i></span> <br>
 							<lable for="mno_cno">FAVORITE</lable>
-							<br> <select class="join-input" name="mno_cno">
-								<option value="novel">소설</option>
-								<option value="essay">에세이</option>
-								<option value="life">건강/취미</option>
-								<option value="computer">컴퓨터/모바일</option>
-								<option value="problem">문제집</option>
+							<br> <select class="join-input" name="mem_cno">
+								<option value="1">소설</option>
+								<option value="2">에세이</option>
+								<option value="3">건강/취미</option>
+								<option value="4">컴퓨터/모바일</option>
+								<option value="5">문제집</option>
 							</select> <Br> <br>
 							<button type=submit " class="btn btn-outline-secondary btn-submit">수정하기</button>
 						</div>
@@ -101,21 +103,17 @@
 
 					<div class="moneyCharge mypage-right">
 						<div class="cashBox">
-							<span id="cashNow">현재 충전금액 </span> 
-							<input type="text" value="${ses.mem_cash}원" id="cash">
+							<span id="cashNow"><h4>현재 충전금액</h4> </span> <input type="text" value="${ses.mem_cash}원" id="cash">
 						</div>
 						<br>
 
 
 						<form src="/mem/charge2" method="post">
-							<input type="text" name="mem_num" value="${ses.mem_num}" hidden> 
-							<input type="text" name="mem_id" value="${ses.mem_id}" id="mem_id" hidden> 
-							<input type="text" name="mem_pw" value="${ses.mem_pw}" hidden> 
-							<input type="number" name="mem_cash" id="mem_cash">
+							<input type="text" name="mem_num" value="${ses.mem_num}" hidden> <input type="text" name="mem_id" value="${ses.mem_id}" id="mem_id" hidden> <input type="text" name="mem_pw" value="${ses.mem_pw}" hidden> <input type="number" name="mem_cash" id="mem_cash">
 							<button type="button" onclick="charge()">충전하기</button>
 						</form>
 						<div class="cashImgBox">
-							<img src="/resources/img/coin.png">
+							<img src="/resources/img/coin.png" style="width: 600px;">
 						</div>
 					</div>
 					<hr id="chargeHr">
@@ -125,7 +123,8 @@
 							let mem_id = document.getElementById('mem_id').value;
 							console.log("js mem_cash 테스트 : " + mem_cash);
 							console.log("js mem_id 테스트 : " + mem_id);
-							$.ajax({
+							$
+									.ajax({
 										url : '/mem/charge2', //Controller에서 요청 받을 주소
 										type : 'post', //POST 방식으로 전달
 										data : {
@@ -137,8 +136,8 @@
 													+ cashNow2); //결과값 : [object XMLDocument]
 
 											document.getElementById('mem_cash').value = ""; //입력한 값은 지워주기
-											document.getElementById('cash').value = cashNow2+"원"; //잔액 변동사항을 반영
-											
+											document.getElementById('cash').value = cashNow2
+													+ "원"; //잔액 변동사항을 반영
 
 										},
 										error : function(request, status, error) {
@@ -163,6 +162,7 @@
 									<th scope="col">주문자</th>
 									<th scope="col">주문상태</th>
 									<th scope="col">주소</th>
+									<th scope="col">구매결정</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -172,6 +172,9 @@
 										<td>${ses.mem_id}</td>
 										<td>${order.order_sta}</td>
 										<td>${order.order_add2}</td>
+										<td><button type="button" onclick="confirmed(event)">
+												<a href="/order/Confirmed/?order_num=${order.order_num}&order_mem_num=${order.order_mem_num}">구매결정</a>
+											</button></td>
 									</tr>
 								</c:forEach>
 
@@ -212,16 +215,16 @@
 										<td>${order.book_price}</td>
 										<td>${order.bookCount}</td>
 										<c:if test="${ses.mem_rating eq 'A'}">
-											<td>${order.savePoint*4}</td>
+											<td>${(order.savePoint*4)*order.bookCount}</td>
 										</c:if>
 										<c:if test="${ses.mem_rating eq 'B'}">
-											<td>${order.savePoint*3}</td>
+											<td>${(order.savePoint*3)*order.bookCount}</td>
 										</c:if>
 										<c:if test="${ses.mem_rating eq 'C'}">
-											<td>${order.savePoint*2}</td>
+											<td>${(order.savePoint*2)*order.bookCount}</td>
 										</c:if>
 										<c:if test="${ses.mem_rating eq 'D'}">
-											<td>${order.savePoint}</td>
+											<td>${order.savePoint*order.bookCount}</td>
 										</c:if>
 									</tr>
 								</c:forEach>
@@ -465,6 +468,18 @@
 		</c:forEach>
 	</div>
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
+
+	<script type="text/javascript">
+		function confirmed(event) {
+			let input = confirm('구매확정 하시겠습니까?');
+
+			if (input) {
+
+			} else {
+				event.preventDefault();
+			}
+		}
+	</script>
 
 </body>
 

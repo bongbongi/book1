@@ -8,14 +8,14 @@
 <title>Insert title here</title>
 <style type="text/css">
 .event_main {
-	margin: 0 auto;
-	width: 1260px;
+   margin: 0 auto;
+   width: 1260px;
 }
 #eventBefore{
-	
+   
 }
 #eventAfter{
-	display: none;
+   display: none;
 }
 </style>
 <link rel="stylesheet" href="/resources/css/main.css" type="text/css" />
@@ -26,77 +26,77 @@
 
 <body>
 
-	<jsp:include page="./layout/header.jsp"></jsp:include>
-	<div class="event_main">
+   <jsp:include page="./layout/header.jsp"></jsp:include>
+   <div class="event_main">
 
-		<h1>포인트 향상 이벤트</h1>
-		<h1>WW의 가입을 진심으로 축하합니다 !</h1>
+      <h1>포인트 향상 이벤트</h1>
+      <h1>WW의 가입을 진심으로 축하합니다 !</h1>
 
-		<table class="table table-striped">
-			<tr>
-				<th colspan="2">등급별 혜택</th>
-			</tr>
-			<tr>
-				<td>A</td>
-				<td>구매금액의 2% 포인트로 적립</td>
-			</tr>
-			<tr>
-				<td>B</td>
-				<td>구매금액의 1.5% 포인트로 적립</td>
-			</tr>
-			<tr>
-				<td>C</td>
-				<td>구매금액의 1% 포인트로 적립</td>
-			</tr>
-			<tr>
-				<td>D(기본)</td>
-				<td>구매금액의 0.5% 포인트로 적립</td>
-			</tr>
-		</table>
-		<br />
+      <table class="table table-striped">
+         <tr>
+            <th colspan="2">등급별 혜택</th>
+         </tr>
+         <tr>
+            <td>A</td>
+            <td>구매금액의 20% 포인트로 적립</td>
+         </tr>
+         <tr>
+            <td>B</td>
+            <td>구매금액의 15% 포인트로 적립</td>
+         </tr>
+         <tr>
+            <td>C</td>
+            <td>구매금액의 10% 포인트로 적립</td>
+         </tr>
+         <tr>
+            <td>D(기본)</td>
+            <td>구매금액의 5% 포인트로 적립</td>
+         </tr>
+      </table>
+      <br />
 
-		<c:if test="${ses.mem_rating ne 'D'}">
+      <c:if test="${ses.mem_rating ne 'D'}">
             ${ses.mem_id}님은 이미 이벤트에 참여하였습니다.!!!
             ${ses.mem_id} 등급 :  <input id="rating" value="${ses.mem_rating }">
-		</c:if>
+      </c:if>
 
-		<c:if test="${ses.mem_rating eq 'D'}">   
+      <c:if test="${ses.mem_rating eq 'D'}">   
         <div id="eventBefore"> ${ses.mem_id}님은 아직 <input value="${ses.mem_rating }"> 등급입니다.!!!(등급변경가능)</div> 
         <div id="eventAfter"> ${ses.mem_id}님 <input id="rating" value="${ses.mem_rating }"> 등급입니다.!!! 축하합니다</div>     
         <div align="center">
-				<table cellpadding="0" cellspacing="0" border="0">
-					<tr>
-						<td>
-							<div class="power_controls">
-								<br /> <br />
-								<table class="power" cellpadding="10" cellspacing="0">
-									<tr>
-										<th align="center">Power</th>
-									</tr>
-									<tr>
-										<td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td>
-									</tr>
-									<tr>
-										<td align="center" id="pw2" onClick="powerSelected(2);">Med</td>
-									</tr>
-									<tr>
-										<td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
-									</tr>
-								</table>
-								<br /> <img id="spin_button" src="/resources/img/spin_off.png" alt="Spin" onClick="startSpin();" />
+            <table cellpadding="0" cellspacing="0" border="0">
+               <tr>
+                  <td>
+                     <div class="power_controls">
+                        <br /> <br />
+                        <table class="power" cellpadding="10" cellspacing="0">
+                           <tr>
+                              <th align="center">Power</th>
+                           </tr>
+                           <tr>
+                              <td width="78" align="center" id="pw3" onClick="powerSelected(3);">High</td>
+                           </tr>
+                           <tr>
+                              <td align="center" id="pw2" onClick="powerSelected(2);">Med</td>
+                           </tr>
+                           <tr>
+                              <td align="center" id="pw1" onClick="powerSelected(1);">Low</td>
+                           </tr>
+                        </table>
+                        <br /> <img id="spin_button" src="/resources/img/spin_off.png" alt="Spin" onClick="startSpin();" />
 
-							</div>
-						</td>
-						<td width="438" height="582" class="the_wheel" align="center" valign="center">
-							<canvas id="canvas" width="434" height="434">
+                     </div>
+                  </td>
+                  <td width="438" height="582" class="the_wheel" align="center" valign="center">
+                     <canvas id="canvas" width="434" height="434">
                             <p style="color: white" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
                         </canvas>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</c:if>
-		<script>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </c:if>
+      <script>
             // Create new wheel object specifying the parameters at creation time.
             let theWheel = new Winwheel({
                 'numSegments'  : 8,     // Specify number of segments.
@@ -104,7 +104,7 @@
                 'textFontSize' : 28,    // Set font size as desired.
                 'segments'     :        // Define segments including colour and text.
                 [
-                	 {'fillStyle' : '#7286D3', 'text' : 'A'},
+                    {'fillStyle' : '#7286D3', 'text' : 'A'},
                      {'fillStyle' : '#8EA7E9', 'text' : 'B'},
                      {'fillStyle' : '#E5E0FF', 'text' : 'C'},
                      {'fillStyle' : '#FFF2F2', 'text' : 'D'},
@@ -253,7 +253,7 @@
              
             }
         </script>
-	</div>
-	<jsp:include page="./layout/footer.jsp"></jsp:include>
+   </div>
+   <jsp:include page="./layout/footer.jsp"></jsp:include>
 </body>
 </html>

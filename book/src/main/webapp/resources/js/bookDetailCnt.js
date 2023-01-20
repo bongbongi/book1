@@ -29,14 +29,23 @@ function gologin(event) {
 			}
 		
 		document.getElementById('Cart_btn').addEventListener('click',()=>{
-		    const mem_num = document.getElementById('mem_num').value;
-		    const book_num = document.getElementById('book_num').value;
-		    const book_cnt = document.getElementById('book_cnt').innerText;
-
+		    let mem_num = document.getElementById('mem_num').value;
+		    let book_num = document.getElementById('book_num').value;
+		    let book_cnt = parseInt(document.getElementById('book_cnt').innerText);
+		    let book_inventory = parseInt(document.getElementById('book_inventory').value);
+		    
+		   console.log(book_cnt);
+		   console.log(book_inventory);
+		    
+		    if(book_cnt > book_inventory){
+		    	 alert('재고수량이 부족합니다!');
+		    	
+		    }else {
+		    book_cnt = String(book_cnt);
 		        let bookDate ={
 		            mem_num : mem_num,
 		            book_num : book_num,
-		            book_cnt : book_cnt,
+		            book_cnt : book_cnt
 		        };
 		       
 		        console.log(bookDate);
@@ -44,8 +53,10 @@ function gologin(event) {
 		            if(result > 0){
 		                alert('장바구니에 담겼습니다!');
 		            }
-		            
 		        });
+		    }
+		    
+		            
 		});
 		
 		async function putDataToServer(bookDate){
@@ -69,14 +80,22 @@ function gologin(event) {
 		
 		// 바로구매
 		document.getElementById('Purchase_btn').addEventListener('click',()=>{
-		    const mem_num = document.getElementById('mem_num').value;
-		    const book_num = document.getElementById('book_num').value;
-		    const book_cnt = document.getElementById('book_cnt').innerText;
-
+		    let mem_num = document.getElementById('mem_num').value;
+		    let book_num = document.getElementById('book_num').value;
+ 			let book_cnt = parseInt(document.getElementById('book_cnt').innerText);
+		    let book_inventory = parseInt(document.getElementById('book_inventory').value);
+		    
+		   console.log(book_cnt);
+		   console.log(book_inventory);
+		    
+		    if(book_cnt > book_inventory){
+		    	 alert('재고수량이 부족합니다!');
+		    }else {
+		    	book_cnt = String(book_cnt);
 		        let bookDate ={
 		            mem_num : mem_num,
 		            book_num : book_num,
-		            book_cnt : book_cnt,
+		            book_cnt : book_cnt
 		        };
 		       
 		        console.log(bookDate);
@@ -89,6 +108,8 @@ function gologin(event) {
 					// Location.replace('/cart/cartdetail'+mem_num);
 		            
 		        });
+		    }
+
 		});
 		
 		async function putDataToServer(bookDate){
