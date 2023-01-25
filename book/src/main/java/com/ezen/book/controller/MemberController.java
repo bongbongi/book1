@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.book.domain.DeliveryDTO;
+import com.ezen.book.domain.FileVO;
 import com.ezen.book.domain.MemberVO;
 import com.ezen.book.domain.OrderItemDTO;
 import com.ezen.book.domain.OrderVO;
@@ -159,10 +160,6 @@ public class MemberController {
    public String MemPwSearch() {
       return "/member/memberPwSearch";
    }
-   @GetMapping("/MemIdSearchRe")
-   public String MemIdSearchRe() {
-      return "/member/memberIdSearchRe";
-   }
 
    @PostMapping("/MemIdSearch")
    public String MemIdSearch(MemberVO mvo, Model model, RedirectAttributes reAttr) {
@@ -193,9 +190,8 @@ public class MemberController {
          log.info("newpw페이지 이동 전 아이디 넘어가는지 확인 : " + mvo.getMem_id());
          return "/member/memberNewPw";
       } else {
-         /* model.addAttribute("msg", "0"); */
-         reAttr.addFlashAttribute("msg", "0");
-         return "redirect:/mem/MemPwSearch";
+			 model.addAttribute("msg", "0"); 
+         return "/member/memberPwSearchRe";
       }
    }
 
@@ -295,7 +291,7 @@ public class MemberController {
       req.getSession().removeAttribute("ses");
       req.getSession().invalidate();
       return "/home";
-
+      
    }
 
    @GetMapping("/charge")
@@ -328,21 +324,33 @@ public class MemberController {
       log.info("sum 컨트롤러 : "+cashNow);
       //log.info(">>>charge:" + (isOk > 0 ? "ok" : "fail"));
       
-      MemberVO mvo2 = msv.getIdAll(mem_id);
-      log.info("mvo2 테스트중"+mvo2.toString());
+      MemberVO mvo2 = msv.getIdAll(mvo.getMem_id());
       HttpSession ses = req.getSession();
       ses.setAttribute("ses", mvo2);
-      
       /*
        * req.getSession().removeAttribute("ses"); req.getSession().invalidate();
        */
        
       return cashNow2;
    }
+   
    @GetMapping("/orderListDetail")
    public String orderListDetail(Model model, @RequestParam("order_num") String order_num) {
       log.info(">>>num :" + order_num);
       List<OrderItemDTO> Olist = osv.orderDetail(order_num);
+      
+      
+      for(int i = 0; i<Olist.size();i++) {
+          
+          List<FileVO> imageList = osv.selectFileList(Olist.get(i).getBook_num());
+          
+          Olist.get(i).setImageList(imageList);    // 이미지 임시로 넣기
+          
+          log.info("이미지리스트이다"+imageList.toString());
+          
+       } 
+      
+      
       model.addAttribute("list", Olist);
       model.addAttribute("content", "orderDetail");
       return "/member/memberMypage";

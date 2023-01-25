@@ -48,7 +48,7 @@ public class OrderController {
       System.out.println(opd.getOrders());
       
       model.addAttribute("orderList", odsv.getGoodsInfo(opd.getOrders()));
-      model.addAttribute("memberInfo", memberService.getMemberInfo(mem_num));
+      model.addAttribute("member", memberService.getMemberInfo(mem_num));
       model.addAttribute("msg", 3);
       
       return "/cart/cartOrder";

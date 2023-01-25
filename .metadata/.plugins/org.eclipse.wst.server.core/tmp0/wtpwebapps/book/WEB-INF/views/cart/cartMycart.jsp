@@ -271,7 +271,7 @@ a{
                <input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span">전체선택</span>
             </div>            
             
-            <table class="subject_table">
+            <table class="subject_table" style="color: gray;">
                <caption>표 제목 부분</caption>
                <tbody>
 
@@ -287,7 +287,7 @@ a{
                </tbody>
             </table>
             <table class="cart_table">
-               <caption>표 내용 부분</caption>
+               
                <tbody>
                   <c:forEach items="${Clist}" var="cvo">
                      <tr>
@@ -309,8 +309,8 @@ a{
                            </div>
                            </td>
                         <td class="td_width_3">${cvo.cart_book_name}</td>
-                        <td class="td_width_4 price_td">
-                           가격 : <fmt:formatNumber value="${cvo.cart_price}" pattern="#,### 원" /><br>
+                        <td class="td_width_4 price_td" style="text-align: center;">
+                            <fmt:formatNumber value="${cvo.cart_price}" pattern="#,### 원" /><br>
                         </td>
                         <td class="td_width_4 table_text_align_center">
                            <div class="table_text_align_center quantity_div">
@@ -359,7 +359,7 @@ a{
                            <tr>
                               <td>배송비</td>
                               <td>
-                                 <span class="delivery_price">3000</span>원
+                                 <span class="delivery_price">2500</span>원
                               </td>
                            </tr>                           
                            <tr>
@@ -441,29 +441,27 @@ $(document).ready(function(){
       
    });   
 
-   /* 체크여부에따른 종합 정보 변화 */
+ 
    $(".individual_cart_checkbox").on("change", function(){
-      /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
+
       setTotalInfo($(".cart_info_td"));
    });
 
-   /* 체크박스 전체 선택 */
+
    $(".all_check_input").on("click", function(){
 
-      /* 체크박스 체크/해제 */
+
       if($(".all_check_input").prop("checked")){
          $(".individual_cart_checkbox").attr("checked", true);
       } else{
          $(".individual_cart_checkbox").attr("checked", false);
       }
       
-      /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
       setTotalInfo($(".cart_info_td"));   
       
    });
 
 
-   /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
    function setTotalInfo(){
       
       let totalPrice = 0;            // 총 가격
@@ -488,12 +486,12 @@ $(document).ready(function(){
 
       });
       
-      if(totalPrice >= 30000){
+      if(totalPrice >= 20000){
          deliveryPrice = 0;
       } else if(totalPrice == 0){
          deliveryPrice = 0;
       } else {
-         deliveryPrice = 3000;   
+         deliveryPrice = 2500;   
       }
       
          finalTotalPrice = totalPrice + deliveryPrice;

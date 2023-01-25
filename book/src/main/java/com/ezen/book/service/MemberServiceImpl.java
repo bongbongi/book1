@@ -153,8 +153,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String getPw(MemberVO mvo) {
 		String pw = mdao.getPwSearch(mvo);
-		log.info("pw 확인 : " + pw);
-
 		if (pw != null) {
 			return pw;
 		} else {

@@ -145,6 +145,7 @@ span#price {
    border-style: groove;
    width: 80px;
    height: 40px;
+   line-height:40px;
 }
 
 .susu{

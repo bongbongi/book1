@@ -8,14 +8,23 @@
 <title>Insert title here</title>
 <style type="text/css">
 .event_main {
-   margin: 0 auto;
-   width: 1260px;
+	margin: 0 auto;
+	width: 1260px;
 }
-#eventBefore{
-   
+
+#eventBefore {
+	
 }
-#eventAfter{
-   display: none;
+
+#eventAfter {
+	display: none;
+}
+
+input#rating,
+input#firstRating{
+	font-size: 30px;
+	border: none;
+	width:25px;
 }
 </style>
 <link rel="stylesheet" href="/resources/css/main.css" type="text/css" />
@@ -53,15 +62,15 @@
             <td>구매금액의 5% 포인트로 적립</td>
          </tr>
       </table>
-      <br />
+      <br>
 
       <c:if test="${ses.mem_rating ne 'D'}">
             ${ses.mem_id}님은 이미 이벤트에 참여하였습니다.!!!
-            ${ses.mem_id} 등급 :  <input id="rating" value="${ses.mem_rating }">
+            ${ses.mem_id}님 현재 <input id="rating" value="${ses.mem_rating }"> 등급
       </c:if>
-
+		
       <c:if test="${ses.mem_rating eq 'D'}">   
-        <div id="eventBefore"> ${ses.mem_id}님은 아직 <input value="${ses.mem_rating }"> 등급입니다.!!!(등급변경가능)</div> 
+        <div id="eventBefore"> ${ses.mem_id}님은 아직 <input id="firstRating" value="${ses.mem_rating }"> 등급입니다.!!!(등급변경가능)</div> 
         <div id="eventAfter"> ${ses.mem_id}님 <input id="rating" value="${ses.mem_rating }"> 등급입니다.!!! 축하합니다</div>     
         <div align="center">
             <table cellpadding="0" cellspacing="0" border="0">
@@ -253,6 +262,7 @@
              
             }
         </script>
+        <br><br><br>
    </div>
    <jsp:include page="./layout/footer.jsp"></jsp:include>
 </body>

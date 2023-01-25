@@ -30,17 +30,6 @@ crossorigin="anonymous">
             </form>            
          </div>
       </div>
-   </div>
-   <!-- 스크립트 -->
-   <script type="text/javascript">
-      const msg = '<c:out value="${msg}"/>';
-      function result(){
-         if (msg === '0' || msg==null) {
-            alert("찾을 수 없습니다. 다시 입력해주세요!");
-         } else {
-            window.
-         }
-      }
-   </script>
+   </div> 
 </body>
 </html>

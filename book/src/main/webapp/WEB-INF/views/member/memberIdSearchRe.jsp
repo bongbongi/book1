@@ -44,15 +44,11 @@
 
    <script type="text/javascript">
       const msg = '<c:out value="${msg}"/>';
-      console.log(msg);
          if (msg!="0") {
             alert(`아이디는 ${msg} 입니다.`);
          } else {
             alert("찾을 수 없습니다. 다시 입력해주세요!");
          }
-      function result(){
-      }
-      
    </script>
 
 </body>

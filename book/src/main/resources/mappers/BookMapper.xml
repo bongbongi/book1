@@ -32,12 +32,11 @@
    <insert id="insertBook"
       parameterType="com.ezen.book.domain.BookVO">
       insert into book
-      (book_title, book_writer, book_price,
-      book_saleprice,book_sales, book_publisher, book_date,
+      (book_title, book_writer, book_price, book_publisher, book_date,
       book_count,book_content, book_cno)
       values
       (#{book_title},#{book_writer}, #{book_price},
-      #{book_saleprice},#{book_sales},#{book_publisher},  #{book_date},
+     #{book_publisher},  #{book_date},
       #{book_count},#{book_content}, #{book_cno})
    </insert>
    <select id="selectBookList"

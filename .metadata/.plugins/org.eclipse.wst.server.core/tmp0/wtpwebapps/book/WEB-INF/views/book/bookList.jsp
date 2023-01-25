@@ -13,7 +13,7 @@
 }
 
 .box {
-   width: 550px;
+   /* width: 550px; */
    float: left;
    display: inline-block;
    height: 310px;
@@ -65,7 +65,7 @@
 .title {
    font-weight: bold;
    font-size: 25px;
-   padding-top: 33px;
+   padding-top: 5px;
 }
 
 .btnBox button {

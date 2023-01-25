@@ -264,10 +264,11 @@ a {
 											<div class="brd_titleAndWriter">
 												<label for="ntc_title">제목</label> <input type="text" name="ntc_title" class="ntc_title" value="${nvo.ntc_title}" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <label for="ntc_title">작성자</label> <input type="text" name="ntc_writer" value="${nvo.ntc_writer}" readonly><br>
 											</div>
-											<div class="contentBox-Input">
-												<label for="ntc_content" class="contentLabel">내용</label><br> <input type="text" name="ntc_content" value="${nvo.ntc_content}"> <br>
+											<div class="contentBox">
+												<label for="ntc_content" class="contentLabel">내용</label><br> 
+												<textarea rows="10" cols="100" name="ntc_content" >${nvo.ntc_content}</textarea> <br>
 											</div>
-
+							
 											<button type="submit" class="btn btn-secondary">수정완료</button>
 											<a href="/ntc/noticeList"><button type="button" class="btn btn-secondary">목록</button></a>
 										</form>
@@ -381,13 +382,17 @@ a {
 									<div class="boardRegisterBox">
 										<form action="/faq/faqModify?faq_num=${fo.faq_num }" method="post">
 											<div class="brd_titleAndWriter">
-												<label for="faq_question">질문</label> <input type="text" name="faq_question" class="faq_question" value="${fo.faq_question }" style="width: 763px" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+												<label for="faq_question">질문</label> 
+												<input type="text" name="faq_question" class="faq_question" value="${fo.faq_question }" style="width: 763px" required> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 											</div>
-											<div class="contentBox-Input">
-												<label for="faq_answer" class="contentLabel">답변</label><br> <input name="faq_answer" value="${fo.faq_answer }"> <br>
+										
+											
+											<div class="contentBox">
+												<label for="faq_answer" class="contentLabel">답변</label><br> 
+												<textarea rows="10" cols="100" name="faq_answer" >${fo.faq_answer }</textarea> <br>
 											</div>
-
+											
 											<button type="submit" class="btn btn-secondary">수정하기</button>
 										</form>
 									</div>
@@ -562,8 +567,7 @@ a {
 													<th>썸네일</th>
 													<th colspan="2">책제목</th>
 													<th>저자</th>
-													<th>정상가격</th>
-													<th>할인가격</th>
+													<th>정상가격</th>												
 													<th>판매량</th>
 													<th>출판사</th>
 													<th>출판일</th>
@@ -581,7 +585,7 @@ a {
 														<td class="ellipsis-one" colspan="2">${bo.bvo.book_title }</td>
 														<td  class="ellipsis-one">${bo.bvo.book_writer }</td>
 														<td>${bo.bvo.book_price }</td>
-														<td>${bo.bvo.book_saleprice }</td>
+													
 														<td>${bo.bvo.book_sales }</td>
 														<td  class="ellipsis-one">${bo.bvo.book_publisher }</td>
 														<td>${bo.bvo.book_date }</td>
@@ -750,14 +754,8 @@ a {
 													<td>책가격</td>
 													<td><input type="text" name="book_price"></td>
 												</tr>
-												<tr>
-													<td>할인가격</td>
-													<td><input type="text" name="book_saleprice"></td>
-												</tr>
-												<tr>
-													<td>판매량</td>
-													<td><input type="text" name="book_sales" value=0></td>
-												</tr>
+												
+												
 												
 												<tr>
 													<td>책수량</td>

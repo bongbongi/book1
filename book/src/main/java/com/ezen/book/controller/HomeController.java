@@ -55,13 +55,9 @@ public class HomeController {
    
    @Inject
    private MemberService msv;
-   /**
-    * Simply selects the home view to render by returning its name.
-    */
-
+  
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String home(Locale locale, Model model) {
-      logger.info("Welcome home! The client locale is {}.", locale);
 
       Date date = new Date();
       DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -70,9 +66,7 @@ public class HomeController {
 
       model.addAttribute("serverTime", formattedDate);
 
-      ArrayList<BookVO> list = bks.getBookList(); //
-      
-      log.info("listsize"+list.size());
+      ArrayList<BookVO> list = bks.getBookList();
       
       FileVO fvo = new FileVO(); 
       List<FileDTO> list2 = new ArrayList<FileDTO>();
@@ -111,7 +105,6 @@ public class HomeController {
       
  
       model.addAttribute("randombook", list3);
-      log.info("randombook"+list3.size());
       return "home";
       
    }

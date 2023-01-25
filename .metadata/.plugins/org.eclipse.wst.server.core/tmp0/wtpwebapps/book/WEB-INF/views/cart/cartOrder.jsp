@@ -272,7 +272,9 @@ height: 110px;
                   <tbody>
                      <tr>
                         <th style="width: 25%;">주문자</th>
-                        <td style="width: *">${memberInfo.mem_name} | ${memberInfo.mem_id}</td>
+                        <td >${member.mem_name} | ${member.mem_id}</td>
+                      <%--   <td style="width: *">${member.mem_postzip} | ${member.mem_ad}</td> --%>
+                        
                      </tr>
                   </tbody>
                </table>
@@ -290,20 +292,29 @@ height: 110px;
                         </colgroup>
                         <tbody>
                            <tr>
-                              <th>이름</th>
+                              <th style=" text-align: center;">받는이</th>
                               <td>
-                                 ${memberInfo.mem_name}
+                              <input type="text" class="addressee_input form-control" style="margin: 10PX; width: 300PX" placeholder="받는사람이름" value="${member.mem_name}" >
                               </td>
                            </tr>
                            <tr>
-                              <th>주소</th>
+                              <th style=" text-align: center;">주소</th>
                               <td>
-                                 ${memberInfo.mem_ad} 
+                                 <%-- ${member.mem_ad}  --%>
                                  <input class="selectAddress" value="T" type="hidden">
-                                 <input class="addressee_input" value="${memberInfo.mem_name}" type="hidden">
-                                 <input class="address1_input" type="hidden" value="${memberInfo.mem_ad}">
-                        <%--          <input class="address2_input" type="hidden" value="${memberInfo.memberAddr2}">
-                                 <input class="address3_input" type="hidden" value="${memberInfo.memberAddr3}">    --%>                                                            
+                                <%--  <input class="addressee_input" value="${member.mem_name}" type="hidden">
+                                 <input class="address1_input" type="hidden" value="${member.mem_ad}"> --%>
+                                 
+                                 <!-- 다음 우편번호 api -->
+                                 
+                                <input type="text" id="sample4_postcode" class="form-control" style="margin: 10PX; width: 300PX" placeholder="우편번호"  required="required" value="${member.mem_postzip}">
+                        <input type="text" class="address1_input form-control" style="margin: 10PX" id="sample4_roadAddress" placeholder="도로명주소" required="required" value="${member.mem_ad}">
+                        <input type="text" class="address2_input form-control" style="margin: 10PX"  id="sample4_detailAddress" placeholder="상세주소" required="required">
+                        <span id="guide" style="color:#999;display:none"></span>  
+                         <input type="button" onclick="sample4_execDaumPostcode()" class="btn btn-outline-secondary" value="우편번호 찾기"><br>
+                               <%-- <input class="address2_input" type="hidden" value="${member.memberAddr2}"> --%>
+                     
+                                 <%-- <input class="address3_input" type="hidden" value="${member.memberAddr3}">    --%>                                                           
                               </td>
                            </tr>
                         </tbody>
@@ -382,7 +393,7 @@ height: 110px;
                      <tr>
                         <th>포인트 사용</th>
                         <td>
-                           ${memberInfo.mem_point} | <input class="order_point" value="0">포인트
+                           ${member.mem_point} | <input class="order_point" value="0">포인트
                            <a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
                            <a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
                            
@@ -398,7 +409,7 @@ height: 110px;
                   <ul>
                      <li>
                         <span class="price_span_label">지갑</span>
-                        <span class="mem_cash">${memberInfo.mem_cash}</span>원
+                        <span class="mem_cash"> <fmt:formatNumber value="${member.mem_cash}" pattern="#,###원"/></span>
                      </li>
                      <li>
                         <span class="price_span_label">상품 금액</span>
@@ -423,22 +434,22 @@ height: 110px;
                       
                      <!-- A등급 20퍼센트 B등급 15퍼센트 C등급 10퍼센트 D(기본)5퍼센트 -->
                      <li class="point_li">
-                        <c:if test="${memberInfo.mem_rating eq 'A'}">
+                        <c:if test="${member.mem_rating eq 'A'}">
                         <span class="price_span_label">적립포인트(등급A)</span>
                         <span class="totalPoint_span">7960원</span>(+
                         <span class="addPointA"></span>)
                         </c:if>
-                        <c:if test="${memberInfo.mem_rating eq 'B'}">
+                        <c:if test="${member.mem_rating eq 'B'}">
                         <span class="price_span_label">적립포인트(등급B)</span>
                         <span class="totalPoint_span">7960원</span>(+
                         <span class="addPointB"></span>)
                         </c:if> 
-                        <c:if test="${memberInfo.mem_rating eq 'C'}">
+                        <c:if test="${member.mem_rating eq 'C'}">
                         <span class="price_span_label">적립포인트(등급C)</span>
                         <span class="totalPoint_span">7960원</span>(+
                         <span class="addPointC"></span>)
                         </c:if>
-                        <c:if test="${memberInfo.mem_rating eq 'D'}">
+                        <c:if test="${member.mem_rating eq 'D'}">
                         <span class="price_span_label">적립포인트(등급D)</span>
                         <span class="totalPoint_span">7960원</span>
                         </c:if>
@@ -456,11 +467,11 @@ height: 110px;
          <!-- 주문 요청 form -->
          <form class="order_form" action="/order/ordercheck" method="post">  <!-- 이쪽으로 간다  -->
             <!-- 주문자 회원번호 -->
-            <input name="order_mem_num" value="${memberInfo.mem_num}" type="hidden">
+            <input name="order_mem_num" value="${member.mem_num}" type="hidden">
             <!-- 주소록 & 받는이-->
             <input name="addressee" type="hidden">
-            <input name="memberAddr1" type="hidden">
-            <input name="order_add2" type="hidden" value="${memberInfo.mem_ad}">
+            <input name="order_add1" type="hidden">
+            <input name="order_add2" type="hidden">
             <!-- 사용 포인트 -->
             <input name="usePoint" type="hidden">
             <!-- 상품 정보 -->
@@ -474,6 +485,68 @@ height: 110px;
 </div>   <!-- class="wrapper" -->
 
 <jsp:include page="../layout/footer.jsp"></jsp:include>
+
+
+<!--  우편번호 API -->
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -511,7 +584,7 @@ $(document).ready(function(){
          totalPoint += parseInt($(element).find(".totalPoint_input").val());
       });   
       
-      memberRank = '${memberInfo.mem_rating}';
+      memberRank = '${member.mem_rating}';
       
       
       console.log(memberRank);
@@ -529,12 +602,12 @@ $(document).ready(function(){
          totalPoint = totalPoint*2;                  
       }
 
-      if(totalPrice >= 30000){
+      if(totalPrice >= 20000){
          deliveryPrice = 0;
       } else if(totalPrice == 0){
          deliveryPrice = 0;
       } else {
-         deliveryPrice = 3000;   
+         deliveryPrice = 2500;   
       }
       
       finalTotalPrice = totalPrice + deliveryPrice;   
@@ -571,7 +644,7 @@ $(document).ready(function(){
 
       let totalPrice = 0;
       let deliveryPrice = 0;
-      let point = parseInt('${memberInfo.mem_point}');
+      let point = parseInt('${member.mem_point}');
       let finalprice = 0;
       
       $(".goods_table_price_td").each(function(index, element){
@@ -580,12 +653,12 @@ $(document).ready(function(){
          
       });
       
-      if(totalPrice >= 30000){
+      if(totalPrice >= 20000){
          deliveryPrice = 0;
       } else if(totalPrice == 0){
          deliveryPrice = 0;
       } else {
-         deliveryPrice = 3000;   
+         deliveryPrice = 2500;   
       }
       
       finalprice = totalPrice + deliveryPrice;
@@ -597,7 +670,7 @@ $(document).ready(function(){
       if(point > finalprice){
           maxPoint = parseInt((finalprice - point) + point);   
       }else{
-          maxPoint = parseInt('${memberInfo.mem_point}');   
+          maxPoint = parseInt('${member.mem_point}');   
       }
       
       console.log(maxPoint);
@@ -615,15 +688,12 @@ $(document).ready(function(){
    });
 
 
-   /* 포인트 모두사용 취소 버튼 
-    * Y: 모두사용 상태 / N : 모두 취소 상태
-    */
    $(".order_point_input_btn").on("click", function(){
       
       
       let totalPrice = 0;
       let deliveryPrice = 0;
-      let point = parseInt('${memberInfo.mem_point}');
+      let point = parseInt('${member.mem_point}');
       let finalprice = 0;
       
       $(".goods_table_price_td").each(function(index, element){
@@ -632,12 +702,12 @@ $(document).ready(function(){
          
       });
       
-      if(totalPrice >= 30000){
+      if(totalPrice >= 20000){
          deliveryPrice = 0;
       } else if(totalPrice == 0){
          deliveryPrice = 0;
       } else {
-         deliveryPrice = 3000;   
+         deliveryPrice = 2500;   
       }
       
       finalprice = totalPrice + deliveryPrice;
@@ -649,7 +719,7 @@ $(document).ready(function(){
       if(point > finalprice){
           maxPoint = parseInt((finalprice - point) + point);   
       }else{
-          maxPoint = parseInt('${memberInfo.mem_point}');   
+          maxPoint = parseInt('${member.mem_point}');   
       }
       
       console.log(maxPoint);
@@ -680,7 +750,7 @@ $(document).ready(function(){
          
          if(input){
          
-          if('${memberInfo.mem_cash}' < finalTotalPrice){ 
+          if('${member.mem_cash}' < finalTotalPrice){ 
             alert("지갑금액이 부족합니다!");
             event.preventDefault();
              }else{
@@ -688,7 +758,8 @@ $(document).ready(function(){
                $(".addressInfo_input_div").each(function(i, obj){
                   if($(obj).find(".selectAddress").val() === 'T'){
                      $("input[name='addressee']").val($(obj).find(".addressee_input").val());
-                     $("input[name='memberAddr1']").val($(obj).find(".address1_input").val());
+                     $("input[name='order_add1']").val($(obj).find(".address1_input").val());
+                     $("input[name='order_add2']").val($(obj).find(".address2_input").val());
                   }
                });   
                
@@ -719,6 +790,9 @@ $(document).ready(function(){
    });   
 
 </script>
+
+
+
 
 </body>
 </html>

@@ -20,7 +20,7 @@
 	<div class="login-box">
 		<div class="memOrNon loginTopBtn">
 			<a href="/mem/login-member"><button>회원</button></a> 
-			<a href="/mem/login-Non-member"><button>비회원</button></a>
+			<!-- <a href="/mem/login-Non-member"><button>비회원</button></a> -->
 		</div>
 		<div class="login-container">
 			<div class="logo">
