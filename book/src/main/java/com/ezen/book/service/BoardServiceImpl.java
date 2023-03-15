@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Inject
 	private BoardDAO bdao;
-	
+
 	@Override
 	public List<BoardVO> getList(PagingVO pvo) {
 		log.info(">>> board Paging List check2");
@@ -28,16 +28,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int getTotalCount(PagingVO pvo) {
-		// TODO Auto-generated method stub
 		return bdao.searchTotalCount(pvo);
 	}
 
 	@Override
 	public int getTotalCount() {
-		// TODO Auto-generated method stub
 		return bdao.selectTotalCount();
 	}
-	
+
 	@Override
 	public List<BoardVO> getList() {
 		log.info(">>> board list check2");
@@ -53,8 +51,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int modify(BoardVO bvo, MemberVO member) {
 		log.info(">>> board modify check2");
-		BoardVO tmpBoard=bdao.selectBoardDetail(bvo.getBrd_num());
-		if(member ==null|| !member.getMem_id().equals(tmpBoard.getBrd_writer())) {
+		BoardVO tmpBoard = bdao.selectBoardDetail(bvo.getBrd_num());
+		if (member == null || !member.getMem_id().equals(tmpBoard.getBrd_writer())) {
 			return 0;
 		}
 		log.info(">>> board modify check4");

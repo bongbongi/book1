@@ -12,32 +12,32 @@ import com.ezen.book.domain.PagingVO;
 
 public interface BookService {
 
-   ArrayList<BookVO> getSearchList(PagingVO pvo);
+	ArrayList<BookVO> getSearchList(PagingVO pvo);
 
-   int getTotalCount(PagingVO pvo);
+	int getTotalCount(PagingVO pvo);
 
-   ArrayList<BookVO> getBookList();
+	ArrayList<BookVO> getBookList();
 
-   ArrayList<BookVO> getSelectBookList(int content);
-   
-   int register(BookDTO bkto);
+	ArrayList<BookVO> getSelectBookList(int content);
 
-   BookDTO getDetailBook(int book_num);
+	int register(BookDTO bkto);
 
-   int modify(BookDTO bookDTO);
+	BookDTO getDetailBook(int book_num);
 
-   FileVO getFile(int book_num);
+	int modify(BookDTO bookDTO);
 
-   int bookRemove(int book_num, MemberVO mem);
+	FileVO getFile(int book_num);
 
-   int removeFile(String uuid);
+	int bookRemove(int book_num, MemberVO mem);
 
-   List<BookVO> getList(PagingVO pvo);
+	int removeFile(String uuid);
 
-   BookVO detailSelectOne(int book_num);
+	List<BookVO> getList(PagingVO pvo);
 
-   BookVO getBookOne();
+	BookVO detailSelectOne(int book_num);
 
-int getTotalCount2();
+	BookVO getBookOne();
+
+	int getTotalCount2();
 
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.book.domain.BoardVO;
-import com.ezen.book.domain.CommentVO;
 import com.ezen.book.domain.MemberVO;
 import com.ezen.book.domain.PagingVO;
 import com.ezen.book.handler.PagingHandler;
@@ -67,7 +66,6 @@ public class AdminController {
 		model.addAttribute("board", board);
 		return "/member/memberAdmin";
 	}
-
 	
 
 	@PostMapping("/modify")

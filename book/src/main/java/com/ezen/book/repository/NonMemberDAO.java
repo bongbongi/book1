@@ -7,7 +7,6 @@ import com.ezen.book.domain.NonMemberVO;
 @Repository
 public interface NonMemberDAO {
 
-
 	NonMemberVO getNum(NonMemberVO umvo);
 
 	int searchNum(NonMemberVO umvo);

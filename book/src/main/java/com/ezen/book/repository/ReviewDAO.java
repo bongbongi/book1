@@ -6,8 +6,8 @@ import com.ezen.book.domain.ReviewVO;
 
 public interface ReviewDAO {
 
-   int insertReview(ReviewVO rvo);
+	int insertReview(ReviewVO rvo);
 
-   List<ReviewVO> reviewList(int book_num);
+	List<ReviewVO> reviewList(int book_num);
 
 }

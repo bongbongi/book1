@@ -37,33 +37,22 @@ public interface MemberService {
 
 	String pwCheckRe(String mem_pwRe);
 
-	
-
 	int moneyCharge(String mem_id, int mem_cash);
 
 	int getCharge(String mem_id);
 
+	public MemberVO getMemberInfo(int mem_num); // 구매페이지에 회원정보를 불러오기
 
-	public MemberVO getMemberInfo(int mem_num);  // 구매페이지에 회원정보를 불러오기 
-
-	public int memberCartNumUP(int mn);	 // 회원정보에 장바구니 숫자를 올리기!
+	public int memberCartNumUP(int mn); // 회원정보에 장바구니 숫자를 올리기!
 
 	public int memberCartNumDown(int mem_num);
 
 	MemberVO getIdAll(String mem_id);
 
 	MemberVO getMemNumAll(int mem_num);
-	
-	/* int putGrade(MemberVO mvo); */
-
-	/* int putGrade(int mem_num,String mem_rating); */
-
-	/* String getRating(int mem_num); */
 
 	int putGrade(MemberVO mvo);
 
 	MemberVO getNumAll(int mem_num);
-
-
 
 }

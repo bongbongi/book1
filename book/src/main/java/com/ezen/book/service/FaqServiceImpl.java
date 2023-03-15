@@ -55,9 +55,7 @@ public class FaqServiceImpl implements FaqService {
 
 	@Override
 	public List<FaqVO> getFaqList() {
-		// TODO Auto-generated method stub
 		return fao.getFaqListOnly();
 	}
-
 
 }

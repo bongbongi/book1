@@ -18,9 +18,9 @@ public interface CartService {
 
 	int addCart(CartDTO cdo);
 
-	int updateCart(CartDTO cdo); //
+	int updateCart(CartDTO cdo); 
 
-	CartVO getCart(CartDTO cdo); //
+	CartVO getCart(CartDTO cdo); 
 
 	int deleteCart(int mem_num); // 구매 후 장바구니를 삭제하는 메서드
 

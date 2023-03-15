@@ -6,43 +6,42 @@
 		select count(ntc_num) from notice where ntc_num>0
 		<include refid="search"></include>
 	</select>
-	
-	<select id="getNoticeList" resultType="com.ezen.book.domain.NoticeVO">
+
+	<select id="getNoticeList"
+		resultType="com.ezen.book.domain.NoticeVO">
 		select * from notice where ntc_num>0
-		<include refid="search"></include>	
+		<include refid="search"></include>
 		order by ntc_num desc
 		limit #{pageStart}, #{qty}
 	</select>
-	
-		
-	
-	
-	
-	
-	<select id="getDetail" resultType="com.ezen.book.domain.NoticeVO">
+
+	<select id="getDetail"
+		resultType="com.ezen.book.domain.NoticeVO">
 		select * from notice where ntc_num=#{ntc_num}
 	</select>
 	<insert id="noticeRegister">
-		insert into notice (ntc_title,ntc_writer,ntc_content,ntc_mem_num)
+		insert into notice
+		(ntc_title,ntc_writer,ntc_content,ntc_mem_num)
 		values
 		(#{ntc_title},#{ntc_writer},#{ntc_content},#{ntc_mem_num})
 	</insert>
 	<update id="getModify">
-		update notice set 
+		update notice set
 		ntc_title=#{ntc_title},ntc_writer=#{ntc_writer},ntc_content=#{ntc_content}
 		where ntc_num=#{ntc_num}
 	</update>
 	<delete id="getDelete">
 		delete from notice where ntc_num=#{ntc_num}
 	</delete>
-	<select id="getNoticeListOnly"  resultType="com.ezen.book.domain.NoticeVO">
+	<select id="getNoticeListOnly"
+		resultType="com.ezen.book.domain.NoticeVO">
 		select * from notice
 		order by ntc_num desc
-		limit #{pvo.pageStart}, #{pvo.qty}
+		limit
+		#{pvo.pageStart}, #{pvo.qty}
 	</select>
-	
-	
-		<sql id="search">
+
+	<sql id="search">
 		<if test="type != null">
 			<trim prefix="and (" suffix=")" prefixOverrides="OR">
 				<foreach collection="typeToArray" item="type">
@@ -62,6 +61,6 @@
 				</foreach>
 			</trim>
 		</if>
-		</sql>
-	
+	</sql>
+
 </mapper>

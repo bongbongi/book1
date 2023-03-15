@@ -30,24 +30,24 @@ public class CommentController {
 
 	@Inject
 	private CommentService csv;
-	
+
 	@PostMapping(value="/post", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> post(@RequestBody CommentVO cvo){
 		log.info(">>> comment post : "+cvo.toString());
 		int isUp = csv.register(cvo);
 		log.info(">>> register isUp : "+(isUp>0? "ok" : "fail"));
-		
+
 		return isUp>0? new ResponseEntity<String>("1",HttpStatus.OK)
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	@GetMapping(value="/{cot_brd_num}",produces= {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<CommentVO>> spread(@PathVariable("cot_brd_num")int cot_brd_num){
 		log.info(">>>> comment List cot_brd_num : "+cot_brd_num);
 		List<CommentVO> list = csv.getList(cot_brd_num);
 		return new ResponseEntity<List<CommentVO>>(list,HttpStatus.OK);
 	}
-	
+
 	@PutMapping(value = "/{cot_num}", consumes = "application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> edit(@PathVariable("cot_num")int cot_num, @RequestBody CommentVO cvo){
 		log.info(">>>> comment modifyt cot_num : "+cot_num);
@@ -57,14 +57,14 @@ public class CommentController {
 				new ResponseEntity<String>("1",HttpStatus.OK)
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+
 	@DeleteMapping(value="/{cot_num}", consumes = "application/json")
-	   public ResponseEntity<String>delete(@PathVariable("cot_num")int cot_num){
-	      log.info(">>> comment delete cno : "+cot_num);
-	      int isUp = csv.delete(cot_num);
-	      return isUp>0? 
-	            new ResponseEntity<String>("1",HttpStatus.OK)
-	            : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	   }
-	
+	public ResponseEntity<String>delete(@PathVariable("cot_num")int cot_num){
+		log.info(">>> comment delete cno : "+cot_num);
+		int isUp = csv.delete(cot_num);
+		return isUp>0? 
+				new ResponseEntity<String>("1",HttpStatus.OK)
+				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 }

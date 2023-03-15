@@ -1081,3 +1081,7 @@
 1월 24, 2023 17:51:17.142 [4552:10076:0124/175117.142:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
 1월 24, 2023 17:56:34.441 [4552:10076:0124/175634.441:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
 1월 24, 2023 18:33:35.276 [4552:10076:0124/183335.275:ERROR:connection_factory_impl.cc(472)] ConnectionHandler failed with net error: -2
+
+1월 25, 2023 15:02:06.275 NEW SESSION
+1월 25, 2023 15:02:06.275 [11952:9532:0125/150206.274:ERROR:device_event_log_impl.cc(215)] [15:02:06.274] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 25, 2023 15:02:06.276 [11952:9532:0125/150206.275:ERROR:device_event_log_impl.cc(215)] [15:02:06.275] USB: usb_device_handle_win.cc:1046 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)

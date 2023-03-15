@@ -16,17 +16,15 @@ import com.ezen.book.repository.MemberDAO;
 
 @Service
 public class CartServiceImpl implements CartService {
-	
-	
+
 	@Inject
 	private CartDAO cdao;
-	
+
 	@Inject
 	private MemberDAO Mdao;
 
 	@Override
 	public MemberVO getDetailmember(int mem_num) {
-		// TODO Auto-generated method stub
 		return cdao.selectmemberONE(mem_num);
 	}
 
@@ -44,29 +42,27 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public int addCart(CartDTO cdo) {
-		// TODO Auto-generated method stub
+
 		return cdao.addCartBook(cdo);
 	}
 
 	@Override
 	public int updateCart(CartDTO cdo) {
-		// TODO Auto-generated method stub
+
 		return cdao.updateCart(cdo);
 	}
 
 	@Override
 	public CartVO getCart(CartDTO cdo) {
-		// TODO Auto-generated method stub
+
 		return cdao.selectCart(cdo);
 	}
 
-
 	@Override
 	public int deleteCart(int mem_num) {
-		// TODO Auto-generated method stub
+
 		return cdao.deleteCart(mem_num);
 	}
-
 
 	@Override
 	public void deleteSelectCart(int cart_num) {
@@ -79,19 +75,5 @@ public class CartServiceImpl implements CartService {
 		// 장바구니에서 수량을 조절
 		return cdao.modifyCount(cdto);
 	}
-
-
-
-	
-	
-
-	
-
-	
-
-	
-
-	
-	
 
 }

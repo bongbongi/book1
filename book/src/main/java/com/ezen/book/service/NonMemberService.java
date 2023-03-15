@@ -8,8 +8,4 @@ public interface NonMemberService {
 
 	int searchNum(NonMemberVO umvo);
 
-//	int searchPw(UnmemberVO umvo);
-
-
-
 }

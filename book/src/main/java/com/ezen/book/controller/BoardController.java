@@ -56,7 +56,7 @@ public class BoardController {
 	public String introduce() {
 		return "/board/boardIntroduce";
 	}
-	
+
 	@GetMapping("/list")
 	public String list(Model model,PagingVO pvo){
 		log.info(">>>pageNo :"+pvo.getPageNo());
@@ -65,7 +65,7 @@ public class BoardController {
 		int totalCount=bsv.getTotalCount(pvo);
 		PagingHandler ph = new PagingHandler(pvo,totalCount);
 		model.addAttribute("pgh",ph);
-		
+
 		model.addAttribute("content", "boardList");
 		return "/member/memberMypage";
 	}

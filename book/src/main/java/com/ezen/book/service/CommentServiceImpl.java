@@ -14,8 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class CommentServiceImpl implements CommentService {
-	
-	
+
 	@Inject
 	private CommentDAO cdao;
 
@@ -33,13 +32,13 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<CommentVO> getList(int cot_brd_num) {
-		// TODO Auto-generated method stub
+
 		return cdao.selectList(cot_brd_num);
 	}
 
 	@Override
 	public int delete(int cot_num) {
-		// TODO Auto-generated method stub
+
 		return cdao.commentDelete(cot_num);
 	}
 }

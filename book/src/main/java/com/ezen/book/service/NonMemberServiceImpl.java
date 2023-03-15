@@ -18,7 +18,7 @@ public class NonMemberServiceImpl implements NonMemberService {
 
 	@Inject
 	private NonMemberDAO nmDAO;
-	
+
 	@Inject
 	BCryptPasswordEncoder passwordEncoder;
 
@@ -31,12 +31,13 @@ public class NonMemberServiceImpl implements NonMemberService {
 			return unmember;
 		}
 	}
-		/* ★★ 지우지말기 ★ 입력한 비번과 주문시 주문비밀번호 암호화 비교하고 로그인해야함
-		 * //암호화된 비밀번호 맞는지 비교 if (passwordEncoder.matches(umvo.getMem_pw(),
-		 * unmember.getMem_pw())) { return unmember; } else {
-		 * 
-		 * return null; }
-		 */
+	/*
+	 * ★★ 지우지말기 ★ 입력한 비번과 주문시 주문비밀번호 암호화 비교하고 로그인해야함 //암호화된 비밀번호 맞는지 비교 if
+	 * (passwordEncoder.matches(umvo.getMem_pw(), unmember.getMem_pw())) { return
+	 * unmember; } else {
+	 * 
+	 * return null; }
+	 */
 
 	@Override
 	public int searchNum(NonMemberVO umvo) {
@@ -49,15 +50,4 @@ public class NonMemberServiceImpl implements NonMemberService {
 			return 0;
 		}
 	}
-//	@Override
-//	public int searchPw(UnmemberVO umvo) {
-//
-//		int mem_num = nmDAO.searchNum(umvo);
-//		if (mem_num > 0) {
-//			return mem_num;
-//		} else {
-//
-//			return 0;
-//		}
-//	}
 }

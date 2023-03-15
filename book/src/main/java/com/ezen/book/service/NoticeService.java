@@ -21,6 +21,4 @@ public interface NoticeService {
 
 	List<NoticeVO> getNoticeListOnly(PagingVO pvo);
 
-
-
 }

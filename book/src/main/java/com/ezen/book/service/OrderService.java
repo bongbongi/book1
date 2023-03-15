@@ -12,31 +12,23 @@ import com.ezen.book.domain.PagingVO;
 
 public interface OrderService {
 
-   List<OrderVO> getList(PagingVO pvo, String status, int mem_num);
+	List<OrderVO> getList(PagingVO pvo, String status, int mem_num);
 
+	int getOrderTotalCount(int mem_num);
 
+	int getBuyTotalCount(int mem_num);
 
-   int getOrderTotalCount(int mem_num);
+	public List<OrderPageItemDTO> getGoodsInfo(List<OrderPageItemDTO> orders);
 
-   int getBuyTotalCount(int mem_num);
-   
-   public List<OrderPageItemDTO> getGoodsInfo(List<OrderPageItemDTO> orders);
+	public void order(OrderDTO od);
 
-  	public void order(OrderDTO od);
+	public List<OrderDTO> getOrderList(int order_mem_num);
 
-  	public List<OrderDTO> getOrderList(int order_mem_num);
-
-  	public List<OrderItemDTO> orderDetail(String order_num);
-
-
+	public List<OrderItemDTO> orderDetail(String order_num);
 
 	List<FileVO> selectFileList(int cart_book_num);
 
-
-
 	void Confirmed(String order_num);
-
-
 
 	void setDelivery(DeliveryDTO ddto);
 

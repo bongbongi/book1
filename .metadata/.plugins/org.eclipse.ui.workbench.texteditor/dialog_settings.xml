@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;"/>
 			<item value="getGoodsInfo"/>
 			<item value="book_salepric"/>
 			<item value="brd_cot"/>
@@ -22,7 +23,6 @@
 			<item value="boarddetail"/>
 			<item value="1대1문의"/>
 			<item value="주문번호"/>
-			<item value="주소"/>
 		</list>
 		<list key="replacehistory">
 			<item value="mem_cash"/>
